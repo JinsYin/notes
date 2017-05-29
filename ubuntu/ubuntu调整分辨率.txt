@@ -1,0 +1,18 @@
+1.查看分辨率选项（获取显卡设备）： xrandr
+
+2.生成 1400x900 的分辨率(会生成显示模式)： cvt 1440 900
+
+3.使用xrandr添加cvt得到的显示模式（VGA1是显卡设备）：
+sudo xrandr --newmode "1440x900" 106.50 1440 1528 1672 1904 900 903 909 934 -hsync +vsync
+sudo xrandr --addmode VGA1 1440x900
+sudo xrandr --output VGA1 --mode 1440x900
+
+4. 开机自动设置分辨率（sudo ~/.profile）：
+cvt 1440 900
+xrandr --newmode 1440x900 106.50 1440 1528 1672 1904 900 903 909 934 -hsync +vsync
+xrandr --addmode VGA1 1440x900
+
+
+
+
+ 
