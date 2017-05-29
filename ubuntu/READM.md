@@ -3,3 +3,4 @@
  
 ## 目录
 - [ubuntu调整分辨率](./ubuntu-display.md)
+- [Ubuntu开启远程连接服务](./ubuntu-remote.md)
