@@ -3,18 +3,18 @@
 $ ssh -vv root@192.168.111.191
 ```
 
-## GSSAPI 禁用
+## 禁用GSSAPI
 - client端禁用
-  ```bash
-  $ ssh -o GSSAPIAuthentication=no -vv root@192.168.111.191
-  ```
+```bash
+$ ssh -o GSSAPIAuthentication=no -vv root@192.168.111.191
+```
 - server端禁用
-  ```
-  $ vi /etc/ssh/sshd_config
-  > GSSAPIAuthentication no
-  ```
+```
+$ vi /etc/ssh/sshd_config
+> GSSAPIAuthentication no
+```
 
-## 不使用DNS解析
+## 禁用DNS解析
 ```
 $ vi /etc/ssh/sshd_config
 > UseDNS no
