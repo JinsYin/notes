@@ -1,5 +1,5 @@
 # CentOS 下载地址
-推荐下载 minimal 版本
+推荐下载 *minimal* 版本
 
 ## CentOS 7.2
 - http://vault.centos.org/centos/7.2.1511/isos/x86_64/
