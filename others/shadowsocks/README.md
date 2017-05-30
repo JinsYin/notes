@@ -1,8 +1,8 @@
 # Shadowsocks (简称ss) 
-ss 服务器配置及路由规则
+ss 服务器配置及大陆白名单
 
 ## 文件
-- [gfwlist](./gfwlist.txt)：需要使用 ss 的 url 规则列表
+- [gfwlist](./gfwlist.txt)：大陆白名单（需要使用ss的墙外网站列表）
 - [gui-config](./gui-config.json): ss 服务器配置
 
 ## 下载地址
