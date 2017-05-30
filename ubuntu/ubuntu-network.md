@@ -1,6 +1,7 @@
 # Ubuntu 网络
 
 ## 设置静态IP
+添加配置
 ```bash
 $ sufo vi /etc/network/interfaces
 auto eth0
@@ -10,6 +11,10 @@ iface eth0 inet static
   netmask 255.255.255.0
   network 192.168.0.0
   broadcast 192.168.0.255
+```
+重启网络
+```bash
+$ sudo service networking restart 或 sudo /etc/init.d/networking restart
 ```
 
 ## 没有ifconfig命令
