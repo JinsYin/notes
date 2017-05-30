@@ -14,7 +14,7 @@ iface eth0 inet static
 ```
 重启网络
 ```bash
-$ sudo service networking restart 或 sudo /etc/init.d/networking restart
+$ sudo service networking restart # 或 sudo /etc/init.d/networking restart
 ```
 
 ## 没有ifconfig命令
