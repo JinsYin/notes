@@ -2,7 +2,7 @@
 ss 服务器配置及大陆白名单
 
 ## 文件
-- [gfwlist](./gfwlist.txt)：大陆白名单（需要使用ss的墙外网站列表）
+- [gfwlist](./gfwlist.txt)：大陆白名单（需要使用ss的墙外网站列表）, [来源](https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt)
 - [gui-config](./gui-config.json): ss 服务器配置
 
 ## 下载地址
