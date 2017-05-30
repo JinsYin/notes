@@ -1,4 +1,4 @@
-# Shadowsock (简称ss) 
+# Shadowsocks (简称ss) 
 ss 服务器配置及路由规则
 
 ## 文件
