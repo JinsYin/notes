@@ -28,9 +28,11 @@ $ git config --global user.name "JinsYin"
 $ git config --global user.email "jinsyin@gmail.com"
 ```
 
-## 把工作区文件提交到本地仓库
+## 把工作区文件提交到本地仓库（当前分支）
 ![Git add-commit](./images/git-add-commit.jpg)
 > [图片来源]( http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000)
+
+暂存区就像是购物车，看到喜欢的商品可以先加入购物车（git add），在没付款前其实你是不确定购物车里的东西都想买，如果不想要了你可以直接删除购物车里的商品（git reset），确定好后再一次性下单（git commit）; 当然，你也可能看到某个喜欢的商品就直接下单了（git commit -a），而不是先加入购物车。
 
 ```bash
 $ echo "Git is a version control system." > README.md
@@ -91,6 +93,18 @@ $ git status
 ```bash
 $ git diff # 对比所有文件
 $ git diff README.md # 对比某个文件
+```
+
+## 对比文本在*暂存区*和*本地仓库*的变化
+```bash
+$ git diff --cached # 对比暂存区所有文件
+$ git diff --cached README.md # 对比某个文件
+```
+
+## 对比文本在*工作区*和*本地仓库*的变化
+```bash
+$ HEAD: 版本库里面最新版本
+$ git diff HEAD -- README.md
 ```
 
 ## 查看 commit 日志
