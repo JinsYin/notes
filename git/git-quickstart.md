@@ -1,6 +1,7 @@
 # Git 命令
 
 ![Git flow](./images/git-guide.png)
+> [图片来源](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
 
 - Workspace：工作区
 - Index / Stage：暂存区
@@ -27,7 +28,10 @@ $ git config --global user.name "JinsYin"
 $ git config --global user.email "jinsyin@gmail.com"
 ```
 
-## 把工作区文件提交到版本库
+## 把工作区文件提交到本地仓库
+![Git add-commit](./images/git-add-commit.jpg)
+> [图片来源]( http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000)
+
 ```bash
 $ echo "Git is a version control system." > README.md
 $ git add README.md
@@ -99,11 +103,18 @@ $ git log --pretty=oneline # 一行显示
 ## 版本回退
 ```bash
 # HEAD 表示当前版本， HEAD^ 表示上一个版本， HEAD^^ 表示上上一个版本， HEAD~100 表示上 100 个版本
+# 也可以按 commit id 来回退
 $ git reset --hard HEAD^
+```
+
+## 查看 commit 日志和版本回退日志
+```bash
+# 如果版本回退之后又想回到未来，可以用该命令获取回退前的 commit id
+$ git reflog
 ```
 
 ---
 
-> 参考文章 http://www.liaoxuefeng.com/
-> 图片来源 http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html
+## 参考文章 
+  - [廖雪峰的Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
