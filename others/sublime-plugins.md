@@ -1,4 +1,5 @@
 # Sublime text 插件
+ctrl + shift + p： install package
 
 ## Markdown
 
