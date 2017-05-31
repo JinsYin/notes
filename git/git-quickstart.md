@@ -2,6 +2,11 @@
 
 ![Git Guide](./images/git-guide.png)
 
+- Workspace：工作区
+- Index / Stage：暂存区
+- Repository：仓库区（或本地仓库）
+- Remote：远程仓库
+
 ## Ubuntu 安装 Git
 ```bash
 $ sudo apt-get install git
