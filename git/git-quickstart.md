@@ -20,7 +20,7 @@ $ sudo apt-get install git
 # 也可以简写成: git init learn-git
 $ mkdir learn-git && cd learn-git
 $ git init
-$ ls -ah
+$ ls -alh
 ```
 
 ## 设置个人账户信息
@@ -31,7 +31,7 @@ $ git config --global user.email "jinsyin@gmail.com"
 ```
 
 ## 把工作区文件提交到本地仓库（当前分支）
-![Git add-commit](./images/git-add-commit.jpg)
+![ *-commit](./images/git-add-commit.jpg)
 > [图片来源]( http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000)
 
 暂存区就像是购物车，看到喜欢的商品可以先加入购物车（git add），在没付款前其实你是不确定购物车里的东西都想买，如果不想要了你可以直接删除购物车里的商品（git reset），确定好后再一次性下单（git commit）; 当然，你也可能看到某个喜欢的商品就直接下单了（git commit -a），而不是先加入购物车。
@@ -53,14 +53,14 @@ $ git commit -m "Add three files and one dirctory."
 
 ```bash
 # 也可以不 add，直接 commit 到本地仓库
-$ git commit -a -m "msg" # 等价于 git add --all && git commit -m "msg"
+$ git commit -a -m "msg" # 等价于 git add * && git commit -m "msg" （并不会添加隐藏文件）
 ```
 
 ## 关于 git add
 ```bash
-$ git add -A # 添加所有改动，包括新增、修改和删除；等价于 git add --all。
-$ git add *  # 添加所有新增和修改，但不包括删除
-$ git add .  # 添加所有新增和修改，但不包括删除
+$ git add -A # 添加所有改动，包括所有新增、修改和删除；等价于 git add --all
+$ git add .  # 添加所有新增和修改，但不包括删除 （会添加隐藏文件）
+$ git add *  # 添加所有新增和修改，但不包括删除 （不会添加隐藏文件，不建议使用）
 $ git add -u # 添加所有修改和删除，但不包括新增
 ```
 
@@ -70,22 +70,28 @@ $ git reset file1.txt # 撤销某个文件
 $ git reset # 撤销所有暂存区的所有文件
 ```
 
-## commit 到本地仓库后如何撤销
 ```bash
-# 情况1：file1.txt 发生了修改但还没有添加到暂存区，可以直接从本地仓库中撤销
+$ git rm --cached file1.txt # 撤销某个文件
+```
+
+## 丢弃（discard）工作区的修改
+工作区的文件发生修改后，要么`添加`（git add f1.txt）到暂存区，要么`丢弃`（git checkout -- f1.txt）工作区的修改
+```bash
+# 情况1：file1.txt 发生了修改但还没有添加到暂存区，可以直接从`丢弃`
 $ git status
 $ git checkout -- file1.txt
 $ git status
 ```
+
 ```bash
-# 情况2：file1.txt 发生了修改并且添加到了暂存区，先从暂存区撤销，再从本地仓库撤销，但不能直接从本地仓库撤销
+# 情况2：file1.txt 发生了修改并且添加到了暂存区，需要先从暂存区撤销，再丢弃工作区的修改
 $ git status
 $ git reset file1.txt
 $ git checkout -- file1.txt
 $ git status
 ```
 
-## 对比*工作区和暂存区*以及*暂存区和本地仓库*的状态
+## 对比`工作区和暂存区`以及`暂存区和本地仓库`的状态
 ```bash
 # 查看有哪些文件被添加、删除、修改（但不能查看具体修改了什么内容）
 $ git status
