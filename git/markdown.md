@@ -192,7 +192,6 @@ mojombo/github-flavored-markdown#1
 
 ---
 
-
 ## 换行
 编辑纯文本时， markdown 键入 Enter 默认是不会自动换行，需要使用两个英文半角空格 + Enter。
 ```
@@ -207,3 +206,7 @@ a
 b
 Peter  
 Jins
+
+---
+
+> 参考文章 https://guides.github.com/features/mastering-markdown/
