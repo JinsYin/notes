@@ -185,10 +185,18 @@ mojombo/github-flavored-markdown#1
 ## Emoji
 使用方法：　`:EMOJICODE:`， emoji code：　[emoji-cheat-sheet.com](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 ```
+:+1:
 :smile:
+:clap:
+:v:
+:hankey:
 ```
 
+:+1:
 :smile:
+:clap:
+:v:
+:hankey:
 
 ---
 
