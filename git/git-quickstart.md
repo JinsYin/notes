@@ -13,6 +13,8 @@
 $ sudo apt-get install git
 ```
 
+---
+
 ## 初始化一个空的本地仓库
 ```bash
 # 也可以简写成: git init learn-git
@@ -114,7 +116,13 @@ $ git log
 $ git log --pretty=oneline # 一行显示
 ```
 
+```
+# 查看最新的3条 commit 日志
+$ git log -3
+```
+
 ## 版本回退
+版本回退是针对`本地仓库`而言的，并不涉及工作区和暂存区的修改。
 ```bash
 # HEAD 表示当前版本， HEAD^ 表示上一个版本， HEAD^^ 表示上上一个版本， HEAD~100 表示上 100 个版本
 # 也可以按 commit id 来回退
@@ -127,12 +135,49 @@ $ git reset --hard HEAD^
 $ git reflog
 ```
 
-## .gitigonre 忽略特殊文件
+---
+
+## 自定义 Git
+
+### .gitigonre 忽略特殊文件
 > .gitignore 模板 [github/gitignore](https://github.com/github/gitignore)  
 > .gitignore 自动生成网站 [gitignore.io](https://www.gitignore.io)
+
+### 配置别名
+```bash
+$ git config --global alias.st status
+$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+```
+
+```
+# 命令 git reset HEAD file 可以把暂存区的修改撤销掉（unstage），重新放回工作区
+$ git config --global alias.unstage 'reset HEAD'
+$ git unstage test.py
+```
+
+```bash
+# 跟踪 commit、合并日志
+$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+$ git lg -5
+```
+
+```bash
+# 查看本地仓库配置
+$ cat .git/config
+```
+
+```bash
+# 查看当前用户配置（--global），注： system 是整台电脑，global 是当前用户
+$ cat ~/.gitconfig
+```
+
+## 搭建 Git 服务器
+[Docker Gitlab image](https://hub.docker.com/r/gitlab/gitlab-ce/)
 
 ---
 
 ## 参考文章 
-  - [廖雪峰的Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+> [廖雪峰的Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
