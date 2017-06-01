@@ -127,6 +127,10 @@ $ git reset --hard HEAD^
 $ git reflog
 ```
 
+## .gitigonre 忽略特殊文件
+> .gitignore 模板 [github/gitignore](https://github.com/github/gitignore)  
+> .gitignore 自动生成网站 [gitignore.io](https://www.gitignore.io)
+
 ---
 
 ## 参考文章 
