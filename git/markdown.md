@@ -154,6 +154,8 @@ name | age | school
 jins | 24  | shsmu
 peter| 20  | tsinghua
 
+---
+
 ## 引入问题（Issue references）
 ```
 #1  
@@ -164,6 +166,8 @@ mojombo/github-flavored-markdown#1
 #1  
 mojombo#1  
 mojombo/github-flavored-markdown#1
+
+---
 
 ## 删除线（Strikethrough）
 ```
