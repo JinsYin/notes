@@ -141,6 +141,8 @@ $ git log --pretty=oneline # 一行显示
 $ git log -3
 ```
 
+---
+
 ## 版本回退
 版本回退是针对`本地仓库`而言的，并不涉及工作区和暂存区的修改。
 HEAD 指向的是当前分支的最新版本，HEAD^ 指向的是当前分支的上一个版本，HEAD~10 指向的是当前分支的上 100 个版本。
@@ -191,17 +193,22 @@ $ git clone git@github.com/jinsyin/helloworld.git
 创建 dev 分支，然后切换到 dev 分支
 ```bash
 $ git checkout -b dev # 等价于 git branch dev && git checkout dev
+$ git branch # 查看分支
 ```
   
 当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 
   
 ![New branch](./images/git-new-branch-dev.png)
+  
+在`dev`分支上作修改并提交，`dev`指针会往前移动一步，而`master`指针不变。  
   
-查看分支
-```bash
-$ git branch
-```
+![Modify on branch](./images/git-modify-on-branch-dev.png)
 
+把`dev`合并到`master`上，实际上是把`master`指向`dev`的当前提交。  
+![Master merge dev](./images/git-master-merge-dev.png)
+
+合并完分支后，甚至可以删除dev分支。  
+![Delete branch](./images/git-delete-branch-dev.png)
 
 
 
