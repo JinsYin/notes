@@ -26,3 +26,23 @@ $ git push -f origin master
 $ git fetch
 $ git merge
 ```
+
+git pull 之后又出错了
+```
+warning: no common commits
+remote: Counting objects: 21, done.
+remote: Compressing objects: 100% (8/8), done.
+Unpacking objects: 100% (21/21), done.
+remote: Total 21 (delta 4), reused 21 (delta 4), pack-reused 0
+From github.com:JinsYin/learn-git
+ * [new branch]      master     -> origin/master
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> master
+```
