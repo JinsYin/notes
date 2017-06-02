@@ -196,8 +196,8 @@ $ git checkout -b dev # 等价于 git branch dev && git checkout dev
 $ git branch # 查看分支
 ```
   
-当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 
-  
+当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 另外，`多个分支是共用工作区和暂存区的`，如果在`master`分支中工作区或暂存区有修改，切换到`dev`分支依然可以看到修改。
+  
 ![New branch](./images/git-new-branch-dev.png)  
   
   
@@ -210,7 +210,41 @@ $ git branch # 查看分支
 
 合并完分支后，甚至可以删除dev分支。  
 ![Delete branch](./images/git-delete-branch-dev.png)  
+  
+`git merge`命令用于合并指定分支到当前分支。如果提示`Fast-forward`信息，表示这次合并是“快进模式”，也就是直接把`master`指向`dev`的当前提交，所以合并速度非常快。
+```bash
+$ git merge dev
+```
 
+使用`Fast-forward`模式来合并分支的话，删除分支后，会丢掉分支信息。不过可以禁用`Fast forward`模式，这样在 merge 时就会生成一个新的 commit，并且分支历史上也可以看出分支信息。
+```bash
+$ git merge --no-ff -m "merge with no-ff" dev
+```
+![Merge with no-ff](./images/git-merge-with-no-ff.png)
+
+```bash
+# 删除分支
+$ git branch -d dev
+```
+
+## 解决冲突
+当`master`分支和`feature1`分支各自都分别有新的提交（有冲突的提交），例如：
+```
+# master: Creating a new branch is quick & simple.
+# feature1: Creating a new branch is quick AND simple.
+```
+![Two conflict commit](./images/git-two-conflict-commit-on-master-and-feature1.png)  
+  
+因为两个分支的提交存在冲突，所以合并会出错，修改冲突文件后在`add`、`commit`后即可解决冲突。
+```bash
+$ git merge feature1
+$ git status
+```
+![Resolve conflict](./images/git-resolve-conflict.png)
+```
+# 查看分支的合并情况
+$ git log --graph --pretty=oneline --abbrev-commit
+```
 
 
 ## .gitigonre 忽略特殊文件
