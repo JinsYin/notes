@@ -198,17 +198,18 @@ $ git branch # 查看分支
   
 当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 
   
-![New branch](./images/git-new-branch-dev.png)
-  
+![New branch](./images/git-new-branch-dev.png)  
+  
+  
 在`dev`分支上作修改并提交，`dev`指针会往前移动一步，而`master`指针不变。  
   
-![Modify on branch](./images/git-modify-on-branch-dev.png)
+![Modify on branch](./images/git-modify-on-branch-dev.png)  
 
 把`dev`合并到`master`上，实际上是把`master`指向`dev`的当前提交。  
-![Master merge dev](./images/git-master-merge-dev.png)
+![Master merge dev](./images/git-master-merge-dev.png)  
 
 合并完分支后，甚至可以删除dev分支。  
-![Delete branch](./images/git-delete-branch-dev.png)
+![Delete branch](./images/git-delete-branch-dev.png)  
 
 
 
