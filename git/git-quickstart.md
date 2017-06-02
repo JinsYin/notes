@@ -196,8 +196,8 @@ $ git checkout -b dev # 等价于 git branch dev && git checkout dev
 $ git branch # 查看分支
 ```
   
-当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 另外，`多个分支是共用工作区和暂存区的`，如果在`master`分支中工作区或暂存区有修改，切换到`dev`分支依然可以看到修改。
-  
+当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 另外，`多个分支是共用工作区和暂存区的`，如果在`master`分支中工作区或暂存区有修改，切换到`dev`分支依然可以看到修改。  
+  
 ![New branch](./images/git-new-branch-dev.png)  
   
   
@@ -245,6 +245,9 @@ $ git status
 # 查看分支的合并情况
 $ git log --graph --pretty=oneline --abbrev-commit
 ```
+
+分支策略  
+![Git Team](./images/git-branch-team.png)
 
 
 ## .gitigonre 忽略特殊文件
