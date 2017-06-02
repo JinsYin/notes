@@ -153,16 +153,31 @@ $ git reset --hard HEAD^
 $ git reflog
 ```
 
-## 远程仓库
+## GitHub
+Git 支持 SSH 协议，本地 Git 仓库和 GitHub 仓库之间要建立加密连接需要将本地 SSH 公钥（id_rsa.pub）添加到远程 GitHub。  
+![GitHub add ssh key](./images/github-add-ssh-key.png)
+
+上传项目到 GitHub 需要3步：  
+
+第1步： 在 GitHub 中创建一个空的仓库（helloworld）。  
+
+第2步： 添加远程库`origin`，origin 是 Git 默认的叫法，也可以取别的名字。  
+```bash
+$ git remote add origin git@github.com:jinsyin/helloworld.git
+```
+
+第3步： 把本地仓库的所有内容推送到远程库。实际上是把当前`master`分支推送到远程。  
+对于参数`-u`，Git 不但会把本地的`master`分支内容推送到远程新的`master`分支，还会把本地的`master`分支和远程的`master`分支关联起来，在以后的推送或者拉取时可以简化命令。之后再提交不用再加`-u`（git push origin master）
+```bash
+$ git push -u origin master
+```
 
 
-## 自定义 Git
-
-### .gitigonre 忽略特殊文件
+## .gitigonre 忽略特殊文件
 > .gitignore 模板 [github/gitignore](https://github.com/github/gitignore)  
 > .gitignore 自动生成网站 [gitignore.io](https://www.gitignore.io)
 
-### 配置别名
+## 配置别名
 ```bash
 $ git config --global alias.st status
 $ git config --global alias.co checkout
