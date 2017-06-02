@@ -172,6 +172,13 @@ $ git remote add origin git@github.com:jinsyin/helloworld.git
 $ git push -u origin master
 ```
 
+## clone
+Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快
+```
+$ git clone https://github.com/jinsyin/helloworld.git
+$ git clone git@github.com/jinsyin/helloworld.git
+```
+
 
 ## .gitigonre 忽略特殊文件
 > .gitignore 模板 [github/gitignore](https://github.com/github/gitignore)  
