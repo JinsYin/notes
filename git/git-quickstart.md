@@ -1,4 +1,4 @@
-# Git 命令
+# Git 从入门到放弃
 
 ![Git flow](./images/git-guide.png)
 > [图片来源](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
@@ -108,19 +108,21 @@ $ git status
 $ git status
 ```
 
-## 查看文本在`工作区`和`暂存区`的 difference
+## 查看 difference
+
+查看文本在`工作区`和`暂存区`的 difference
 ```bash
 $ git diff # 对比所有文件
 $ git diff README.md # 对比某个文件
 ```
-
-## 查看文本在`暂存区`和`本地仓库`的 difference
+  
+查看文本在`暂存区`和`本地仓库`的 difference
 ```bash
 $ git diff --cached # 对比暂存区所有文件
 $ git diff --cached README.md # 对比某个文件
 ```
-
-## 查看文本在`工作区`和`本地仓库`的 difference
+  
+查看文本在`工作区`和`本地仓库`的 difference
 ```bash
 $ HEAD: 版本库里面最新版本
 $ git diff HEAD -- README.md
@@ -178,6 +180,29 @@ Git支持多种协议，包括https，但通过ssh支持的原生git协议速度
 $ git clone https://github.com/jinsyin/helloworld.git
 $ git clone git@github.com/jinsyin/helloworld.git
 ```
+
+---
+
+## 分支管理
+`HEAD`严格来说不是指向提交，而是指向`master`（默认），`master`才是指向提交的，所以，`HEAD`指向的是当前分支。  
+  
+![HEAD point master](./images/git-head-point-master.png)
+
+创建 dev 分支，然后切换到 dev 分支
+```bash
+$ git checkout -b dev # 等价于 git branch dev && git checkout dev
+```
+  
+当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 
+  
+![New branch](./images/git-new-branch-dev.png)
+  
+查看分支
+```bash
+$ git branch
+```
+
+
 
 
 ## .gitigonre 忽略特殊文件
