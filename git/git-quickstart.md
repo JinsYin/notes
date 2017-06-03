@@ -223,8 +223,8 @@ $ git merge --no-ff -m "merge with no-ff" dev
 ![Merge with no-ff](./images/git-merge-with-no-ff.png)
 
 ```bash
-# 删除分支
-$ git branch -d dev
+$ git branch -d dev # dev 分支被合并后可以直接删除，如果没有合并，使用这个命令删除会提示错误，但还是推荐优先使用这个命令删除分支
+$ git branch -D dev # 如果 dev 分支没有被合并也可以使用这个命令来强删
 ```
 
 ## 解决冲突
