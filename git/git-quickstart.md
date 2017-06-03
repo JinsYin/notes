@@ -1,4 +1,4 @@
-# Git 从入门到放弃
+# Git 入门
 
 ![Git flow](./images/git-guide.png)
 > [图片来源](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
