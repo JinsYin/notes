@@ -157,8 +157,8 @@ $ git reset --hard HEAD^
 $ git reflog
 ```
 
-## GitHub
-Git 支持 SSH 协议，本地 Git 仓库和 GitHub 仓库之间要建立加密连接需要将本地 SSH 公钥（id_rsa.pub）添加到远程 GitHub。  
+## 上传项目到 GitHub
+Git 支持 SSH 协议，本地 Git 仓库和 GitHub 仓库之间要建立加密连接需要将本地 SSH 公钥（id_rsa.pub）添加到远程 GitHub。  
 ![GitHub add ssh key](./images/github-add-ssh-key.png)
 
 上传项目到 GitHub 需要3步：  
@@ -173,11 +173,18 @@ $ git remote add origin git@github.com:jinsyin/helloworld.git
 第3步： 把本地仓库的所有内容推送到远程库。实际上是把当前`master`分支推送到远程。  
 对于参数`-u`，Git 不但会把本地的`master`分支内容推送到远程新的`master`分支，还会把本地的`master`分支和远程的`master`分支关联起来，在以后的推送或者拉取时可以简化命令。之后再提交不用再加`-u`（git push origin master）
 ```bash
-$ git push -u origin master
+$ git push -u origin master # 推送 master 分支
+$ git push -u origin dev # 推送 dev 分支
 ```
 
-## clone
-Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快
+## 从 GitHub 克隆项目
+从远程仓库克隆时，实际上 Git 自动把本地的`master`分支和远程的`master`分支对应起来了，并且，远程仓库的默认名称是`origin`
+```bash
+$ git remote
+$ git remote -v # 显示可以 fetch 和 push 的 origin 地址，如果没有 push 权限，就看不到 push 地址
+```
+
+Git 支持多种协议，包括 https，但使用 ssh 支持的原生 git 协议速度最快。
 ```
 $ git clone https://github.com/jinsyin/helloworld.git
 $ git clone git@github.com/jinsyin/helloworld.git
