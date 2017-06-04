@@ -32,6 +32,12 @@ $ git branch -d <name> # 被合并后才能被删除
 $ git branch -D <name> # 没被合并也能被删除
 ```
 
+## 对比分支差异
+```bash
+$ git log dev ^master # 查看 dev 分支有的，而 master 分支没有的内容
+$ git log master ^dev # 查看 master 分支有的，而 dev 分支没有的内容
+```
+
 ## 分支管理策略
 - master分支是主分支，应该是非常稳定的，仅用来发布新版本（平时不能在上面干活），因此要时刻与远程同步；
 - dev分支是开发分支，是不稳定的，团队所有成员都需要在上面工作，所以也需要与远程同步；
