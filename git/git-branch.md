@@ -28,8 +28,9 @@ $ git merge --no-ff <name> # Non-Fast-Forward 模式，删除分支后会保留 
 
 ## 删除分支
 ```bash
-$ git branch -d <name> # 被合并后才能被删除
-$ git branch -D <name> # 没被合并也能被删除
+$ git branch -d <name> # 删除本地分支，被合并后才能被删除
+$ git branch -D <name> # 删除本地分支，没被合并也能被删除
+$ git push origin :<name> # 删除远程分支
 ```
 
 ## 对比分支差异
