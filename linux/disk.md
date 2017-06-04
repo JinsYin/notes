@@ -46,3 +46,6 @@ $ umount /dev/sdb1  # 分区
 $ mount -l
 ```
 
+## 阿里云
+> [云盘参数和性能测试方法](https://help.aliyun.com/document_detail/25382.html?spm=5176.doc35241.6.551.9xYiHF)
+
