@@ -117,21 +117,42 @@ $ git diff README.md # 对比某个文件
 ```
   
 查看文本在`暂存区`和`本地仓库`的 difference
+对比的是暂存区和本地仓库的最近一次 commit 的不同
 ```bash
-$ git diff --cached # 对比暂存区所有文件
+$ git diff --cached # 对比所有文件（等价于 git diff --staged）
 $ git diff --cached README.md # 对比某个文件
 ```
   
 查看文本在`工作区`和`本地仓库`的 difference
 ```bash
-$ HEAD: 版本库里面最新版本
-$ git diff HEAD -- README.md
+$ git diff HEAD # 对比所有文件
+$ git diff HEAD -- README.md # 对比某个文件
+$ git diff test # 对比当前目录与 test 分支最新版本的不同，延伸： git diff master 等价于 git diff HEAD
+```
+
+查看文本在`版本库`和`版本库`的 difference
+```bash
+$ git diff HEAD^ HEAD # 比较最近一次提交 commit 和上次提交
+$ git diff SHA1 SHA2 # 比较两个历史版本之间的差异
 ```
 
 对比分支的 difference
 ```bash
-$ git diff master dev # 对比 master 分支和 dev 分支所有文件的不同
+$ git diff master dev # 对比 dev 分支和 master 分支最近一次 commit 时所有文件的不同 （dev 分支相对于 master 分支）
 $ git diff master dev > master-dev.diff # 将所有 difference 输出重定向
+```
+
+```bash
+# 输出自 dev 和 master 分别开发以来，dev 分支上的 changed
+$ git diff master...dev
+```
+
+查看简单的 diff 结果，可以加上 --stat 参数
+```bash
+$ git diff --stat
+$ git diff --cached --stat
+...
+$ git diff master...dev --stat
 ```
 
 ## 查看 commit 日志
