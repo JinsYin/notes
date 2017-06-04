@@ -22,11 +22,12 @@ $ git checkout - # 求换到上一个分支（类似 cd -）
 ## 创建 + 切换分支
 ```bash
 $ git checkout -b <name>
+$ git checkout -b <name> [origin/name] # 同时还要与远程分支进行关联
 ```
 
 ## 建立分支追踪关系
 ```bash
-$ git branch --set-upstream-to=origin/<branch> dev # 将本地分支与指定的远程分支建立最总关系
+$ git branch --set-upstream-to=origin/<branch> dev # 将本地分支与指定的远程分支建立追踪关系
 ```
 
 ## 合并某分支到当前分支
@@ -38,7 +39,7 @@ $ git cherry-pick [commit] # 选择一个 commit，合并进当前分支
 
 ## 删除分支
 ```bash
-$ git branch -d <name> # 删除本地分支，被合并后才能被删除
+$ git branch -d <name> # 删除本地分支，被合并后才能被删除，或者是空分支也能被删除
 $ git branch -D <name> # 删除本地分支，没被合并也能被删除
 ```
 
