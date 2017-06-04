@@ -108,14 +108,16 @@ $ git rm --cached f1.md
 ## 丢弃（discard）工作区的修改
 工作区的文件发生修改后，要么`添加`（git add f1.md）到暂存区，要么`丢弃`（git checkout -- f1.md）工作区的修改。  
 
-情况1：f1.md 作了修改但还没有添加到暂存区，撤销修改会回到和本地仓库一模一样的状态（前提是至少 commit 过一次）  
-情况2：f1.md 作了第一次修改后添加到了暂存区，之后又作了第二次修改，撤销修改会添加到暂存区时的状态。如果想回到本地仓库一样的状态可以先丢弃暂存区的修改（git rm --cached f1.md），然后再撤销。  
+情况1：f1.md 作了修改但还没有被添加到暂存区，撤销修改会回到和版本库最近一次 commit 的状态（前提是至少 commit 过一次）  
+情况2：f1.md 作了第一次修改后被添加到暂存区，之后又作了第二次修改，撤销修改会回到暂存区时的状态。如果想回到版本库的状态，可以指定 commit id。  
   
-总之，撤销工作区的修改会回到最近近一次　`git commit`　或　`git add`　时的状态
+总之，撤销工作区的修改会回到最近近一次`git commit`或`git add`时的状态
 
 ```bash
 $ git status
-$ git checkout -- f1.md
+$ git checkout -- f1.md # 撤销工作区某个文件的修改
+$ git checkout . # 撤销工作区的所有修改
+$ git checkout HEAD f1.md # 直接回到版本库状态（工作区和暂存区都会回到版本库状态）
 $ git status
 ```
 
@@ -198,17 +200,26 @@ $ git log --left-right master...dev # 查看每次提交都在哪个分支上（
 ---
 
 ## 版本回退
-版本回退是针对`本地仓库`而言的，并不涉及工作区和暂存区的修改。
 HEAD 指向的是当前分支的最新版本，HEAD^ 指向的是当前分支的上一个版本，HEAD~10 指向的是当前分支的上 100 个版本。
 ```bash
 # 也可以按 commit id 来回退版本
-$ git reset --hard HEAD^
+$ git reset --hard HEAD^ # 回退到上一个版本，工作区和暂存区会被重置到回退版本的状态
+$ git reset --keep HEAD^ # 仅版本库回退，工作区和暂存区不变
+$ git revert [commit] # 回退到指定版本，并新建一个 commit，但工作区和暂存区会被覆盖，可以先赞存本地修改（git stash）
 ```
 
 ## 查看 commit 日志和版本回退日志
 如果版本回退之后又想回到未来，可以用该命令获取回退前的 commit id。
 ```bash
 $ git reflog
+```
+
+## 缓存工作区和暂存区
+```bash
+$ git stash # 缓存
+$ git stash --list # 列出所有缓存
+$ git stash pop # 还原并删除 （== git stash apply stash@{0} && git stash drop stash@{0}）
+$ git stash clear # 清除所有
 ```
 
 ## 上传项目到 GitHub
