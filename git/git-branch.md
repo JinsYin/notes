@@ -2,17 +2,21 @@
 
 ## 查看分支
 ```bash
-$ git branch
+$ git branch # 列出所有本地分支
+$ git branch -r # 列出所有远程分支
+$ git branch -a # 列出所有本地分支和远程分支
 ```
 
 ## 创建分支
 ```bash
 $ git branch <name>
+$ git branch --track [name] [remote-branch] # 新建分支，并与指定远程分支建立追踪关系
 ```
 
 ## 切换分支
 ```bash
 $ git checkout <name>
+$ git checkout - # 求换到上一个分支（类似 cd -）
 ```
 
 ## 创建 + 切换分支
@@ -20,17 +24,33 @@ $ git checkout <name>
 $ git checkout -b <name>
 ```
 
+## 建立分支追踪关系
+```bash
+$ git branch --set-upstream-to=origin/<branch> dev # 将本地分支与指定的远程分支建立最总关系
+```
+
 ## 合并某分支到当前分支
 ```bash
 $ git merge <name> # Fast-Forward 模式，删除分支后不会保留 commit 日志
 $ git merge --no-ff <name> # Non-Fast-Forward 模式，删除分支后会保留 commit 日志（推荐）
+$ git cherry-pick [commit] # 选择一个 commit，合并进当前分支
 ```
 
 ## 删除分支
 ```bash
 $ git branch -d <name> # 删除本地分支，被合并后才能被删除
 $ git branch -D <name> # 删除本地分支，没被合并也能被删除
-$ git push origin :<name> # 删除远程分支
+```
+
+```bash
+# 三个命令可以用于删除远程分支
+$ git branch -dr [origin/branch]
+$ git push origin :[origin/branch]
+$ git push origin --delete [origin/branch]
+```
+## 推送分支到远程
+```bash
+$ git push origin master
 ```
 
 ## 对比分支差异
