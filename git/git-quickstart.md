@@ -136,9 +136,19 @@ $ git log
 $ git log --pretty=oneline # 一行显示
 ```
 
-```
+```bash
 # 查看最新的3条 commit 日志
 $ git log -3
+```
+
+```bash
+# 建议使用 git lg 代替 git log
+$ git log dev # 查看 dev 分支的 commit 日志
+$ git log master dev # 查看 master 分支和 dev 分支的 commit 日志
+$ git log master ^dev # 查看 master 分支有，而 dev 分支没有的 commit 日志（对应：git log dev ^master）
+$ git log master..dev # 查看 dev 分支比 master 分支多提交了哪些内容（对应：git log master ^dev）
+$ git log master...dev # 不确定谁提交的多谁提交的少，单纯想看看有什么不一样（等同于 git log dev...master）
+$ git log --left-right master...dev # 查看每次提交都在哪个分支上（master 对应左箭头 <，dev 对应右箭头 >）
 ```
 
 ---
