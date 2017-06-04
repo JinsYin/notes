@@ -49,12 +49,8 @@ $ git add f1.md
 $ git add f2.md f3.md
 $ git add dir1
 $ git add dir2 dir3
-$ git commit -m "Add three files and one dirctory."
-```
-
-```bash
-# 也可以不 add，直接 commit 到本地仓库
-$ git commit -a -m "msg" # 等价于 git add * && git commit -m "msg" （并不会添加隐藏文件）
+$ git commit -m "Add three files and one dirctory." # 提交暂存区所有修改版本库
+$ git commit [file1] [file2] ... -m [message] # 提交暂存区指定文件到版本库
 ```
 
 ## 关于 git add
@@ -65,6 +61,22 @@ $ git add *  # 添加所有新增和修改，但不包括删除 （不会添加�
 $ git add -u # 添加所有修改和删除，但不包括新增
 ```
 
+## 代码提交
+```bash
+# 也可以不 add，直接提交工作区自上次 commit 后的新的变化到版本仓库
+$ git commit -a -m "msg" # 等价于 git add * && git commit -m "msg" （并不会添加隐藏文件）
+```
+
+```bash
+# 使用新的提交代替上一次提交，可以用来修改上一次的提交信息
+$ git commimt --amend -m [message]
+```
+
+```bash
+# 重做上一次提交，并包括指定文件的新变化
+$ git commit --amend [file1] ... [fileN] -m [message]
+```
+
 ## 撤销（unstage）暂存区的修改？
 撤销暂存区的修改之后，暂存区默认会回到最近一次 commit 的状态
 ```bash
@@ -72,12 +84,17 @@ $ git reset HEAD f1.md # 可以简写成 git reset f1.md
 $ git reset # 撤销所有暂存区的所有文件追踪
 ```
 
+## add 到暂存区后如何改名
+```bash
+$ git mv new.md old.md # 工作区也会跟着改名
+```
+
 ## add 到暂存区后如何删除？
 删除暂存区中文件相当于从购物车中删除添加的商品
 
 ```bash
 # 同时删除工作区和暂存区中的 f1.md
-$ git rm -f f1.md # 等价于 rm -f f1.md && git rm --cached f1.md
+$ git rm (-f) f1.md # 等价于 rm (-f) f1.md && git rm --cached f1.md
 ```
 
 ```bash
@@ -112,7 +129,7 @@ $ git status
 
 查看文本在`工作区`和`暂存区`的 difference
 ```bash
-$ git diff # 对比所有文件
+$ git diff # 对比所有文件 （git diff --shortstat）
 $ git diff README.md # 对比某个文件
 ```
   
@@ -297,6 +314,9 @@ $ git log --graph --pretty=oneline --abbrev-commit
 ## .gitigonre 忽略特殊文件
 > .gitignore 模板 [github/gitignore](https://github.com/github/gitignore)  
 > .gitignore 自动生成网站 [gitignore.io](https://www.gitignore.io)
+```bash
+$ git check-ignore -v App.class # 检查忽视规则
+```
 
 ## 配置别名
 ```bash
@@ -334,5 +354,6 @@ $ cat ~/.gitconfig
 ---
 
 ## 参考文章 
-> [廖雪峰的Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+> [廖雪峰的 Git 教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)  
+> [阮一峰的常用 Git 命令清单](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
 
