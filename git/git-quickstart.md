@@ -128,6 +128,12 @@ $ HEAD: 版本库里面最新版本
 $ git diff HEAD -- README.md
 ```
 
+对比分支的 difference
+```bash
+$ git diff master dev # 对比 master 分支和 dev 分支所有文件的不同
+$ git diff master dev > master-dev.diff # 将所有 difference 输出重定向
+```
+
 ## 查看 commit 日志
 
 ```bash
