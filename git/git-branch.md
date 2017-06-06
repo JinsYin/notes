@@ -44,11 +44,12 @@ $ git branch -D <name> # 删除本地分支，没被合并也能被删除
 ```
 
 ```bash
-# 三个命令可以用于删除远程分支
-$ git branch -dr [origin/branch]
-$ git push origin :[origin/branch]
-$ git push origin --delete [origin/branch]
+# 前两个命令都可以用于删除远程分支
+$ git push origin :[branch]
+$ git push origin --delete [branch]
+$ git branch -dr [origin/branch] # 只在本地删除，远程并没有真正删除
 ```
+
 ## 推送分支到远程
 ```bash
 $ git push origin master
