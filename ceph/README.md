@@ -20,3 +20,4 @@
 - [Ceph 的现状](https://www.ustack.com/blog/ceph-distributed-block-storage/)
 - [有云 Ceph](https://www.ustack.com/category/blog/ceph-blog/)
 - [Acttao 开发、运维容器化实践](http://www.kejik.com/article/250854.html)
+- [CEPH CONFIGURATION GUIDE](https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/1.2.3/html-single/ceph_configuration_guide/)
