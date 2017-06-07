@@ -1,6 +1,8 @@
-# Git 错误笔记
+# Git 错误整理
 
-## push 到远程仓库是错误
+## 错误 1 
+
+push 到远程仓库是错误
 ```
 $ git push origin master
 To git@github.com:JinsYin/learn-git.git

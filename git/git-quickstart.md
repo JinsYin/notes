@@ -1,6 +1,6 @@
 # Git 入门
 
-![Git flow](./images/git-guide.png)
+![Git flow](./img/git-guide.png)
 > [图片来源](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
 
 - Workspace：工作区
@@ -32,7 +32,7 @@ $ git config --global user.email "jinsyin@gmail.com"
 
 ## 把工作区文件提交到本地仓库（当前分支）
 HEAD 指向当前分支的最新版本  
-![ *-commit](./images/git-add-commit.jpg)
+![ *-commit](./img/git-add-commit.jpg)
 > [图片来源]( http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000)
 
 暂存区就像是购物车，看到喜欢的商品可以先加入购物车（git add），在没付款前其实你是不确定购物车里的东西都想买，如果不想要了你可以直接删除购物车里的商品（git reset），确定好后再一次性下单（git commit）; 当然，你也可能看到某个喜欢的商品就直接下单了（git commit -a），而不是先加入购物车。
@@ -224,7 +224,7 @@ $ git stash clear # 清除所有
 
 ## 上传项目到 GitHub
 Git 支持 SSH 协议，本地 Git 仓库和 GitHub 仓库之间要建立加密连接需要将本地 SSH 公钥（id_rsa.pub）添加到远程 GitHub。  
-![GitHub add ssh key](./images/github-add-ssh-key.png)
+![GitHub add ssh key](./img/github-add-ssh-key.png)
 
 上传项目到 GitHub 需要3步：  
 
@@ -260,7 +260,7 @@ $ git clone git@github.com/jinsyin/helloworld.git
 ## 分支管理
 `HEAD`严格来说不是指向提交，而是指向`master`（默认），`master`才是指向提交的，所以，`HEAD`指向的是当前分支。  
   
-![HEAD point master](./images/git-head-point-master.png)
+![HEAD point master](./img/git-head-point-master.png)
 
 创建 dev 分支，然后切换到 dev 分支
 ```bash
@@ -270,18 +270,18 @@ $ git branch # 查看分支
   
 当创建新分支`dev`（git branch dev）时，Git 会新建一个指针`dev`，指向和`master`相同的提交。切换到`dev`分支（git checkout dev）后，`HEAD`会指向`dev`。 另外，`多个分支是共用工作区和暂存区的`，如果在`master`分支中工作区或暂存区有修改，切换到`dev`分支依然可以看到修改。  
   
-![New branch](./images/git-new-branch-dev.png)  
+![New branch](./img/git-new-branch-dev.png)  
   
   
 在`dev`分支上作修改并提交，`dev`指针会往前移动一步，而`master`指针不变。  
   
-![Modify on branch](./images/git-modify-on-branch-dev.png)  
+![Modify on branch](./img/git-modify-on-branch-dev.png)  
 
 把`dev`合并到`master`上，实际上是把`master`指向`dev`的当前提交。  
-![Master merge dev](./images/git-master-merge-dev.png)  
+![Master merge dev](./img/git-master-merge-dev.png)  
 
 合并完分支后，甚至可以删除dev分支。  
-![Delete branch](./images/git-delete-branch-dev.png)  
+![Delete branch](./img/git-delete-branch-dev.png)  
   
 `git merge`命令用于合并指定分支到当前分支。如果提示`Fast-forward`信息，表示这次合并是“快进模式”，也就是直接把`master`指向`dev`的当前提交，所以合并速度非常快。
 ```bash
@@ -292,7 +292,7 @@ $ git merge dev
 ```bash
 $ git merge --no-ff -m "merge with no-ff" dev
 ```
-![Merge with no-ff](./images/git-merge-with-no-ff.png)
+![Merge with no-ff](./img/git-merge-with-no-ff.png)
 
 ```bash
 $ git branch -d dev # dev 分支被合并后可以直接删除，如果没有合并，使用这个命令删除会提示错误，但还是推荐优先使用这个命令删除分支
@@ -305,21 +305,21 @@ $ git branch -D dev # 如果 dev 分支没有被合并也可以使用这个命�
 # master: Creating a new branch is quick & simple.
 # feature1: Creating a new branch is quick AND simple.
 ```
-![Two conflict commit](./images/git-two-conflict-commit-on-master-and-feature1.png)  
+![Two conflict commit](./img/git-two-conflict-commit-on-master-and-feature1.png)  
   
 因为两个分支的提交存在冲突，所以合并会出错，修改冲突文件后在`add`、`commit`后即可解决冲突。
 ```bash
 $ git merge feature1
 $ git status
 ```
-![Resolve conflict](./images/git-resolve-conflict.png)
+![Resolve conflict](./img/git-resolve-conflict.png)
 ```
 # 查看分支的合并情况
 $ git log --graph --pretty=oneline --abbrev-commit
 ```
 
 分支策略  
-![Git Team](./images/git-branch-team.png)
+![Git Team](./img/git-branch-team.png)
 
 
 ## .gitigonre 忽略特殊文件
