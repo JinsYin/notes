@@ -15,7 +15,7 @@ $ useradd -d /home/developer -m developer
 $ passwd developer
 ```
 
-## 设置 root 一样的权限
+## 设置 root 权限
 ```bash
 $ echo "developer ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/developer
 $ sudo chmod 0440 /etc/sudoers.d/developer
@@ -27,4 +27,6 @@ $ su - developer
 ```
 
 ## 注意
+```
 与 root 用户不同的是，root 用户每次不用添加 sudo 命令，而新增的 developer 用户需要使用 sudo
+```

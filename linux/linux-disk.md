@@ -33,7 +33,6 @@ $ echo "/dev/sdb /ceph/osd xfs defaults 0 1" >> /etc/fstab
 $ fdisk /dev/sdb
 依次输入 n，p，1，两次回车，wq，分区完成
 ```
-	
 
 ## 卸载盘或分区
 ```bash
