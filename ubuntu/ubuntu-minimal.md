@@ -10,10 +10,8 @@ $ sudo apt-get -y autoremove
 ```
 
 ## 安装 sogou pinyin
-需要确保使用的键盘输入系统是 `fcitx`，如果不是，打开 `Language Support` 软件设置为默认；或者打开 `Input Method` 软件进行设置。安装好搜狗拼音之后，到 `fcitx configuration` 软件中添加搜狗输入法。
-```
-http://pinyin.sogou.com/linux/
-```
+需要确保使用的键盘输入系统是 `fcitx`，如果不是，打开 `Language Support` 软件设置为默认,或者打开 `Input Method` 软件进行设置。安装好搜狗拼音之后，到 `fcitx configuration` 软件中添加搜狗输入法。
+> http://pinyin.sogou.com/linux/
 
 ## 安装 fcitx
 如果无意间卸载了 fcitx，可以重新安装。
