@@ -1,4 +1,5 @@
 # Ubuntu 安装 java 8
+
 ubuntu 支持安装多个java版本
 
 ## ubuntu 16.04
@@ -15,18 +16,19 @@ $ sudo apt-get update
 $ sudo apt-get install oracle-java8-installer
 ```
 
-## 管理多个java版本（可选）
+## 管理多个 java 版本（可选）
 ```bash
 $ sudo update-alternatives --config java (指定候选项)
 # 或者: sudo update-java-alternatives --config /usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-# 设置JAVA_HOME环境变量
+# 设置 JAVA_HOME 环境变量
 ```bash
-$ sudo vi /etc/environment
+$ sudo cat /etc/environment
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
 ```
+
 ```bash
 $ source /etc/environment
 ```

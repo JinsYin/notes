@@ -52,7 +52,8 @@ $ git branch -dr [origin/branch] # 只在本地删除，远程并没有真正删
 
 ## 推送分支到远程
 ```bash
-$ git push origin master
+$ git push -u origin master # 第一次推送需要建立分支关联
+$ git push origin master # 第二次推送不用再加 -u
 ```
 
 ## 对比分支差异
