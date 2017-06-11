@@ -30,14 +30,26 @@ $ echo "/dev/sdb /ceph/osd xfs defaults 0 1" >> /etc/fstab
 
 ## 分区
 ```bash
-$ fdisk /dev/sdb
-依次输入 n，p，1，两次回车，wq，分区完成
+$ fdisk /dev/sdb # 分区是针对整个盘
+> a  # 开关引导项（bootable flag）
+> d  # 删除一个分区
+> l  # 列出支持的分区类型
+> m  # 打印
+> n  # 创建一个分区
+> p  # 打印分区表信息
+> q  # 不保存退出
+> t  # 修改一个分区的 system id
+> w  # 写入分区表到磁盘并退出
 ```
 
-## 卸载盘或分区
+常用
+> 创建一个主分区： `n`，`p`，`1`，`Enter`，`Enter`，`wq`。  
+> 为分区设置引导项： `a`，`1`，`wq` （使用 fdisk -l 查看该分区的 boot 列是否增加了一个 ”*“）。
+
+## 卸载
 ```bash
-$ umount /dev/sdb   # 盘
-$ umount /dev/sdb1  # 分区
+$ umount /dev/sdb   # 卸载盘
+$ umount /dev/sdb1  # 卸载分区
 ```
 
 ## 查看挂载及文件系统信息：
