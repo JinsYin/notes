@@ -1,6 +1,7 @@
 # 域名
 
 ## whois
+
 ```bash
 $ sudo apt-get install whois
 $ whois baidu.com
