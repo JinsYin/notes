@@ -23,7 +23,7 @@ $ xrandr --output VGA1 --mode 1600x900
 
 ## 开机自动设置分辨率
 ```
-$ sudo vi ~/.profile
+$ vi ~/.profile
 > cvt 1600 900
 > xrandr --newmode 1600x900 118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
 > xrandr --addmode VGA1 1600x900
