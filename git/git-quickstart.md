@@ -319,6 +319,11 @@ $ git status
 $ git log --graph --pretty=oneline --abbrev-commit
 ```
 
+```bash
+# 合并分支之后也可以撤销
+$ git merge -abort
+```
+
 分支策略  
 ![Git Team](./img/git-branch-team.png)
 
