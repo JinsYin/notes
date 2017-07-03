@@ -256,6 +256,11 @@ $ git clone https://github.com/jinsyin/helloworld.git
 $ git clone git@github.com/jinsyin/helloworld.git
 ```
 
+克隆某个指定的分支
+```bash
+$ git clone -b registry-v2.6.1 https://github.com/docker/distribution-library-image.git
+```
+
 ---
 
 ## 分支管理
