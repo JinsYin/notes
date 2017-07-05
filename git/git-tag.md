@@ -28,6 +28,12 @@ $ git tag -ln # 带提交信息
 $ git show [tag]
 ```
 
+## 切换到标签
+
+```bash
+$ git checkout [tag]
+```
+
 ## 推送标签
 
 ```bash

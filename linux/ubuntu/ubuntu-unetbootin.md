@@ -11,7 +11,7 @@ $ sudo apt-get install -y unetbootin
 假设 U 盘是 /dev/sdc （查看：fdisk -l）
 ```bash
 $ umount /media/jins/66B1-FEF6 # 默认会挂载到 ubuntu (查看：df -h)，需要先卸载掉
-$ mkfs.xfat -I /dev/sdc # 格式化整个盘为 fat32 格式（不需要分区）
+$ mkfs.vfat -I /dev/sdc # 格式化整个盘为 fat32 格式（不需要分区）
 $ mkdir /sdc && mount /dev/sdc /sdc ## 重新挂载
 ```
 
