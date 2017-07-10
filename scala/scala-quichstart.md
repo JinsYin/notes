@@ -49,6 +49,15 @@ object HelloWorld {
 }
 ```
 
+OR
+
+```scala
+object HelloWorld extends App {
+	println("Hello, world!")
+}
+```
+
+
 ## 编译、运行
 
 `scalac` 命令用来编译 Scala 源文件，并且生成可以在 JVM 中运行的 Java 字节码（bytecode），类似于 Java 编译器 `javac`。
