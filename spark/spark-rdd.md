@@ -38,5 +38,5 @@ sc.textFile("R.md").first()
 
 ## 参考
 
-> http://www.infoq.com/cn/articles/spark-core-rdd/
+> http://www.infoq.com/cn/articles/spark-core-rdd/  
 > http://blog.csdn.net/stark_summer/article/details/50218641

@@ -1,7 +1,7 @@
 # Spark 入门
 
 
-## 集群部署
+## Standalone 集群
 
 * master
 
@@ -18,6 +18,8 @@ $ docker run -it --name=spark-worker --net=host -d spark:2.0.2 worker spark://[M
 
 ## 测试
 
+测试前确保已经安装了所需的 JDK、Python 和 R 运行环境。
+
 ```bash
 $ # For Scala and Java, use run-example:
 $ bin/run-example SparkPi
@@ -32,6 +34,8 @@ $ bin/spark-submit examples/src/main/r/dataframe.R
 
 ## 交互式
 
+* scala
+
 ```bash
 $ bin/spark-shell 
 $ bin/spark-shell --master local[*]
@@ -42,9 +46,27 @@ $ bin/spark-shell --master mesos://x.x.x.x:7077
 ```scala
 scala> val textFile = sc.textFile("README.md")
 scala> 
-scala> textFile.count()
+scala> textFile.count() // 返回 RDD 中元素的数量
 scala> 
-scala> textFile.first()
+scala> textFile.first() // 返回 RDD 中的第一个元素
+scala> :q
+```
+
+* python
+
+```bash
+$ bin/pyspark
+$ bin/pyspark --master local[*]
+```
+
+```python
+>>> textFile = sc.textFile("README.md")
+>>> 
+>>> textFile.count()
+>>>
+>>> textFile.first()
+>>>
+>>> exit()
 ```
 
 * 计算包含 “Spark” 单词的行数
@@ -63,7 +85,7 @@ scala> import java.lang.Math
 scala> textFile.map(line => line.split(" ").size).reduce((a, b) => Math.max(a, b))
 ```
 
-* word count
+* Word Count
 
 ```scala
 scala> val wordCounts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
@@ -108,20 +130,6 @@ object SimpleApp {
 }
 ```
 
-* 项目依赖
-
-build.sbt
-
-```sbt
-name := "Simple Project"
-
-version := "1.0"
-
-scalaVersion := "2.11.9"
-
-libraryDependencies += "org.apache.spark" %% "spark-core" % "2.0.2"
-```
-
 * 项目目录结构
 
 ```bash
@@ -132,6 +140,20 @@ $ find .
 ./src/main
 ./src/main/scala
 ./src/main/scala/SimpleApp.scala
+```
+
+* 项目依赖
+
+build.sbt
+
+```sbt
+name := "Simple Project"
+
+version := "1.0"
+
+scalaVersion := "2.11.8"
+
+libraryDependencies += "org.apache.spark" %% "spark-core" % "2.0.2"
 ```
 
 * 项目打包
