@@ -6,7 +6,8 @@
 
 * [激活码](./activation-code/README.md)
 * [域名](./domain/README.md)
+* [Vim](./vim/README.md)
 * [Chrome](./chrome/README.md)
 * [Shadowsocks](./shadowsocks/README.md)
 * [Sublime](./sublime/README.md)
-* [Wireshark](./sublime/README.md)
+* [Wireshark](./wireshark/README.md)
