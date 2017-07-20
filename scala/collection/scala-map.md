@@ -16,6 +16,7 @@ val colors = Map("red" -> "#FF0000", "azure" -> "#FOFFFF")
 // 使用 + 好添加 key/value 对
 A += ('I' -> 1)
 A += ('J' -> 5)
+A('K') = 6
 ```
 
 * 基本操作
