@@ -1,1 +1,0 @@
-hbase-command.md
