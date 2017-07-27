@@ -15,3 +15,5 @@ java.net.BindException: Cannot assign requested address: Service 'sparkDriver' f
 原因是修改本机 IP 之后， `/etc/hosts` 中本机 IP 与主机名之间的对应关系并没有修改，直接修改即可。
 
 > http://blog.csdn.net/chengyuqiang/article/details/69665878
+> http://blog.csdn.net/bob601450868/article/category/6768441
+>>>>>>> origin/master

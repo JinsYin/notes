@@ -3,16 +3,24 @@
 
 ## Standalone 集群
 
-* master
+* Host
 
 ```bash
-$ docker run -it --name=spark-master --net=host -d spark:2.0.2 master
+$ # master
+$ sbin/start-master.sh
+$
+$ # worker
+$ sbin/start-slave.sh spark://[MASTER-IP]:7077
 ```
 
-* worker
+* Docker
 
 ```bash
-$ docker run -it --name=spark-worker --net=host -d spark:2.0.2 worker spark://[MASTER-IP]:7077
+$ # master
+$ docker run -it --name=spark-master --net=host -d dockerce/spark:2.0.2 master
+$
+$ # worker
+$ docker run -it --name=spark-worker --net=host -d dockerce/spark:2.0.2 worker spark://[MASTER-IP]:7077
 ```
 
 
