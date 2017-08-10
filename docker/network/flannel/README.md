@@ -18,13 +18,22 @@ Flannel 通过 Etcd 服务维护了一张节点间的路由表，在稍后的配
 源主机的 flanneld 服务将原本的数据内容 UDP 封装后根据自己的路由表投递给目的节点的 flanneld 服务，数据到达以后被解包，然后直接进入目的节点的 flannel0 虚拟网卡，然后被转发到目的主机的 docker0 虚拟网卡，最后就像本机容器通信一下的有 docker0 路由到达目标容器。
 
 
-## 集群分布
+## 角色分配
 
 | Role                | Hostname       | IP Address     |
 | --------------      | -------------- | -------------- |
-| etcd flannel docker | Host100        | 172.28.128.100 |
+| flannel docker etcd | Host100        | 172.28.128.100 |
 | flannel docker      | Host101        | 172.28.128.101 |
 | flannel docker      | Host102        | 172.28.128.102 |
+
+
+## 系统环境
+
+  * Centos 7.3.1611
+  * Kernel 3.10.0-514.26.2
+  * Docker 1.12.6
+  * Etcd 2.3.7
+  * Flannel 0.7.1-1
 
 
 ## 配置 Etcd
@@ -53,7 +62,7 @@ $
 $ # OR
 $ 
 $ # 使用 VxLAN 进行数据转发
-$ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16", "Backend": {"Type": "vxlan"}}'
+$ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16", "SubnetLen": 24, "Backend": {"Type": "vxlan"}}'
 ```
 
 
@@ -62,8 +71,10 @@ $ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16", "Backend": {"
 * 安装
 
 ```bash
+$ yum list flannel --showduplicates
+$ 
 $ # 安装
-$ yum install -y flannel-0.7.1
+$ yum install -y flannel-0.7.1-1*
 ```
 
 * 配置
@@ -216,7 +227,7 @@ $ docker run -it --rm alpine:3.5 sh
 
 ## 建议
 
-在为 flannel 配置 CIDR 的时候，建议设置 x.x.x.x/16 网段的 IP 地址，这样 flannel 会自动为每台宿主机容器分配一个 x.x.x.x/24 网段的 IP 地址。
+在为 flannel 配置 CIDR 的时候，建议设置 x.x.x.x/16 网段的 IP 地址，并为每台宿主机容器分配一个 x.x.x.x/24 网段的 IP 地址。
 
 如果想重新修改 CIDR，需要先删除原来的配置：
 
