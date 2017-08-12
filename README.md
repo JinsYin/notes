@@ -1,5 +1,1 @@
-# 目录
-- /doc
-  - [/ubuntu](./ubuntu/README.md)
-  - [/centos](./centos/README.md)
-  - [/docker](./docker/README.md)
+# 从入门到放弃
