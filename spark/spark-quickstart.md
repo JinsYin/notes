@@ -26,16 +26,16 @@ $ docker run -it --name=spark-worker --net=host -d dockerce/spark:2.0.2 worker s
 
 ## 测试
 
-测试前确保已经安装了所需的 JDK、Python 和 R 运行环境。
+测试前确保已经安装了所需的 JDK、Python 和 R 运行时环境。
 
 ```bash
-$ # For Scala and Java, use run-example:
+$ # Scala、Java
 $ bin/run-example SparkPi
 $
-$ # For Python examples, use spark-submit directly:
+$ # Python
 $ bin/spark-submit examples/src/main/python/pi.py
 $
-$ # For R examples, use spark-submit directly:
+$ # R
 $ bin/spark-submit examples/src/main/r/dataframe.R
 ```
 
@@ -45,8 +45,12 @@ $ bin/spark-submit examples/src/main/r/dataframe.R
 * scala
 
 ```bash
-$ bin/spark-shell 
+$ # SparkContext 会运行一个 Web UI： http://localhost:4040
+$ bin/spark-shell
+$
+$ # 设定 local[N] 参数启动本地 Spark 集群，其中 N 表示线程数，用 * 拜师机器上所有可用的核数
 $ bin/spark-shell --master local[*]
+$
 $ bin/spark-shell --master spark://x.x.x.x:7077
 $ bin/spark-shell --master mesos://x.x.x.x:7077
 ```
@@ -59,6 +63,12 @@ scala>
 scala> textFile.first() // 返回 RDD 中的第一个元素
 scala> :q
 ```
+
+spark-shell 命令：
+  * sc - SparkContext 对象
+  * :help - 获取帮助
+  * :history - 历史命令
+  * :q - 退出
 
 * python
 

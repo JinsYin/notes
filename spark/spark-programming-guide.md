@@ -2,25 +2,6 @@
 
 ## 概述（Overview）
 
-* Driver
-
-运行 `main` 函数，并且在集群上执行各种并行计算操作的 `进程`。
-
-* Application
-
-Spark Application == Driver Program
-
-* RDD
-
-Spark 最重要的一个抽象概念就是弹性分布式数据集（Resilient Distributed Dataset - RDD），RDD 是一个可分区的（partitioned）元素集合，其包含的元素可以分布在集群各个节点上，并且可以执行一些分布式并行操作。
-
-RDD 可以通过 `Hadoop 所支持的文件系统里的一个文件` 或者 `Spark 程序中的 Scala 集合对象` 来创建或转换得到；其次，用户也可以请求 Spark 将 RDD 持久化到内存里，以便在不同的并行操作中重复使用；最后，RDD 具备容错性，可以从节点失败中自动恢复数据。
-
-* Shared Variables
-
-Spark 第二个重要抽象概念是 `共享变量` （Shared Variableds）,共享变量是一种可以在并行操作之间共享使用的变量。默认情况下，当 Spark 把一系列任务调度到不同节点上运行时，Spark 会同时把每个变量的副本和任务代码一起发送到各个节点。但有的时候，我们需要在任务之间，或者任务和 Driver Program 之间共享一些变量。
-
-Spark 提供了两种类型的共享变量：`广播变量` （Ｂroadcast Variables）和 `累加器` （Accumulators），广播变量可以用来在各个节点的内存中缓存数据，而累加器则仅仅用来执行跨节点的“累加”（added）操作，例如：计数（counter）和求和（sum）。
 
 
 ## 关联 Spark （Linking with spark）

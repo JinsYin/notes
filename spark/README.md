@@ -15,6 +15,7 @@
 ## 目录
 
 * [快速入门](./spark-quickstart.md)
+* [Spark 架构](./spark-architecture.md)
 * [编程指南](./spark-programming-guide.md)
 * [RDD 算子](./spark-rdd.md)
 * [Examples](./spark-examples.md)
