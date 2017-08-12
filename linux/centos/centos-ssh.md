@@ -1,32 +1,61 @@
-# CentOS ssh无法登录或者登录慢等问题
+# CentOS SSH
 
 ## SSH debug
-```
-$ ssh -vv root@192.168.111.191
-```
 
-## 禁用GSSAPI
-- client端禁用
 ```bash
-$ ssh -o GSSAPIAuthentication=no -vv root@192.168.111.191
-```
-- server端禁用
-```
-$ vi /etc/ssh/sshd_config
-> GSSAPIAuthentication no
+$ ssh -vv root@192.168.1.191
+$
+$ ssh -vvv root@192.168.1.191
 ```
 
-## 禁用DNS解析
-```
-$ vi /etc/ssh/sshd_config
-> UseDNS no
+## 允许 root 用户登录
+
+不同于 Ubuntu，CentOS 安装时没有添加其他非 root 用户，其实也可以直接使用 root 用户登录。
+
+```bash
+$ # 取消注释
+$ sed -i "s|#PermitRootLogin yes|PermitRootLogin yes|g" /etc/ssh/sshd_config
+$
+$ # 重启 sshd
+$ systemctl restart sshd.service
 ```
 
-## 允许root用户登录
+
+## 禁用 GSSAPI
+
+CentOS 默认安装后 SSH 登录会非常慢，甚至无法登录，可以通过禁用 GSSAPI 的方式来登录。
+
+* client 端禁用
+
+```bash
+$ ssh -o GSSAPIAuthentication=no -vv root@192.168.1.191
 ```
-$ vi /etc/ssh/sshd_config
-> PermitRootLogin yes
+
+* server 端禁用
+
+```bash
+$ # 禁用
+$ sed -i "s|GSSAPIAuthentication yes|GSSAPIAuthentication no|g" /etc/ssh/sshd_config
+$
+$ # 重启 sshd
+$ systemctl restart sshd.service
 ```
+
+
+## 禁用 DNS 解析
+
+解决 DNS 解析缓慢的问题。
+
+```bash
+$ # 取消注释
+$ sed -i "s|#UseDNS yes|UseDNS no|g" /etc/ssh/sshd_config
+$
+$ # 重启 sshd
+$ systemctl restart sshd.service
+```
+
+
+
 
 ## 参考
 > http://blog.csdn.net/wenwenxiong/article/details/48685723
