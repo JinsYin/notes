@@ -35,3 +35,4 @@ Chrome 插件分为 [extension](chrome://extensions/) 和 [app](chrome://apps/)�
 * App
 
   * [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
+  * [马克飞象](https://chrome.google.com/webstore/detail/marxico/kidnkfckhbdkfgbicccmdggmpgogehop/related)
