@@ -2,14 +2,239 @@
 
 RDD，全称为 Resilient Distributed Datasets（弹性分布式数据集），是一个容错的、并行的数据结构，可以让用户显式地将数据存储到磁盘和内存中，并能控制数据的分区。
 
-Spark RDD 支持两种类型的操作（算子）：
+Spark 最重要的一个抽象概念就是弹性分布式数据集（Resilient Distributed Dataset - RDD），RDD 是一个可分区的（partitioned）元素集合，其包含的元素可以分布在集群各个节点上，并且可以执行一些分布式并行操作。
 
-> * transformations: 从一个已存在的 dataset 基础上创建一个新的 dataset
->
-> * actions: 在 dataset 上做完运算后返回一个 value 给 driver program
+用户也可以请求 Spark 将 RDD 持久化到内存里，以便在不同的并行操作中重复使用；最后，RDD 具备容错性，可以从节点失败中自动恢复数据。
+
+
+## 创建　RDD
+
+Spark RDD 可以从 `Hadoop 所支持的外部数据源` 或者 `Scala 集合对象` 中创建或转换得到。
+
+* 集合对象 
+
+```scala
+val rdd = sc.parallelize(List("a", "b", "c"))
+```
+
+* 外部数据源
+
+对于 `textFile()` 函数，如果输入的是目录而不是文件，Spark 会把该目录下的所有文件作为 RDD 的输入，多个目录之间可以用逗号分隔；另外，数据是按 `行` 分割成一个 RDD 元素。
+对与 `wholeTextFiles()` 函数，以目录路径作为 RDD 的输入，多个目录之间依然使用逗号分隔；返回一个 (key,value) 二元组元素组成的 RDD，key 表示文件路径，value 表示 `文本内容`；另外，小文件效率比较高，大文件性能可能非常低。
+
+```scala
+// Local
+val rdd = sc.textFile("README.md")
+
+// HDFS
+val rdd = sc.textFile("hdfs://192.168.1.2:9000/data.csv")
+
+// Alluxio
+val rdd = sc.textFile("alluxio://192.168.1.2:19998/data.csv")
+
+// wholeTextFiles
+val rdd = sc.wholeTextFiles("/my/dir1,/my/dir2,/my/paths/part-00[0-5]*,/a/specific/file", 20)
+```
+
+
+## 分区
+
+RDD 以分区（partition）的形式分布在集群中的多台机器上，每个分区代表数据集的一个子集，并且每个分区的大小不一定相同。分区定义了 Spark 中数据的并行单位，分区的数量决定了 Spark 并行计算的能力。Spark 并行处理多个分区，每个分区内的数据对象则是顺序处理。
+
+```bash
+$ # 第二个参数代表分区的个数
+$ val rdd = sc.parallelize(Array(1, 2, 3, 4), 4)
+```
+
+
+## RDD 依赖
+
+* narrowdependency
+
+* widedependency
 
 
 ## 算子分类
+
+#### Transformation
+
+在已存在的 RDD 的基础上创建一个新的 RDD。
+
+---
+
+* map 型
+
+实际上，map 型算子也可以操作 `(K, V)` 类型的数据，不过内部依然会把 `(K, V)` 类型的元素作为一个 Value。map 型 Transformation 前后分区数不变。
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| map(f)                    | (V)         | T => U                                   | 对 RDD 中的每个元素都执行 f 函数，并返回新的 RDD 
+| flatMap(f)                | (V)         | T => TraversableOnce[U]                  | 对 RDD 中的每个元素都执行 f 函数，再扁平化结果，最后返回新的 RDD
+| mapPartitions(f)          | (V), (K, V) | Iterator<T> => Iterator<U>               | 对 RDD 中的每个分区都执行 f 函数，并返回新的 RDD 
+| mapPartitionsInternal(f)  | (K, V)      | Iterator[T] => Iterator[U]               | value 一对多
+| mapPartitionsWithIndex(f) | (V), (K, V) | (Int, Iterator<T>) => (Int, Iterator<U>) | 类似 mapPartitions，只是每个分区都带有 index
+| mapValues(f)              | (K, V)      | (T, U) => (T, U)                         | value 一对一
+| flatMapValues(f)          | (K, V)      | (T, U) => (T, Seq<U>)                    | value 一对多
+
+---
+
+* group 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| groupBy(f)    | (K, V) | T => U | 按 f 的返回值进行分组
+| groupByKey([n]) | (K, V) | T => T | 按 key 进行分组 
+| cogroup(rdd2) | (K, V) | 
+| groupWith(rdd2) | 同上 | 同上 | 同上
+
+---
+
+* reduce 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| reduceByKey(f)    | (K, V) | T => T | 按 f 的返回值进行分组
+
+---
+
+* persist 型
+
+| 算子       | RDD 类型   | 持久化方式 | 用途      |
+| --------- | --------- | --------- | --------- |
+| persist([Level]) | (V), (K, V) | MEMORY_ONLY | 默认持久化到内存，支持多种持久化方式
+| cache()          | (V), (K, V) | MEMORY_ONLY | 持久化数据到内存
+
+---
+
+* 集合型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| union | --------- | --------- | --------- |
+| intersection | --------- | --------- | --------- |
+| cartesian | --------- | --------- | --------- |
+
+---
+
+* join 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| join | --------- | --------- | --------- |
+| leftOutJoin | --------- | --------- | --------- |
+| rightOutJoin | --------- | --------- | --------- |
+| fullOuterJoin | --------- | --------- | --------- |
+
+---
+
+* repartition 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| coalesce | --------- | --------- | --------- |
+| replication | --------- | --------- | --------- |
+| repartitionAndSortWithinPartitions | --------- | --------- | --------- |
+| partitionBy | --------- | --------- | --------- |
+
+---
+
+* sort 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| sortBy | --------- | --------- | --------- |
+| sortByKey | --------- | --------- | --------- |
+
+---
+
+* 聚合型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| aggregateByKey | --------- | --------- | --------- |
+| foldByKey | --------- | --------- | --------- |
+| sampleByKey | --------- | --------- | --------- |
+| sampleByKeyExact | --------- | --------- | --------- |
+
+---
+
+* filter 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| filter     | - | - | - |
+| filterByRange     | - | - | - |
+| distinct   | - | - | - | 去重
+
+---
+
+* other 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| subtract   | - | - | - |
+| glom()     | - | - | - |
+
+
+#### Action
+
+actions: 在 dataset 上做完运算后返回一个 value 给 driver program
+
+---
+
+* reduce 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| reduce(f)     | - | - | - |
+| treeReduce(f)     | - | - | - |
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+
+---
+
+* save 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| saveAsTextFile(path)    | - | - | - |
+| saveAsSequenceFile(path) | - | - | - |
+| saveAsObjectFile(path) | - | - | - |
+
+---
+
+* take 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| take(n)     | - | - | - |
+| takeSample(withReplacement, num, [seed])     | - | - | - |
+| takeOrdered(n, [ordering])     | - | - | - |
+
+---
+
+* count 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| count()        | (V), (K, V) | - | - |
+| countByValue() | (V)         | - | - |
+| countByKey()   | (K, V)      | --------- | --------- |
+
+---
+
+* other 型
+
+| 算子       | RDD 类型   | f 函数类型 | 用途      |
+| --------- | --------- | --------- | --------- |
+| collect()     | - | - | - |
+| first()     | - | - | - |
+| lookup()   | - | - | - |
+| foreach(func)   | - | - | - |
+
+
+## 算子
 
 从小方向来说，Spark 算子大致可以分为以下三类：
 
@@ -23,13 +248,6 @@ Spark RDD 支持两种类型的操作（算子）：
 输出分区为输入分区子集型   | filter、distinct、subtract、sample、takeSample
 Cache 型               | cache、persist
 
-> 注：实际上，`map` 和 `flatMap` 等算子也可以操作 Key-Value 类型的数据，不过内部会把这些数据整体作为一个 Value。
-
-```scala
-val rdd = List("a", "b", "c")
-rdd.map("@" + _).map(word => (word, 1)).map(_ + "#") // List("(@a,1)#", "(@b,1)#", "(@c,1)#")
-```
-
 * Key-Value 数据类型的 Transfromation 算子
 
 类型 | 算子
@@ -39,7 +257,7 @@ rdd.map("@" + _).map(word => (word, 1)).map(_ + "#") // List("(@a,1)#", "(@b,1)#
 两个 RDD 聚集         | cogroup
 连接                 | join、leftOutJoin、rightOutJoin
 
-* Action算子
+* Action 算子
 
 类型 | 算子
 --- | ---
@@ -97,7 +315,7 @@ rdd.mapPartitions {
 
 * mapPartitionsWithIndex(func)
 
-与 `mapPartitions` 类似，但输入会多提供一个整数表示分区的编号，所以 func 的类型是(Int, Iterator)。
+与 `mapPartitions` 类似，但输入会多提供一个整数表示分区的编号，所以 func 的类型是 `(Int, Iterator<T>) => Iterator<U>`。
 
 ```scala
 val rdd = sc.textFile("R.md", 5)
@@ -117,7 +335,7 @@ rdd.mapPartitionsWithIndex {
 
 * mapValues(func)
 
-与 `map` 相似，不同的是 `map` 对输入的数据统一按 `Value` 型数据来进行映射操作；而 `mapValues` 只对对 `Key-Value` 型数据的 Value 进行 Map 操作，而原 RDD 中的 Key 保持不变。
+与 `map` 相似，不同的是 `map` 对输入的数据统一按 `Value` 型数据来进行映射操作；而 `mapValues` 只对 `Key-Value` 型数据的 Value 进行 Map 操作，而原 RDD 中的 Key 保持不变。
 
 ```scala
 val rdd = sc.parallelize(List("This", "is", "a", "dog"), 5)
@@ -126,9 +344,9 @@ rdd.map(word => (word, 0)).mapValues(_ + 1).collect // Array((This, 1), (is, 1),
 
 ---
 
-* flatMapValues()
+* flatMapValues(func)
 
-结合了 `flatMap` 和 `mapValues` 的特点，对 `Key-Value` 的数据中的 Value 进行 `一对多映射`。
+结合了 `flatMap` 和 `mapValues` 的特点，对 `Key-Value` 数据类型中的 Value 进行 `一对多映射`，所以 func 函数应该返回一个 `Seq`。
 
 ```scala
 val rdd = sc.parallelize(List(1, 2, 3))
@@ -169,9 +387,6 @@ rdd1.cartesian(rdd2).collect // Array((1, a), (1, b), (1, c), (2, a), (2, b), (2
 * pipe(command, [envVars])
 
 对 RDD 中的每个元素都执行一个 shell 命令或者 shell 脚本。
-
-```scala
-```
 
 ---
 
@@ -231,7 +446,7 @@ println(rdd.distinct(3).partitions.length) // 3
 
 * groupByKey([numTasks])
 
-对 (K, V) 类型的 RDD 按照 key 相同的方式进行分组，并对 key 相同的元素的 value 进行聚合，分组后返回 (K, Iterable<V>) 类型的 RDD，其中一个元素代表一个组。numTasks 的默认值取决于原 RDD 的分区数，新 RDD 的分区数 == max(原 RDD 的分区数, numTasks)。
+对 `(K, V)` 类型的 RDD 按照 key 相同的方式进行分组，并对 key 相同的元素的 value 进行聚合，分组后返回 `(K, Iterable<V>)` 类型的 RDD，其中一个元素代表一个组。numTasks 的默认值取决于原 RDD 的分区数，新 RDD 的分区数 == max(原 RDD 的分区数, numTasks)。
 
 ```scala
 val rdd = sc.parallelize(List(("A",1),("B",2),("A",4)), 5)
@@ -265,7 +480,7 @@ sc.textFile("R.md", 5).flatMap(line => line.split(" ")).map(word => (word, 1)).r
 
 * sortByKey([ascending], [numTasks])
 
-对 (K, V) 类型的 RDD 按 key 进行排序。ascending: Boolean = false： 降序；ascending: Boolean = true： 升序（默认）。numTasks 默认值取决于原 RDD 的分区数，新 RDD 的分区数 == min(原 RDD 的分区数, numTasks)。
+对 `(K, V)` 类型的 RDD 按 key 进行排序。ascending: Boolean = false： 降序；ascending: Boolean = true： 升序（默认）。numTasks 默认值取决于原 RDD 的分区数，新 RDD 的分区数 == min(原 RDD 的分区数, numTasks)。
 
 ```scala
 val rdd = sc.parallelize(List(("A",1),("B",2),("c",3),("A",4),("C",5)), 5)
@@ -279,6 +494,34 @@ println(sortedRDD1.partitions.length) // 5
 println(sortedRDD2.partitions.length) // 5
 println(sortedRDD3.partitions.length) // 3
 ```
+
+---
+
+* subtractByKey(otherRDD, [numPartitions])
+
+从 `(K, V)` 类型的原 RDD 中删除与另一个 RDD 具有相同 key 的元素，返回新的 RDD。新 RDD 的分区数 == 原 RDD 的分区数。
+
+```scala
+val rdd1 = sc.parallelize(List(("a", 1), ("b", 2), ("c", 3)), 5)
+val rdd2 = sc.parallelize(List(("a", 1), ("b", 2), ("d", 4)), 3)
+val newR = rdd1.subtractByKey(rdd2)
+
+println(newR) // 5
+
+newR.collect.foreach(println) // Array(("c", 3))
+```
+
+---
+
+* combineByKey()
+
+聚合各分区的元素，而每个元素都是二元组。功能与基础RDD函数aggregate()差不多，可让用户返回与输入数据类型不同的返回值。
+
+combineByKey函数的每个参数分别对应聚合操作的各个阶段。所以，理解此函数对Spark如何操作RDD会有很大帮助。
+
+---
+
+* combineBy()
 
 ---
 
@@ -300,7 +543,7 @@ rdd1.fullOuterJoin(rdd2).collect.foreach(println) // Array((4,(None,Some(d))), (
 
 * cogroup(otherDataset, [numTasks])
 
-对 `(K, V)` 和 `(K, W)` 类型的 RDD 进行合并，先各自对 key 相同的数据聚合成 Iterable，两个 RDD 之间再按 key 相同的方式组合成笛卡尔积，最终返回 `(V, (Iterable<V>, Iterable<W>))` 类型的 RDD。cogroup 支持合并 [1, 3] 个 RDD，即：rdd.cogroup(rdd1, rdd2, rdd3, [numTasks])。新 RDD 的分区数 == max(原各个 RDD 的分区数)。
+对 `(K, V)` 和 `(K, W)` 类型的 RDD 进行合并，先各自对 key 相同的数据聚合成 Iterable，两个 RDD 之间再按 key 相同的方式组合成笛卡尔积，最终返回 `(K, (Iterable<V>, Iterable<W>))` 类型的 RDD。cogroup 支持合并 [1, 3] 个 RDD，即：rdd.cogroup(rdd1, rdd2, rdd3, [numTasks])。新 RDD 的分区数 == max(原各个 RDD 的分区数)。
 
 ```scala
 var rdd1 = sc.parallelize(List((1, "A"), (1, "X"), (1, "X"), (2, "B")), 3)
@@ -321,6 +564,20 @@ println(rdd1.cogroup(rdd2).partitions.length) // 5
 ---
 
 * aggregate()
+
+---
+
+* subtract(otherRDD, [numPartitions])
+
+从 `(K, V)` 和 `V` 类型的原 RDD 中删除与另一个 RDD 中相同的元素，返回新的 RDD。
+
+```scala
+val rdd1 = sc.parallelize(List(("a", 1), ("b", 2), ("c", 3)))
+val rdd2 = sc.parallelize(List(("a", 1), ("b", 2), ("c", 4), ("d", 4)))
+
+rdd1.subtractByKey(rdd2).collect.foreach(println) // Array()
+rdd1.subtract(rdd2).collect.foreach(println) // Array((c, 3))
+```
 
 ---
 
@@ -380,7 +637,7 @@ rdd.keyBy(_.length).collect.foreach(println) // Array((3, dog), (5, tiger), (3, 
 
 * spanBy()
 
-* coalesce(numPartitions)
+* coalesce(numPartitions, shuffle = false)
 
 减少 RDD 的分区个数为 numPartitions 个，这在过滤大型数据集后使用是非常有用的。内部采用 HashPartitioner 的分区方式进行重新分区。新 RDD 的分区个数 == min(原 RDD 的分区个数, numPartitions)，不过不建议设置 numPartitions 大于原 RDD 的分区个数。如果 shuffle 设置为 true，则会进行 shuffle。
 
@@ -395,7 +652,38 @@ println(rdd.coalesce(5).partitions.length) // 3
 
 Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network.
 
+> http://www.cnblogs.com/fillPv/p/5392186.html
 
+等价于 `coalesce(numPartitions, shuffle = true)`。
+
+---
+
+* keys()
+
+返回 `(K, V)` 类型 RDD 中的所有 key，并组成新的 RDD。等价于 `map(_._1)`。
+
+```scala
+val rdd = sc.parallelize(List(("a", 1), ("b", 2), ("c", 3)))
+val newRDD = rdd.keys
+
+newRDD.collect.foreach(println) // Array(a, b, c)
+```
+
+---
+
+* values()
+
+返回 `(K, V)` 类型 RDD 中的所有 value，并组成新的 RDD。等价于 `map(_._2)`。
+
+```scala
+val rdd = sc.parallelize(List(("a", 1), ("b", 2), ("c", 3)))
+val newRDD = rdd.values
+
+newRDD.collect.foreach(println) // Array(1, 2, 3)
+```
+
+
+---
 
 * mapWith()、 flatMapWith()
 
@@ -417,6 +705,8 @@ val rdd = sc.textFile("R.md", 5)
 rdd.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey(_ + _).reduce((a, b) => if (a._2 > b._2) a else b)
 ```
 
+---
+
 * collect()
 
 将各个分区的数据汇总成一个 `Array`。
@@ -428,6 +718,8 @@ val wordCounts: Array[(String, Int)] = textFile.flapMap(line => line.split(" "))
 wordCounts.foreach(println)
 ```
 
+---
+
 * count()
 
 返回 RDD 中元素的个数。
@@ -435,6 +727,29 @@ wordCounts.foreach(println)
 ```scala
 sc.textFile("R.md").count()
 ```
+
+---
+
+* countByKey()
+
+对 `(K, V)` 类型的 RDD 中 key 相同的元素的 value 进行求和，最终返回一个 `Map[K, Long]`。另外，元素的 value 不一定要是数值型，因为 countByKey 内部把元素的 value 都映射成了 `1L`。`rdd.countBykey()` 等同于 `rdd.mapValues(_ => 1L).reduceByKey(_ + _).collect.toMap`。
+
+```bash
+// 求单词数（不用在调用 collect 函数）
+sc.textFile("R.md").flapMap("""[^a-zA-Z]+""").map(word => (word, 1)).countByKey.foreach(println)
+```
+
+---
+
+* countByValue()
+
+对 `V` 类型的 RDD 中的每个元素调用 map 函数，新 RDD 的每个元素为 `(value, null)`，然后调用 countByKey 函数对新 RDD 的 value（都是 1L） 求和，最终还是返回一个 `Map[K, Long]`。`rdd.countByValue()` 等同于 `rdd.map(value => (word, null)).countByKey()`。
+
+```scala
+sc.textFile("R.md").flapMap("""[^a-zA-Z]+"").countByValue.foreach(println)
+```
+
+---
 
 * first()
 
@@ -444,10 +759,43 @@ sc.textFile("R.md").count()
 sc.textFile("R.md").first()
 ```
 
-* cache()
+---
 
 * persist()
 
+默认缓存在内存中，`def persist() = persist(StorageLevel.MEMORY_ONLY)`。
+
+| 缓存方式 | 描述 |
+| ------ | ------ |
+| NONE |  |
+| DISK_ONLY | 缓存数据到本地磁盘 |
+| DISK_ONLY_2 |  |
+| MEMORY_ONLY | 将　RDD 数据缓存在 Spark JVM 内存中 |
+| MEMORY_ONLY_2  |  |
+| MEMORY_ONLY_SER  | 将　RDD 数据序列化后缓存在 Spark JVM 内存中 |
+| MEMORY_ONLY_SER_2  |  |
+| MEMORY_AND_DISK  |  |
+| MEMORY_AND_DISK_2  |  |
+| MEMORY_AND_DISK_SER  |  |
+| MEMORY_AND_DISK_SER_2  |  |
+| OFF_HEAP  |  |
+
+`MEMORY_ONLY`、`MEMORY_ONLY_SER` - 如果一个分区在内存中放不下，那整个分区都不会放入内存。
+`MEMORY_AND_DISK`、`MEMORY_AND_DISK_SER` - 如果分区在内存中放不下，Spark 会将溢出的分布写入磁盘。
+
+```scala
+// 缓存在内存，多余的缓存在磁盘
+rdd.persist(StorageLevel.MEMORY_AND_DISK)
+```
+
+---
+
+* cache()
+
+```scala
+// 缓存在内存
+def cache() = persist(StorageLevel.MEMORY_ONLY)
+```
 
 ## Save
 
@@ -464,6 +812,15 @@ rdd.saveAsTextFile("words") // 会有 5 个 part-X 文件输出到当前项目�
 
 > http://blog.csdn.net/xubo245/article/details/51475506
 
+* 分区算法
+
+defaultPartitioner
+
+HashPartitioner
+
+RangePartitioner
+
+
 * 自定义分区
 
 ```scala
@@ -477,42 +834,17 @@ var rdd = sc.textFile("README.md", 5)
 // 分区数
 println(rdd.partitions.length)
 
-// 各个分区的分区方式
-rdd.partitions.foreach(partition => {
-  println(partition.index, partition.getClass) // (0,class org.apache.spark.rdd.HadoopPartition)
-})
-
-// 各个分区的元素个数
-rdd.mapPartitionsWithIndex(
-  // val 哦！
-  val result = ArrayBuffer[String]()
-  // index：分区编号，partition：每个分区中的所有元素所组成的 Iterator
-  (index, partition) => {
-    result += s"$index-${partition.length}"
-    result.iterator
-  }
-).collect.foreach(println)
-
-// 各个分区的元素
-rdd.flatMap(line => line.split("""[^a-zA-Z]""")).filter(word => word.nonEmpty).mapPartitionsWithIndex {
-  val map = scala.collection.mutable.Map[Int, String]()
-  (index, partition) => {
-    val elems = new StringBuilder()
-    while (partition.hasNext) {
-      elems.append(s"${partition.next} | ")
-    }
-    map += (index -> elems.toString)
-    map.toIterator
-  }
-}.collect.foreach(println)
+// 各个分区的 index
+rdd.partitions.foreach(println(_.index))
 ```
 
 
 
 ## 参考
 
-> http://www.infoq.com/cn/articles/spark-core-rdd/  
-> http://blog.csdn.net/stark_summer/article/details/50218641
-* [Spark算子使用示例](http://blog.csdn.net/u013980127/article/details/53046760)
-* [Spark RDD概念学习系列之Spark的算子的分类](http://www.cnblogs.com/zlslch/p/5723857.html)
+* [理解 Spark 的核心 RDD](http://www.infoq.com/cn/articles/spark-core-rdd/)
+* [那些年我们对 Spark RDD 的理解](http://blog.csdn.net/stark_summer/article/details/50218641)
+* [Spark 算子使用示例](http://blog.csdn.net/u013980127/article/details/53046760)
+* [Spark RDD 概念学习系列之 Spark 的算子的分类](http://www.cnblogs.com/zlslch/p/5723857.html)
 * [Spark 算子](http://blog.csdn.net/tanggao1314/article/details/51582017)
+* [Spark 键值对 RDD 操作](http://www.cnblogs.com/yongjian/p/6425772.html)

@@ -5,27 +5,46 @@
 * Java
 
 ```java
-String[] z = new String[3];
+String[] javaArr = new String[3];
 
 // 声明 + 定义
 
-String[] z = {"a", "b", "c"}
+String[] javaArr = {"a", "b", "c"}
 ```
 
 
 * Scala
 
 ```scala
-var z: Array[String] = new Array[String](3)
+var scalaArr: Array[String] = new Array[String](3)
 
 // 或
 
-var z = new Array[String](3)
+var scalaArr = new Array[String](3)
 
 // 声明 + 定义
 
-var z = Array("a", "b", "c")
+var scalaArr = Array("a", "b", "c")
 ```
+
+## 访问元素
+
+* Java
+
+Java 使用特殊操作符 `arrayName[N]` 来访问数组元素，其中 N 为数组下标。
+
+```java
+String first = javaArr[0]
+```
+
+* Scala
+
+Scala 使用 `函数调用` 的方式来访问数组元素，而不是使用特殊操作符。Scala 允许在类中定义一个特殊函数 `apply`，当对象被当作函数处理时，apply 函数就会被调用，所以 `scalaArr(0) == scalaArr.apply(0)`。
+
+```scala
+var first = scalaArr(0)
+```
+
 
 ## 方法
 
@@ -41,7 +60,6 @@ println(arr.length) // 2
 ```
 
 
-
 ## 区间数组
 
 使用 `range()` 方法来生成一个区间范围内的 `Array`。range() 方法最后一个参数为步长，默认为 1。
@@ -53,7 +71,8 @@ var arr1 = range(10, 20, 2) // Array(10, 12, 14, 16, 18)
 var arr2 = range(10, 20) 	// Array(10, 11, 12, 13, 14, 15, 16, 17, 18, 19)
 ```
 
-## 区间 Range
+
+## 区间（Range）
 
 Scala 中，默认 `Range` 是不可变的，区间范围 `[a, b)`。
 
