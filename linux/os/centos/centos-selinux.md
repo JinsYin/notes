@@ -17,4 +17,6 @@ $ getenforce
 
 ```bash
 $ sed -i -e 's|SELINUX=enforcing|SELINUX=disabled|g' /etc/selinux/config
+$
+$ reboot
 ```

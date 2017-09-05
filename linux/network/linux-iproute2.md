@@ -8,7 +8,7 @@ iproute2 包含以下命令行工具：
   * ss
   * ip neigh
 
-![iproutes vs net-tools](./img/iproute2-vs-nettools.png)
+![iproutes vs net-tools](../img/iproute2-vs-nettools.png)
 
 
 ## 安装

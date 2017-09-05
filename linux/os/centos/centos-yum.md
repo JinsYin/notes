@@ -30,6 +30,12 @@ $ yum --exclude=kernel* --exclude=centos-release* update
 $ yum repolist
 ```
 
+## 开启 epel 的源
+
+```bash
+$ yum install epel-release
+```
+
 
 ## 清除缓存
 
@@ -47,6 +53,17 @@ $ yum clean all
 ```
 
 > https://www.centos.org/docs/5/html/yum/sn-yum-maintenance.html
+
+## 刷新缓存
+
+如果添加了 repo 到 /etc/yum.repos.d，可以使用以下命令来刷新缓存。
+
+```bash
+$ yum makecache
+
+$ yum makecache fast
+```
+
 
 
 ## 查询已安装的包
@@ -103,6 +120,12 @@ $ yum install yum-plugin-fastestmirror
 
 ```bash
 $ yum install yum-plugin-protectbase
+```
+
+* yum-config-manager
+
+```bash
+$ yum install yum-utils
 ```
 
 > https://www.centos.org/docs/5/html/yum/sn-yum-maintenance.html

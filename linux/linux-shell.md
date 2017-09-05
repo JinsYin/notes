@@ -12,7 +12,7 @@ start-namenode.sh
 首字母大写， CreateFile()
 ```
 
-## 关键字`$`
+## 关键字 $
 
 ```bash
 # 假设运行以下脚本
@@ -24,7 +24,7 @@ $ ./run-script.sh user 123456
 `$@`: 返回脚本后传递的参数, 如："user" "123456"
 `$#`: 返回参数个数，如：2
 `$0`: 既然`$1`返回第一个参数，$0 自然就返回脚本的文件名, 如："run-script.sh"
-`$?`: 获取上一个命令的返回值
+`$?`: 获取上一个命令的返回（ `return`） 值/退出（ `exit` ）状态（`0` 表示 success，非零表示 failure）
 
 ```bash
 $ cat run-script.sh
@@ -32,10 +32,10 @@ $ cat run-script.sh
 
 # 定义函数
 Hello () {
-   echo "Hello World $1 $2"
-   echo $*
-   echo $@
-   return 10
+ echo "Hello World $1 $2"
+ echo $*
+ echo $@
+ return 10
 }
 
 # 调用该函数
@@ -46,6 +46,46 @@ ret=$? # 10
 
 echo "Return value is $ret"
 ```
+
+## exit、return
+
+`exit` 会退出当前脚本，`return` 只是结束了当前函数。相同的是，无论是返回值还是退出状态都是数字。
+
+```bash
+#!/bin/bash
+
+retfunc()
+{
+    echo "this is retfunc()"
+    return 1
+}
+
+exitfunc()
+{
+    echo "this is exitfunc()"
+    exit 1
+}
+
+retfunc
+echo "We are still here"
+exitfunc
+echo "We will never see this"
+```
+
+## set
+
+| 命令                      | 含义                                 |
+| ----------------------- | ---------------------------------- |
+| set -e 或 set -o errexit | 如果 `return` 或 `exit` 传递的只是非零，则退出脚本 |
+|                         |                                    |
+
+
+
+## 退出状态码（exit code）
+
+> http://tldp.org/LDP/abs/html/exitcodes.html
+> http://tldp.org/LDP/abs/html/exit-status.html
+
 
 ## 关键字`if`
 
@@ -89,4 +129,64 @@ $ if [ \( EXPR1 \) -o \( EXPR2 \) ] fi; # 若表达式 EXPR1 或表达式 EXPR �
 $ if [ ( EXPR1 ) ] || [ ( EXPR2 ) ]; fi # 同上
 ```
 
->http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
+## 默认值
+
+* **:=**
+
+`: ${VARIABLE:=DEFAULT_VALUE}` 表示如果 VARIABLE 变量不存在的话，将 DEFAULT_VALUE 的值赋值个 VARIABLE 变量。
+
+```bash
+$ DEFAULT_VALUE="123"
+$ 
+$ echo "x=$x"
+x=
+$
+$ # 冒号表示这是一个设置默认值的命令
+$ : ${x:=$DEFAULT_VALUE}
+$
+$ echo "x=$x"
+x=123
+$
+$ : ${x:="456"}
+$
+$ echo "x=$x"
+x=123
+```
+
+常见的示例：
+
+```bash
+$ # 把 666 赋值给 VARIABLE，再把 VARIABLE 赋值给 FOO
+$ FOO=${VARIABLE:="666"}
+```
+
+* **:-**
+
+`VARIABLE3=${VARIABLE2:-$VARIABLE1}` 表示如果 VARIABLE2 不存在的话，将 VARIABLE1 的值赋值给 VARIABLE2，否则将 VARIABLE2 的只赋值给 VARIABLE3，另外，VARIABLE1 不会赋值给 VARIABLE2。
+
+```bash
+$ vi defvalue.sh
+#!/bin/bash
+variable1=$1
+variable2=${2:-$variable1}
+
+echo $variable1
+echo $variable2
+$
+$
+$ ./defvalue.sh first-value second-value
+first-value
+second-value
+$
+$ ./defvalue.sh first-value
+first-value
+first-value
+```
+
+
+## 参考
+
+* [Bash 指南 - 条件语句](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html)
+* [shell 编程规范](https://wenku.baidu.com/view/cf3b683067ec102de2bd8969.html)
+* [Assigning default values to shell variables with a single command in bash](https://stackoverflow.com/questions/2013547/assigning-default-values-to-shell-variables-with-a-single-command-in-bash)
+

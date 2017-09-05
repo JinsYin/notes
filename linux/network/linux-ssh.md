@@ -1,5 +1,18 @@
 # Linux SSH
 
+## ssh-keygen
+
+```bash
+$ ssh-keygen -t rsa -N ''
+```
+
+## ssh-agent
+
+```bash
+$ 
+```
+
+
 ## 问题整理
 
 * 首次登录免确认
@@ -14,7 +27,7 @@ Are you sure you want to continue connecting (yes/no)?
 
 ```bash
 $ # 登录端进行修改
-$ cat <<EOF >> ~/.ssh/config
+$ cat >> ~/.ssh/config <<EOF
 StrictHostKeyChecking no
 UserKnownHostsFile /dev/null
 EOF
@@ -42,3 +55,4 @@ $ systemctl restart sshd.service
 ## 参考
 
 * [ssh-agent 命令](http://man.linuxde.net/ssh-agent)
+* [SSH agent 转发](http://wiki.jikexueyuan.com/project/github-developer-guides/using-ssh-agent.html)

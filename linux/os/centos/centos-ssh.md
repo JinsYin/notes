@@ -16,6 +16,9 @@ $ ssh -vvv root@192.168.1.191
 $ # 取消注释
 $ sed -i "s|#PermitRootLogin yes|PermitRootLogin yes|g" /etc/ssh/sshd_config
 $
+$ # 检查
+$ cat /etc/ssh/sshd_config | grep "PermitRootLogin"
+$
 $ # 重启 sshd
 $ systemctl restart sshd.service
 ```
@@ -37,6 +40,9 @@ $ ssh -o GSSAPIAuthentication=no -vv root@192.168.1.191
 $ # 禁用
 $ sed -i "s|GSSAPIAuthentication yes|GSSAPIAuthentication no|g" /etc/ssh/sshd_config
 $
+$ # 检查
+$ cat /etc/ssh/sshd_config | grep "GSSAPIAuthentication"
+$
 $ # 重启 sshd
 $ systemctl restart sshd.service
 ```
@@ -49,6 +55,9 @@ $ systemctl restart sshd.service
 ```bash
 $ # 取消注释
 $ sed -i "s|#UseDNS yes|UseDNS no|g" /etc/ssh/sshd_config
+$
+$ # 检查
+$ cat /etc/ssh/sshd_config | grep "UseDNS"
 $
 $ # 重启 sshd
 $ systemctl restart sshd.service
