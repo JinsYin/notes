@@ -6,7 +6,7 @@ secret_key = 'PU9YFVWG639g5EBXRHgQg3ISPB2NuAL1QttyRU9k'
 conn = boto.connect_s3(
     aws_access_key_id = access_key,
     aws_secret_access_key = secret_key,
-    host = '192.168.111.192', port = 7480,
+    host = '192.168.1.11', port = 7480,
     is_secure=False, calling_format = boto.s3.connection.OrdinaryCallingFormat(),
     )
 

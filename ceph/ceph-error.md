@@ -77,9 +77,10 @@ $ rpm -qa | grep ceph  | wc -l # 共 11 个软件包
 
 ## 错误 3
 
-独立安装 ceph 的时候，linux 库文件找不到
+独立安装 ceph 的时候，linux 库文件、依赖文件找不到。
 
 ```bash
+$ # 即使安装最新版本也可能出错
 $ yum install ceph-10.2.7
 Error: Package: 1:librbd1-10.2.7-0.el7.x86_64 (ceph)
            Requires: liblttng-ust.so.0()(64bit)
@@ -107,13 +108,13 @@ $ sudo yum install -y yum-utils && sudo yum-config-manager --add-repo https://dl
 
 ceph activate 激活 osd 是提示没有权限
 ```bash
-$ ceph-deploy activate centos192:/ceph/osd
+$ ceph-deploy activate ceph-node-1:/ceph/osd
 error creating empty object store in /ceph/osd: (13) Permission denied
 ```
 
 原因
 ```
-ceph-deploy prepare 准备 osd 时，会默认为 centos192:/ceph/osd 等目录添加 `ceph:ceph`权限的文件，而创建 /ceph/osd 目录时的权限是 root:root。
+ceph-deploy prepare 准备 osd 时，会默认为 ceph-node-1:/ceph/osd 等目录添加 `ceph:ceph`权限的文件，而创建 /ceph/osd 目录时的权限是 root:root。
 ```
 
 解决办法
@@ -176,6 +177,16 @@ auth_client_required = none
 $ ceph-deploy new centos202 centos203 centos204 # 先 3 个 mon
 $ ceph-deploy mon add --addr 192.168.111.205 centos205 # 再添加 2 个 mon
 $ ceph-deploy mon add --addr 192.168.111.206 centos206
+```
+
+```bash
+$ # 
+$ cat ceph.conf
+...
+filestore_xattr_use_omap = true
+$
+$ #
+$ ceph-deploy --overwrite-conf mon create-initial
 ```
 
 ## 错误 7

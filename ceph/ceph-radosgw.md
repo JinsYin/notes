@@ -1,104 +1,104 @@
-# Ceph ¶ÔÏóÍø¹Ø
+# Ceph å¯¹è±¡ç½‘å…³
 
-Ceph¡¡¶ÔÏóÍø¹ØÓÃÓÚ´æ´¢¡¡docker image£»  
-Ceph ¶ÔÏóÍø¹ØmÄ¬ÈÏÔËĞĞÔÚ Civetweb£¨Ä¬ÈÏ¶Ë¿Ú7480£©ÉÏ, ¶ø²»ÔÙÊÇ¡¡Apache¡¡ºÍ¡¡FastCGI¡¡Ö®ÉÏ¡£
+Cephã€€å¯¹è±¡ç½‘å…³ç”¨äºå­˜å‚¨ã€€docker imageï¼›  
+Ceph å¯¹è±¡ç½‘å…³mé»˜è®¤è¿è¡Œåœ¨ Civetwebï¼ˆé»˜è®¤ç«¯å£7480ï¼‰ä¸Š, è€Œä¸å†æ˜¯ã€€Apacheã€€å’Œã€€FastCGIã€€ä¹‹ä¸Šã€‚
 
->[ÓĞÔÆCeph¿ÎÌÃ£ºÊ¹ÓÃCivetWeb¿ìËÙ´î½¨RGW](https://www.ustack.com/blog/civetweb/?belong=industry-news)
+>[æœ‰äº‘Cephè¯¾å ‚ï¼šä½¿ç”¨CivetWebå¿«é€Ÿæ­å»ºRGW](https://www.ustack.com/blog/civetweb/?belong=industry-news)
 
 
-## °²×°
+## å®‰è£…
 
-Êµ¼Ê·¢ÏÖ jewel °æ±¾ÔÚ `ceph-deploy install` °²×° ceph µÄÊ±ºòÄ¬ÈÏÒÑ¾­°²×°ÁË ceph-radosgw ×é¼ş£¬µ«Ö±½ÓÊ¹ÓÃ ceph Ô´À´°²×° ceph Ê±²»»á×Ô¶¯°²×° ceph-radosgw ×é¼ş£¬¿ÉÒÔÊ¹ÓÃ `rpm -qa | grep ceph` À´¼ì²éÒÔÏÂ°²×°ÁËµ½µ×°²×°ÁËÄÄĞ© ceph ×é¼ş¡£
+å®é™…å‘ç° jewel ç‰ˆæœ¬åœ¨ `ceph-deploy install` å®‰è£… ceph çš„æ—¶å€™é»˜è®¤å·²ç»å®‰è£…äº† ceph-radosgw ç»„ä»¶ï¼Œä½†ç›´æ¥ä½¿ç”¨ ceph æºæ¥å®‰è£… ceph æ—¶ä¸ä¼šè‡ªåŠ¨å®‰è£… ceph-radosgw ç»„ä»¶ï¼Œå¯ä»¥ä½¿ç”¨ `rpm -qa | grep ceph` æ¥æ£€æŸ¥ä»¥ä¸‹å®‰è£…äº†åˆ°åº•å®‰è£…äº†å“ªäº› ceph ç»„ä»¶ã€‚
 
 ```bash
-# ceph-deploy ½Úµã
+# ceph-deploy èŠ‚ç‚¹
 $ cd /ceph-cluster
 $ ceph-deploy install --rgw <gateway-node1> [<gateway-node2> ...] # ruguo
-$ ceph-deploy admin <gateway-node1> [<gateway-node2> ...]¡¡# Ìí¼ÓÎª¹ÜÀí½Úµã
+$ ceph-deploy admin <gateway-node1> [<gateway-node2> ...]ã€€# æ·»åŠ ä¸ºç®¡ç†èŠ‚ç‚¹
 ```
 
 ```bash
-# radosgw ½Úµã
-$ rpm -qa | grep ceph-radosgw # ¼ì²éÊÇ·ñ°²×°Íê³É
-$ yum install -y ceph-radosgw # ¿ÉÑ¡£¬Èç¹ûÃ»ÓĞ°²×°³É¹¦£¬¿ÉÒÔÊ¹ÓÃ¸ÃÃüÁî°²×°
+# radosgw èŠ‚ç‚¹
+$ rpm -qa | grep ceph-radosgw # æ£€æŸ¥æ˜¯å¦å®‰è£…å®Œæˆ
+$ yum install -y ceph-radosgw # å¯é€‰ï¼Œå¦‚æœæ²¡æœ‰å®‰è£…æˆåŠŸï¼Œå¯ä»¥ä½¿ç”¨è¯¥å‘½ä»¤å®‰è£…
 ```
 
 
-## ĞÂ½¨Íø¹ØÊµÀı
+## æ–°å»ºç½‘å…³å®ä¾‹
 
 ```bash
-# ceph-deploy ½Úµã
+# ceph-deploy èŠ‚ç‚¹
 $ cd /ceph-cluster
-$ ceph-deploy rgw create <gateway-node1> [<gateway-node2> ...] # ´´½¨ rgw ÊµÀı
+$ ceph-deploy rgw create <gateway-node1> [<gateway-node2> ...] # åˆ›å»º rgw å®ä¾‹
 ```
 
 ```bash
-# rgw ·şÎñÄ¬ÈÏ¶Ë¿Ú¡¡7480
+# rgw æœåŠ¡é»˜è®¤ç«¯å£ã€€7480
 http://gateway-node1:7480
 ```
 
 ```bash
-# rgw ½Úµã
+# rgw èŠ‚ç‚¹
 $ netstat -tpln | grep radosgw
 ```
 
 
-# ĞŞ¸ÄÄ¬ÈÏ¶Ë¿Ú (ÔİÊ±²»ĞŞ¸Ä)
+# ä¿®æ”¹é»˜è®¤ç«¯å£ (æš‚æ—¶ä¸ä¿®æ”¹)
 
 ```bash
-# ceph-deploy ½Úµã
+# ceph-deploy èŠ‚ç‚¹
 $ cd /ceph-cluster
 $ cat ceph.conf
 ...
-[client.rgw.centos192]
+[client.rgw.centos-11]
 rgw_frontends = "civetweb port=8000"
 ```
 
 ```bash
-# ¸üĞÂÅäÖÃµ½ rgw ½Úµã
+# æ›´æ–°é…ç½®åˆ° rgw èŠ‚ç‚¹
 $ ceph-deploy --overwrite-conf config push <gateway-node> [<other-nodes>]
 ```
 
 ```bash
-# rgw ½Úµã
-$ systemctl restart ceph-radosgw@rgw.centos192.service¡¡# ÖØÆô rgw ·şÎñ
-$ systemctl status ceph-radosgw@rgw.centos192.service
+# rgw èŠ‚ç‚¹
+$ systemctl restart ceph-radosgw@rgw.centos-11.serviceã€€# é‡å¯ rgw æœåŠ¡
+$ systemctl status ceph-radosgw@rgw.centos-11.service
 ```
 
 
-## Ê¹ÓÃÍø¹Ø
+## ä½¿ç”¨ç½‘å…³
 
-ÎªÊ¹ÓÃ REST ½Ó¿Ú£¬Ê×ÏÈĞèÒªÎª S3 ½Ó¿Ú´´½¨Ò»¸ö³õÊ¼ Ceph ¶ÔÏóÍø¹ØÓÃ»§£¬È»ºóÎª Swift ½Ó¿Ú´´½¨Ò»¸ö×ÓÓÃ»§£¬×îºóĞèÒªÑéÖ¤´´½¨µÄÓÃ»§ÊÇ·ñ¿ÉÒÔ·ÃÎÊÍø¹Ø¡£
-¡¡¡¡
-ÒÔÏÂ²Ù×÷¾ùÔÚ ceph ¹ÜÀí½ÚµãÉÏ²Ù×÷¡£
-¡¡¡¡
-1. Îª¡¡S3¡¡·ÃÎÊ´´½¨¡¡radosgw¡¡ÓÃ»§
+ä¸ºä½¿ç”¨ REST æ¥å£ï¼Œé¦–å…ˆéœ€è¦ä¸º S3 æ¥å£åˆ›å»ºä¸€ä¸ªåˆå§‹ Ceph å¯¹è±¡ç½‘å…³ç”¨æˆ·ï¼Œç„¶åä¸º Swift æ¥å£åˆ›å»ºä¸€ä¸ªå­ç”¨æˆ·ï¼Œæœ€åéœ€è¦éªŒè¯åˆ›å»ºçš„ç”¨æˆ·æ˜¯å¦å¯ä»¥è®¿é—®ç½‘å…³ã€‚
+ã€€ã€€
+ä»¥ä¸‹æ“ä½œå‡åœ¨ ceph ç®¡ç†èŠ‚ç‚¹ä¸Šæ“ä½œã€‚
+ã€€ã€€
+1. ä¸ºã€€S3ã€€è®¿é—®åˆ›å»ºã€€radosgwã€€ç”¨æˆ·
 ```bash
-$ radosgw-admin user create --uid="registry" --display-name="Docker Registry User" # keys.access_key ºÍ keys.secret_key ÓÃÀ´·ÃÎÊÊ±×÷ÑéÖ¤
-$ radosgw-admin user info --uid="registry" # ²é¿´rgw ÓÃ»§ĞÅÏ¢
-$ rados lspools # ´´½¨ÓÃ»§ºó»áĞÂÔö¼¸¸ö pool
+$ radosgw-admin user create --uid="registry" --display-name="Docker Registry User" # keys.access_key å’Œ keys.secret_key ç”¨æ¥è®¿é—®æ—¶ä½œéªŒè¯
+$ radosgw-admin user info --uid="registry" # æŸ¥çœ‹rgw ç”¨æˆ·ä¿¡æ¯
+$ rados lspools # åˆ›å»ºç”¨æˆ·åä¼šæ–°å¢å‡ ä¸ª pool
 ```
 
-2. Îª Swift ½Ó¿Ú´´½¨Ò»¸ö×ÓÓÃ»§
+2. ä¸º Swift æ¥å£åˆ›å»ºä¸€ä¸ªå­ç”¨æˆ·
 ```bash
-# Ê¹ÓÃÕâÖÖ·½Ê½·ÃÎÊ¼¯Èº£¬ĞèÒªĞÂ½¨Ò»¸ö Swift ×ÓÓÃ»§£¬´´½¨ÓÃ»§°üº¬ÒÔÏÂÁ½¸ö²½Öè
-$ radosgw-admin subuser create --uid="registry" --subuser=registry:swift --access=full¡¡# ĞÂ½¨ Swift ÓÃ»§
-$ radosgw-admin key create --subuser=registry:swift --key-type=swift --gen-secret # ´´½¨¡¡secret key¡¡£¨ÖØ¸´Ö´ĞĞ»á¸üĞÂ secret_key£©
+# ä½¿ç”¨è¿™ç§æ–¹å¼è®¿é—®é›†ç¾¤ï¼Œéœ€è¦æ–°å»ºä¸€ä¸ª Swift å­ç”¨æˆ·ï¼Œåˆ›å»ºç”¨æˆ·åŒ…å«ä»¥ä¸‹ä¸¤ä¸ªæ­¥éª¤
+$ radosgw-admin subuser create --uid="registry" --subuser=registry:swift --access=fullã€€# æ–°å»º Swift ç”¨æˆ·
+$ radosgw-admin key create --subuser=registry:swift --key-type=swift --gen-secret # åˆ›å»ºã€€secret keyã€€ï¼ˆé‡å¤æ‰§è¡Œä¼šæ›´æ–° secret_keyï¼‰
 ```
 
-3. ·ÃÎÊÑéÖ¤
+3. è®¿é—®éªŒè¯
 
-²âÊÔS3·ÃÎÊ
+æµ‹è¯•S3è®¿é—®
 ```bash
-# ²âÊÔ½Å±¾½«Á¬½Ó radosgw, ĞÂ½¨Ò»¸öĞÂµÄ bucket ²¢ÁĞ³öËùÓĞµÄ buckets
-$ yum install -y python-boto # °²×° python-boto °ü
-$ vi s3test.py # ĞŞ¸Äaccess_key, secret_key ºÍ host
-$ python s3test.py # Êä³ö: my-new-bucket 2015-02-16T17:09:10.000Z
+# æµ‹è¯•è„šæœ¬å°†è¿æ¥ radosgw, æ–°å»ºä¸€ä¸ªæ–°çš„ bucket å¹¶åˆ—å‡ºæ‰€æœ‰çš„ buckets
+$ yum install -y python-boto # å®‰è£… python-boto åŒ…
+$ vi s3test.py # ä¿®æ”¹access_key, secret_key å’Œ host
+$ python s3test.py # è¾“å‡º: my-new-bucket 2015-02-16T17:09:10.000Z
 ```
 
-²âÊÔ Swift ·ÃÎÊ
+æµ‹è¯• Swift è®¿é—®
 ```bash
-# °²×°swift¿Í»§¶Ë (CentOS)
+# å®‰è£…swiftå®¢æˆ·ç«¯ (CentOS)
 $ yum install -y python-setuptools
 $ easy_install pip
 $ pip install --upgrade setuptools
@@ -106,7 +106,7 @@ $ pip install --upgrade python-swiftclient
 ```
 
 ```bash
-# °²×°swift¿Í»§¶Ë (Ubuntu)
+# å®‰è£…swiftå®¢æˆ·ç«¯ (Ubuntu)
 $ apt-get install -y python-setuptools
 $ easy_install pip
 $ pip install --upgrade setuptools
@@ -114,54 +114,54 @@ $ pip install --upgrade python-swiftclient
 ```
 
 ```bash
-# Êä³ö: my-new-bucket)
+# è¾“å‡º: my-new-bucket)
 # swift -A http://{IP ADDRESS}:{port}/auth/1.0 -U registry:swift -K '{swift_secret_key}' list
-$ swift -A http://192.168.1.192:7480/auth/1.0 -U registry:swift -K 'fcq..' list
-$ swift -A http://192.168.1.192:7480/auth/1.0 -U registry:swift -K 'fcq..' stat -v
+$ swift -A http://192.168.1.11:7480/auth/1.0 -U registry:swift -K 'fcq..' list
+$ swift -A http://192.168.1.11:7480/auth/1.0 -U registry:swift -K 'fcq..' stat -v
 ```
 
-## ²¿Êğ registry
+## éƒ¨ç½² registry
 
-ÎÒ»ùÓÚ¹Ù·½µÄ registry ¾µÏñÖØĞÂ¹¹½¨ÁËÒ»¸ö¾µÏñ£¨registry-ceph£©£¬ÔÊĞíĞŞ¸Ä¶Ë¿ÚºÍ/»òÊ¹ÓÃ¡¡ceph¡¡µÄ¶ÔÏó´æ´¢À´´æ´¢¾µÏñ£¬¶ø²»ÊÇ´æ´¢ÔÚ±¾µØ¡£Í¬Ê±£¬Õâ¸ö¾µÏñÒ²¿ÉÒÔ×÷ÎªÆÕÍ¨ registry ÓÃ¡£
+æˆ‘åŸºäºå®˜æ–¹çš„ registry é•œåƒé‡æ–°æ„å»ºäº†ä¸€ä¸ªé•œåƒï¼ˆregistry-cephï¼‰ï¼Œå…è®¸ä¿®æ”¹ç«¯å£å’Œ/æˆ–ä½¿ç”¨ã€€cephã€€çš„å¯¹è±¡å­˜å‚¨æ¥å­˜å‚¨é•œåƒï¼Œè€Œä¸æ˜¯å­˜å‚¨åœ¨æœ¬åœ°ã€‚åŒæ—¶ï¼Œè¿™ä¸ªé•œåƒä¹Ÿå¯ä»¥ä½œä¸ºæ™®é€š registry ç”¨ã€‚
 
-Ê¹ÓÃ ceph ¶ÔÏó´æ´¢
+ä½¿ç”¨ ceph å¯¹è±¡å­˜å‚¨
 ```bash
 $ docker run -itd --name registry-ceph -p 80:80 -e HTTP_PORT=80 \
--e STORAGE_SWIFT_AUTHURL="http://192.168.111.192:7480/auth/v1" \ 
+-e STORAGE_SWIFT_AUTHURL="http://192.168.1.11:7480/auth/v1" \ 
 -e STORAGE_SWIFT_USERNAME="registry:swift" \
 -e STORAGE_SWIFT_PASSWORD="NyINaRDvoFiZUAaCUHsNz6Nzu6glbn729rfDqh7r" \
 registry-ceph:2.6.0
 ```
 
-×÷ÆÕÍ¨¾µÏñÓÃ
+ä½œæ™®é€šé•œåƒç”¨
 ```bash
 $ docker run -itd --name registry-ceph -p 80:80 -e HTTP_PORT=80 registry-ceph:2.6.0
 ```
 
-¼ì²é
+æ£€æŸ¥
 ```bash
 # web
 curl http://localhost/v2/_catalog
 ```
 
 ```bash
-# ³¢ÊÔÉÏ´«¾µÏñ£¨docker daemon ÉèÖÃ --insecure-registry 192.168.111.0/24 ²¢ÖØÆô£©
-$ docker tag alpine:3.5 192.168.111.192/alpine:3.5
-$ docker push 192.168.111.192/alpine:3.5
-$ docker rmi 192.168.111.192/alpine:3.5 && docker pull 192.168.111.192/alpine:3.5
+# å°è¯•ä¸Šä¼ é•œåƒï¼ˆdocker daemon è®¾ç½® --insecure-registry 192.168.1.0/24 å¹¶é‡å¯ï¼‰
+$ docker tag alpine:3.5 192.168.1.11/alpine:3.5
+$ docker push 192.168.1.11/alpine:3.5
+$ docker rmi 192.168.1.11/alpine:3.5 && docker pull 192.168.1.11/alpine:3.5
 ```
 
 ```bash
-# ¼ì²éÒ»ÏÂÈİÆ÷ÖĞ /var/lib/registry ¶ÔÓ¦µÄ volume ÊÇ·ñÎª¿Õ£¬ Êı¾İÓ¦¸Ã¶¼´æÔÚ¡¡ceph¡¡ÖĞ²Å¶Ô
+# æ£€æŸ¥ä¸€ä¸‹å®¹å™¨ä¸­ /var/lib/registry å¯¹åº”çš„ volume æ˜¯å¦ä¸ºç©ºï¼Œ æ•°æ®åº”è¯¥éƒ½å­˜åœ¨ã€€cephã€€ä¸­æ‰å¯¹
 $ rados ls --pool default.rgw.buckets.data | grep repositories/alpine | grep 3.5
 ```
 
-ÓĞÎó
+æœ‰è¯¯
 ```bash
-# É¾³ı¾µÏñ £¨Í¨¹ıÉ¾³ı¶ÔÏóÀ´É¾³ı¾µÏñ£© 
+# åˆ é™¤é•œåƒ ï¼ˆé€šè¿‡åˆ é™¤å¯¹è±¡æ¥åˆ é™¤é•œåƒï¼‰ 
 $ rados ls --pool default.rgw.buckets.data | grep repositories/alpine
 $ obj=$(rados ls --pool default.rgw.buckets.data | grep repositories/alpine)
 $ if [ -n "${obj}" ]; then rados rm ${obj} --pool default.rgw.buckets.data; fi
-$ rados ls --pool default.rgw.buckets.data | grep repositories/alpine # ¼ì²é
+$ rados ls --pool default.rgw.buckets.data | grep repositories/alpine # æ£€æŸ¥
 ```
 

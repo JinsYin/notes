@@ -1,20 +1,25 @@
-# Ceph ÃüÁî
+# Ceph å‘½ä»¤
 
-ÅäÖÃ
+é…ç½®
 ```bash
-# ĞŞ¸ÄÅäÖÃºóĞèÒª¸üĞÂÆäËûceph-nodeÉÏ (ceph-admin)
+# ä¿®æ”¹é…ç½®åéœ€è¦æ›´æ–°å…¶ä»–ceph-nodeä¸Š (ceph-admin)
 $ ceph-deploy --overwrite-conf config push {node(s)}
 ```
 
-ÖØÆô·şÎñ
+é‡å¯æœåŠ¡
 ```bash
-$ systemctl restart ceph-osd@3.service # ÔÚ¶ÔÓ¦½ÚµãÉÏÖØÆô osd.3
-$ systemctl restart ceph-mon@centos191.service # ÔÚ centos191 ½ÚµãÉÏÖØÆô ceph-mon
-$ systemctl restart¡¡ceph-radosgw@rgw.centos192.service # ÔÚ centos192 ½ÚµãÉÏÖØÆô ceph-radosgw
+$ # åœ¨å¯¹åº”èŠ‚ç‚¹ä¸Šé‡å¯ osd.3
+$ systemctl restart ceph-osd@3.service
+
+$ # åœ¨ centos-10 èŠ‚ç‚¹ä¸Šé‡å¯ ceph-mon
+$ systemctl restart ceph-mon@centos-10.service
+
+$ # åœ¨ centos192 èŠ‚ç‚¹ä¸Šé‡å¯ ceph-radosgw
+$ systemctl restartã€€ceph-radosgw@rgw.centos192.service
 ```
 
 
-## ¼¯Èº×´Ì¬
+## é›†ç¾¤çŠ¶æ€
 
 ```bash
 $ ceph health
@@ -28,102 +33,102 @@ $ ceph quorum_status -f json-pretty
 ## MON 
 
 ```bash
-$ ceph mon rm centos203 # ÒÆ³ı monitor
+$ ceph mon rm centos203 # ç§»é™¤ monitor
 ```
 
 
 ## OSD (Object Storage Device)
 
 ```bash
-$ ceph osd tree¡¡# ²é¿´ osd È¨ÖØºÍÔËĞĞ×´Ì¬£¨´æ´¢Â·¾¶£º osd.1 --> /var/lib/ceph/osd/ceph-1£©
-$ ceph osd dump # ²é¿´ osd ºÍ pool µÈÏêÏ¸ĞÅÏ¢
-$ ceph osd pool create mypool 64 64 # ´´½¨´æ´¢³Ø£¨Êı×Ö·Ö±ğ±íÊ¾ pg_num¡¡ºÍ¡¡pgp_num£©
+$ ceph osd treeã€€# æŸ¥çœ‹ osd æƒé‡å’Œè¿è¡ŒçŠ¶æ€ï¼ˆå­˜å‚¨è·¯å¾„ï¼š osd.1 --> /var/lib/ceph/osd/ceph-1ï¼‰
+$ ceph osd dump # æŸ¥çœ‹ osd å’Œ pool ç­‰è¯¦ç»†ä¿¡æ¯
+$ ceph osd pool create mypool 64 64 # åˆ›å»ºå­˜å‚¨æ± ï¼ˆæ•°å­—åˆ†åˆ«è¡¨ç¤º pg_numã€€å’Œã€€pgp_numï¼‰
 ```
 
 ```bash
-# ²é¿´¶ÔÏóµÄ´æ´¢Î»ÖÃĞÅÏ¢
-# obj1¡¡´æ´¢ÔÚ¡¡pg 2.7 ÉÏ£¬¼´ /var/lib/ceph/osd/ceph-[2,0]/current/2.7_head 
+# æŸ¥çœ‹å¯¹è±¡çš„å­˜å‚¨ä½ç½®ä¿¡æ¯
+# obj1ã€€å­˜å‚¨åœ¨ã€€pg 2.7 ä¸Šï¼Œå³ /var/lib/ceph/osd/ceph-[2,0]/current/2.7_head 
 $ ceph osd map mypool obj1
 osdmap e45 pool 'mypool' (2) object 'obj1' -> pg 2.6cf8deff (2.7) -> up ([2,0], p2) acting ([2,0], p2)
 ```
 
 ```bash
-$ ceph osd down 0 # down µôÒ»¸ö osd
-$ ceph osd rm 0 # É¾³ıÒ»¸ö osd£¨ÒÆ³ıÒ»¸ö osd Ö®Ç°Ó¦¸ÃÏÈ down µô£¬È·±£Êı¾İÍ¬²½µ½ÆäËû½ÚµãÉÏÁË£©
-$ ceph osd crush rm osd.0 # É¾³ıÒ»¸ö osd ´ÅÅÌµÄ crush map
-$ ceph osd crush rm centos194¡¡# É¾³ıÒ»¸ö osd µÄ¡¡host ½Úµã
-$ ceph osd out osd.3 # Öğ³ö¼¯Èº
-$ ceph osd int osd.3 #¡¡¼ÓÈë¼¯Èº
+$ ceph osd down 0 # down æ‰ä¸€ä¸ª osd
+$ ceph osd rm 0 # åˆ é™¤ä¸€ä¸ª osdï¼ˆç§»é™¤ä¸€ä¸ª osd ä¹‹å‰åº”è¯¥å…ˆ down æ‰ï¼Œç¡®ä¿æ•°æ®åŒæ­¥åˆ°å…¶ä»–èŠ‚ç‚¹ä¸Šäº†ï¼‰
+$ ceph osd crush rm osd.0 # åˆ é™¤ä¸€ä¸ª osd ç£ç›˜çš„ crush map
+$ ceph osd crush rm centos-13ã€€# åˆ é™¤ä¸€ä¸ª osd çš„ã€€host èŠ‚ç‚¹
+$ ceph osd out osd.3 # é€å‡ºé›†ç¾¤
+$ ceph osd int osd.3 #ã€€åŠ å…¥é›†ç¾¤
 ```
 
 
 ## RBD (Rados Block Device)
 
-docker Ê¹ÓÃ¡¡ceph ¿é´æ´¢´æ´¢ docker volume£¬Ëü¶ÔÓ¦ ceph rbd ÖĞµÄ¡¡image¡£
+docker ä½¿ç”¨ã€€ceph å—å­˜å‚¨å­˜å‚¨ docker volumeï¼Œå®ƒå¯¹åº” ceph rbd ä¸­çš„ã€€imageã€‚
 
 ```bash
-$ rbd create myimage --size 1024 --pool mypool # ´´½¨¾µÏñ£¨Ä¬ÈÏ³ØÊÇ rbd£¬µ¥Î»£ºMB£©
-$ rbd ls --pool mypool # ²é¿´³ØÖĞ¾µÏñ£¬ËõĞ´: rbd ls mypool
-$ rbd info mypool/myimage # ¾µÏñĞÅÏ¢£¬Í¬¡¡rbd info (--image) myimage --pool mypool
-$ rbd rm mypool/myimage # É¾³ı¾µÏñ
-$ rbd cp mypool/myimage mypool/newimage # ¿½±´¾µÏñ
-$ rbd rename mypool/myimage mypool/img # ÖØÃüÃû
+$ rbd create myimage --size 1024 --pool mypool # åˆ›å»ºé•œåƒï¼ˆé»˜è®¤æ± æ˜¯ rbdï¼Œå•ä½ï¼šMBï¼‰
+$ rbd ls --pool mypool # æŸ¥çœ‹æ± ä¸­é•œåƒï¼Œç¼©å†™: rbd ls mypool
+$ rbd info mypool/myimage # é•œåƒä¿¡æ¯ï¼ŒåŒã€€rbd info (--image) myimage --pool mypool
+$ rbd rm mypool/myimage # åˆ é™¤é•œåƒ
+$ rbd cp mypool/myimage mypool/newimage # æ‹·è´é•œåƒ
+$ rbd rename mypool/myimage mypool/img # é‡å‘½å
 ```
 
 ```bash
-$ rbd resize mypool/myimage --size 2048 # À©Èİ£¬
-$ rbd resize mypool/myimage --size 512 --allow-shrink # ËõÈİ
+$ rbd resize mypool/myimage --size 2048 # æ‰©å®¹ï¼Œ
+$ rbd resize mypool/myimage --size 512 --allow-shrink # ç¼©å®¹
 ```
 
 ```bash
 #
-$ rbd snap create mypool/myimage@mysnap # ´´½¨¿ìÕÕ£¨¿É¶à¸ö£©
-$ rbd snap ls mypool/myimage # ²é¿´¾µÏñ¿ìÕÕ
-$ rbd snap rm mypool/myimage@mynap # É¾³ı myimage ¾µÏñµÄÄ³¸ö¿ìÕÕ
-$ rbd snap purge mypool/myimage # É¾³ı¡¡myimage ¾µÏñµÄËùÓĞ¿ìÕÕ
+$ rbd snap create mypool/myimage@mysnap # åˆ›å»ºå¿«ç…§ï¼ˆå¯å¤šä¸ªï¼‰
+$ rbd snap ls mypool/myimage # æŸ¥çœ‹é•œåƒå¿«ç…§
+$ rbd snap rm mypool/myimage@mynap # åˆ é™¤ myimage é•œåƒçš„æŸä¸ªå¿«ç…§
+$ rbd snap purge mypool/myimage # åˆ é™¤ã€€myimage é•œåƒçš„æ‰€æœ‰å¿«ç…§
 ```
 
 ```bash
-$ rbd showmapped # ²é¿´±¾»úËùÓĞÓ³Éä£¬ÓÃ lsblk ¼ì²é¿´¿´
-$ rbd unmap /dev/rbd1 # È¡Ïû±¾»ú¶Ô /dev/rbd1¡¡µÄÓ³Éä
+$ rbd showmapped # æŸ¥çœ‹æœ¬æœºæ‰€æœ‰æ˜ å°„ï¼Œç”¨ lsblk æ£€æŸ¥çœ‹çœ‹
+$ rbd unmap /dev/rbd1 # å–æ¶ˆæœ¬æœºå¯¹ /dev/rbd1ã€€çš„æ˜ å°„
 ```
 
 
 ## RADOS
 
 ```bash
-$ rados mkpool mypool # pg_num¡¢pgp_num ÎªÄ¬ÈÏ£¬ceph osd pool create mypool 64 64
-$ rados rmpool mypool # É¾³ı´æ´¢³Ø£¬ceph osd pool rm mypool
-$ rados lspools¡¡# ²é¿´ËùÓĞ´æ´¢³Ø£¬ceph osd pool ls
+$ rados mkpool mypool # pg_numã€pgp_num ä¸ºé»˜è®¤ï¼Œceph osd pool create mypool 64 64
+$ rados rmpool mypool # åˆ é™¤å­˜å‚¨æ± ï¼Œceph osd pool rm mypool
+$ rados lspoolsã€€# æŸ¥çœ‹æ‰€æœ‰å­˜å‚¨æ± ï¼Œceph osd pool ls
 ```
 
 ```bash
-$ rados ls --pool mypool # ²éÑ¯Ö¸¶¨³ØÖĞµÄËùÓĞ objects
-$ rados df # ³ØÈİÁ¿¡¢object¡¡¸öÊıµÈĞÅÏ¢
-$ rados put obj1 /etc/hosts --pool mypool # ÉÏ´«ÎÄ¼ş×÷Îª mypool ³ØÖĞµÄ¶ÔÏó obj1
-$ rados stat obj1 --pool mypool # ²é¿´¶ÔÏóĞÅÏ¢
+$ rados ls --pool mypool # æŸ¥è¯¢æŒ‡å®šæ± ä¸­çš„æ‰€æœ‰ objects
+$ rados df # æ± å®¹é‡ã€objectã€€ä¸ªæ•°ç­‰ä¿¡æ¯
+$ rados put obj1 /etc/hosts --pool mypool # ä¸Šä¼ æ–‡ä»¶ä½œä¸º mypool æ± ä¸­çš„å¯¹è±¡ obj1
+$ rados stat obj1 --pool mypool # æŸ¥çœ‹å¯¹è±¡ä¿¡æ¯
 ```
 
 
 ## RGW (Rados Gateway)
   
-ÂÔ
+ç•¥
 
 ## PG
 
 ```bash
 $ ceph pg dump
-$ bash ./pg_num_per_osd.sh # ²éÑ¯Ã¿¸ö osd ÉÏµÄ¡¡pg µÄÊıÁ¿
+$ bash ./pg_num_per_osd.sh # æŸ¥è¯¢æ¯ä¸ª osd ä¸Šçš„ã€€pg çš„æ•°é‡
 ```
 
 ## CRUSH map
 
 ```bash
-$¡¡ceph osd getcrushmap -o crush.map¡¡# µ¼³öµ±Ç°¼¯ÈºµÄ crush map
-$ crushtool -d crush.map -o crush.txt # ·´±àÒë£¨crush.map¡¡²»¿É¶Á£¬crush.txt¡¡¿É¶Á£©
+$ã€€ceph osd getcrushmap -o crush.mapã€€# å¯¼å‡ºå½“å‰é›†ç¾¤çš„ crush map
+$ crushtool -d crush.map -o crush.txt # åç¼–è¯‘ï¼ˆcrush.mapã€€ä¸å¯è¯»ï¼Œcrush.txt å¯è¯»ï¼‰
 ```
 
 ```bash
-$¡¡crushtool -c new_crush.txt -o new_crush.map¡¡# ÖØĞÂ±àÒë£¨¿ÉĞŞ¸ÄºóÖØĞÂ±àÒë¡¡crush map£©
-$ ceph osd setcrushmap -i new_crush.map # ½« crush map ÉèÖÃµ½¼¯ÈºÖĞÈ¥
+$ crushtool -c new_crush.txt -o new_crush.mapã€€# é‡æ–°ç¼–è¯‘ï¼ˆå¯ä¿®æ”¹åé‡æ–°ç¼–è¯‘ crush mapï¼‰
+$ ceph osd setcrushmap -i new_crush.map # å°† crush map è®¾ç½®åˆ°é›†ç¾¤ä¸­å»
 ```
