@@ -78,3 +78,10 @@ Error response from daemon: --cluster-store and --cluster-advertise daemon confi
 ```
 
 原因是 swarm mode 下 --cluster-store 和 --cluster-advertise 不兼容，因为在 docker daemon 中使用了 etcd 作集群存储，所以需要先删除它，并重启 docker。
+
+
+## 参考
+
+* [Docker 1.13 编排能力进化](https://yq.aliyun.com/articles/69444)
+* [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/)
+* [Docker 1.13 最实用命令行：终于可以愉快地打扫房间了](https://segmentfault.com/a/1190000007822648)

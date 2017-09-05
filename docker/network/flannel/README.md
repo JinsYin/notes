@@ -155,7 +155,7 @@ DOCKER_OPT_MTU="--mtu=1450"
 DOCKER_NETWORK_OPTIONS=" --bip=10.20.2.1/24 --ip-masq=true --mtu=1450"
 ```
 
-查看 docker.service 发现它自动引入了上面的配置文件，所以不用再手动修改 docker.service 以及 Docker 环境变量（`/etc/sysconfig/docker`、`/etc/sysconfig/docker-network`）。
+查看 docker.service 发现它自动引入了上面的配置文件，所以不用再手动修改 docker.service 或者 Docker 环境变量（`/etc/sysconfig/docker`、`/etc/sysconfig/docker-network`等）。
 
 ```bash
 $ systemctl cat docker.service
@@ -168,7 +168,7 @@ EnvironmentFile=-/run/flannel/docker
 应该是下面这行代码，使 docker.service 自动引入了 `/run/flannel/docker` 这个配置文件。
 
 ```bash
-$ systemctl cat flanneld | grep ExecStartPost
+$ systemctl cat flanneldservice | grep ExecStartPost
 ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
 ```
 
