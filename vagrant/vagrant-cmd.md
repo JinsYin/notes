@@ -1,6 +1,33 @@
 # Vagrant 命令
 
-## box 管理
+## 别名
+
+实际使用过程中发现，`vagrant` 命令特别容易输错，而且有些子命令也有些不方便。
+
+```bash
+$ # 方式一
+$ alias va='vagrant'
+
+$ # 方式二
+$ vi ~/.bashrc
+va() {
+  if [[ $# -eq 0 ]]; then
+    vagrant
+    exit 0
+  fi
+  case $@ in
+    -s) vagrant status ;;
+    -gs) vagrant global-status ;;
+    *) vagrant -h ;;
+  esac
+}
+$ source ~/.bashrc
+
+```
+
+
+
+## Box 管理
 
 ```bash
 $ # 从官网添加，默认添加到 ~/.vagrant.d/boxes 目录，官网：https://app.vagrantup.com/boxes/search
@@ -79,6 +106,9 @@ $
 $ # 重启，并重新加载 Vagrantfile 配置
 $ vagrant reload 1a2b3c4d
 $ 
+$ # 重启但不执行 provision
+$ vagrant reload --no-provision 1a2b3c4d
+$
 $ # 删除
 $ vagrant destroy 1a2b3c4d
 ```

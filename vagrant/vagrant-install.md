@@ -13,7 +13,6 @@ $ # 官网
 $ curl https://www.vagrantup.com/downloads.html
 ```
 
-
 ## 安装 Provider
 
 Vagrant 默认使用 virtualbox 作为 provider, 同时也支持 hyperv、libvirt、vmware_desktop。

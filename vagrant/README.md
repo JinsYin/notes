@@ -20,3 +20,5 @@ Vagrant 是一个基于 Ruby 开发的工具，用于创建和部署虚拟化开
   * [vagrant 学习笔记 - provision](http://blog.csdn.net/54powerman/article/details/50684844)
   * [Vagrant 入门](http://www.cnblogs.com/davenkin/p/vagrant-virtualbox.html)
   * [Vagrant Documentation](https://www.vagrantup.com/docs/)
+  * [使用 packer 制作 vagrant box：centos](http://www.cnblogs.com/qinqiao/p/packer-vagrant-centos-box.html)
+
