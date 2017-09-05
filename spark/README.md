@@ -19,3 +19,4 @@
 * [编程指南](./spark-programming-guide.md)
 * [RDD 算子](./spark-rdd.md)
 * [Examples](./spark-examples.md)
+* [Spark 常见问题汇总](https://my.oschina.net/tearsky/blog/629201)
