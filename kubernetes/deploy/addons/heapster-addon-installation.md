@@ -1,0 +1,1 @@
+heapster-addon-installation.md

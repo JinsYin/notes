@@ -1,29 +1,22 @@
 # Kubernetes 入门
 
-## 集群架构
+## 部署 nginx
 
-![Kubernetes Cluster](./k8s-cluster.png)
+```bash
+$ kubectl run nginx-app --image=nginx:1.11.9-alpine --port=80 --replicas=3
+```
 
-* Master
+部署好后查看事件日志（`kubectl get events`）发现，实际上并没有真正部署成功，原因是每个 Pod 依赖一个 `gcr.io/google_containers/pause-amd64:3.0` 的镜像，而由于国内的 Great Firewall 导致无法下载 Google 的镜像，但是还是可以使用间接的方式创建这些镜像：
 
-Master 负责管理集群：调度应用、维护应用理想状态、伸缩应用，以及滚动更新。
+```bash
+$ # 所有 Node 节点
+$ docker pull googlecontainer/pause-amd64:3.0
+$ docker tag googlecontainer/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0
+```
 
-* Node
 
-![Kubernetes Node](./img/k8s-node.png)
+## 部署 Node
 
-Node 可以是虚拟机也可以是物理机，在 Kubernetes 集群中作为 worker 使用。每个节点有一个 `Kubelet`，负责管理 Pod 和运行的容器，并与 Kubernetes master 通信。另外，每个节点还需要一个容器引擎，Kubernetes 支持 docker 和 rkt。生产环境的 Kubernetes 最少需要 `3` 个 节点。
-
-* Pod
-
-![Kubernetes Pod](./img/k8s-pod.png)
-
-Pod 是 Kubernetes 的最小单元。当创建一个 Deployment 时会创建一个 Pod。Pod 中的容器共享 IP 地址和端口空间。一个 Pod 运行在一个节点，一个节点可以有多个 Pod。
-
-Pod 包含一个或多个应用容器，以及这些容器的共享资源。这些资源包括：
-  * 共享存储，比如：volume
-  * 网络，比如：一个唯一的集群 IP 地址
-  * 如何运行每个容器的信息，比如：容器的镜像版本或者指定的端口
 
 默认情况，所有的 Pod 仅在集群内部是可见的。如果要从本机访问应用容器，需要在主机和 Kubernetes 集群之间创建一个代理。
 
@@ -44,6 +37,9 @@ $
 $ # 在容器中执行命令
 $ kubectl exec $POD_NAME env
 $ kubectl exec -it $POD_NAME bash
+$
+$ # 查看　Pod IP
+$ kubectl get pods -o yaml -l run=nginx-web | grep podIP
 ```
 
 * Service

@@ -25,3 +25,4 @@ $ kubectl describe pod
 * 解决办法
 
 > https://hub.docker.com/u/googlecontainer/
+> http://blog.csdn.net/luckytanggu/article/details/68926330
