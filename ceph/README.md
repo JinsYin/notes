@@ -10,6 +10,12 @@
 * [Ceph 错误整理](./ceph-error.md)
 
 
+## Ceph 源
+
+  > http://mirrors.aliyun.com/ceph/rpm-jewel/el7
+  > http://download.ceph.com/rpm-jewel/el7
+
+
 ## 参考文章
 
 * [Rexray 文档](http://libstorage.readthedocs.io/en/stable/user-guide/storage-providers/#ceph-rbd)

@@ -87,21 +87,20 @@ $ ceph-deploy install {all-nodes}　--release=jewel --repo-url=http://mirrors.al
 
 ```bash
 $ # 方法一：在所有 ceph 节点都添加 ceph 官方源 （$basearch 就是这样的，请检查一下）
-$ vi /etc/yum.repos.d/ceph.repo
-[ceph]
+$ rpm -Uvh https://download.ceph.com/rpm-jewel/el7/noarch/ceph-release-1-1.el7.noarch.rpm
+$ cat /etc/yum.repos.d/ceph.repo
+[Ceph]
 name=Ceph packages for $basearch
 baseurl=http://download.ceph.com/rpm-jewel/el7/$basearch
 enabled=1
-priority=2
 gpgcheck=1
 type=rpm-md
 gpgkey=https://download.ceph.com/keys/release.asc
 
-[ceph-noarch]
+[Ceph-noarch]
 name=Ceph noarch packages
 baseurl=http://download.ceph.com/rpm-jewel/el7/noarch
 enabled=1
-priority=2
 gpgcheck=1
 type=rpm-md
 gpgkey=https://download.ceph.com/keys/release.asc
@@ -109,8 +108,7 @@ gpgkey=https://download.ceph.com/keys/release.asc
 [ceph-source]
 name=Ceph source packages
 baseurl=http://download.ceph.com/rpm-jewel/el7/SRPMS
-enabled=0
-priority=2
+enabled=1
 gpgcheck=1
 type=rpm-md
 gpgkey=https://download.ceph.com/keys/release.asc
@@ -118,7 +116,7 @@ gpgkey=https://download.ceph.com/keys/release.asc
 
 ```bash
 $ # 方法二：在所有 ceph 节点都添加 ceph 阿里源 （推荐）
-$ vi /etc/yum.repos.d/ceph.repo
+$ vi /etc/yum.repos.d/ceph-aliyun.repo
 [ceph]
 name=Ceph packages for $basearch
 baseurl=http://mirrors.aliyun.com/ceph/rpm-jewel/el7/$basearch
@@ -216,7 +214,7 @@ $ ceph df # 集群使用情况（容量、存储池等）
 ## 集群扩容（可选）
 
 除特别说明外，以下操作均在 ceph-deploy 节点上进行。
-  
+
 添加 osd
 ```bash
 $ cd /ceph-cluster

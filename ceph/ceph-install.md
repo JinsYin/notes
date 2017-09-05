@@ -4,8 +4,8 @@
 
 Ceph 为版本`jewel`（10.2.7），该版本是 cephfs 的第一个稳定版本，所以打算用在生产环境中。
 其中，  
-cephfs 用于存储 ais 原始报文；  
-ceph 块存储用于存储　docker 卷；  
+cephfs 用于存储 ais 原始报文； 
+ceph 块存储用于存储　docker 卷； 
 ceph 对象存储用于存储　docker 镜像。
 
 ```bash
@@ -14,12 +14,12 @@ $ sudo -i # 统一使用 root 用户
 
 节点布局
 
-ip | hostname | 角色 |
---------------- | --------- | --------------
-192.168.111.191 | centos191 | deploy-node, osd-node
-192.168.111.192 | centos192 | mon-node, osd-node, radosgw-node
-192.168.111.193 | centos193 | mon-node, osd-node
-192.168.111.194 | centos194 | mon-node, osd-node
+| ip              | hostname  | 角色                               |      |
+| --------------- | --------- | -------------------------------- | ---- |
+| 192.168.111.191 | centos191 | deploy-node, osd-node            |      |
+| 192.168.111.192 | centos192 | mon-node, osd-node, radosgw-node |      |
+| 192.168.111.193 | centos193 | mon-node, osd-node               |      |
+| 192.168.111.194 | centos194 | mon-node, osd-node               |      |
 
 ## 安装 CEPH 部署工具
 
