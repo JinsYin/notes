@@ -42,8 +42,7 @@ http://gateway-node1:7480
 $ netstat -tpln | grep radosgw
 ```
 
-
-# 修改默认端口 (暂时不修改)
+## 修改默认端口 (暂时不修改)
 
 ```bash
 # ceph-deploy 节点
@@ -71,7 +70,6 @@ $ systemctl status ceph-radosgw@rgw.centos-11.service
 为使用 REST 接口，首先需要为 S3 接口创建一个初始 Ceph 对象网关用户，然后为 Swift 接口创建一个子用户，最后需要验证创建的用户是否可以访问网关。
 　　
 以下操作均在 ceph 管理节点上操作。
-　　
 1. 为　S3　访问创建　radosgw　用户
 ```bash
 $ radosgw-admin user create --uid="registry" --display-name="Docker Registry User" # keys.access_key 和 keys.secret_key 用来访问时作验证

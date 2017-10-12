@@ -30,7 +30,7 @@ $ ceph mon dump
 $ ceph quorum_status -f json-pretty
 ```
 
-## MON 
+## MON
 
 ```bash
 $ ceph mon rm centos203 # 移除 monitor
@@ -47,7 +47,7 @@ $ ceph osd pool create mypool 64 64 # 创建存储池（数字分别表示 pg_nu
 
 ```bash
 # 查看对象的存储位置信息
-# obj1　存储在　pg 2.7 上，即 /var/lib/ceph/osd/ceph-[2,0]/current/2.7_head 
+# obj1　存储在　pg 2.7 上，即 /var/lib/ceph/osd/ceph-[2,0]/current/2.7_head
 $ ceph osd map mypool obj1
 osdmap e45 pool 'mypool' (2) object 'obj1' -> pg 2.6cf8deff (2.7) -> up ([2,0], p2) acting ([2,0], p2)
 ```
@@ -111,7 +111,7 @@ $ rados stat obj1 --pool mypool # 查看对象信息
 
 
 ## RGW (Rados Gateway)
-  
+
 略
 
 ## PG

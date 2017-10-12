@@ -14,7 +14,7 @@
 ```bash
 $ # ceph-node-1 为主机名
 $ systemctl stop ceph-mon@ceph-node-1.service
-$ systemctl unenable ceph-mon@ceph-node-1.service
+$ systemctl disable ceph-mon@ceph-node-1.service
 ```
 
 解决办法二： 在 ceph-admin 节点上移除远程节点的 Ceph MON
