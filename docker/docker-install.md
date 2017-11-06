@@ -51,7 +51,7 @@ docker-engine-selinux-1.12.6-1.el7.centos.noarch
 docker-engine-1.12.6-1.el7.centos.x86_64
 
 $ # 修改 docker.service 并重启 docker
-$ cp ops/docker/docker.service /usr/lib/systemd/system/docker.service
+$ cp ops/systemd/docker.service /usr/lib/systemd/system/docker.service
 $ systemctl daemon-reload
 $ systemctl enable docker.service && systemctl restart docker.service
 ```
