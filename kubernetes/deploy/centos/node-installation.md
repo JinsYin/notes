@@ -1,1 +1,0 @@
-node-installation.md
