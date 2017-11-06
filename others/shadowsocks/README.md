@@ -8,7 +8,7 @@ Shadowsocks 也通常简称 ss，支持 `sock4` 、`sock5`、`http`、`https` �
 * docker
 
 ```bash
-$ docker run -d --restart=always --name ss -p 1314:1314 ficapy/shadowsocks -s 0.0.0.0 -p 1314 -k password -m aes-256-ctr
+$ docker run -d --name ss --restart=always -p 1314:1314 ficapy/shadowsocks -s 0.0.0.0 -p 1314 -k password -m aes-256-cfb
 ```
 
 * ubuntu
@@ -23,7 +23,7 @@ $ # 安装指定版本版本
 $ pip install git+https://github.com/shadowsocks/shadowsocks.git@2.8.2
 
 $ # 命令行后台部署
-$ ssserver -s 0.0.0.0 -p 8788 -k password -m aes-256-ctr -d start
+$ ssserver -s 0.0.0.0 -p 8788 -k password -m aes-256-cfb -d start
 
 $ # 停止
 $ ssserver -d stop
@@ -46,7 +46,7 @@ $ cat /etc/shadowsocks.json
   "local_port":1080,
   "password":"mypassword",
   "timeout":300,
-  "method":"aes-256-ctr",
+  "method":"aes-256-cfb",
   "fast_open": false
 }
 
@@ -93,7 +93,7 @@ $ vi /etc/shadowsocks-libev/config.json
   "local_port":1080,
   "password":"mypassword",
   "timeout":60,
-  "method":"aes-256-ctr"
+  "method":"aes-256-cfb"
 }
 
 $ # 启动 shadowsocks client
