@@ -69,7 +69,7 @@ $ git commit -a -m "msg" # 等价于 git add * && git commit -m "msg" （并不�
 
 ```bash
 # 使用新的提交代替上一次提交，可以用来修改上一次的提交信息
-$ git commimt --amend -m [message]
+$ git commit --amend -m [message]
 ```
 
 ```bash
@@ -94,7 +94,7 @@ $ git mv new.md old.md # 工作区也会跟着改名
 
 ```bash
 # 同时删除工作区和暂存区中的 f1.md
-$ git rm (-f) f1.md # 等价于 rm (-f) f1.md && git rm --cached f1.md
+$ git rm (-f) f1.md # 等价于 git rm (-f) f1.md && git rm --cached f1.md
 ```
 
 ```bash
