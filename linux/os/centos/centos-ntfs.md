@@ -18,9 +18,6 @@ $ yum install epel-release
 $ yum install ntfs-3g -y
 ```
 
-
-## 
-
 ```bash
 $ yum install ntfsprogs -y
 ```

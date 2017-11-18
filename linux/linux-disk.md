@@ -44,7 +44,7 @@ $ fdisk /dev/sdb # 分区是针对整个盘
 
 常用
 > 创建一个主分区： `n`，`p`，`1`，`Enter`，`Enter`，`wq`。  
-> 为分区设置引导项： `a`，`1`，`wq` （使用 fdisk -l 查看该分区的 boot 列是否增加了一个 ”*“）。
+> 为分区设置引导项： `a`，`1`，`wq` （使用 fdisk -l 查看该分区的 boot 列是否增加了一个 *）。
 
 ## 卸载
 ```bash
@@ -55,6 +55,33 @@ $ umount /dev/sdb1  # 卸载分区
 ## 查看挂载及文件系统信息：
 ```bash
 $ mount -l
+```
+
+
+## 磁盘性能测试
+
+* 测试随机写 IOPS
+
+```bash
+$ fio -direct=1 -iodepth=128 -rw=randwrite -ioengine=libaio -bs=4k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Rand_Write_Testing
+```
+
+* 测试随机读 IOPS
+
+```bash
+$ fio -direct=1 -iodepth=128 -rw=randread -ioengine=libaio -bs=4k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Rand_Read_Testing
+```
+
+* 测试顺序写吞吐量
+
+```bash
+$ fio -direct=1 -iodepth=64 -rw=write -ioengine=libaio -bs=1024k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Write_PPS_Testing
+```
+
+* 测试顺序读吞吐量
+
+```bash
+$ fio -direct=1 -iodepth=64 -rw=read -ioengine=libaio -bs=1024k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Read_PPS_Testing
 ```
 
 ## 阿里云

@@ -56,7 +56,7 @@ $ yum clean all
 
 ## 刷新缓存
 
-如果添加了 repo 到 /etc/yum.repos.d，可以使用以下命令来刷新缓存。
+如果添加了 repo 到 /etc/yum.repos.d，可以使用以下命令来刷新缓存、更新 repo。
 
 ```bash
 $ yum makecache

@@ -1,1 +1,0 @@
-etcd-cluster-installation.md

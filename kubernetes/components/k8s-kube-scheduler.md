@@ -1,1 +1,0 @@
-kube-scheduler.md
