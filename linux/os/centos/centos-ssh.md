@@ -89,5 +89,9 @@ $ systemctl restart sshd
 ```
 
 
+## Permission denied
+
+SSH 远程时出现："Permission denied (publickey,gssapi-keyex,gssapi-with-mic)"，目前只能手动将公钥添加到目标服务器的 `~/.ssh/authorized_keys` 中。
+
 ## 参考
 > http://blog.csdn.net/wenwenxiong/article/details/48685723
