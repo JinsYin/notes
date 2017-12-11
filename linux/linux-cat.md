@@ -5,19 +5,31 @@
 * 方法一
 
 ```bash
-$ 视情况决定使用 ">>" 还是 ">"
+$ # 覆盖
+$ cat <<EOF > /tmp/file
+1234567890
+abcdefghij
+EOF
+
+$ # 追加
 $ cat <<EOF >> /tmp/file
-aaa
-bbb
+1234567890
+abcdefghij
 EOF
 ```
 
 * 方法二
 
 ```bash
-$ # 貌似不支持追加
+$ # 覆盖
 $ tee /tmp/file <<EOF
-123
-456
+1234567890
+abcdefghij
+EOF
+
+$ # 追加
+tee -a /tmp/file <<EOF
+1234567890
+abcdefghij
 EOF
 ```
