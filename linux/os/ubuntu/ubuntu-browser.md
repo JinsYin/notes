@@ -1,16 +1,29 @@
 # Ubuntu Browser
 
-chromium
-```bash
-$ sudo apt-get install chromium-browser
-```
-chrome
+## 安装
+
+* chrome
+
 > https://www.google.com/chrome/
 
-Firefox
+* chromium
+
 ```bash
-$ sudo add-apt-repository ppa:ubuntu-mozilla-security/ppa
-$ sudo apt-get update
-$ sudo apt-cache policy firefox
-$ sudo apt-get install firefox # latest
+$ apt-get install chromium-browser
+```
+
+* Firefox
+
+```bash
+$ add-apt-repository ppa:ubuntu-mozilla-security/ppa
+$ apt-get update
+$ apt-cache policy firefox
+$ apt-get install firefox # latest
+```
+
+
+## Flash 支持
+
+```bash
+$ apt-get install adobe-flashplugin
 ```

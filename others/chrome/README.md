@@ -22,6 +22,13 @@ $ sudo apt-get install chromium-browser=${YOUR-VERSION}
 [chrome://chrome-urls/](chrome://chrome-urls/)
 
 
+## Flash 支持
+
+```bash
+$ apt-get install adobe-flashplugin
+```
+
+
 ## 插件
 
 Chrome 插件分为 [extension](chrome://extensions/) 和 [app](chrome://apps/)。
