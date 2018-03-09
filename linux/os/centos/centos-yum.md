@@ -28,12 +28,27 @@ $ yum --exclude=kernel* --exclude=centos-release* update
 
 ```bash
 $ yum repolist
+
+$ yum repolist all
 ```
 
-## 开启 epel 的源
+## 开启 epel repository
+
+* epel
 
 ```bash
-$ yum install epel-release
+$ yum install -y epel-release
+
+# or
+$ rpm -Uvh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+* elrepo
+
+```bash
+$ rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+
+$ rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 ```
 
 
@@ -48,7 +63,7 @@ $
 $　# 清除所有缓存的包数据文件
 $ yum clean headers
 $
-$ # 清除所有缓存
+$ # 清除所有缓存（不要乱来）
 $ yum clean all
 ```
 
@@ -63,7 +78,6 @@ $ yum makecache
 
 $ yum makecache fast
 ```
-
 
 
 ## 查询已安装的包
@@ -134,3 +148,8 @@ $ yum install yum-utils
 ## 代理
 
 > https://www.centos.org/docs/5/html/yum/sn-yum-proxy-server.html
+
+
+## 命令
+
+> https://docs.oracle.com/cd/E37670_01/E37355/html/ol_creating_yum_repo.html
