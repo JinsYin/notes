@@ -184,6 +184,11 @@ first-value
 ```
 
 
+## 工具
+
+* [ShellCheck](https://github.com/koalaman/shellcheck)
+
+
 ## 参考
 
 * [Bash 指南 - 条件语句](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html)

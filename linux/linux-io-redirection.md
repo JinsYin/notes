@@ -117,7 +117,7 @@ $ # 等同于
 $ cat in.log
 ```
 
-我们常用到的 grep、head 等操作文件的命令也是这个原来。
+我们常用到的 grep、head 等操作文件的命令也是这个原理。
 
 ```bash
 $ grep 123 in.log

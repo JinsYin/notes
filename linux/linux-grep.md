@@ -1,6 +1,6 @@
 # Linux Grep
 
-`grep` 查找命令
+`grep`、`egrep` 查找命令
 
 
 ## 不分大小写

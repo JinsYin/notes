@@ -1,6 +1,15 @@
 # CPU
 
 
+## 获取信息
+
+```bash
+$ lscpu
+
+$ cat /proc/cpuinfo
+```
+
+
 ## CPU 压测
 
 * 通过 bc 命令计算特别函数
