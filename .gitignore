@@ -66,5 +66,9 @@ $RECYCLE.BIN/
 # Vagrant
 .vagrant
 
+### JupyterNotebook ###
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
 
 # End of https://www.gitignore.io/api/git,java,linux,windows

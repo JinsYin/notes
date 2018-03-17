@@ -24,6 +24,7 @@ hello, world
 $ # 设置运行环境时，一般不直接指定 python 路径，因为各个系统的路径可能不一样
 $ vi hello.py
 #!/usr/bin/env python3
+# coding: utf-8
 print("Hello, world")
 $
 $ # 运行方式一
