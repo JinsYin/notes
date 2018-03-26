@@ -15,10 +15,11 @@ $ apt-get install chromium-browser
 * Firefox
 
 ```bash
+$ apt-get install -y software-properties-common
 $ add-apt-repository ppa:ubuntu-mozilla-security/ppa
 $ apt-get update
 $ apt-cache policy firefox
-$ apt-get install firefox # latest
+$ apt-get install firefox # 安装最新版本
 ```
 
 
