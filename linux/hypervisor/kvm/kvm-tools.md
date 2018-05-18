@@ -1,6 +1,6 @@
 # KVM 工具
 
-### 组件和作用
+## 组件及作用
 
 * `qemu-kvm`: KVM + Qemu
 * `virt-manager`: 虚拟机管理工具（virsh）
@@ -27,10 +27,9 @@ $ yum install -y qemu-kvm
 $ apt-get install qemu-kvm
 ```
 
-
 ## libvirt
 
-`libvirt` 是一个管理虚拟化主机的工具包，为不同的虚拟化技术提供统一的 API 接口，包括 `KVM`、`QEMU`、`Xen`、`VMWare ESX` 以及 `LXC` 等。 
+`libvirt` 是一个管理虚拟化主机的工具包，为不同的虚拟化技术提供统一的 API 接口，包括 `KVM`、`QEMU`、`Xen`、`VMWare ESX` 以及 `LXC` 等。
 
 * CentOS
 

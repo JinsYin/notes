@@ -2,7 +2,6 @@
 
 KVM 是 Kernel-based Virtual Machine 的缩写，即基于内核的虚拟机。KVM 是基于硬件的完全虚拟化，因此它需要硬件支持（英特尔的 `Inter-VT` 技术，AMD 的 `AMD-V` 技术）。
 
-
 ## KVM、QEMU、QEMU-KVM
 
 
@@ -10,7 +9,7 @@ KVM 是 Kernel-based Virtual Machine 的缩写，即基于内核的虚拟机。K
 
 | 镜像格式 | Hypervisor |
 | raw    | (all)      |
-| qed    | KVM        | 
+| qed    | KVM        |
 | qcow2  | KVM Xen    |
 | vdi    | VirtualBox |
 | vhd    | Hyper-V    |

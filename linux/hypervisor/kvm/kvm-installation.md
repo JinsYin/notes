@@ -4,15 +4,15 @@
 
 安装虚拟机之前，需要先检查宿主机是否支持 KVM 虚拟化。
 
-* BIOS 支持
+### BIOS 支持
 
-需要在　BIOS 中开启虚拟化选项。
+需要在 BIOS 中开启虚拟化选项。
 
-```
+```BIOS
 Intel(R) Virtualization Tech [Enabled]
 ```
 
-* 内核支持
+### 内核支持
 
 KVM 的内核组件已经从 Linux `2.6.20` 版本集成到主线中。
 
@@ -29,7 +29,7 @@ $ modprobe kvm-intel # Intel
 $ modprobe kvm-amd   # AMD
 ```
 
-* 硬件支持
+### 硬件支持
 
 KVM 虚拟化要求宿主机的 CPU 支持虚拟化，其中 Intel 处理器是 `VT-x`，而 AMD 处理器是 `AMD-V`。
 
@@ -40,7 +40,6 @@ Virtualization: VT-x
 # Intel: vmx, AMD: svm
 $ grep -E "(vmx|svm)" /proc/cpuinfo
 ```
-
 
 ## 命令行安装
 
@@ -75,7 +74,7 @@ $ service libvirt-bin start
 $ service libvirt-bin status
 ```
 
-* 验证
+### 验证
 
 ```bash
 # 连接 libvirt（/var/run/libvirt/libvirt-sock） 查看虚拟机列表
@@ -96,7 +95,7 @@ $ mkdir -p /home/kvm/{img,vms}
 $ brctl addbr kvm0
 
 # 开启路由转发
-$ sysctl net.ipv4.ip_forwad=1
+$ sysctl net.ipv4.ip_forward=1
 
 # 安装 CentOS 虚拟机
 $ virt-install \
@@ -117,26 +116,25 @@ $ virt-install \
 
 参数说明：
 
-  * `--virt-type`: Hypervisor 类型，如：kvm、qemu、xen 等。
-  * `--vcpu`: 配置虚拟机 vcpu 的数量。
-  * `--cpu`: CPU 型号和特点。
-  * `--metadata`: 配置虚拟机 metadata，如：--metadata name=centos73,describe="CentOS 7.3 base"
-  * `--connect`: 支持远程安装，如：--connect qemu+ssh://x.x.x.x/system。
-  * `--location`: 安装所需的镜像源，如：nfs:host/path, http://host/path, ftp://host/path。
-  * `--extra-args='console=ttyS0'`: 传递给 `--location` 的附加参数，允许通过 `virsh console` 连接虚拟机。
-  * `--os-type`: 操作系统类型，如：linux、windows、unix。
-  * `--os-variant`: 操作系统发行版本，如：rhel7、fedora6、win2k。
-  * `--disk`: 存储选项，如：'path=/exist/disk'、'path=/new/disk,size=5'（GB）、'vol=poolname/volname,device=cdrom,bus=scsi,...'。
-  * `--filesystem`: 拷贝宿主机目录到虚拟机，如：'/source/dir,/dir/in/guest'、'template_name,/,type=template'
-  * `--network`: 配置虚拟机网络，如：'bridge=mybr0'、'network=default'、'network=my_libvirt_virtual_net'、'network=mynet,model=virtio,mac=00:11...'、'bridge=br0,model=virtio'。
-  * `--graphics`: 配置虚拟机的显示设置，如：'vnc'、'spice,port=5901,tlsport=5902'、'none'、'vnc,listen=0.0.0.0,port=5910,password=x'
-  * `--autostart`: 随宿主机自启动。
-  * `--force`: 所有提示一律 yes。
+* `--virt-type`: Hypervisor 类型，如：kvm、qemu、xen 等。
+* `--vcpu`: 配置虚拟机 vcpu 的数量。
+* `--cpu`: CPU 型号和特点。
+* `--metadata`: 配置虚拟机 metadata，如：--metadata name=centos73,describe="CentOS 7.3 base"
+* `--connect`: 支持远程安装，如：--connect qemu+ssh://x.x.x.x/system。
+* `--location`: 安装所需的镜像源，如：nfs:host/path, http://host/path, ftp://host/path。
+* `--extra-args='console=ttyS0'`: 传递给 `--location` 的附加参数，允许通过 `virsh console` 连接虚拟机。
+* `--os-type`: 操作系统类型，如：linux、windows、unix。
+* `--os-variant`: 操作系统发行版本，如：rhel7、fedora6、win2k。
+* `--disk`: 存储选项，如：'path=/exist/disk'、'path=/new/disk,size=5'（GB）、'vol=poolname/volname,device=cdrom,bus=scsi,...'。
+* `--filesystem`: 拷贝宿主机目录到虚拟机，如：'/source/dir,/dir/in/guest'、'template_name,/,type=template'
+* `--network`: 配置虚拟机网络，如：'bridge=mybr0'、'network=default'、'network=my_libvirt_virtual_net'、'network=mynet,model=virtio,mac=00:11...'、'bridge=br0,model=virtio'。
+* `--graphics`: 配置虚拟机的显示设置，如：'vnc'、'spice,port=5901,tlsport=5902'、'none'、'vnc,listen=0.0.0.0,port=5910,password=x'
+* `--autostart`: 随宿主机自启动。
+* `--force`: 所有提示一律 yes。
 
 ### 配置虚拟机（CentOS7.3）
 
 通过命令行安装虚拟机还需要配置系统基础设置，带 `[!]` 基本都需要配置。
-
 
 ```
 1) [x] Language settings                 2) [!] Time settings
@@ -151,7 +149,7 @@ $ virt-install \
       (No user will be created)
 ```
 
-* Time settings
+* 时间设置（Time settings）
 
 `2` => `1` => `5` => `62`
 `2` => `2` => `1` => `cn.pool.ntp.org` => `c`
@@ -168,7 +166,7 @@ $ virt-install \
 
 `5` => `c` => `2` => `c` => `1` => `c`
 
-*  Network configuration
+* Network configuration
 
 `7` => `1` => `centos73`
 `7` => `2` => `1` => `192.168.10.122`
@@ -178,6 +176,8 @@ $ virt-install \
            => `7`
            => `8`
            => `c` => `c`
+
+也进入 VM 系统后再配置网络。
 
 * Root password
 
@@ -221,7 +221,7 @@ $ cat /etc/sysconfig/network-scripts/ifcfg-em1
 TYPE="Ethernet"
 BOOTPROTO="none"
 IPADDR="192.168.10.120"
-GATEWAY="192.168.10.1"jjjjjjjjj
+GATEWAY="192.168.10.1"
 NETMASK="255.255.255.0"
 NM_CONTROLLED="no"
 DEFROUTE="yes"
@@ -325,7 +325,6 @@ $ brctl show kvm0
 bridge name  bridge id          STP enabled  interfaces
 kvm0         8000.1866da4d881f  yes          em
 ```
-
 
 ## GUI 安装
 

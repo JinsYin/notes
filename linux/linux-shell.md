@@ -183,6 +183,27 @@ first-value
 first-value
 ```
 
+## eval
+
+`eval` 可调用脚本中的函数。
+
+```bash
+$ cat x.sh
+#!/bin/bash
+
+fx() {
+    echo "Hello, world"
+}
+
+eval $@
+```
+
+脚本外执行 fx 函数。
+
+```bash
+$ x.sh fx
+```
+
 
 ## 工具
 

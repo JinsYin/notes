@@ -79,6 +79,7 @@ SLAVE=yes
 NM_CONTROLLED=no
 USERCTL=no
 
+# 从网卡没有 IP
 $ cat /etc/sysconfig/network-scripts/ifcfg-em2
 TYPE=Ethernet
 BOOTPROTO=none
@@ -97,7 +98,7 @@ DEVICE=bond0
 ONBOOT=yes
 NM_CONTROLLED=no
 USERCTL=no
-BONDING_OPTS="mode1 miimon=100"
+BONDING_OPTS="mode=2 miimon=100"
 BOOTPROTO=static
 IPADDR=192.168.10.120
 NETMASK=255.255.255.0
@@ -105,13 +106,13 @@ NETMASK=255.255.255.0
 
 Bonding mode:
 
-  * mode=0: Balance Round Robin
-  * mode=1: Active backup
-  * mode=2: Balance XOR
-  * mode=3: Broadcast
-  * mode=4: 802.3ad
-  * mode=5: Balance TLB
-  * mode=6: Balance ALB
+* mode=0: Balance Round Robin
+* mode=1: Active backup
+* mode=2: Balance XOR
+* mode=3: Broadcast
+* mode=4: 802.3ad
+* mode=5: Balance TLB
+* mode=6: Balance ALB
 
 ```BASH
 $ systemctl restart network
