@@ -4,7 +4,6 @@
 
 > https://pkgs.alpinelinux.org/packages
 
-
 ## apk 命令
 
 * 安装
@@ -27,7 +26,6 @@ $ apk del --no-cache --purge bash
 $ apk info
 $ apk info -vv # 显示版本等信息
 ```
-
 
 ## 常用安装包
 

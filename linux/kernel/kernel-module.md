@@ -2,7 +2,6 @@
 
 内核模块（Kernel Module）是可以按需加载或卸载的内核代码，不需要重启系统就可以扩充内核的功能。
 
-
 ## 获取信息
 
 ```bash
@@ -16,7 +15,6 @@ $ modinfo ip_vs
 $ modprobe -D ip_vs
 ```
 
-
 ## 加载卸载
 
 ```bash
@@ -27,7 +25,6 @@ $ modprobe ip_vs
 $ modprobe -r ip_vs
 $ rmmod ip_vs
 ```
-
 
 ## 参考
 
