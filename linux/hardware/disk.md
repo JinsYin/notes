@@ -1,9 +1,22 @@
-# 磁盘常用操作
+# 磁盘管理
 
-## 判断磁盘类型
+## 查看磁盘
 
 ```bash
-# 0: SSD，1: 硬盘
+# 磁盘、分区、容量、扇区个数、扇区大小、分区表
+$ fdisk -l
+
+# 磁盘、分区、容量、挂载
+$ lsblk
+
+# 分区、UUID、LABEL、FS Type
+$ blkid
+```
+
+## 检查磁盘类型
+
+```bash
+# 0: SSD，1: HDD
 $ cat /sys/block/sdX/queue/rotational
 ```
 
@@ -18,44 +31,71 @@ sdd     0
 sde     1
 ```
 
-## 查看有那些磁盘
+## 格式化
 
 ```bash
-$ fdisk -l
-$ lsblk
+# 格式化分区（如果需要格式化整个磁盘且该盘已有分区表，需要使用 -f 强制擦除）
+$ mkfs.xfs /dev/sdb1 # 或 mkfs -t xfs /dev/sdb1
+```
+
+## 挂载、卸载
+
+```bash
+# 查看挂载及文件系统信息
+$ mount -l
 ```
 
 ```bash
-# 查看磁盘 UUID
-$ blkid
-```
-
-## 查看磁盘挂载及容量信息
-
-```bash
+# 查看磁盘挂载及容量信息
 $ df -h
 ```
 
-## 格式化盘
 ```bash
-$ mkfs.xfs -f /dev/sdb	# xfs: 文件系统类型， -f: 强制清空磁盘
+# 挂载
+$ mount /dev/sdb1 (-c) /mnt/sdb1 # -c: 检测磁盘坏道
 ```
 
-## 挂载
 ```bash
-$ mount /dev/sdb (-c) /ceph/osd	# -c: 检测磁盘坏道
-```
-
-## 开机自动挂载
-```bash
+# 开机自动挂载
 # 第一个数字表示dump选项：0不备份，1备份，2备份（比1重要性小）
 # 第二个数字表示是否在启动是用 fsck 校验分区：０不校验，１校验，２校验（比１晚校验）
-$ echo "/dev/sdb /ceph/osd xfs defaults 0 1" >> /etc/fstab
+$ echo "/dev/sdb1 /mnt/sdb1 xfs defaults 0 1" >> /etc/fstab
+```
+
+```bash
+# 卸载盘
+$ umount /dev/sdb
+
+# 卸载分区
+$ umount /dev/sdb1
 ```
 
 ## 分区
+
+### 分区表（partition table）
+
+分区表：将大表的数据分成称为分区的子集，类型有 `ext4`、`xfs`、`ntfs`、`fat32`。
+
+分区表格式及特点：
+
+| 类型/格式          | 支持的最大卷 | 支持的最大分区数                   |
+| ------------------ | ------------ | ---------------------------------- |
+| MBR（主引导记录）  | 2TB          | `4 主` 或 `3 主 + 1 扩展 + ∞ 逻辑` |
+| GPT（GUID 分区表） | 18EB         | 128                                |
+
 ```bash
-$ fdisk /dev/sdb # 分区是针对整个盘
+# 查看磁盘扇区大小
+$ fdisk -l /dev/sdb | grep -i 'sector size'
+Sector size (logical/physical): 512 bytes / 512 bytes
+```
+
+### fdisk
+
+`fdisk` 只支持 MBR 分区表，所以存在诸多限制。
+
+```bash
+# 对整个数据盘进行分区
+$ fdisk /dev/sdb
 > a  # 开关引导项（bootable flag）
 > d  # 删除一个分区
 > l  # 列出支持的分区类型
@@ -67,48 +107,111 @@ $ fdisk /dev/sdb # 分区是针对整个盘
 > w  # 写入分区表到磁盘并退出
 ```
 
-常用
-> 创建一个主分区： `n`，`p`，`1`，`Enter`，`Enter`，`wq`。  
-> 为分区设置引导项： `a`，`1`，`wq` （使用 fdisk -l 查看该分区的 boot 列是否增加了一个 *）。
+常见应用：
 
-## 卸载
 ```bash
-$ umount /dev/sdb   # 卸载盘
-$ umount /dev/sdb1  # 卸载分区
+# 创建一个新的主分区（如果已有，需要先删除主分区）
+`n`，`p`，`1`，`Enter`，`Enter`，`wq`
+
+# 为分区设置引导项（使用 fdisk -l 查看该分区的 boot 列是否增加了一个 *）
+`a`，`1`，`wq`
 ```
 
-## 查看挂载及文件系统信息：
+### parted
+
+`parted` 工具使用 GNU 分布的，支持 GPT 分区表。
+
 ```bash
-$ mount -l
+# RHEL/CentOS
+$ yum install -y parted
+
+# Debian/Ubuntu
+$ apt-get install -y parted
 ```
 
+```bash
+$ parted /dev/sdb
+> help    # 帮助；查看某个命令的信息：help mkpart
+> quit    # 退出
+> mklabel/mktable LABEL-TYPE # 创建一个新的分区表；LABEL-TYPE：aix, amiga, bsd, dvh, gpt, mac, msdos, pc98, sun, loop
+> mkpart PART-TYPE [FS-TYPE] START END  # 创建一个分区；分区类型：primary、logical、extended；START/END：分区的起始/结束位置（单位支持 K、M、G、T，或者百分比）
+> select DEVICE # 选择磁盘设备进行编辑
+> align-check TYPE N # 检查分区是否对齐；TYPE：{min|opt}，opt（optimal）；N：分区编号
+> print   # 查看当前分区情况
+```
+
+常见应用：
+
+```bash
+# 创建 GPT 分区表
+mklabel gpt
+
+# 创建一个 0KB ~ 500GB 的主分区（没有对齐分区）
+mkpart primary xfs 0KB 500GB
+
+# 将整个磁盘创建一个分区（有对齐分区：从第 2048 个扇区开始）
+mkpart primary xfs 2028s 100%
+
+# 删除分区（print 查看分区号）
+rm 1
+```
+
+对齐分区：
+
+```bash
+# 分区时常遇到如下问题
+# Warning: The resulting partition is not properly aligned for best performance.
+
+# 获取阵列的 alignment 参数
+optimal_io_size=`cat /sys/block/sdb/queue/optimal_io_size`
+minimum_io_size=`cat /sys/block/sdb/queue/minimum_io_size`
+alignment_offset=`cat /sys/block/sdb/alignment_offset`
+physical_block_size=`cat /sys/block/sdb/queue/physical_block_size`
+
+echo $optimal_io_size
+echo $alignment_offset
+echo $minimum_io_size
+echo $physical_block_size
+
+# 分区起始点（单位：s，即 sector，扇区）
+# 没有优化的系统其 optimal_io_size 为 0，所以结果也为 0，这种情况直接设置为 2048s
+$ start=$((($optimal_io_size + $alignment_offset) / $physical_block_size))
+
+> mkpart primary xfs 2048s 100%
+> align-check optimal 1 # 检查分区是否对齐（返回 aligned 即对齐）
+```
+
+> <https://zhidao.baidu.com/question/620202831535071412.html>
+> <https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/>
 
 ## 磁盘性能测试
 
-* 测试随机写 IOPS
+| 硬盘类型 | 速度     |
+| -------- | -------- |
+| SATA     | <150 M/s |
+| SCSI     | <200 M/s |
+| SAS      | ~200 M/s |
+| SSD      | ~500 M/s |
 
 ```bash
+# 测试随机写 IOPS
 $ fio -direct=1 -iodepth=128 -rw=randwrite -ioengine=libaio -bs=4k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Rand_Write_Testing
 ```
 
-* 测试随机读 IOPS
-
 ```bash
+# 测试随机读 IOPS
 $ fio -direct=1 -iodepth=128 -rw=randread -ioengine=libaio -bs=4k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Rand_Read_Testing
 ```
 
-* 测试顺序写吞吐量
-
 ```bash
+# 测试顺序写吞吐量
 $ fio -direct=1 -iodepth=64 -rw=write -ioengine=libaio -bs=1024k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Write_PPS_Testing
 ```
 
-* 测试顺序读吞吐量
-
 ```bash
+# 测试顺序读吞吐量
 $ fio -direct=1 -iodepth=64 -rw=read -ioengine=libaio -bs=1024k -size=1G -numjobs=1 -runtime=1000 -group_reporting -filename=iotest -name=Read_PPS_Testing
 ```
-
 
 ## XFS
 
@@ -126,14 +229,39 @@ $ xfs_db -r -c "frag -f" /dev/sda1
 $ xfs_fsr -v /dev/sda1
 ```
 
-## 磁盘性能
+## 交换空间
 
-| 硬盘类型 | 速度     |
-| -------- | -------- |
-| SATA     | <150 M/s |
-| SCSI     | <200 M/s |
-| SAS      | ~200 M/s |
-| SSD      | ~500 M/s |
+### 使用交换分区创建交换空间
+
+```bash
+# 创建交换分区
+$ mkswap /dev/sdb2
+
+# 启用交换空间
+$ swapon /dev/sdb2
+
+# 开启自启动
+$ blkid # 获取分区 UUID
+$ vi /etc/fstab
+UUID=XXX swap swap defaults 0 0
+```
+
+### 使用交换文件创建交换空间
+
+```bash
+# 创建一个 20GB 的交换文件
+$ dd if=/dev/zero of=/swap bs=1024k count=20480
+
+# 创建交换空间
+$ mkswap /swap
+
+# 启用交换空间
+$ swapon /swap
+
+# 开启自启动
+$ vi /etc/fstab
+/swap swap swap defaults 0 0
+```
 
 ## 视频教程
 
