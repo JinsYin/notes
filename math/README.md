@@ -10,7 +10,10 @@
 
 * 根号7 = 2.646
 
-
 ## 工具
 
 * [LaTex Editor Online](https://www.codecogs.com/latex/eqneditor.php)
+
+## Python for math
+
+* [maths-with-python](https://github.com/IanHawke/maths-with-python)
