@@ -2,7 +2,7 @@
 
 ## 安装 Anaconda3
 
-建议安装最新版本，且不要使用 root 用户来安装。
+建议安装最新版本，且不要使用 `root` 用户来安装。
 
 * 安装
 
@@ -64,7 +64,7 @@ $ vi ~/.bashrc
 
 * 更新
 
-应该经常更新 Anaconda，以便可以使用最新的软件包。下面以 `base` 环境为例：
+应该经常更新 `anaconda`，以便可以使用最新的软件包。下面以 `base` 环境为例：
 
 ```bash
 # 先更新 conda 工具
@@ -73,7 +73,6 @@ $ conda update conda
 # 更新完 conda 后，再更新 anaconda 软件包
 $ conda update anaconda
 ```
-
 
 ## 参考
 

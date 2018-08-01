@@ -29,7 +29,7 @@ $ apt-get install python3
 * **编译安装**
 
 ```bash
-$ # 会自动安装 python 和 pip
+# 会自动安装 python 和 pip
 $ wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
 $ tar xzf Python-3.5.3.tgz
 $ cd Python-3.5.3
@@ -73,8 +73,3 @@ pip 9.0.1 from /usr/local/lib/python3.4/site-packages (python 3.4)
 $ # 升级
 $ pip3 install --upgrade pip
 ```
-
-
-
-
-
