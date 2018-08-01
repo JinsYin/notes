@@ -20,3 +20,7 @@ ARG HADOOP_TARBALL=http://www.apache.org/dist/hadoop/common/hadoop-2.7.3/hadoop-
 ```bash
 docker build -f Dockerfile -t dockerce/hadoop:2.7.3 --build-arg HADOOP_TARBALL=hadoop-2.7.3.tar.gz .
 ```
+
+## ADD & wget & curl
+
+使用 `ADD` 和 `wget` 下载文件时，每次 `docker build` 都会重新下载一次，但 `curl` 不会。

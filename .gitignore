@@ -66,5 +66,7 @@ $RECYCLE.BIN/
 # Vagrant
 .vagrant
 
+# Visual Studio Code
+.vscode
 
 # End of https://www.gitignore.io/api/git,java,linux,windows

@@ -43,4 +43,3 @@ StringBuffer 和 StringBuilder 是字符串变量，是可改变的对象
   StringBuilder：非线程安全
 
   StringBuffer：线程安全
-
