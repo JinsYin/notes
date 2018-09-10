@@ -16,7 +16,7 @@ $ db.getMongo(); # 查看当前连接的数据库地址信息
 ## 集合（collection）命令
 
 ```bash
-$ show collections(); / db.getCollectionNames(); / show tables(); # 查看当前数据库有哪些集合
+$ show collections; / show tables; / db.getCollectionNames();  # 查看当前数据库有哪些集合
 $ db.createCollection("mycoll"); # 创建空集合
 $ db.createCollection(name, { size : ..., capped : ..., max : ... } )
 $ db.mycoll.help(); # 集合命令
@@ -63,8 +63,8 @@ $ db.mycoll.dropIndex({"indexKey": 1}); # 删除制定索引
 
 ```bash
 $ db.mycoll.insert({name: 'yin', age: 24, gender: true}); # 插入一条记录, 如果集合不存在自动创建
-$ db.mycoll.insertMany([{name: 'abc', age: 1}, {name: 'efd', age: 26}]); # 插入多条记录
-$ db.mycoll.update({age: 24}, {$set: {name: 'jins'}}, false, true); # 更新，第一个 boolean 值表示是否 upsert, 第二个表示是否更新 multi 个,
+$ db.mycoll.insertMany([{name: 'abc', age: 1}, {name: 'efd', age: 26}]); # 插入多条记录（数组）
+$ db.mycoll.update({age: 24}, {$set: {name: 'jins'}}, false, true); # 更新，第一个 boolean 值表示是否 upsert（更新或添加）, 第二个表示是否更新 multi 个,
 $ db.mycoll.updateOne({name: 'yin', {$set: {name: 'jins'}, $inc: {age: 1}}}, false); # 更新第一个，boolean 值表示是否 upsert
 $ db.mycoll.updateMany({age: 24, {$set: {name: 'jins'}}, false})
 $ db.mycoll.deleteOne({age: 24}); # 删除第一条记录
