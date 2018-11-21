@@ -27,6 +27,21 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 ```
 
+## str `in`
+
+`in` 除了可以判断元素是否在列表中以外，还可以判断字符串之间是否存在包含关系。
+
+```python
+# Non-Pythonic
+def contain(x, y):
+    import re
+    return True if re.search(x, y) else False
+
+# Pythonic
+def contain(x, y):
+    return x in y
+```
+
 ## 浅拷贝和深拷贝
 
 ## 获取列表、元组、字符串中的最后一个元素
@@ -200,7 +215,7 @@ lst = [None] * 10
 tuple = (None) * 10
 ```
 
-## 字符串索引
+## 字符串索引/截取
 
 ```python
 string = "Hello"
@@ -213,6 +228,7 @@ print(string_arr[0], string_arr[4]) # H o
 ```python
 # Pythonic
 print(string[0], string[4]) # H o
+print(string[0:3]) # Hel
 ```
 
 ## 连接字符串列表

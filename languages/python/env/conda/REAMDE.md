@@ -10,39 +10,41 @@ Anaconda 的核心是 conda，同时 conda 也是一个包管理器。
 ## 常用操作
 
 ```bash
-# 查看安装了哪些包及其版本
+# 查看安装了哪些软件包及其版本
 $ conda list
 
-# 查看某个环境已安装的包
+# 查看某个虚拟环境已安装的软件包
 $ conda list -n python2.7
 
-# 查看已安装的包的版本信息，或者检查包是否被安装
+# 查看已安装的软件包的版本信息，或者检查软件包是否被安装
 $ conda list pip
 Name    Version    Build    Channel
 pip     9.0.1      py36h6c6f9ce_4
 
-# 查询所有可安装的包，以及可安装的版本
+# 查询所有可安装的软件包，以及可安装的版本
 $ conda search
 
-# 查询某个包可用的版本
+# 查询某个软件包可用的版本
 $ conda search python
 $ conda search "^python$"
 
-# 安装最新版本的包
+# 安装最新版本的软件包
 $ conda install numpydoc
 
-# 安装指定版本的包
+# 安装指定版本的软件包
 $ conda install numpydoc=0.6.0
 
-# 更新某个包
+# 更新某个软件包
 $ conda update python
 
-# 更新所有包
+# 更新所有软件包
 $ conda update
 
 # 删除软件包
 $ conda remove <package>
 ```
+
+> 切勿使用 pip 升级或卸载 conda 安装的软件包；pip 的升级和卸载操作仅限于 pip install 命令安装的软件包
 
 ## 虚拟环境
 

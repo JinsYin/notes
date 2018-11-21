@@ -1,10 +1,8 @@
 # 安装 Anaconda
 
-## 安装 Anaconda3
+## 安装
 
 建议安装最新版本，且不要使用 `root` 用户来安装。
-
-* 安装
 
 ```bash
 # 下载
@@ -31,7 +29,7 @@ anaconda Command line client (version 1.6.9)
 conda 4.4.10
 ```
 
-* 检查
+## 检查
 
 Anaconda 除了会安装一些用于数据分析的 Python 依赖包（路径：`~/anaconda3/lib/python3.6/site-packages`）外，还会安装一些二进制程序（路径：`~/anaconda3/bin`），如：`python`、`pip`、`jupyter`、`anaconda-navigator` 等等。
 
@@ -46,7 +44,7 @@ $ pip --version
 pip 9.0.1 from /home/yin/anaconda3/lib/python3.6/site-packages (python 3.6)
 ```
 
-* 卸载
+## 卸载
 
 ```bash
 # 该模块用于在卸载 Anaconda 时删除配置文件，最新的 Anaconda 已默认安装该模块
@@ -62,15 +60,15 @@ $ rm -rf ~/.anaconda3
 $ vi ~/.bashrc
 ```
 
-* 更新
+## 升级
 
-应该经常更新 `anaconda`，以便可以使用最新的软件包。下面以 `base` 环境为例：
+升级 `anaconda` 包可以获取最新的软件包。下面以 `base` 虚拟环境为例：
 
 ```bash
-# 先更新 conda 工具
+# 先升级 conda 工具
 $ conda update conda
 
-# 更新完 conda 后，再更新 anaconda 软件包
+# 升级完 conda 后，再更新 anaconda 软件包
 $ conda update anaconda
 ```
 
