@@ -1,16 +1,14 @@
-# Ceph 入门
-
-## 容器体验
+# Ceph Demo
 
 使用容器部署更加便于测试和体验 Ceph 的新功能。
 
-### Mimic 发行版
+## Latest
 
 ```bash
-$ ceph -rf /etc/ceph && docker rm -f ceph-mimic
+$ ceph -rf /etc/ceph && docker rm -f ceph
 
-# 目前最新版本为 Mimic (13.2.0)
-$ docker run -d --name ceph-mimic --net=host --restart=always \
+# 最新版本
+$ docker run -d --name ceph --net=host --restart=always \
   -e MON_IP=192.168.8.220 \
   -e CEPH_PUBLIC_NETWORK=192.168.8.0/24 \
   -e CEPH_DEMO_UID=jjyy \
@@ -20,19 +18,48 @@ $ docker run -d --name ceph-mimic --net=host --restart=always \
   ceph/daemon:latest demo
 ```
 
-包含以下守护进程：
+## Mimic
 
-* 1 monitor
-* 1 object storage daemon
-* 1 metadata server
-* 1 rados gateway
-* 1 manager daemon (since luminous)
-* 1 rbd mirror
+```bash
+$ ceph -rf /etc/ceph && docker rm -f ceph-mimic
 
-### Luminous 发行版
+# 目前最新版本为 Mimic (13.2.x)
+$ docker run -d --name ceph-mimic --net=host --restart=always \
+  -e MON_IP=192.168.8.220 \
+  -e CEPH_PUBLIC_NETWORK=192.168.8.0/24 \
+  -e CEPH_DEMO_UID=jjyy \
+  -e CEPH_DEMO_ACCESS_KEY=jjyy \
+  -e CEPH_DEMO_SECRET_KEY=jjyy \
+  -v /etc/ceph:/etc/ceph \
+  ceph/daemon:latest-mimic demo
+```
+
+相关进程及服务：
+
+| 进程名       | 端口   | 协议     | 备注                          |
+| ------------ | ------ | -------- | ----------------------------- |
+| 1 `radosgw`  | 8080   | Swift/S3 | Ceph Rados Gateway (civetweb) |
+| 1 `ceph-mgr` | 6800   | HTTP     | Ceph Manager Daemon           |
+| 1 `ceph-mon` | 6789   | ~        | Ceph Monitor                  |
+| 1 `ceph-mds` | 6805   | ~        | Ceph Metadata Server          |
+| 4 `ceph-osd` | 6801 ~ | ~        | Ceph OSD                      |
+| 1 `python`   | 5000   | HTTP     | Ceph Nano                     |
+| 1 `python`   | 7000   | HTTP     | Ceph Nano                     |
+
+## Luminous
 
 ```bash
 $ ceph -rf /etc/ceph && docker rm -f ceph-luminous
+
+# Luminous（当前版本：12.2.7）
+$ docker run -d --name ceph-luminous --net=host \
+  -e MON_IP=192.168.8.220 \
+  -e CEPH_PUBLIC_NETWORK=192.168.8.0/24 \
+  -e CEPH_DEMO_UID=jjyy \
+  -e CEPH_DEMO_ACCESS_KEY=jjyy \
+  -e CEPH_DEMO_SECRET_KEY=jjyy \
+  -v /etc/ceph:/etc/ceph \
+  ceph/daemon:latest-luminous demo
 
 # Luminous（没有 radosgw）
 $ docker run -d --name ceph-luminous --net=host --restart=always \
@@ -44,7 +71,7 @@ $ docker run -d --name ceph-luminous --net=host --restart=always \
   -v /etc/ceph:/etc/ceph \
   ceph/demo:tag-build-master-luminous-centos-7
 
-# Luminous（没有测试成功）
+# Luminous（没有测试成功，版本为 12.0.3）
 $ docker run -d --name ceph-luminous --net=host \
   -e MON_IP=192.168.8.220 \
   -e CEPH_PUBLIC_NETWORK=192.168.8.0/24 \
@@ -55,7 +82,7 @@ $ docker run -d --name ceph-luminous --net=host \
   ceph/daemon:tag-build-master-luminous-centos-7 demo
 ```
 
-### Jewel 发行版
+## Jewel
 
 ```bash
 $ ceph -rf /etc/ceph && docker rm -f ceph-jewel
@@ -69,9 +96,19 @@ $ docker run -d --name ceph-jewel --net=host --restart=always \
   -e CEPH_DEMO_SECRET_KEY=jjyy \
   -v /etc/ceph:/etc/ceph \
   ceph/demo:latest
+
+# 老是崩溃
+$ docker run -d --name ceph-jewel --net=host --restart=always \
+  -e MON_IP=192.168.8.220 \
+  -e CEPH_PUBLIC_NETWORK=192.168.8.0/24 \
+  -e CEPH_DEMO_UID=jjyy \
+  -e CEPH_DEMO_ACCESS_KEY=jjyy \
+  -e CEPH_DEMO_SECRET_KEY=jjyy \
+  -v /etc/ceph:/etc/ceph \
+  ceph/daemon:latest-jewel demo
 ```
 
-### 检查（Mimic 为例）
+## 检查（Mimic 为例）
 
 ```bash
 # docker logs -f ceph-mimic
@@ -105,7 +142,7 @@ $ sudo apt-get install -y ceph-common && sudo ceph -s # ubuntu
 $ sudo yum install -y ceph-common && sudo ceph -s     # centos
 ```
 
-### 监控（Mimic 为例）
+## 监控（Mimic 为例）
 
 ```bash
 # Ceph manager dashboard

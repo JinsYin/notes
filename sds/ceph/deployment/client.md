@@ -36,7 +36,7 @@ $ scp /etc/ceph/<cluster_name>.client.admin.keyring <user>@<client_host:/etc/cep
 ## Ubuntu
 
 ```bash
-# 系统版本
+# 系统版本（旧）
 $ apt-get install ceph-common
 ```
 

@@ -4,6 +4,9 @@
 
 * 任一节点上 OSD 硬盘的吞吐量之和不能超过网络带宽
 
+public network：monitor与osd，client与monitor，client与osd通信的网络，最好配置为带宽较高的万兆网络；
+cluster network：OSD之间通信的网络，一般配置为带宽较高的万兆网络；
+
 ## OSD
 
 * 操作系统、OSD data、OSD journal 在不同的设备上，以最大化吞吐量

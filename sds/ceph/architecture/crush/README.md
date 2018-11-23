@@ -2,6 +2,14 @@
 
 本质上，CRUSH 算法是通过 `存储设备的权重` 来计算数据对象的分布的。
 
+## CRUSH 算法
+
+<!--
+Storage cluster clients and each Ceph OSD Daemon use the CRUSH algorithm to efficiently compute information about data location.
+-->
+
+Ceph 客户端和 OSD Daemon 使用 CRUSH 算法计算数据位置信息，而不用查找表。
+
 ## CRUSH hierarchy
 
 ## CRUSH bucket

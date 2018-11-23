@@ -20,15 +20,15 @@ s3_region = 'CN' # optional
 
 s3 = boto3.client('s3', region_name=s3_region, endpoint_url=s3_endpoint, aws_access_key_id=s3_access_key, aws_secret_access_key=s3_secret_key)
 
-"创建一个 Bucket"
+'''创建一个 Bucket'''
 s3.create_bucket(Bucket=s3_bucket)
 
-"列出所有的 Bucket"
+'''列出所有的 Bucket'''
 response = s3.list_buckets()
 buckets = [bucket['Name'] for bucket in response['Buckets']]
 print("Bucket List: %s" % buckets)
 
-"上传文件到 Bucket"
+'''上传文件到 Bucket'''
 filename = '/tmp/file.txt'
 s3.upload_file(filename, s3_bucket, 'file.txt')
 ```
