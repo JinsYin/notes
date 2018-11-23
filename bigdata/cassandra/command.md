@@ -73,7 +73,7 @@ Cassandra 支持两种存储策略： `SimpleStrategy` 和 `NetworkTopologyStrat
 CREATE KEYSPACE myspace WITH replication={'class': 'SimpleStrategy', 'replication_factor': 2};
 
 /* NetworkTopologyStrategy 存储策略 */
-CREATE KEYSPACE myspace WITH replication={'class': 'NetworkTopologyStrategy', 'dc1': 2}；
+CREATE KEYSPACE myspace WITH replication={'class': 'NetworkTopologyStrategy', 'dc1': 2, 'dc2': 3}；
 ```
 
 * 修改

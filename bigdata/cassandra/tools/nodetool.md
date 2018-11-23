@@ -45,7 +45,7 @@ TokenRange(start_token:-8371557560962077843, end_token:-8315370236528078734, end
 ## 移除节点
 
 ```bash
-# 若节点状态为 UN
+# 若节点状态为 UN（在将要移除的节点上执行该命令）
 $ nodetool decommission
 ```
 

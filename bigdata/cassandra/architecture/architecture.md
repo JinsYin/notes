@@ -16,7 +16,7 @@
 ## 节点间通信（gossip）
 
 * Gossip 是一个点对点的通信协议，通过该协议节点间周期性地交换它们的信息以及它们知道的其它节点的信息
-* Cassandra 使用 gossip 来发现集群中其他节点的位置和状态信息
+* Cassandra 使用 gossip 协议来发现集群中其他节点的位置和状态信息
 
 ## 负载均衡
 
@@ -34,6 +34,8 @@
 * Ordered partitioning
 
 ## Snitch
+
+Snitch 定义了复制策略用来放置 replicas 和路由请求所使用的拓扑信息。
 
 Snitch 用于让每个节点知道自己的位置（DataCenter、Rack）。
 

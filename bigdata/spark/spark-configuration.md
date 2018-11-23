@@ -1,6 +1,6 @@
 # Spark 配置
 
-## Spark 配置 Hadoop 参数
+## Spark 配置 hadoop-aws 参数
 
 Spark 集成了 Hadoop，所以可以在 Spark 中配置 Hadoop 参数（示例配置的是 hadoop-aws 的参数）。
 
@@ -18,7 +18,7 @@ val conf = new SparkConf().set("spark.hadoop.fs.s3a.access.key", "value")
 val sc = new SparkContext().hadoopConfiguration.set("fs.s3a.access.key", "value")
 ```
 
-> * [Set hadoop configuration values on spark-submit command line](https://stackoverflow.com/questions/42796561/set-hadoop-configuration-values-on-spark-submit-command-line)
+* [Set hadoop configuration values on spark-submit command line](https://stackoverflow.com/questions/42796561/set-hadoop-configuration-values-on-spark-submit-command-line)
 
 ## 参考
 

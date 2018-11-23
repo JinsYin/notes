@@ -1,4 +1,4 @@
-# Kafka 配置参数
+# 配置参数
 
 ## kafka.consumer.ConsumerConfig
 
@@ -7,7 +7,6 @@
 ## kafka.server.KafkaConfig
 
 > https://github.com/apache/kafka/blob/0.10.2/core/src/main/scala/kafka/server/KafkaConfig.scala
-
 
 ## kafka.producer.ProducerConfig
 

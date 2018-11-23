@@ -6,9 +6,9 @@
 
 | IP             | DataCenter:RACK |
 | -------------- | --------------- |
-| 192.168.10.200 | DCHK:R2         |
+| 192.168.10.200 | DCHK:R1         |
 | 192.168.10.201 | DCHK:R2         |
-| 192.168.10.202 | DCHK:R4         |
+| 192.168.10.202 | DCHK:R3         |
 
 ## 要求
 
@@ -16,7 +16,7 @@
 $ python --version
 Python 2.7.5
 
-$ java --version
+$ java -version
 openjdk version "1.8.0_171"
 OpenJDK Runtime Environment (build 1.8.0_171-b10)
 OpenJDK 64-Bit Server VM (build 25.171-b10, mixed mode)
@@ -26,6 +26,49 @@ OpenJDK 64-Bit Server VM (build 25.171-b10, mixed mode)
 # 先关闭防火墙，否则节点之间可能无法相互发现
 $ systemctl stop firewalld
 $ systemctl disable firewalld
+```
+
+## 准备数据盘
+
+* 分区
+
+如果 Cassandra 存储盘大于 2T，需要使用 `parted` 来分区，否则使用 `fdisk`。
+
+```bash
+$ parted /dev/sdb
+
+# 创建 GPT 分区表
+mklabel gpt
+
+# 将整个磁盘创建一个分区（有对齐分区：从第 2048 个扇区开始）
+mkpart primary xfs 2048s 100%
+
+quit
+```
+
+* 格式化分区
+
+```bash
+mkfs -xfs /dev/sdb1
+```
+
+* 挂载存储盘
+
+```bash
+$ mkdir -p /data/cassandra
+
+# 手动挂载
+$ mount /dev/sdb1 /data/cassandra
+
+# 设置软连接
+$ ln -s /data/cassandra /var/lib/cassandra
+
+# 开机自动挂载（必须使用 UUID，不能使用盘符，因为重启后可能发送改变）
+$ blkid | grep /dev/sdb1 # 查看分区的 UUID
+/dev/sdb1: UUID="b9eb1854-9cb3-446e-8d25-3b94ce051801" TYPE="xfs" PARTLABEL="primary" PARTUUID="17c66ee5-7fdb-4d9e-bb71-020e71fe5363"
+
+$ vi /etc/fstab
+UUID=b9eb1854-9cb3-446e-8d25-3b94ce051801 /data/cassandra xfs defaults 0 0
 ```
 
 ## CentOS
@@ -72,8 +115,9 @@ $ rm -rf /var/lib/cassandra/data/system/*
 
 ```yaml
 $ vi /etc/cassandra/conf/cassandra.yaml
-cluster_name: 'ECassandra'
+cluster_name: 'HKCassandra'
 
+# 一个集群一般 2 ~ 3 个 seed 节点即可，我这里设置为 3 个，以后添加节点还是保持这 3 个 seed
 seed_provider:
     - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
@@ -88,20 +132,22 @@ endpoint_snitch: GossipingPropertyFileSnitch
 ```
 
 ```yaml
-# 如果 snitch 类型选择 PropertyFileSnitch，则修改该文件
+# 如果 snitch 类型选择 PropertyFileSnitch，则通过该文件设置好节点的拓扑结构
 $ vi /etc/cassandra/conf/cassandra-topology.properties
 # Cassandra Node IP=Data Center:Rack
-192.168.10.200=DCHK:R2
+192.168.10.200=DCHK:R1
 192.168.10.201=DCHK:R2
-192.168.10.202=DCHK:R4
+192.168.10.202=DCHK:R3
 
 # default for unknown nodes
-default=DCHK:R2
+default=DCHK:R1
 ```
 
 ```yaml
-# GossipingPropertyFileSnitch
-# 192.168.10.200 所属的 Data Center 和 RACK
+# 如果 snitch 类型选择 GossipingPropertyFileSnitch，上面的 cassandra-topology.properties 文件可写可不写，
+# 如果写了该文件会先加载它再通过 Gossiping 协议进行探测其他 seed 节点，没写的话直接通过 Gossiping 协议进行探测
+# 实际上，GossipingPropertyFileSnitch 是对 PropertyFileSnitch 的一种向后兼容
+# 192.168.10.201 节点所属的 Data Center 和 RACK
 $ vi /etc/cassandra/conf/cassandra-rackdc.properties
 dc=DCHK
 rack=R2
@@ -115,7 +161,7 @@ $ rm -rf /var/lib/cassandra
 $ ln -s /data/cassandra /var/lib/cassandra
 
 # 改变权限
-$ chown cassandra /var/lib/cassandra
+$ chown cassandra:cassandra /var/lib/cassandra
 ```
 
 ## 启动

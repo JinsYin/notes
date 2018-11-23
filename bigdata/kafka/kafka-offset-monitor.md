@@ -2,7 +2,7 @@
 
 ## 下载
 
-Github 的上的 KafkaOffsetMonitor 的 JAR 中的静态资源有些链接用到了 Google 的超链接，所有如果直接只用，若本地木有代理软件会启动出错，这里使用网络所提供的 JAR ，这个 JAR 是经过静态资源改版后重新编译的使用本地静态资源。 
+Github 的上的 KafkaOffsetMonitor 的 JAR 中的静态资源有些链接用到了 Google 的超链接，所有如果直接只用，若本地木有代理软件会启动出错，这里使用网络所提供的 JAR ，这个 JAR 是经过静态资源改版后重新编译的使用本地静态资源。
 
 > https://github.com/quantifind/KafkaOffsetMonitor
 > http://pan.baidu.com/s/1sj0YERV
@@ -32,7 +32,6 @@ $ ./mobile_start_en.sh
 
 ![Kafka OffsetMonitor Check](./img/kafka-offset-monitor-check.png)
 
-
 ## Web 端
 
 访问：192.168.1.121:8086
@@ -48,8 +47,3 @@ Web 端详情：
 每个 Topic 的详情：
 
 ![Kafka OffsetMonitor Topic Detail](./img/kafka-offset-monitor-web-topic-detail.png)
-
-
-## 作者
-
-本文档由 `xxx` 创建，由 `尹仁强`、 `王若凡` 参与整理。

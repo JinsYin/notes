@@ -5,11 +5,9 @@
 本文档提供 Kafka 入门级帮助，帮助读者快速理解什么是 Kafka 以及 Kafka 的工作机制。
 Kafka 详细中文教程 http://orchome.com/kafka/index 。
 
-
 ## Kafka
 
 Kafka 是消息中间件的一种，简单而言，可以将 Kafka 理解为一个消息队列，消息队列可以理解为消息的进出通道，既可以将消息放置在该队列里，又可以将消息从该队列里取出来。
-
 
 ## Kafka 工作机制
 
@@ -26,7 +24,6 @@ Kafka 是消息中间件的一种，简单而言，可以将 Kafka 理解为一�
 ![Kafka Guild Mechanism Consume](./img/kafka-guild-mechanism-consume.png)
 
 上面两幅图解释了生产者存放消息和消费者消费消息的机制
-
 
 ## Kafka 编程指南
 
@@ -105,8 +102,3 @@ props.put("consumer.timeout.ms", "1000");
 ```
 
 默认 kafka 配置为 -1 即一直等待。这里设置为 1s，当超出 1s 后仍然没有消息到来，这里会抛出异常。我们也就利用这个异常来跳出这个 topic 的消息等待来获取下一个 topic 的相关消息。
-
-## 作者
-
-本文档由 `xxx` 创建，由 `尹仁强`、`王若凡` 整理。
-

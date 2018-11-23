@@ -32,3 +32,54 @@ legacy               : Legacy support mode
 -sendto               : Specify a stress server to send this command to
 -tokenrange           : Token range settings
 ```
+
+## 示例
+
+以 `192.168.100.160` 为测试机：
+
+* 写入 1 亿行
+
+```bash
+$ cassandra-stress write n=100000000 -node 192.168.100.200
+Results:
+op rate                   : 77697 [WRITE:77697]
+partition rate            : 77697 [WRITE:77697]
+row rate                  : 77697 [WRITE:77697]
+latency mean              : 0.4 [WRITE:0.4]
+latency median            : 0.3 [WRITE:0.3]
+latency 95th percentile   : 0.5 [WRITE:0.5]
+latency 99th percentile   : 0.6 [WRITE:0.6]
+latency 99.9th percentile : 1.6 [WRITE:1.6]
+latency max               : 151.3 [WRITE:151.3]
+Total partitions          : 1000000 [WRITE:1000000]
+Total errors              : 0 [WRITE:0]
+total gc count            : 0
+total gc mb               : 0
+total gc time (s)         : 0
+avg gc time(ms)           : NaN
+stdev gc time(ms)         : 0
+Total operation time      : 00:00:12
+END
+```
+
+* 读取 1 亿行
+
+```bash
+$ cassandra-stress read n=100000000 -node 192.168.100.200
+```
+
+* 持续读取 10 分钟
+
+```bash
+$ cassandra-stress read duration=10m -node 192.168.100.200
+```
+
+* 持续写入 10 分钟
+
+```bash
+$ cassandra-stress write duration=10m -node 192.168.100.200
+```
+
+## 参考
+
+* [Cassandra 压力测试](http://zqhxuyuan.github.io/2015/10/15/Cassandra-Stress/)
