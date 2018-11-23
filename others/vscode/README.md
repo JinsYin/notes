@@ -25,6 +25,11 @@
     "window.zoomLevel": 0,
     "http.proxy": "http://127.0.0.1:1080",
     "http.proxyStrictSSL": false,
-    "editor.multiCursorModifier": "ctrlCmd"
+    "editor.multiCursorModifier": "ctrlCmd",
+    "workbench.statusBar.visible": true,
+    "window.menuBarVisibility": "default",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.snippetSuggestions": "top",
 }
 ```

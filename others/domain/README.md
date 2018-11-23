@@ -4,6 +4,8 @@
 
 ```bash
 $ sudo apt-get install whois
+
+# 查看 baidu.com 的 whois
 $ whois baidu.com
 ```
 
