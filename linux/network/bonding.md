@@ -2,31 +2,12 @@
 
 利用 Linux 的 `bond` 模块可实现多块网卡绑定单个 IP 地址，用于提升服务器的网络 I/O。
 
-## 加载、配置 bonding 模块
+## 加载模块
 
-### 配置 bonding
-
-```bash
-$ vi /etc/modprobe.d/bond.conf
-alias bond0 bonding
-#option bond0 max_bonds=4 miimon=100 mode=1 primary=em1
-```
-
-相关说明：
-
-* `option`: 除了在这里设置外，还可以在网卡配置中使用 `BONDING_OPTS` 进行设置。
-* `max_bonds`： 指定该 bonding 驱动实例可以创建的 bonding 数量。
-* `miimon`: 表示每 100ms 监测一次链路状态。bonding 只监测主机与交换机之间的链路。如果交换机出去的链路出问题而本身没有问题，那么bonding认为链路没有问题而继续使用。
-* `mode`: 绑定模式，共七种。
-  * `0`: load balancing（round-robin）；负载均衡轮询策略，所有绑定网卡都工作。
-  * `1`: fault-tolerance（active-backup）；提供主从冗余功能，仅主网卡工作；另外该模式支持使用 `primary` 指定哪个 slave 作为主设备。
-  * `2`: load balancing（xor）；提供负载均衡和容错功能。
-  * `3`: broadcast；广播策略。
-
-### 加载 bonding
+* 临时加载
 
 ```bash
-# 加载
+# 临时加载
 $ modprobe bonding
 
 # 验证
@@ -34,24 +15,80 @@ $ lsmod | grep bonding
 bonding     141566  0
 ```
 
+* 开机自动加载
+
+```bash
+$ cd /etc/sysconfig/modules/
+
+# 名称根据模块名来命名
+$ vi bonding.modules
+#！/bin/sh
+/sbin/modinfo -F filename bonding > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    /sbin/modprobe bonding
+fi
+
+# 改变权限，之后重启
+$ chmod +x bonding.modules
+```
+
+## Bonding 配置
+
+`bonding` 内核模块的参数必须指定到 `ifcfg-bondN` 接口文件的 `BONDING_OPTS="<bonding parameters>"` 选项中（中间用空格分隔），而不是 `/etc/modprobe.d/bonding.conf` 或 `/etc/modprobe.conf`。
+
+* `max_bonds`： 指定该 bonding 驱动实例可以创建的 bonding 数量；`ifcfg-bondN` 文件使用 `BONDING_OPTS` 选项时不应该设置。
+* `miimon`: 表示每 100ms 监测一次链路状态。bonding 只监测主机与交换机之间的链路。如果交换机出去的链路出问题而本身没有问题，那么 bonding 认为链路没有问题而继续使用。
+* `mode`: 绑定模式，共七种。
+  * `0`: load balancing（round-robin）；负载均衡轮询策略，所有绑定网卡都工作。
+  * `1`: fault-tolerance（active-backup）；提供主从冗余功能，仅主网卡工作；另外该模式支持使用 `primary` 指定哪个 slave 作为主设备。
+  * `2`: load balancing（xor）；提供负载均衡和容错功能。
+  * `3`: broadcast；广播策略。
+  * `4`: 802.3ab 负载均衡模式，要求交换机也支持 802.3ab 模式，理论上服务器及交换机都支持此模式时，网卡带宽最高可以翻倍(如从 1Gbps 翻到 2Gbps)
+
 ## 实现
+
+（我测试发现，`mode=4` 比 `mode=2` 更稳定可靠，丢包率更低）
 
 ### 配置网卡
 
 * 配置 bonding
 
+方式一：最稳定
+
 ```bash
-$ vi /etc/sysconfig/network-scripts/ifcfg-bond0
 TYPE=Ethernet
-DEVICE=bond0
+NAME=bond0 # 自定义
+DEVICE=bond0 # 自定义
 BOOTPROTO=none
 ONBOOT=yes
-USERCTL=no
-BONDING_OPTS="miimon=100 mode=2"
-NETMASK=255.255.255.0
-GATEWAY=192.168.10.1
-IPADDR=192.168.10.103
+DEFROUTE=yes # 视情况而定，比如万兆可能就不应该设置为默认路由
+USERCTL=no # 仅 root 用户可以控制
 NM_CONTROLLED=no
+BONDING_OPTS="miimon=100 mode=4" # mode 自定义
+IPADDR=192.168.10.103 # 自定义
+GATEWAY=192.168.10.1
+NETMASK=255.255.255.0
+DNS1=114.114.114.114
+```
+
+方式二：这种方式虽然是官方建议的，但测试下来丢包率太高
+
+```bash
+$ vi /etc/sysconfig/network-scripts/ifcfg-bond0
+TYPE=Bond
+NAME=bond0 # 自定义
+DEVICE=bond0 # 自定义
+BOOTPROTO=none
+ONBOOT=yes
+DEFROUTE=yes # 视情况而定，比如万兆可能就不应该设置为默认路由
+USERCTL=no # 仅 root 用户可以控制
+NM_CONTROLLED=no
+BONDING_MASTER=yes
+BONDING_OPTS="miimon=100 mode=4" # mode 自定义
+IPADDR=192.168.10.103 # 自定义
+GATEWAY=192.168.10.1
+NETMASK=255.255.255.0
+DNS1=114.114.114.114
 ```
 
 * 网卡 １
@@ -63,11 +100,11 @@ $ cp /etc/sysconfig/network-scripts/{ifcfg-em1,ifcfg-em1.bak}
 $ vi /etc/sysconfig/network-scripts/ifcfg-em1
 TYPE=Ethernet
 DEVICE=em1
-USERCTL=no
-ONBOOT=yes
+BOOTPROTO=none
 MASTER=bond0
 SLAVE=yes
-BOOTPROTO=none
+ONBOOT=yes
+USERCTL=no
 NM_CONTROLLED=no
 ```
 
@@ -77,11 +114,11 @@ NM_CONTROLLED=no
 $ vi /etc/sysconfig/network-scripts/ifcfg-em2
 TYPE=Ethernet
 DEVICE=em2
-USERCTL=no
-ONBOOT=yes
+BOOTPROTO=none
 MASTER=bond0
 SLAVE=yes
-BOOTPROTO=none
+ONBOOT=yes
+USERCTL=no
 NM_CONTROLLED=no
 ```
 
@@ -91,11 +128,11 @@ NM_CONTROLLED=no
 $ vi /etc/sysconfig/network-scripts/ifcfg-em3
 TYPE=Ethernet
 DEVICE=em3
-USERCTL=no
-ONBOOT=yes
+BOOTPROTO=none
 MASTER=bond0
 SLAVE=yes
-BOOTPROTO=none
+ONBOOT=yes
+USERCTL=no
 NM_CONTROLLED=no
 ```
 
@@ -157,11 +194,12 @@ $ ifconfig
 $ ping 192.168.10.103
 
 # 本机 ping 外网
-$ ping baidu.com
+$ ping -I bond0 baidu.com
 ```
 
 ## 参考
 
+* [USING THE COMMAND LINE INTERFACE (CLI)](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-network_bonding_using_the_command_line_interface)
 * [多网卡同 IP 和同网卡多 IP 技术](https://www.jianshu.com/p/c3278e44ee9d)
 * [HowTo Add Multiple Bonding Interface](http://www.sohailriaz.com/howto-add-multiple-bonding-interface/)
 * [Linux 网卡 bond 的七种模式详解](http://blog.51cto.com/linuxnote/1680315)

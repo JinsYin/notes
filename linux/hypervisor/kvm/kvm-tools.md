@@ -51,7 +51,6 @@ $ apt-get install -y libvirt-bin
 $ service start libvirt-bin
 ```
 
-
 ## virt-install
 
 `virt-install` 是一个命令行工具，它提供了一种将操作系统配置到虚拟机中的简单方法。
@@ -75,7 +74,6 @@ ubuntu-16.04-server-i386.iso --network network=default,model=virtio \
 --graphics vnc,listen=0.0.0.0 --noautoconsole -v
 ```
 
-
 ## virt-clone
 
 virt-clone 是一个命令行工具，用于克隆已存在的虚拟机。它克隆磁盘镜像，并定义一个新的名称、UUID、MAC 地址
@@ -92,16 +90,13 @@ $ virt-clone -o kube-node-121 --name kube-node-122 -f /root/kvm-img/kube-node-12
 
 ## virsh
 
-
 ## virt-xml
 
 virt-xml是一个使用virt-install命令行选项轻松编辑libvirt域XML的命令行工具。
 
-
 ## virt-convert
 
 virt-convert是一个命令行工具，用于将OVF和VMX VM配置转换为使用libvirt运行。
-
 
 ## virt-top
 
@@ -127,7 +122,6 @@ $ virt-top --connect qemu+ssh://root@192.168.10.120/system
 # 安装
 $ apt-get install -y virt-top
 ```
-
 
 ## virt-viewer
 
@@ -155,7 +149,6 @@ $ virt-viewer -c qemu+ssh://192.168.10.120/system kube-node-121
 $ apt-get install -y virt-viewer
 ```
 
-
 ## virt-manager
 
 virt-manager 是一个用于通过 libvirt 管理虚拟机的用户界面。主要支持 `KVM`，也支持 `Xen` 和 `LXC`。
@@ -178,7 +171,6 @@ $ apt-get install -y virt-manager
 ### virt-image
 ### virt-install
 
-
 ## qemu-img
 
 ```bash
@@ -187,7 +179,6 @@ $ qemu-img convert -f raw -o qcow2 image.img image.qcow2
 ```
 
 * [Converting between image formats](https://docs.openstack.org/image-guide/convert-images.html)
-
 
 ## virt-df
 
@@ -198,7 +189,6 @@ $ qemu-img convert -f raw -o qcow2 image.img image.qcow2
 $ 
 ```
 
-
 * Ubuntu
 
 ```bash
@@ -206,14 +196,11 @@ $
 $ apt-get install -y libguestfs-tools
 ```
 
-
 ## libguestfs
 
 http://libguestfs.org/
 
-
 ## virt-what
-
 
 ## qemu-img
 

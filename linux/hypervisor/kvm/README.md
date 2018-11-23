@@ -2,12 +2,27 @@
 
 KVM 是 Kernel-based Virtual Machine 的缩写，即基于内核的虚拟机。KVM 是基于硬件的完全虚拟化，因此它需要硬件支持（英特尔的 `Inter-VT` 技术，AMD 的 `AMD-V` 技术）。
 
-## KVM、QEMU、QEMU-KVM
+## 术语
 
+### KVM
+
+* 狭义 KVM
+* 广义 KVM
+
+广义 KVM 指的是一套 Linux 完全虚拟化解决方案
+
+* KVM 内核模块只能提供 CPU 和内存的虚拟化
+
+### QEMU
+
+QEMU 作为独立的 Hypervisor，能够在应用程序的层面上运行虚拟机。
+
+### QEMU-KVM
 
 ## 镜像格式
 
-| 镜像格式 | Hypervisor |
+| format | hypervisor |
+| ------ | ---------- |
 | raw    | (all)      |
 | qed    | KVM        |
 | qcow2  | KVM Xen    |
@@ -63,3 +78,5 @@ KVM的用户空间组件包含在主线QEMU中，从1.3开始。
 * [CentOS7 安装 KVM 虚拟机详解](https://github.com/jaywcjlove/handbook/blob/master/CentOS/CentOS7%E5%AE%89%E8%A3%85KVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AF%A6%E8%A7%A3.md)
 
 * [](http://v.qq.com/vplus/9c6b41a5e47651e4a25e9827b38c171e)
+
+

@@ -152,6 +152,15 @@ $ lvreduce -L 2G /dev/vg1/lv1
 $ lvrename vg1/lv1 lv001
 ```
 
+```bash
+# 保护卷组：使用 sys 标记卷组，仅为操作系统保留，以防其他程序注册并使用
+$ vgchange --addtag sys vg1
+
+# 保护卷：使用 sys 标记卷，仅为操作系统保留，以防其他程序注册并使用
+$ lvchange --addtag sys centos/root
+$ lvchange --addtag sys centos/swap
+```
+
 ## 文件系统管理
 
 ```bash

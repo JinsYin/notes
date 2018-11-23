@@ -13,22 +13,30 @@ $ lsblk
 $ blkid
 ```
 
-## 检查磁盘类型
+## 磁盘类型
+
+有时候我们需要判断磁盘到底是硬盘（`HDD`）还是 `SSD`，其中 NVME SSD 也属于 SSD，但其盘符通常以 nvme 开头。
 
 ```bash
-# 0: SSD，1: HDD
+# 0: SSD; 1: HDD
 $ cat /sys/block/sdX/queue/rotational
 ```
 
 ```bash
 # ROTA: rotational device
 $ lsblk -d -o name,rota
-NAME ROTA
-sda     1
-sdb     1
-sdc     0
-sdd     0
-sde     1
+NAME    ROTA
+sda        0
+sdb        0
+sdc        1
+sdd        1
+sde        1
+sdf        1
+sdg        1
+sdh        1
+sdi        1
+sdj        1
+nvme0n1    0
 ```
 
 ## 格式化
@@ -51,7 +59,7 @@ $ df -h
 ```
 
 ```bash
-# 挂载
+# 临时手动挂载
 $ mount /dev/sdb1 (-c) /mnt/sdb1 # -c: 检测磁盘坏道
 ```
 
@@ -59,7 +67,11 @@ $ mount /dev/sdb1 (-c) /mnt/sdb1 # -c: 检测磁盘坏道
 # 开机自动挂载
 # 第一个数字表示dump选项：0不备份，1备份，2备份（比1重要性小）
 # 第二个数字表示是否在启动是用 fsck 校验分区：０不校验，１校验，２校验（比１晚校验）
-$ echo "/dev/sdb1 /mnt/sdb1 xfs defaults 0 1" >> /etc/fstab
+$ echo "/dev/sdb1 /mnt/sdb1 xfs defaults 0 0" >> /etc/fstab
+
+# 不推荐上诉方法，原因是系统重启可能导致盘符发生改变，通常使用分区 UUID
+$ blkid | grep /dev/sdb1 # 获取分区 UUID
+$ echo "UUID=93qxDO-BL2x-j6Aj-EAkd-Cjko-ze21-8LKbGM /mnt/sdb1 xfs defaults 0 0" >> /etc/fstab
 ```
 
 ```bash
@@ -69,6 +81,15 @@ $ umount /dev/sdb
 # 卸载分区
 $ umount /dev/sdb1
 ```
+
+## 擦除磁盘、擦除分区表、清空所有数据
+
+```bash
+# bs: block size
+$ dd if=/dev/zero of=/dev/sdX bs=512 count=1
+```
+
+> <https://www.cyberciti.biz/faq/linux-remove-all-partitions-data-empty-disk/>
 
 ## 分区
 
@@ -150,10 +171,12 @@ mklabel gpt
 mkpart primary xfs 0KB 500GB
 
 # 将整个磁盘创建一个分区（有对齐分区：从第 2048 个扇区开始）
-mkpart primary xfs 2028s 100%
+mkpart primary xfs 2048s 100%
 
 # 删除分区（print 查看分区号）
 rm 1
+
+quit
 ```
 
 对齐分区：

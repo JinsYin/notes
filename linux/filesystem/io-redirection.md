@@ -1,12 +1,12 @@
 # I/O 重定向
 
-## I/O 数字标识
+## I/O 数字标识（文件描述符）
 
-Handle | Name   | Description |
------- | ------ | ----------- |
-0      | stdin  | 标准输入     |
-1      | stdout | 标准输出     |
-2      | stderr | 标准错误输出  |
+| Handle | Stdio Name | POSIX Name      | Description  |
+| ------ | ---------- | --------------- | ------------ |
+| 0      | stdin      | STDIN_FILENO    | 标准输入     |
+| 1      | stdout     | STDOUT_FILENO   | 标准输出     |
+| 2      | stderr     | STDERROR_FILENO | 标准错误输出 |
 
 重定向：将 stderr 输出到 stdout，或者将 stdout 输出到 stderr，亦或者将 stderr/stdout 输出到文件。
 
