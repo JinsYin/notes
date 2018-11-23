@@ -1,7 +1,8 @@
-# Markdown 笔记
+# Markdown
 
-## 标题（Headers）
-```
+## 标题（Header）
+
+```markdown
 # This is an <h1> tag
 ## This is an <h2> tag
 ###### This is an <h6> tag
@@ -14,18 +15,20 @@
 ---
 
 ## 强调（Emphasis）
-```
-*This text will be bold*
+
+```markdown
+*This text will be italic*
 **This text will be bold**
 ```
 
-*This text will be bold*  
+*This text will be italic*
 **This text will be bold**
 
 ---
 
-## 无序列表
-```
+## 无序列表（Unordered List）
+
+```markdown
 * Item 1
 * Item 2
   * Item 2a
@@ -36,22 +39,32 @@
 * Item 2
   * Item 2a
   * Item 2b
-  
+
 ---
 
-## 有序列表
+## 有序列表（Ordered List）
+
+（序号全是 `1` 即可，二级菜单前是 `3` 个空格）
+
+```markdown
+1. Item 1
+2. Item 2
+3. Item 3
+   1. Item 3a
+   2. Item 3b
+```
+
 1. Item 1
 1. Item 2
 1. Item 3
    1. Item 3a
    1. Item 3b
-   
+
 ---
 
-## 图片
+## 图片（Image）
 
-```
-Format: ![Alt Text](url)
+```markdown
 ![Avatar](https://avatars2.githubusercontent.com/u/12714609?v=3&s=40)
 ```
 
@@ -59,19 +72,19 @@ Format: ![Alt Text](url)
 
 ---
 
-## 超链接（Links）
-```
-http://github.com - automatic!
-[GitHub](http://github.com)
+## 超链接（Link）
+
+```markdown
+<http://github.com> - [GitHub](http://github.com)
 ```
 
-http://github.com - automatic!  
-[GitHub](http://github.com)
+<http://github.com> - [GitHub](http://github.com)
 
 ---
 
-## 引用（Blockquotes）
-```
+## 引用（Blockquote）
+
+```markdown
 As Kanye West said:
 > We're living the future so
 > the present is our past.
@@ -84,7 +97,8 @@ As Kanye West said:
 ---
 
 ## 内联代码（Inline code）
-```
+
+```markdown
 I think you should use an
 `<addr>` element here instead.
 ```
@@ -94,14 +108,15 @@ I think you should use an
 
 ---
 
-## 语法高亮
-`````
+## 语法高亮（Syntax highlighting）
+
+``````markdown
 ```js
 function getName() {
   return 0;
 }
 ```
-`````
+``````
 
 ```js
 function getName() {
@@ -112,12 +127,13 @@ function getName() {
 ---
 
 ## 对比修改
-`````
+
+``````markdown
 ```diff
 - google
 + google.com
 ```
-`````
+``````
 
 ```diff
 - google
@@ -126,51 +142,51 @@ function getName() {
 
 ---
 
-## 任务列表（Task Lists）
-```
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
+## 任务列表（Task List）
+
+```markdown
+* [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+* [x] list syntax required (any unordered or ordered list supported)
+* [x] this is a complete item
+* [ ] this is an incomplete item
 ```
 
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
+* [x] @mentions, #refs, [links](http://google.com), **formatting**, and <del>tags</del> supported
+* [x] list syntax required (any unordered or ordered list supported)
+* [x] this is a complete item
+* [ ] this is an incomplete item
 
 ---
 
-## 表格
-`````
-name | age | school
----- | --- | ----
-jins | 24  | shsmu
-peter| 20  | tsinghua
-`````
+## 表格（Table）
 
-name | age | school
----- | --- | ----
-jins | 24  | shsmu
-peter| 20  | tsinghua
+```markdown
+| name  | age | school   |
+| ----- | --- | -------- |
+| alice | 24  | shsmu    |
+| peter | 20  | tsinghua |
+```
+
+| name  | age | school   |
+| ----- | --- | -------- |
+| alice | 24  | shsmu    |
+| peter | 20  | tsinghua |
 
 ---
 
-## 引入问题（Issue references）
-```
-#1  
-mojombo#1  
-mojombo/github-flavored-markdown#1
-```
+## 引入问题（Issue reference）
 
-#1  
-mojombo#1  
+```markdown
+#1
+mojombo#1
 mojombo/github-flavored-markdown#1
+```
 
 ---
 
 ## 删除线（Strikethrough）
-```
+
+```markdown
 ~~del~~
 ```
 
@@ -178,17 +194,19 @@ mojombo/github-flavored-markdown#1
 
 ---
 
-
 ## 分割线
-```
+
+```markdown
 ---
 ```
 
 ---
 
 ## Emoji
+
 使用方法：　`:EMOJICODE:`， emoji code：　[emoji-cheat-sheet.com](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
-```
+
+```markdown
 :+1:
 :smile:
 :clap:
@@ -204,44 +222,47 @@ mojombo/github-flavored-markdown#1
 
 ---
 
-
 ## 注释
 
-使用　`[//]: #` 来进行注释，注释后文本内容将不会显示。
+使用　`<!-- -->` 来进行注释，注释后文本内容将不会显示。
 
-```
-[//]: #　这是测试
+```markdown
+<!-- 注释内容 -->
 ```
 
 ---
 
 ## 换行
+
 编辑纯文本时， markdown 键入 Enter 默认是不会自动换行，需要使用两个英文半角空格 + Enter。
-```
-# a 后面没有空格，b 后面有一个空格，Peter 后面有两个空格）
+
+```markdown
+<!-- a 后面没有空格，b 后面有一个空格，Peter 后面有两个空格） -->
 a
-b 
-Peter  
+b
+Peter
 Jins
 ```
 
 a
 b
-Peter  
+Peter
 Jins
 
 ---
 
 ## Pandoc
 
-pandoc 可以使文件在`markdown`、`html`、`pdf`、`doc`、`docx`等格式之间相互转换。
+Pandoc 可以将文件在 `markdown`、`html`、`pdf`、`doc`、`docx` 等格式之间相互转换。
 
 安装 pandoc
+
 ```bash
 $ sudo apt-get install pandoc
 ```
 
 如果 apt-get 安装的 pandoc 功能不齐全，可以如官网上一样先安装 cable,再安装 pandoc
+
 ```bash
 $ sudo apt-get install cabal-install
 $ cabal update
@@ -249,21 +270,25 @@ $ cabal install pandoc
 ```
 
 为了支持 pdf，需要安装 LaTeX
+
 ```bash
 $ sudo apt-get install texlive-latex-base
 $ sudo apt-get install texlive
 ```
 
 从 markdown 转为 html
+
 ```bash
 $ pandoc test1.md -f markdown -t html -s -o test1.html
 ```
 
 创建 LaTeX 文档
+
 ```bash
 $ pandoc test1.md -f markdown -t latex -s -o test1.tex
 $ pandoc test1.md -s -o test1.pdf
 ```
 
-## 参考文章
-> https://guides.github.com/features/mastering-markdown/
+## 参考
+
+* [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
