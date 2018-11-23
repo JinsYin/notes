@@ -12,6 +12,7 @@ Docker swarm 默认使用`overlay`作为多主机网络通信 driver, 支持`负
 ## 集群管理
 
 开放端口
+
 - 2377: 集群管理通信端口 [TCP]
 - 7946: 集群节点通信端口 [TCP & UDP]
 - 4789: overlay 网络传输端口 [TCP & UDP]

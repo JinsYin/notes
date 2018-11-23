@@ -10,14 +10,14 @@ $ docker login
 ## 构建镜像
 
 ```bash
-# you 是用户名也是远程仓库名，也可以自己在官网上创建仓库
-$ docker build -t you/spark-standalone:2.0.0 -f Dockerfile .
+# youraccount 是用户名也是远程仓库名，也可以自己在官网上创建仓库
+$ docker build -t youraccount/spark-standalone:2.0.0 -f Dockerfile .
 ```
 
 ## 上传镜像
 
 ```bash
-$ docker push you/spark-standalone:2.0.0
+$ docker push youraccount/spark-standalone:2.0.0
 ```
 
 ## 自动构建镜像
