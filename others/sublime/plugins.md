@@ -4,7 +4,6 @@
 
 通过 `Preferences` > `Browse Packages` 来查看安装的插件。
 
-
 ## 汉字输入
 
 ```bash
@@ -13,11 +12,9 @@ $ cd sublime-text-imfix
 $ ./sublime-imfix
 ```
 
-
 ## 中文乱码
 
 插件名： `ConvertToUTF8`，用来把 GB2312 和 GBK 文件转换成 UTF8 编码。
-
 
 ## Markdown
 
@@ -25,11 +22,9 @@ $ ./sublime-imfix
 
 > [how to set up sublime text for a vastly better markdown writing experience](https://blog.mariusschulz.com/2014/12/16/how-to-set-up-sublime-text-for-a-vastly-better-markdown-writing-experience)
 
-
 ## Git
 
 * gitignore
-
 
 ## Dockerfile
 
