@@ -1,0 +1,42 @@
+MILLISECOND (\d{3})
+JAVALOGBACKTIMESTAMP %{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:%{MINUTE}:%{SECOND},%{MILLISECOND}
+CASS_BASE ^%{LOGLEVEL:level}  \[(%{DATA:process}:%{INT:threadId}|%{DATA:process})\] %{JAVALOGBACKTIMESTAMP:timestamp}  %{WORD:java_file}.java:%{INT:line_number} -
+FLUSHSIZE %{BASE10NUM}(KiB|GiB|MiB)
+
+# WARN  [MemtableFlushWriter:20342] 2016-06-29 08:35:35,936  SSTableWriter.java:240 - Compacting large partition limo/read_audit_history:2016-6-29 (115624250 bytes)
+CASS_COMPACTION_LARGE_KEY %{CASS_BASE} %{DATA:msg} %{WORD:keyspace}\/%{WORD:table}:%{DATA:partition_key} \(%{INT:size_bytes} bytes\)
+
+
+# INFO  [SlabPoolCleaner] 2016-06-28 16:13:14,966  ColumnFamilyStore.java:1211 - Flushing largest CFS(Keyspace='order_store', ColumnFamily='orderdata') to free up room. Used total: 0.11/0.00, live: 0.11/0.00, flushing: 0.00/0.00, this: 0.10/0.10
+CASS_SLAB_POOL_CLEANER_1 %{CASS_BASE} %{DATA:msg}\(Keyspace='%{WORD:keyspace}', ColumnFamily='%{WORD:table}'\) %{GREEDYDATA}: %{BASE10NUM:total_onheap}/%{BASE10NUM:total_offheap}, live: %{BASE10NUM:live_onheap}/%{BASE10NUM:live_offheap}, flushing: %{BASE10NUM:flushing_onheap}/%{BASE10NUM:flushing_offheap}, this: %{BASE10NUM:this_onheap}/%{BASE10NUM:this_offheap}
+
+
+# INFO  [SlabPoolCleaner] 2016-06-28 16:13:14,967  ColumnFamilyStore.java:905 - Enqueuing flush of orderdata: 216588472 (10%) on-heap, 0 (0%) off-heap
+CASS_SLAB_POOL_CLEANER_2 %{CASS_BASE} %{DATA:msg} of %{WORD:keyspace}: %{INT:bytes_onheap}%{DATA} \(%{INT:percent_onheap}%\) on-heap, %{INT:bytes_offheap} \(%{INT:percent_offheap}%\) %{GREEDYDATA}
+
+
+# INFO  [MemtableFlushWriter:320] 2016-06-28 16:13:14,969  Memtable.java:347 - Writing Memtable-orderdata@849528272(129.804MiB serialized bytes, 297813 ops, 10%/0% of on/off-heap limit)
+CASS_MEMTABLE_FLUSH_START %{CASS_BASE} %{DATA:msg}-%{WORD:keyspace}%{DATA}\(%{BASE10NUM:size_mb}%{DATA}, %{INT:ops} ops, %{INT:percent_onheap}%/%{INT:percent_offheap}% %{GREEDYDATA}
+
+
+# INFO  [MemtableFlushWriter:1] 2016-06-28 16:19:48,627  Memtable.java:382 - Completed flushing /app/cassandra/datastax/dse-data01/system/local-7ad54392bcdd35a684174e047860b377/system-local-tmp-ka-3981-Data.db (0.000KiB) for commitlog position ReplayPosition(segmentId=1467130786324, position=567)
+CASS_MEMTABLE_FLUSH_COMPLETE %{CASS_BASE} %{DATA:msg} %{UNIXPATH:sstable} \(%{FLUSHSIZE:size}\) %{DATA} %{GREEDYDATA:commitlog}
+
+
+# INFO  [CompactionExecutor:26] 2016-06-28 14:38:40,545  CompactionTask.java:274 - Compacted 2 sstables to [/app/cassandra/datastax/dse-data03/order_store/orderhistory-65765df1fc1f11e5974cd5203249f77a/order_store-orderhistory-ka-139517,].  32,011,749 bytes to 29,390,144 (~91% of original) in 1,771ms = 15.826440MB/s.  39,261 total partitions merged to 36,402.  Partition merge counts were {1:33543, 2:2859, }
+CASS_COMPACTION_COMPLETE %{CASS_BASE} %{DATA:msg} to \[%{GREEDYDATA:sstable}\].  %{DATA:bytes_in} bytes to %{DATA:bytes_out} \(~%{INT:percent_of_orig}% of original\) in %{DATA:time_ms}ms = %{BASE10NUM:speed_mb}MB/s.  %{DATA:pkeys_in} total partitions merged to %{DATA:pkeys_out}.  %{GREEDYDATA:merge_cnt}
+
+
+# WARN  [Service Thread] 2016-06-30 14:42:41,538  GCInspector.java:256 - G1 Young Generation GC in 202ms.  G1 Eden Space: 1157627904 -> 0; G1 Old Gen: 6819034128 -> 4151661080; G1 Survivor Space: 553648128 -> 218103808;
+# WARN  [Service Thread] 2016-06-30 14:42:41,538  GCInspector.java:256 - G1 Young Generation GC in 211ms.  G1 Eden Space: 16894656512 -> 0; G1 Old Gen: 13259744800 -> 13267292200;
+CASS_GC_GRACE %{CASS_BASE} %{DATA:msg} in %{INT:time_ms}ms. %{DATA}: %{INT:eden_orig_bytes} -> %{INT:eden_new_bytes}; %{DATA}: %{INT:oldgen_orig_bytes} -> %{INT:oldgen_new_bytes};( %{DATA}: %{INT:survivor_orig_bytes} -> %{INT:survivor_new_bytes};|)
+
+
+# INFO  [Service Thread] 2016-06-30 14:42:41,542  StatusLogger.java:99 - KeyCache                  365405196               1073741824                      all
+# INFO  [Service Thread] 2016-06-30 14:42:41,541  StatusLogger.java:66 - PendingRangeCalculator            0         0             79         0                 0
+# INFO  [Service Thread] 2016-06-30 14:42:41,542  StatusLogger.java:75 - CompactionManager                 2         5
+CASS_SERVICE_THREAD_PENDING %{CASS_BASE} %{WORD:pool}%{SPACE}(%{INT:cache_used}%{SPACE}%{INT:cache_size}%{SPACE}all|%{INT:threads_active}%{SPACE}%{INT:threads_pending}%{SPACE}%{INT:threads_completed}%{SPACE}%{INT:threads_blocked}%{SPACE}%{INT:threads_all_time_blocked}|%{INT:threads_active}%{SPACE}%{INT:threads_pending})
+
+
+# WARN  [Service Thread] 2016-06-30 14:42:41,538  GCInspector.java:256 - *
+CASS_DEFAULT %{CASS_BASE} %{GREEDYDATA:msg}
