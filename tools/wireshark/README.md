@@ -8,7 +8,7 @@ apt-get install wireshark
 
 ## 普通用户运行 wireshark
 
-Wireshark 实际的抓包工具是 dumpcap，默认情况下它访问网络设备需要 root 权限，所以当普通用户使用 wireshark 时是无法读取读取网络设备的。
+Wireshark 实际的抓包工具是 dumpcap，默认情况下它访问网络设备需要 `root` 权限，所以当普通用户使用 wireshark 时是无法读取读取网络设备的。
 
 ```bash
 sudo groupadd wireshark

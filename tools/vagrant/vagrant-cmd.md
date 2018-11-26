@@ -25,8 +25,6 @@ $ source ~/.bashrc
 
 ```
 
-
-
 ## Box 管理
 
 ```bash
@@ -41,7 +39,7 @@ $ vagrant box add centos/7.0 ~/box/centos-7.0-x86_64.box
 $
 $ # 查看 box 列表
 $ vagrant box list
-$ 
+$
 $ # 移除 box
 $ vagrant box remove [name]
 ```
@@ -62,7 +60,7 @@ $ cat Vagrantfile
 $
 $ # 启动（启动后进入 running 状态）
 $ vagrant up
-$ 
+$
 $ # 启动并指定 provider，不执行 provisison 任务
 $ vagrant up --provider=virtualbox --no-provision
 $
@@ -81,7 +79,7 @@ $ vagrant global-status
 $
 $ # 通过虚拟机 ID 获取状态
 $ vagrant status 1a2b3c4d
-$ 
+$
 $ # 根据 Vagrantfile 获取状态（要求与 Vagrantfile 同目录运行该命令）
 $ vagrant status
 ```
@@ -93,7 +91,7 @@ $ vagrant status
 ```bash
 $ # 暂停（暂停后进入 saved 状态）
 $ vagrant suspend 1a2b3c4d
-$ 
+$
 $ # 从暂停状态重启
 $ vagrant resume 1a263c4d
 $
@@ -105,7 +103,7 @@ $ vagrant up 1a2b3c4d
 $
 $ # 重启，并重新加载 Vagrantfile 配置
 $ vagrant reload 1a2b3c4d
-$ 
+$
 $ # 重启但不执行 provision
 $ vagrant reload --no-provision 1a2b3c4d
 $

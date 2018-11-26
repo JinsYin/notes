@@ -1,9 +1,8 @@
-# Sublime 
+# Sublime
 
 ## 下载
 
 > https://www.sublimetext.com/
-
 
 ## 设置
 
