@@ -316,6 +316,19 @@ $ docker run -d --name webui-aria2 --restart=always -p 80:80 timonier/webui-aria
 
 > 迅雷官方宣布"7月17日起陆续停止提供第三方远程下载服务"
 
+### 百度网盘 Chrome 插件
+
+* [BaiduExporter](https://github.com/acgotaku/BaiduExporter) - 等待页面刷新完成后才会出现 `导出下载` 按钮
+* [baidu-dl](https://chrome.google.com/webstore/detail/baidu-dl/lflnkcmjnhfedgibjackiibmcdnnoadb)
+
+BaiduExporter：
+
+![BaiduExporter 示例](.images/baidu-exporter-example.png)
+
+baidu-dl：
+
+![baidu-dl 示例](.images/baidu-dl-example.png)
+
 ## 参考
 
 * [github.com/aria2/aria2](https://github.com/aria2/aria2)
