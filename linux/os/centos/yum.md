@@ -14,7 +14,7 @@ $ yum --disablerepo="*" --enablerepo="repoA" update
 
 ```bash
 $ # 方法一： 在 /etc/yum.conf 中的 [main] 的最后添加
-exclude=kernel* 
+exclude=kernel*
 exclude=centos-release* # redhat-release*
 ```
 
@@ -23,8 +23,7 @@ $ # 方法二
 $ yum --exclude=kernel* --exclude=centos-release* update
 ```
 
-
-## 列出所有的　repository
+## 列出所有的 repository
 
 ```bash
 $ yum repolist
@@ -51,7 +50,6 @@ $ rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 $ rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 ```
 
-
 ## 清除缓存
 
 `yum` 默认保留下载的包和包数据文件，所以在以后的操作中不会重新下载。
@@ -60,7 +58,7 @@ $ rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 $ # 清除所有缓存的包
 $ yum clean packages
 $
-$　# 清除所有缓存的包数据文件
+$ # 清除所有缓存的包数据文件
 $ yum clean headers
 $
 $ # 清除所有缓存（不要乱来）
@@ -79,13 +77,11 @@ $ yum makecache
 $ yum makecache fast
 ```
 
-
 ## 查询已安装的包
 
 ```bash
 $ rpm -qa | grep docker
 ```
-
 
 ## 查看软件包信息
 
@@ -93,13 +89,11 @@ $ rpm -qa | grep docker
 $ yum info docker
 ```
 
-
 ## 列出所有软件版本
 
 ```bash
 $ yum list docker --showduplicate
 ```
-
 
 ## 安装
 
@@ -118,7 +112,6 @@ $ yum install docker-1.12.6
 ```bash
 $ yum localinstall -y /tmp/docker-1.12.6.rpm
 ```
-
 
 ## 插件
 
@@ -144,11 +137,9 @@ $ yum install yum-utils
 
 > https://www.centos.org/docs/5/html/yum/sn-yum-maintenance.html
 
-
 ## 代理
 
 > https://www.centos.org/docs/5/html/yum/sn-yum-proxy-server.html
-
 
 ## 命令
 

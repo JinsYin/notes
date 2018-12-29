@@ -24,7 +24,7 @@ artifactId = hadoop-client
 version = <your-hdfs-version>
 ```
 
-最后，需要在程序中导入一些　Spark 类。
+最后，需要在程序中导入一些 Spark 类。
 
 ```scala
 import org.apache.spark.SparkContext

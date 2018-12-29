@@ -69,7 +69,7 @@ $ geth --etherbase '0xa4d8e9cae4d04b093aac82e6cd355b6b963fb7ff' --mine
 
 ## GPU 自己挖矿（solo mining）
 
-为了支持 GPU 自己挖矿，可以将 geth 和 ethminer 结合使用，其中　ethminer 作为 worker，geth 作为 scheduler，两者之间通过 `IPC-RPC`/`JSON-RPC`/`WS-RPC` 通信。为了将 DAG 存入内存，每个 GPU 需要 `1 ~ 2GB` 的内存。
+为了支持 GPU 自己挖矿，可以将 geth 和 ethminer 结合使用，其中 ethminer 作为 worker，geth 作为 scheduler，两者之间通过 `IPC-RPC`/`JSON-RPC`/`WS-RPC` 通信。为了将 DAG 存入内存，每个 GPU 需要 `1 ~ 2GB` 的内存。
 
 * IPC-RPC 接口（默认开启）
 

@@ -38,7 +38,7 @@ QEMU 作为独立的 Hypervisor，能够在应用程序的层面上运行虚拟�
 * Qemu
 * KVM
 
-KVM 包含一个核心模块 `kvm.ko` 来实现核心虚拟化功能，和一个处理器专用模块　`kvm-intel.ko` 或　`kvm-amd.ko`。KVM 本身不实现任何模拟，仅仅暴露一个 `/dev/kvm` 接口，该接口可被宿主机用来主要负责vCPU的创建，虚拟内存的地址空间分配，vCPU寄存器的读写以及vCPU的运行。有了KVM以后，guest os的CPU指令不用再经过QEMU来转译便可直接运行，大大提高了运行速度。但KVM的kvm.ko本身只提供了CPU和内存的虚拟化，所以它必须结合QEMU才能构成一个完整的虚拟化技术，也就是下面要介绍的技术。
+KVM 包含一个核心模块 `kvm.ko` 来实现核心虚拟化功能，和一个处理器专用模块 `kvm-intel.ko` 或 `kvm-amd.ko`。KVM 本身不实现任何模拟，仅仅暴露一个 `/dev/kvm` 接口，该接口可被宿主机用来主要负责vCPU的创建，虚拟内存的地址空间分配，vCPU寄存器的读写以及vCPU的运行。有了KVM以后，guest os的CPU指令不用再经过QEMU来转译便可直接运行，大大提高了运行速度。但KVM的kvm.ko本身只提供了CPU和内存的虚拟化，所以它必须结合QEMU才能构成一个完整的虚拟化技术，也就是下面要介绍的技术。
 
 * Qemo-KVM
 

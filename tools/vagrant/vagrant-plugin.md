@@ -36,7 +36,7 @@ $ vagrant plugin install vagrant-hostmanager
 $ # 常用配置
 config.hostmanager.enabled = true      # 启用 hostmanager 插件
 config.hostmanager.manage_guest = true # 更新虚拟机的 hosts 文件
-config.hostmanager.manage_host = true  # 更新宿主机的　hosts 文件
+config.hostmanager.manage_host = true  # 更新宿主机的 hosts 文件
 ```
 
 ```bash
@@ -52,10 +52,10 @@ $ vagrant hostmanager
 $ # 安装插件
 $ vagrant plugin install vagrant-vbguest
 $
-$ # 查看运行中的虚拟机是否安装　VirtualBox Guest Additions （Vagrantfile 目录下）
+$ # 查看运行中的虚拟机是否安装 VirtualBox Guest Additions （Vagrantfile 目录下）
 $ vagrant vbguest --status
 $
-$ # 运行中的虚拟机中安装 VirtualBox Guest Additions　（Vagrantfile 目录下）
+$ # 运行中的虚拟机中安装 VirtualBox Guest Additions （Vagrantfile 目录下）
 $ vagrant vbguest --do install node1
 ```
 
@@ -79,7 +79,7 @@ $ vagrant plugin install vagrant-bindfs
 
 * [vagrant-libvirt](https://github.com/vagrant-libvirt/vagrant-libvirt)
 
-vagrant-libvirt 通过 libvirt 连接　kvm 等　provider。
+vagrant-libvirt 通过 libvirt 连接 kvm 等 provider。
 
 ```bash
 $ # 安装插件

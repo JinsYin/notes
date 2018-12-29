@@ -9,6 +9,14 @@
 * [docker 网络](./docker-network.md)
 * [dockerfile](./docker-dockerfile.md)
 
+## 组件（1.12.x）
+
+* docker client
+* dockerd
+* containerd
+* docker-shim / containerd-shim
+* runC - 值用来运行容器
+
 ## 参考
 
 * [Docker 最佳实践](https://rootsongjc.gitbooks.io/kubernetes-handbook/appendix/docker-best-practice.html)

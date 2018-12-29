@@ -35,7 +35,7 @@ dev.cdrom.autoclose = 1
 
 ```bash
 # 查看某个 kernel 参数值
-$ sysctl -n fs.file-max
+$ sysctl -n fs.file-max # or: sysctl fs.file-max
 3245441
 ```
 
@@ -63,7 +63,7 @@ $ echo 500000 > /proc/sys/fs/file-max
 # 系统级限制
 $ vi /etc/sysctl.conf
 fs.file-max=102400 # 最大文件数
-vm.swappiness=0 # 禁用交换空间
+vm.swappiness=0 # 禁用交换空间（貌似没用）
 
 # 退出后重新登录即可生效，或者使用下面的命令立即生效
 $ sysctl -p

@@ -1,6 +1,6 @@
 # OpenvSwitch
 
-OpenvSwitch 简称　ovs。
+OpenvSwitch 简称 ovs。
 
 
 ## 术语
@@ -19,11 +19,11 @@ VLAN 表示 Virutal LAN。一个带有 VLAN 功能的switch 能够同时处于�
 
 * OpenFlow
 
-OpenFlow 不是一种软件，而是一种协议。OpenvSwitch　是一种支持　OpenFlow　协议的虚拟　Switch。
+OpenFlow 不是一种软件，而是一种协议。OpenvSwitch 是一种支持 OpenFlow 协议的虚拟 Switch。
 
 * SDN
 
-SDN：软件定义网络，是一种下一代网络的“范式”，而　OpenFlow　是当前最为流行的　SDN　实现方式。
+SDN：软件定义网络，是一种下一代网络的“范式”，而 OpenFlow 是当前最为流行的 SDN 实现方式。
 
 
 ## 隧道方式
@@ -59,7 +59,7 @@ $ ovs-vsctl add-br bridge0
 ```bash
 $ ovs-vsctl show
 $
-$ # 不能查看　ovs 创建的网桥
+$ # 不能查看 ovs 创建的网桥
 $ brctl show
 ```
 

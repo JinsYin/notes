@@ -94,7 +94,7 @@ $ hdfs dfs -count [-q] [-h] <paths> # -h 人类可读
 
 ## cp
 
-`cp` 从　HDFS 拷贝文件到 HDFS，不支持本地。
+`cp` 从 HDFS 拷贝文件到 HDFS，不支持本地。
 
 ```bash
 $ hdfs dfs -cp [-f] [-p | -p[topax]] URI [URI ...] <dest>
@@ -161,7 +161,7 @@ $ hdfs dfs -mkdir -p /user/hadoop/hive
 
 ## mv
 
-`mv` 从　HDFS 移动文件到 HDFS，不支持本地。
+`mv` 从 HDFS 移动文件到 HDFS，不支持本地。
 
 ```bash
 $ hdfs dfs -mv URI [URI ...] <dest>
@@ -170,7 +170,7 @@ $ hdfs dfs -mv /user/hadoop/file1 /user/hadoop/file2
 
 ## put
 
-`put` 上传一个或多个本地文件或者标准输入到　HDFS。
+`put` 上传一个或多个本地文件或者标准输入到 HDFS。
 
 ```bash
 $ hdfs dfs -put <localsrc> ... <dst>
@@ -181,7 +181,7 @@ $ hdfs dfs -put - /user/hadoop/hadoopfile
 
 ## rm
 
-`rm` 删除　HDFS 中的文件或目录。
+`rm` 删除 HDFS 中的文件或目录。
 
 ```bash
 $ hdfs dfs -rm [-f] [-r |-R] [-skipTrash] URI [URI ...]

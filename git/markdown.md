@@ -204,7 +204,7 @@ mojombo/github-flavored-markdown#1
 
 ## Emoji
 
-使用方法：　`:EMOJICODE:`， emoji code：　[emoji-cheat-sheet.com](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
+使用方法： `:EMOJICODE:`， emoji code： [emoji-cheat-sheet.com](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 
 ```markdown
 :+1:
@@ -224,7 +224,7 @@ mojombo/github-flavored-markdown#1
 
 ## 注释
 
-使用　`<!-- -->` 来进行注释，注释后文本内容将不会显示。
+使用 `<!-- -->` 来进行注释，注释后文本内容将不会显示。
 
 ```markdown
 <!-- 注释内容 -->

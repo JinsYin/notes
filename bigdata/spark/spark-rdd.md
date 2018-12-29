@@ -7,11 +7,11 @@ Spark 最重要的一个抽象概念就是弹性分布式数据集（Resilient D
 用户也可以请求 Spark 将 RDD 持久化到内存里，以便在不同的并行操作中重复使用；最后，RDD 具备容错性，可以从节点失败中自动恢复数据。
 
 
-## 创建　RDD
+## 创建 RDD
 
 Spark RDD 可以从 `Hadoop 所支持的外部数据源` 或者 `Scala 集合对象` 中创建或转换得到。
 
-* 集合对象 
+* 集合对象
 
 ```scala
 val rdd = sc.parallelize(List("a", "b", "c"))
@@ -68,9 +68,9 @@ $ val rdd = sc.parallelize(Array(1, 2, 3, 4), 4)
 
 | 算子       | RDD 类型   | f 函数类型 | 用途      |
 | --------- | --------- | --------- | --------- |
-| map(f)                    | (V)         | T => U                                   | 对 RDD 中的每个元素都执行 f 函数，并返回新的 RDD 
+| map(f)                    | (V)         | T => U                                   | 对 RDD 中的每个元素都执行 f 函数，并返回新的 RDD
 | flatMap(f)                | (V)         | T => TraversableOnce[U]                  | 对 RDD 中的每个元素都执行 f 函数，再扁平化结果，最后返回新的 RDD
-| mapPartitions(f)          | (V), (K, V) | Iterator<T> => Iterator<U>               | 对 RDD 中的每个分区都执行 f 函数，并返回新的 RDD 
+| mapPartitions(f)          | (V), (K, V) | Iterator<T> => Iterator<U>               | 对 RDD 中的每个分区都执行 f 函数，并返回新的 RDD
 | mapPartitionsInternal(f)  | (K, V)      | Iterator[T] => Iterator[U]               | value 一对多
 | mapPartitionsWithIndex(f) | (V), (K, V) | (Int, Iterator<T>) => (Int, Iterator<U>) | 类似 mapPartitions，只是每个分区都带有 index
 | mapValues(f)              | (K, V)      | (T, U) => (T, U)                         | value 一对一
@@ -83,8 +83,8 @@ $ val rdd = sc.parallelize(Array(1, 2, 3, 4), 4)
 | 算子       | RDD 类型   | f 函数类型 | 用途      |
 | --------- | --------- | --------- | --------- |
 | groupBy(f)    | (K, V) | T => U | 按 f 的返回值进行分组
-| groupByKey([n]) | (K, V) | T => T | 按 key 进行分组 
-| cogroup(rdd2) | (K, V) | 
+| groupByKey([n]) | (K, V) | T => T | 按 key 进行分组
+| cogroup(rdd2) | (K, V) |
 | groupWith(rdd2) | 同上 | 同上 | 同上
 
 ---
@@ -399,7 +399,7 @@ val rdd1 = sc.parallelize(List(("a", 1), ("b", 2), ("c", 3)), 5)
 val rdd2 = sc.parallelize(List(("c", 3), ("d", 4)), 3)
 val rdd3 = rdd1.union(rdd2)
 
-rdd3.collect.foreach(println) // Array(("a", 1), ("b", 2), ("c", 3), ("c", 3), ("d", 4)) 
+rdd3.collect.foreach(println) // Array(("a", 1), ("b", 2), ("c", 3), ("c", 3), ("d", 4))
 
 println(rdd1.partitions.length) // 5
 println(rdd2.partitions.length) // 3
@@ -770,9 +770,9 @@ sc.textFile("R.md").first()
 | NONE |  |
 | DISK_ONLY | 缓存数据到本地磁盘 |
 | DISK_ONLY_2 |  |
-| MEMORY_ONLY | 将　RDD 数据缓存在 Spark JVM 内存中 |
+| MEMORY_ONLY | 将 RDD 数据缓存在 Spark JVM 内存中 |
 | MEMORY_ONLY_2  |  |
-| MEMORY_ONLY_SER  | 将　RDD 数据序列化后缓存在 Spark JVM 内存中 |
+| MEMORY_ONLY_SER  | 将 RDD 数据序列化后缓存在 Spark JVM 内存中 |
 | MEMORY_ONLY_SER_2  |  |
 | MEMORY_AND_DISK  |  |
 | MEMORY_AND_DISK_2  |  |

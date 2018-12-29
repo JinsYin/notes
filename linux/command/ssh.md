@@ -42,7 +42,7 @@ IgnoreUserKnownHosts yes
 $ systemctl restart sshd.service
 ```
 
-* ssh 登录时提示　“Permission denied (publickey,gssapi-keyex,gssapi-with-mic).”
+* ssh 登录时提示 “Permission denied (publickey,gssapi-keyex,gssapi-with-mic).”
 
 （暂时没有找到解决办法）
 

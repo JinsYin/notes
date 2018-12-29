@@ -5,7 +5,7 @@
 
 Docker swarm 默认使用`overlay`作为多主机网络通信 driver, 支持`负载均衡`、`服务发现`以及`任务扩展`。
 
-## 工作原理  
+## 工作原理
 
 ![docker swarm](./img/docker-swarm.png)
 
@@ -13,9 +13,9 @@ Docker swarm 默认使用`overlay`作为多主机网络通信 driver, 支持`负
 
 开放端口
 
-- 2377: 集群管理通信端口 [TCP]
-- 7946: 集群节点通信端口 [TCP & UDP]
-- 4789: overlay 网络传输端口 [TCP & UDP]
+* 2377: 集群管理通信端口 [TCP]
+* 7946: 集群节点通信端口 [TCP & UDP]
+* 4789: overlay 网络传输端口 [TCP & UDP]
 
 创建集群
 
@@ -42,7 +42,7 @@ $ docker node inspect [node]
 
 ```bash
 # 角色转换
-$ docker node promote [node] # 转换为 manager 
+$ docker node promote [node] # 转换为 manager
 $ docker node demote [node] # 转换为 worker
 ```
 
@@ -59,27 +59,25 @@ $ docker service update --publish-add 9090:90  web # 添加映射端口
 $ docker service rm web
 ```
 
-service、task、container之间的关系  
+service、task、container之间的关系
 ![docker-service-task-container](./img/docker-service-task-container.png)
 
-service mode ("replicated" and "global" services)  
+service mode ("replicated" and "global" services)
 ![docker service mode](./img/docker-service-mode.png)
 
-端口映射关系（自带负载均衡）  
+端口映射关系（自带负载均衡）
 ![docker port mapping](./img/docker-port-mapping.png)
-
 
 ## 错误
 
 ### ERROR 1
 
 ```bash
-$ docker swarm init --advertise-addr 192.168.111.199 
+$ docker swarm init --advertise-addr 192.168.111.199
 Error response from daemon: --cluster-store and --cluster-advertise daemon configurations are incompatible with swarm mode
 ```
 
 原因是 swarm mode 下 --cluster-store 和 --cluster-advertise 不兼容，因为在 docker daemon 中使用了 etcd 作集群存储，所以需要先删除它，并重启 docker。
-
 
 ## 参考
 

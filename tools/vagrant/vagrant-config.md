@@ -28,7 +28,7 @@ Vagrant.require_version ">= 1.3.5", "< 1.4.0"
 ```
 
 
-## 指定　box　版本
+## 指定 box 版本
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -234,7 +234,7 @@ config.vm.provision "docker" do |d|
   d.pull_images "nginx:1.11.9-alpine"
 
   # 运行容器
-  d.pull_images "nginx:1.11.9-alpine" 
+  d.pull_images "nginx:1.11.9-alpine"
 end
 ```
 

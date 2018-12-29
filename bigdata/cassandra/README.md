@@ -1,5 +1,7 @@
 # Cassandra 从入门到放弃
 
+Cassandra 是一个高可扩展性的分区行存储。
+
 ## Snitch
 
 * SimpleSnitch

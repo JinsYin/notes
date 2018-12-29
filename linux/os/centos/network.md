@@ -4,15 +4,24 @@
 
 ```bash
 # 查看网络接口（假设需要修改的网口是 em1）
-$ ip addr show
+$ ip addr show # ip addr
 
 $ vi /etc/sysconfig/network-scripts/ifcfg-em1
+TYPE="Ethernet"
 BOOTPROTO="static"
+NAME="em1"
+DEVICE="em1"
+ONBOOT="yes" # 开机自启动该网口
+DEFROUTE="yes" # 设置为默认路由，允许连接外网
+NM_CONTROLLED="no" # 不使用 NetworkManager 来管理
 IPADDR="192.168.1.100"
 GATEWAY="192.168.1.1"
 NETMASK="255.255.255.0"
-NM_CONTROLLED="no" # 不使用 NetworkManager 来管理
-ONBOOT="yes" # 开机自启动该网口
+```
+
+```bash
+# 重启网卡
+$ ifdown em1 && ifup em1
 ```
 
 ## centos 7 修改网卡名称

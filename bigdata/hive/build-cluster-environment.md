@@ -1,10 +1,10 @@
 # Hive 集群环境搭建
-### 1.Hive 知识点  
-Hive 是构建在 Hadoop 之上的数据仓库平台。  
-Hive 是一个 SQL 解析引擎，它将 SQL 语句转换成 MapReduce 作业并在 Hadoop 上执行。  
-Hive 表是 hdfs 的一个文件目录，一个表对应一个目录名，如果有分区的话，则分区值对应目录名。  
-hive 不支持对数据的修改和添加。  
-使用 mysql 作为 hive 的元数据存储，减少了查询过程中执行语义检查的时间。  
+### 1.Hive 知识点
+Hive 是构建在 Hadoop 之上的数据仓库平台。
+Hive 是一个 SQL 解析引擎，它将 SQL 语句转换成 MapReduce 作业并在 Hadoop 上执行。
+Hive 表是 hdfs 的一个文件目录，一个表对应一个目录名，如果有分区的话，则分区值对应目录名。
+hive 不支持对数据的修改和添加。
+使用 mysql 作为 hive 的元数据存储，减少了查询过程中执行语义检查的时间。
 
 ### 2.版本
 ```bash
@@ -23,7 +23,7 @@ hadoop version # 2.6.0
 192.168.1.126   clusterSlave5
 ```
 
-### 4.主节点安装 mysql  
+### 4.主节点安装 mysql
 ```bash
 ## 只在clusterMaster 上安装 mysql-server
 yum install mysql-server -y
@@ -34,7 +34,7 @@ service mysqld start
 > set password 'root'@'localhost' = password('Hive.123456')
 ```
 
-### 5.主节点配置 hive  
+### 5.主节点配置 hive
 ```bash
 ## clusterMaster
 ## 下载并解压 Hive-2.1.1
@@ -112,10 +112,10 @@ hive
 
 ## Hive2 新命令行工具
 ## Running HiveServer2 and Beeline
-hive --service hiveserver2 &　# 或者是 hiveserver2 &
+hive --service hiveserver2 & # 或者是 hiveserver2 &
 
 ## beeline -u jdbc:hive2://$HS2_HOST:$HS2_PORT
-beeline -u jdbc:hive2://localhost:10000 -n root　–p Hive.123456
+beeline -u jdbc:hive2://localhost:10000 -n root –p Hive.123456
 (远程写 IP)
 
 ###################### 以下略 ########################
@@ -127,7 +127,7 @@ bin/hive --service hwi &
 hcat_server.sh
 hcat
 
-##　Running WebHCat (Templeton)
+## Running WebHCat (Templeton)
 webhcat_server.sh
 ```
 

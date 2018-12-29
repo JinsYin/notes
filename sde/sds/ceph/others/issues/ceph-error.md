@@ -195,7 +195,7 @@ $ ceph-deploy mon add --addr 192.168.111.206 centos206
 ```
 
 ```bash
-$ # 
+$ #
 $ cat ceph.conf
 ...
 filestore_xattr_use_omap = true
@@ -220,9 +220,9 @@ Error response from daemon: --storage-opt is not supported for overlay
 
 解决办法
 ```bash
-# 方法　1
+# 方法 1
 $ docker volume create --driver rexray --opt=size=20 --name nginx_data # 创建卷并指定容量为 20GB
-$ docker run -it --name web -p 8000:80 --volume-driver=rexray -v nginx_data:/usr/share/nginx -d nginx:1.11.9-alpine　# 使用创建好的卷部署应用
+$ docker run -it --name web -p 8000:80 --volume-driver=rexray -v nginx_data:/usr/share/nginx -d nginx:1.11.9-alpine # 使用创建好的卷部署应用
 ```
 
 ```

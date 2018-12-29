@@ -1,13 +1,13 @@
 # Ceph RBD：RADOS 块设备
 
-在使用 mesos/marathon 来编排 docker 任务过程中发现，数据存储存在很大问题，典型的是数据无法共享、无法随容器一起迁移。所以决定使用 ceph　块存储　rbd 来存储 docker volume，不过还需要一个 volume driver。
+在使用 mesos/marathon 来编排 docker 任务过程中发现，数据存储存在很大问题，典型的是数据无法共享、无法随容器一起迁移。所以决定使用 ceph 块存储 rbd 来存储 docker volume，不过还需要一个 volume driver。
 
 ## 插件
 
-目前，基于此设计的插件主要有两个：  
+目前，基于此设计的插件主要有两个：
 -[codedellemc/rexray](https://github.com/codedellemc/rexray)
 -[contiv/volplugin](https://github.com/contiv/volplugin)
-  
+
 最终，考虑到 emc 的强（niu）大（bi），我选择了 rexray 来作为 volume driver。不过还需要注意以下几点：
 1. 使用 rexray 插件的节点要求必须是 ceph admin 节点（ceph-deploy admin node1）。
 2. The Ceph RBD driver only works when the client and server are on the same node. There is no way for a centralized libStorage server to attach volumes to clients, therefore the libStorage server must be running on each node that wishes to mount RBD volumes.
@@ -109,7 +109,7 @@ $ curl -XPOST 'http://marathon.mesos:8080/v2/apps' -H 'Content-Type: application
                 { "containerPort": 80, "hostPort": 0, "servicePort": 10080, "protocol": "tcp" }
             ],
             "parameters": [
-                { "key": "volume-driver", "value": "rexray" }, 
+                { "key": "volume-driver", "value": "rexray" },
                 { "key": "volume", "value": "nginx_data:/data/www" }
             ]
         }
@@ -122,7 +122,7 @@ $ curl -XPOST 'http://marathon.mesos:8080/v2/apps' -H 'Content-Type: application
 
 ## 相关命令
 
-查看 `本机` docker volume 与　rbd image 的映射关系
+查看 `本机` docker volume 与 rbd image 的映射关系
 ```bash
 $ rbd showmapped
 ```

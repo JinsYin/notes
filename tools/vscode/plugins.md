@@ -8,8 +8,9 @@
 * `indenticator`
 * `Git Project Manager`
 * `VSCode icons`
+* `REST Client` - 代替 PostMan 的神器
 * `Material Icon Theme` - 感觉这个更好看一点
 
 ## 参考
 
-* [](https://zhuanlan.zhihu.com/p/36020180)
+* [这就是我想要的 VSCode 插件](https://zhuanlan.zhihu.com/p/36020180)

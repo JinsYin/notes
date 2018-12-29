@@ -11,7 +11,7 @@
 ## Key 类型
 
 * `Partition Key` - 分区键；决定数据放置到哪个节点上
-* `Clustering Key` - 集群键；用于在各个分区内的排序
+* `Clustering Key` - 集群键；用于在各个分区内的排序，决定了数据在分区上的位置
 * `Primary Key` - 主键；决定数据行的唯一性
 
 示例：

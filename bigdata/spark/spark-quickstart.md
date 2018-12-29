@@ -57,9 +57,9 @@ $ bin/spark-shell --master mesos://x.x.x.x:7077
 
 ```scala
 scala> val textFile = sc.textFile("README.md")
-scala> 
+scala>
 scala> textFile.count() // 返回 RDD 中元素的数量
-scala> 
+scala>
 scala> textFile.first() // 返回 RDD 中的第一个元素
 scala> :q
 ```
@@ -79,7 +79,7 @@ $ bin/pyspark --master local[*]
 
 ```python
 >>> textFile = sc.textFile("README.md")
->>> 
+>>>
 >>> textFile.count()
 >>>
 >>> textFile.first()
@@ -98,7 +98,7 @@ scala> linesWithSpark.count()
 
 ```scala
 scala> textFile.map(line => line.split(" ").size).reduce((a, b) => if (a > b) a else b)
-scala> 
+scala>
 scala> import java.lang.Math
 scala> textFile.map(line => line.split(" ").size).reduce((a, b) => Math.max(a, b))
 ```
@@ -107,7 +107,7 @@ scala> textFile.map(line => line.split(" ").size).reduce((a, b) => Math.max(a, b
 
 ```scala
 scala> val wordCounts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
-scala> 
+scala>
 scala> wordCounts.collect()
 scala> wordCounts.foreach(println)
 ```
@@ -119,14 +119,14 @@ Spark 支持将数据集缓存到内存中，这对于重复访问这些数据�
 
 ```scala
 scala> lineWithSpark.cache()
-scala> 
+scala>
 scala> lineWithSpark.count()
 scala>
 scala> lineWithSpark.count()
 ```
 
 
-##　开发、打包、部署
+## 开发、打包、部署
 
 * 代码
 

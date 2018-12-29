@@ -154,7 +154,7 @@ $ reboot
 ### 命令
 
 ```bash
-# 查看 ib　网卡状态，如果是 Active 表示已启动
+# 查看 ib 网卡状态，如果是 Active 表示已启动
 $ ibstat
 CA 'mlx4_0'
     CA type: MT26428

@@ -65,6 +65,12 @@ $ nodetool removenode -- {<status>|<force>|<ID>}
 $ nodetool assassinate
 ```
 
+## History
+
+```bash
+ls ~/.cassandra/nodetool.history
+```
+
 ## 参考
 
 * [Cassandra 运维工具](https://blog.csdn.net/zrtlin/article/details/60763413)

@@ -60,7 +60,7 @@ $ # 默认使用 UDP 进行数据转发
 $ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16"}'
 $
 $ # OR
-$ 
+$
 $ # 使用 VxLAN 进行数据转发
 $ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16", "SubnetLen": 24, "Backend": {"Type": "vxlan"}}'
 ```
@@ -72,7 +72,7 @@ $ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16", "SubnetLen": 
 
 ```bash
 $ yum list flannel --showduplicates
-$ 
+$
 $ # 安装
 $ yum install -y flannel-0.7.1-1*
 ```
@@ -93,14 +93,14 @@ FLANNEL_OPTIONS="-iface=eth1"
 ```bash
 $ # 启动 flannel 之前先检查 etcd 是否健康
 $ etcdctl --endpoints http://172.28.128.100:2379 cluster-health
-$ 
+$
 $ # 启动
 $ systemctl start flanneld.service
 $
 $ # 开机自启动
 $ systemctl enable flanneld.service
 $
-$　# 状态
+$ # 状态
 $ systemctl status flanneld.service
 ```
 
@@ -114,7 +114,7 @@ flannel.1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1450
   RX packets 18  bytes 1456 (1.4 KiB)
   RX errors 0  dropped 0  overruns 0  frame 0
   TX packets 24  bytes 1624 (1.5 KiB)
-  TX errors 0  dropped 0 overruns 0  carrier 0  collisions 
+  TX errors 0  dropped 0 overruns 0  carrier 0  collisions
 ```
 
 ```bash
@@ -145,7 +145,7 @@ $ yum install -y docker-1.12.6
 
 * 配置 Docker
 
-启动 flannel 后，会在 `/run/flannel/docker` 文件中自动添加一些由 Docker daemon 的参数所组成的环境变量。Docker daemon 的 `--bip` 参数表示 bridge ip，也就是网桥　docker0 的　IP 地址。
+启动 flannel 后，会在 `/run/flannel/docker` 文件中自动添加一些由 Docker daemon 的参数所组成的环境变量。Docker daemon 的 `--bip` 参数表示 bridge ip，也就是网桥 docker0 的 IP 地址。
 
 ```bash
 $ cat /run/flannel/docker
@@ -195,7 +195,7 @@ $ etcdctl --endpoints http://172.28.128.100:2379 ls /flannel/network/subnets
 $ docker run -it --rm alpine:3.5 sh
 > hostname -i
 > 10.20.87.2
-> 
+>
 > ping 10.20.2.2  # OK
 > ping 10.20.26.2 # OK
 ```
@@ -206,7 +206,7 @@ $ docker run -it --rm alpine:3.5 sh
 $ docker run -it --rm alpine:3.5 sh
 > hostname -i
 > 10.20.26.2
-> 
+>
 > ping 10.20.2.2  # OK
 > ping 10.20.87.2 # OK
 ```
@@ -217,7 +217,7 @@ $ docker run -it --rm alpine:3.5 sh
 $ docker run -it --rm alpine:3.5 sh
 > hostname -i
 > 10.20.2.2
-> 
+>
 > ping 10.20.26.2 # OK
 > ping 10.20.87.2 # OK
 ```
@@ -245,7 +245,7 @@ $
 $ # 重启 flannel
 $ systemctl restart flanneld.service
 $
-$ # 重启　docker
+$ # 重启 docker
 $ systemctl restart docker.service
 $
 $ # 校验
@@ -258,7 +258,7 @@ $ route -n
 
 * failed to retrieve network config: 100: Key not found (/atomic.io) [97]
 
-  需要确保　FLANNEL_ETCD_PREFIX 与　etcdctl set 是设置的路径是对应的。
+  需要确保 FLANNEL_ETCD_PREFIX 与 etcdctl set 是设置的路径是对应的。
 
 * 使用 vagrant + virtualbox 测试的时候，出现了多台虚拟机的 docker0 的 IP 完全一样、以及多台虚拟机的容器 IP 完全一样的问题。
 

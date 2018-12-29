@@ -6,7 +6,7 @@ Alpine Linux 使用了 musl，可能和其他 Linux 发行版使用的 glibc 实
 
 * ISO
 
-> https://www.alpinelinux.org/downloads/
+[Alpine Linux Downloads](https://www.alpinelinux.org/downloads/)
 
 * Docker
 
@@ -16,4 +16,4 @@ $ docker run -it --name alpine alpine:3.5 sh
 
 ## 参考
 
-> http://www.infoq.com/cn/news/2016/01/Alpine-Linux-5M-Docker
+* [Alpine Linux，一个只有 5M 的 Docker 镜像](http://www.infoq.com/cn/news/2016/01/Alpine-Linux-5M-Docker)

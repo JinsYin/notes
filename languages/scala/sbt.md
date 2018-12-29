@@ -25,8 +25,8 @@ OR
 
 ```sbt
 libraryDependencies ++= Seq(
-	groupID % artifactID % revision,
-	groupID % otherID % otherRevision
+    groupID % artifactID % revision,
+    groupID % otherID % otherRevision
 )
 ```
 

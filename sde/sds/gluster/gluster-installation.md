@@ -52,7 +52,7 @@ $ hostnamectl --static set-hostname <hostname>
 
 * 配置 DNS 或 hosts
 
-如果使用　hostname 加入 Gluster 节点到集群，必须确保所有节点都可以解析 hostname，`包括客户端节点`。另外，也可以直接使用 IP 地址加入节点到集群。
+如果使用 hostname 加入 Gluster 节点到集群，必须确保所有节点都可以解析 hostname，`包括客户端节点`。另外，也可以直接使用 IP 地址加入节点到集群。
 
 ```bash
 $ vi /etc/hosts
@@ -144,7 +144,7 @@ $ journalctl -f -u glusterd
 
 ### 磁盘准备（gluster 节点）
 
-如果是实验环境且没有额外的存储盘，可以跳过此步骤，通过创建本地目录（`mkdir -p /data/gluster`）来代替。如果是生产环境，最好先对磁盘组建 RAID　。
+如果是实验环境且没有额外的存储盘，可以跳过此步骤，通过创建本地目录（`mkdir -p /data/gluster`）来代替。如果是生产环境，最好先对磁盘组建 RAID 。
 
 ```bash
 # 创建主分区
@@ -196,8 +196,8 @@ State: Peer in Cluster (Connected)
 ```bash
 $ gluster pool list
 UUID                                  Hostname   State
-a2b01b4e-87a9-4f9a-9ed6-3fe271b2f5bd  gluster2   Connected 
-d986ae16-ba82-40ad-9bf3-51a88d5be6ce  gluster3   Connected 
+a2b01b4e-87a9-4f9a-9ed6-3fe271b2f5bd  gluster2   Connected
+d986ae16-ba82-40ad-9bf3-51a88d5be6ce  gluster3   Connected
 7fefc5c9-c80d-4101-9be1-afa80b435142  localhost  Connected
 ```
 
@@ -221,7 +221,7 @@ $ mkdir -p /data/gluster/gv0
 * 创建 volume（任一节点）
 
 ```bash
-# ２　个副本容易脑裂，使用 force 跳过
+# ２ 个副本容易脑裂，使用 force 跳过
 $ gluster volume create gv0 replica 2 gluster2:/data/gluster/gv0 gluster3:/data/gluster/gv0 force
 volume create: gv0: success: please start the volume to access data
 ```
@@ -230,7 +230,7 @@ volume create: gv0: success: please start the volume to access data
 
 * 启动 volume（任一节点）
 
-为了访问数据需要先启动 volume。如果启动失败，可以查看　/var/log/glusterfs 目录下的日志文件。
+为了访问数据需要先启动 volume。如果启动失败，可以查看 /var/log/glusterfs 目录下的日志文件。
 
 ```bash
 $ gluster volume start gv0
@@ -268,7 +268,7 @@ Brick gluster3:/data/gluster/gv0            49152     0          Y       16185
 Self-heal Daemon on localhost               N/A       N/A        Y       27145
 Self-heal Daemon on gluster3                N/A       N/A        Y       16206
 Self-heal Daemon on gluster2                N/A       N/A        Y       28272
- 
+
 Task Status of Volume gv0
 ------------------------------------------------------------------------------
 There are no active volume tasks

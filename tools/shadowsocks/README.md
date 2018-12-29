@@ -1,41 +1,107 @@
-# Shadowsocks 
+# Shadowsocks
 
-Shadowsocks 也通常简称 ss，支持 `sock4` 、`sock5`、`http`、`https` 等代理方式。
+Shadowsocks 也通常简称 ss，支持 `sock4` 、`sock5`、`http`、`https` 等代理协议。
 
+## Server
 
-## 服务端部署 Shadowsocks server
+### 使用 [shadowsocks-libev](https://github.com/shadowsocks/shadowsocks-libev) 【推荐】
 
-* docker
+Shadowsocks-libev 既可以用作 shadowsocks server（`ss-server`，配置和 shadowsocks 几乎是一样的），又可以用作 shadowsocks client （`ss-local`），但常被用作客户端。
+使用 shadowsocks-libev 可以在企业内部服务器上搭建一个供内部人员使用的无密钥代理（二层代理），从而避免内部人员直接通过密钥连接远程的代理（如果有此需求可以考虑 [shadowsocks-manager](https://github.com/shadowsocks/shadowsocks-manager)），此时的 shadowsocks-libev 对于内部人员来说其实是一个服务端（另外使用 DNS 也是一种选择）。
+
+* Docker
+
+```bash
+# 官方希望你是这样使用的（docker inspect），但这样只能作为 Server 使用
+$ docker run -d --name ss-server --restart=always \
+  -p 1314:1314 \
+  -e SERVER_ADDR=0.0.0.0 \
+  -e SERVER_PORT=1314 \
+  -e PASSWORD=xxx \
+  -e METHOD=aes-256-cfb \
+  -e TIMEOUT=300 \
+  -e DNS_ADDRS=8.8.8.8,8.8.4.4 \
+  shadowsocks/shadowsocks-libev
+
+# 建议
+$ docker run -d --name ss-server -p 1314:1314 --restart=always \
+  shadowsocks/shadowsocks-libev ss-server -s 0.0.0.0 -p 1314 -k xxx -m aes-256-cfb
+```
+
+* Ubuntu
+
+```bash
+# 安装 shadowsocks-libev
+$ sudo apt-get install software-properties-common -y
+$ sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev
+$ sudo apt-get update
+$ sudo apt install shadowsocks-libev
+```
+
+```bash
+# 修改配置
+$ vi /etc/default/shadowsocks-libev
+$ vi /etc/shadowsocks-libev/config.json
+{
+  "server":"12.34.56.78", # 外网 IP
+  "server_port":8388,
+  "local_address":"0.0.0.0",
+  "local_port":1080,
+  "password":"mypassword",
+  "timeout":60,
+  "method":"aes-256-cfb"
+}
+
+# 启动 shadowsocks server （ss-server）
+$ /etc/init.d/shadowsocks-libev start
+```
+
+* CentOS
+
+```bash
+# 安装 shadowsocks-libev
+$ yum install epel-release -y
+$ yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto c-ares-devel libev-devel libsodium-devel mbedtls-devel -y
+
+# 添加 shadowsocks-libev 源：https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/
+$ vi /etc/yum.repos.d/shadowsocks-libev.repo
+
+$ yum install shadowsocks-libev
+```
+
+### 使用 [shadowsocks](https://github.com/shadowsocks/shadowsocks/tree/master) 【不怎么更新了】
+
+* Docker
 
 ```bash
 $ docker run -d --name ss --restart=always -p 1314:1314 ficapy/shadowsocks -s 0.0.0.0 -p 1314 -k password -m aes-256-cfb
 ```
 
-* ubuntu
+* Ubuntu
 
 ```bash
 $ apt-get install python-pip
 
-$ # 安装最新版本
+# 安装最新版本
 $ pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 
-$ # 安装指定版本版本
+# 安装指定版本版本
 $ pip install git+https://github.com/shadowsocks/shadowsocks.git@2.8.2
 
-$ # 命令行后台部署
+# 命令行后台部署
 $ ssserver -s 0.0.0.0 -p 8788 -k password -m aes-256-cfb -d start
 
-$ # 停止
+# 停止
 $ ssserver -d stop
 ```
 
-* centos
+* CentOS
 
 ```bash
 $ yum install python-setuptools && easy_install pip
 $ pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 
-$ # 使用配置文件来部署，https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File
+# 使用配置文件来部署，https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File
 $ ssserver -c /etc/shadowsocks.json -d start
 
 $ cat /etc/shadowsocks.json
@@ -50,12 +116,22 @@ $ cat /etc/shadowsocks.json
   "fast_open": false
 }
 
-$ # 停止
+# 停止
 $ ssserver -c /etc/shadowsocks.json -d stop
 ```
 
+```bash
+# 修改配置
+$ vi /etc/shadowsocks-libev/config.json
+$ vi /etc/sysconfig/shadowsocks-libev
 
-## 安装 GUI 客户端　shadowsocks-qt5
+# 运行 shadowsocks server （ss-server）
+$ systemctl start shadowsocks-libev
+```
+
+## Client
+
+### 使用 shadowsocks-qt5 （不再更新）
 
 shadowsocks-qt5 用于直连 shadowsocks server，所以需要在 shadowsocks-qt5 中配置用于连接 shadowsocks server 的 host ip、port、密码、加密方式的信息。
 
@@ -67,110 +143,48 @@ $ sudo apt-get update
 $ sudo apt-get install shadowsocks-qt5
 ```
 
+### 使用 shadowsocks-libev
 
-## 安装命令行客户端 shadowsocks-libev
-
-shadowsocks-libev 既可以用作 shadowsocks server（`ss-server`，配置和 shadowsocks 几乎是一样的），又可以用作 shadowsocks client （`ss-local`）， 但常被用作客户端。使用 shadowsocks-libev 可以在企业内部服务器上搭建一个供内部人员使用的无密钥代理（二层代理），从而避免内部人员直接通过密钥连接远程的代理，此时的 shadowsocks-libev 对于内部人员来说其实是一个服务端。
-
-* ubuntu
+* Docker
 
 ```bash
-$ # 安装 shadowsocks-libev
-$ sudo apt-get install software-properties-common -y
-$ sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev
-$ sudo apt-get update
-$ sudo apt install shadowsocks-libev
+# 端口映射不知道为什么不可行
+$ docker run -d --name ss-local --net=host --restart=always \
+  shadowsocks/shadowsocks-libev ss-local -s 12.34.56.78 -p 1314 -l 1080 -k xxx -m aes-256-cfb
 ```
 
-客户端：
+* Ubuntu
 
 ```bash
+# 配置
 $ vi /etc/shadowsocks-libev/config.json
 {
   "server":"12.34.56.78",
   "server_port":8388,
-  "local_address": "0.0.0.0",
+  "local_address":"0.0.0.0",
   "local_port":1080,
   "password":"mypassword",
   "timeout":60,
   "method":"aes-256-cfb"
 }
 
-$ # 启动 shadowsocks client
+# 启动 shadowsocks client
 $ nohup ss-local -c /etc/shadowsocks-libev/config.json >> /var/log/shadowsocks-libev.log &
 ```
 
-服务端：
+* CentOS
+
+除配置路径与 Ubuntu 有所不同外，其他均一致：
 
 ```bash
-$ # 修改配置
-$ vi /etc/shadowsocks-libev/config.json
-$ vi /etc/default/shadowsocks-libev
-
-$ # 启动 shadowsocks server （ss-server）
-$ /etc/init.d/shadowsocks-libev start
-```
-
-* centos
-
-```bash
-$ # 安装 shadowsocks-libev
-$ yum install epel-release -y
-$ yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto c-ares-devel libev-devel libsodium-devel mbedtls-devel -y
-
-$ # 添加 shadowsocks-libev 源：https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/
-$ vi /etc/yum.repos.d/shadowsocks-libev.repo
-
-$ # yum update
-$ yum install shadowsocks-libev
-```
-
-服务端：
-
-```bash
-$ # 修改配置
+# 配置
 $ vi /etc/shadowsocks-libev/config.json
 $ vi /etc/sysconfig/shadowsocks-libev
-
-$ # 运行 shadowsocks server （ss-server）
-$ systemctl start shadowsocks-libev
 ```
 
+## Privoxy
 
-## Ubuntu 配置代理
-
-* 全局手动代理
-
-`System Settings` > `Network` > `Network proxy` > `Manual` > 仅在 Socks Host 栏中填写本地的 sock 主机和端口，默认是: `127.0.0.1` 和 `1080`。
-
-* 全局自动代理
-
-使用自动代理需要配置 PAC （Proxy Autoproxy Config，代理自动配置）。[GenPAC](https://github.com/JinnLynn/GenPAC) 是基于 gfwlist 的 PAC 文件生成工具，支持自定义规则。
-
-```bash
-$ # 安装最新版本的 genpac
-$ pip install --upgrade https://github.com/JinnLynn/genpac/archive/master.zip
-
-$ # 生成 pac 文件到指定路径中
-$ genpac --pac-proxy "SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" --output="/home/yin/shadowsocks/autoproxy.pac" --gfwlist-url="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
-```
-
-`System Settings` > `Network` > `Network proxy` > `Automatic` > 填入 pac 文件路径：`file:///home/yin/shadowsocks/autoproxy.pac`。
-
-
-## 配置文件
-
-* [gfwlist](https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt)：大陆白名单（需要使用 ss 的墙外网站列表）
-* [gui-config](./gui-config.json): ss 客户端配置，请自行修改
-
-
-## Shadowsocks 客户端下载地址
-
-* [IOS](https://github.com/shadowsocks/shadowsocks-iOS/releases)
-* [Android](https://github.com/shadowsocks/shadowsocks-android/releases)
-* [Linux](https://github.com/shadowsocks/shadowsocks-qt5/releases)
-* [Windows](https://github.com/shadowsocks/shadowsocks-windows/releases)
-
+利用 Privoxy 可以将 socks 转成 http 。
 
 ## 参考
 

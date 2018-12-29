@@ -64,7 +64,7 @@ service cassandra start
 
 ## centos 7
 ## vim /etc/yum.repos.d/datastax.repo:
-[datastax-ddc] 
+[datastax-ddc]
 name = DataStax Repo for Apache Cassandra
 baseurl = http://rpm.datastax.com/datastax-ddc/3.9
 enabled = 1
@@ -93,7 +93,7 @@ seeds: "your_server_ip,your_server_ip_2,...your_server_ip_n"
 ...
 endpoint_snitch: GossipingPropertyFileSnitch
 
-##　/etc/cassandra/cassandra.yaml
+## /etc/cassandra/cassandra.yaml
 auto_bootstrap: false
 
 sudo service cassandra start

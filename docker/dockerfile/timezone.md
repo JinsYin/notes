@@ -43,3 +43,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 ENV TZ=Asia/Shanghai
 RUN apt-get update && apt-get install -y tzdata
 ```
+
+## 参考
+
+* [Docker Container time & timezone](https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes/683651)

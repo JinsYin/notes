@@ -13,3 +13,8 @@
 * GlusterFS
 * Luster
 * NFS
+
+## 性能
+
+* IOPS
+* 吞吐量

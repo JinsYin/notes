@@ -3,7 +3,7 @@
 ## 临时关闭
 
 ```bash
-#　Permissive
+# Permissive
 $ setenforce 0
 
 # Enforcing

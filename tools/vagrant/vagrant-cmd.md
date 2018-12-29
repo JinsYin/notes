@@ -134,7 +134,7 @@ $ vagrant ssh 1a2b3c4d
 * vagrant-hostmanager 插件
 
 ```bash
-$ # 先修改配置，再更新虚拟机与宿主机的　hosts 文件
+$ # 先修改配置，再更新虚拟机与宿主机的 hosts 文件
 $ vagrant hostmanager
 ```
 

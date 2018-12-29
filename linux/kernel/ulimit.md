@@ -135,6 +135,7 @@ $ ulimit -n
 $ sudo echo "fs.file-max = 102400" >> /proc/sys/fs/file-max
 $ sysctl -p
 
+# 不能超过 fs.file-max
 $ sudo vi /etc/security/limits.conf
 *    soft     nofile    102400
 *    hard     nofile    102400

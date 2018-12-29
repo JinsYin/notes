@@ -1,7 +1,7 @@
 # Rados Gateway：对象存储
 
-Ceph 对象网关用于存储　docker image；  
-Ceph 对象网关m默认运行在 Civetweb（默认端口7480）上, 而不再是　Apache　和　FastCGI　之上。
+Ceph 对象网关用于存储 docker image；
+Ceph 对象网关m默认运行在 Civetweb（默认端口7480）上, 而不再是 Apache 和 FastCGI 之上。
 
 >[有云Ceph课堂：使用CivetWeb快速搭建RGW](https://www.ustack.com/blog/civetweb/?belong=industry-news)
 
@@ -23,7 +23,7 @@ Radosgw（librgw）接口：
 # ceph-deploy 节点
 $ cd /ceph-cluster
 $ ceph-deploy install --rgw <gateway-node1> [<gateway-node2> ...] # ruguo
-$ ceph-deploy admin <gateway-node1> [<gateway-node2> ...]　# 添加为管理节点
+$ ceph-deploy admin <gateway-node1> [<gateway-node2> ...] # 添加为管理节点
 ```
 
 ```bash
@@ -42,7 +42,7 @@ $ ceph-deploy rgw create <gateway-node1> [<gateway-node2> ...] # 创建 rgw 实�
 ```
 
 ```bash
-# rgw 服务默认端口　7480
+# rgw 服务默认端口 7480
 http://gateway-node1:7480
 ```
 
@@ -69,7 +69,7 @@ $ ceph-deploy --overwrite-conf config push <gateway-node> [<other-nodes>]
 
 ```bash
 # rgw 节点
-$ systemctl restart ceph-radosgw@rgw.centos-11.service　# 重启 rgw 服务
+$ systemctl restart ceph-radosgw@rgw.centos-11.service # 重启 rgw 服务
 $ systemctl status ceph-radosgw@rgw.centos-11.service
 ```
 

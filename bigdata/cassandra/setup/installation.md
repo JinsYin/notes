@@ -78,7 +78,7 @@ UUID=b9eb1854-9cb3-446e-8d25-3b94ce051801 /data/cassandra xfs defaults 0 0
 $ vi /etc/yum.repos.d/cassandra.repo
 [cassandra]
 name=Apache Cassandra
-baseurl=https://www.apache.org/dist/cassandra/redhat/30x/
+baseurl=https://www.apache.org/dist/cassandra/redhat/30x/ # 30x
 gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://www.apache.org/dist/cassandra/KEYS
@@ -95,6 +95,7 @@ $ yum install -y cassandra
 ## Debian/Ubuntu
 
 ```bash
+# 30x
 echo "deb http://www.apache.org/dist/cassandra/debian 30x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 
 curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
@@ -125,7 +126,16 @@ seed_provider:
 
 listen_address: 192.168.10.20x # custom
 
+# 单网卡 start #
 rpc_address: 192.168.10.20x # custom
+# 单网卡 end #
+
+# 多网卡 start #
+rpc_address: 0.0.0.0
+broadcast_rpc_address: 192.168.10.20x
+# 多网卡 end #
+
+rpc_address: 0.0.0.0
 
 #endpoint_snitch: SimpleSnitch
 endpoint_snitch: GossipingPropertyFileSnitch

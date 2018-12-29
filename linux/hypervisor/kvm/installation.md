@@ -310,7 +310,7 @@ kvm0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
       TX packets 8092  bytes 1107993 (1.0 MiB)
       TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
-# 没办法再获取 IP，访问该宿主机只能通过 kvm0 的　IP
+# 没办法再获取 IP，访问该宿主机只能通过 kvm0 的 IP
 $ ifconfig em1
 em1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
       inet6 fe80::1a66:daff:fe4d:881f  prefixlen 64  scopeid 0x20<link>

@@ -35,7 +35,7 @@ $ yum install -y yum-utils
 $ # 添加稳定的官方源
 $ yum-config-manager --add-repo \
     https://docs.docker.com/v1.13/engine/installation/linux/repo_files/centos/docker.repo
-    
+
 $ # 更新包索引
 $ yum makecache fast
 
