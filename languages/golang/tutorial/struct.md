@@ -72,11 +72,10 @@ func main() {
 ```golang
 // 声明
 var sa [3]Person
-sa = {{20, "a"}, {21, "b"}, {22, "c"}}
+sa = { {20, "a"}, {21, "b"}, {22, "c"} }
 ```
 
 ```golang
 func main() {
-    var
 }
 ```

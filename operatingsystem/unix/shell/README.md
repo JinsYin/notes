@@ -1,5 +1,7 @@
 # Unix Shell
 
+Shell 意为 `壳`。
+
 ## 类型
 
 Unix 系统中主要有三类 shell （还有各种子分类）：
