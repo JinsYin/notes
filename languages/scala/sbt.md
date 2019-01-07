@@ -1,6 +1,6 @@
 # SBT
 
-SBT 同样也是使用的 Maven 的[中心仓库](https://search.maven.org/)，默认的本地存储路径是 ` ~/.ivy2`。
+SBT 同样也是使用的 Maven 的[中心仓库](https://search.maven.org/)，默认的本地存储路径是 `~/.ivy2`。
 
 ## 安装
 
@@ -13,6 +13,23 @@ $ sudo apt-get update
 $ sudo apt-cache policy sbt
 $ sudo apt-get install sbt=0.13.8
 $ sbt # 运行 sbt 命令，安装所需依赖
+```
+
+## 项目目录结构
+
+> <http://www.scala-sbt.org/0.13/docs/Directories.html>
+
+```bash
+$ find .
+.
+./project
+./project/build.properties
+./project/plugins
+./build.sbt
+./src
+./src/main
+./src/main/scala
+./src/main/scala/SimpleApp.scala
 ```
 
 ## 定义依赖
@@ -39,3 +56,7 @@ $ sbt package
 ```
 
 * IDEA IDE
+
+## 参考
+
+> http://www.scala-sbt.org/0.13/docs/zh-cn/index.html
