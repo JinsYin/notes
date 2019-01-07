@@ -242,7 +242,7 @@ $ git reflog
 
 ```bash
 $ git stash # 缓存
-$ git stash --list # 列出所有缓存
+$ git stash # 列出所有缓存
 $ git stash pop # 还原并删除 （== git stash apply stash@{0} && git stash drop stash@{0}）
 $ git stash clear # 清除所有
 ```
