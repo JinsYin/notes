@@ -11,6 +11,8 @@
 
 ## 架构
 
+Windows 内核：`NT`
+
 ![Windows NT 架构 - 模式篇](.images/windows-architecture.png)
 
 * [操作系统](https://zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)

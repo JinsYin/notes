@@ -34,3 +34,7 @@
 * 安全机制（Security）
 * 用户界面（User Interface）
 * 驱动程序（Device Drivers）
+
+## 引入问题
+
+* 什么是操作系统，什么是系统？
