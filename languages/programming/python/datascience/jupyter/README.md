@@ -10,7 +10,7 @@ Jupyter Notebook 原名 IPython Notebook，它是一个交互式计算环境，�
 
 * 相同点
 
-使用同一个 kernel
+IPython 作为 Jupyter 的 kernel 。
 
 * 不同点
 
