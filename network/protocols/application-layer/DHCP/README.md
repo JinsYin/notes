@@ -53,6 +53,8 @@
 
 ## IP 地址的收回和续租
 
-租期到了，DHCP Server 就要将 IP 收回
-
 租期到了以后，如果客户机不用了，DHCP Server 会将 IP 收回；如果还要续租，客户机需要在租期过去 `50%` 的时候，直接向为其提供 IP 地址的 DHCP Server 发送 `DHCP request` 消息包。客户机收到该服务器回应的 `DHCP ACK` 消息包，会根据包中所提供的新租约以及其他已经更新的 TCP/IP 参数，更新自己的配置。
+
+## 参考
+
+* [BOOTP](https://zh.wikipedia.org/wiki/BOOTP)
