@@ -1,4 +1,4 @@
-# 网络协议
+# 网络模型
 
 ## 标准模型（Standard model）
 
@@ -7,4 +7,4 @@
 
 ## 层面与层数
 
-![层](.images/network-layer.png)
+![层](.images/network-model.png)
