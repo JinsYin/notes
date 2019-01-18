@@ -1,6 +1,8 @@
 # ARP
 
-地址解析协议（Address Resolution Protocol，缩写：**ARP**）是通过 `IP 地址`来定位 `MAC 地址` 的网络传输协议。
+地址解析协议（Address Resolution Protocol，缩写：**ARP**）是通过 `IP 地址`来定位 `MAC 地址` 的网络传输协议（即已知 `IP 地址` 求 `MAC 地址`）。
+
+在 OSI 模型中，ARP 协议属于数据链路层（主流）；而在 TCP/IP 模型中，ARP 协议属于网络层。
 
 ## 概述
 
@@ -8,17 +10,23 @@
 
 ![ARP](.images/arp.png)
 
-局域网中，如果知道了 IP 地址，不知道 MAC 地址该怎么办？靠 “吼”。
+## 工作流程
 
-![ARP](.images/arp-2.png)
+局域网中，如果知道了 IP 地址，不知道 MAC 地址该怎么办？靠 “吼”（`广播`）。
 
-报文格式：
+![ARP Workflow](.images/arp-workflow.png)
 
-![ARP 包格式](.images/arp-packet-format.png)
+1. 源主机查看本地 ARP 缓存表，如果没有对应的 MAC 地址就广播 ARP 请求
+2. 目标主机收到请求后，进行 ARP 应答
+3. 为了避免每次都用 ARP 请求，源主机会进行 ARP 缓存；由于机器可能上下线，IP 也可能会变，所以缓存的 MAC 地址也有过期时间
+
+ARP 请求和应答的报文格式：
+
+![ARP 报文格式](.images/arp-packet-format.png)
 
 ## 命令
 
-* 查看本地 ARP 缓存
+* 查看本地 ARP 缓存表
 
 ```bash
 $ arp -v # arp -a
@@ -51,8 +59,6 @@ Unicast reply from 172.17.0.3 [02:42:AC:11:00:03]  0.555ms
 Unicast reply from 172.17.0.3 [02:42:AC:11:00:03]  0.544ms
 Unicast reply from 172.17.0.3 [02:42:AC:11:00:03]  0.538ms
 ```
-
-## ARP 欺骗
 
 ## 参考
 
