@@ -10,3 +10,9 @@
 | HTML     | 超文本标记语言（HyperText Markup Language）                  | application/html  | 网页                     |
 | XML      | 可扩展标记语言（eXtensible Markup Language）                 | application/xml   | 网络应用                 |
 | XHTML    | 可扩展超文本标记语言（eXtensible HyperText Markup Language） |                   |
+
+## 前后端发展历程
+
+1. “套模板” ———— 前端负责制作页面，后端负责将页面嵌套到模板中（`数据模型 + 模板 ---(模板引擎)---> 页面`）；代表：JSP
+2. 前后端分离、后端提供 API ———— 代表：Rest
+3. 前后端分离、后端提供 API 模型 ———— 代表：GraphQL
