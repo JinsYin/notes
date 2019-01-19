@@ -4,6 +4,7 @@
 
 * [Xmind](https://www.xmind.cn/)
 * [mindmeister](https://www.mindmeister.com)
+* [MindManager](https://www.mindjet.com)
 
 ## 网站
 
