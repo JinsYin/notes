@@ -6,7 +6,7 @@
 
 当两个交换机将两个局域网同时连接起来时，会出现常见的 **环路问题**。
 
-![交换机环路](../.images/bridge-loop.png)
+![交换机环路](.images/bridge-loop.png)
 
 问题描述：
 
