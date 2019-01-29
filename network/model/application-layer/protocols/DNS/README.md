@@ -1,4 +1,4 @@
-# DNS
+# DNS 协议
 
 ## 安装 dig & nslookup
 
