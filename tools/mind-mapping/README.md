@@ -55,3 +55,7 @@
 ## 教育
 
 * [给孩子的未来脑计划](https://www.processon.com/view/5b03d60fe4b01f32972ba5e8)
+
+## 参考
+
+* [如何把思维导图秒变成幻灯？](https://www.jianshu.com/p/f274cad20914)
