@@ -1,12 +1,18 @@
-# Markdown
+# Markdown 语法
+
+---
 
 ## 标题（Header）
+
+语法：
 
 ```markdown
 # This is an <h1> tag
 ## This is an <h2> tag
 ###### This is an <h6> tag
 ```
+
+渲染：
 
 # This is an \<h1\> tag
 ## This is an \<h2\> tag
@@ -16,10 +22,14 @@
 
 ## 强调（Emphasis）
 
+语法：
+
 ```markdown
 *This text will be italic*
 **This text will be bold**
 ```
+
+渲染：
 
 *This text will be italic*
 **This text will be bold**
@@ -28,12 +38,16 @@
 
 ## 无序列表（Unordered List）
 
+语法：
+
 ```markdown
 * Item 1
 * Item 2
   * Item 2a
   * Item 2b
 ```
+
+渲染：
 
 * Item 1
 * Item 2
@@ -44,15 +58,17 @@
 
 ## 有序列表（Ordered List）
 
-（序号全是 `1` 即可，二级菜单前是 `3` 个空格）
+语法（序号全是 `1` 即可，二级菜单前是 `3` 个空格）：
 
 ```markdown
 1. Item 1
-2. Item 2
-3. Item 3
+1. Item 2
+1. Item 3
    1. Item 3a
-   2. Item 3b
+   1. Item 3b
 ```
+
+渲染：
 
 1. Item 1
 1. Item 2
@@ -74,9 +90,13 @@
 
 ## 超链接（Link）
 
+语法：
+
 ```markdown
 <http://github.com> - [GitHub](http://github.com)
 ```
+
+渲染：
 
 <http://github.com> - [GitHub](http://github.com)
 
@@ -98,10 +118,14 @@ As Kanye West said:
 
 ## 内联代码（Inline code）
 
+语法：
+
 ```markdown
 I think you should use an
 `<addr>` element here instead.
 ```
+
+渲染：
 
 I think you should use an
 `<addr>` element here instead.
@@ -110,6 +134,8 @@ I think you should use an
 
 ## 语法高亮（Syntax highlighting）
 
+语法：
+
 ``````markdown
 ```js
 function getName() {
@@ -117,6 +143,8 @@ function getName() {
 }
 ```
 ``````
+
+渲染：
 
 ```js
 function getName() {
@@ -128,12 +156,16 @@ function getName() {
 
 ## 对比修改
 
+语法：
+
 ``````markdown
 ```diff
 - google
 + google.com
 ```
 ``````
+
+渲染：
 
 ```diff
 - google
@@ -144,12 +176,16 @@ function getName() {
 
 ## 任务列表（Task List）
 
+语法：
+
 ```markdown
 * [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
 * [x] list syntax required (any unordered or ordered list supported)
 * [x] this is a complete item
 * [ ] this is an incomplete item
 ```
+
+渲染：
 
 * [x] @mentions, #refs, [links](http://google.com), **formatting**, and <del>tags</del> supported
 * [x] list syntax required (any unordered or ordered list supported)
@@ -160,6 +196,8 @@ function getName() {
 
 ## 表格（Table）
 
+语法：
+
 ```markdown
 | name  | age | school   |
 | ----- | --- | -------- |
@@ -167,14 +205,20 @@ function getName() {
 | peter | 20  | tsinghua |
 ```
 
+渲染：
+
 | name  | age | school   |
 | ----- | --- | -------- |
 | alice | 24  | shsmu    |
 | peter | 20  | tsinghua |
 
+ASCII 表格：<https://ozh.github.io/ascii-tables/>
+
 ---
 
 ## 引入问题（Issue reference）
+
+语法：
 
 ```markdown
 #1
@@ -186,15 +230,21 @@ mojombo/github-flavored-markdown#1
 
 ## 删除线（Strikethrough）
 
+语法：
+
 ```markdown
 ~~del~~
 ```
+
+渲染：
 
 ~~del~~
 
 ---
 
 ## 分割线
+
+语法：
 
 ```markdown
 ---
@@ -226,6 +276,8 @@ mojombo/github-flavored-markdown#1
 
 使用 `<!-- -->` 来进行注释，注释后文本内容将不会显示。
 
+语法：
+
 ```markdown
 <!-- 注释内容 -->
 ```
@@ -235,6 +287,8 @@ mojombo/github-flavored-markdown#1
 ## 换行
 
 编辑纯文本时， markdown 键入 Enter 默认是不会自动换行，需要使用两个英文半角空格 + Enter。
+
+语法：
 
 ```markdown
 <!-- a 后面没有空格，b 后面有一个空格，Peter 后面有两个空格） -->
@@ -250,45 +304,3 @@ Peter
 Jins
 
 ---
-
-## Pandoc
-
-Pandoc 可以将文件在 `markdown`、`html`、`pdf`、`doc`、`docx` 等格式之间相互转换。
-
-安装 pandoc
-
-```bash
-$ sudo apt-get install pandoc
-```
-
-如果 apt-get 安装的 pandoc 功能不齐全，可以如官网上一样先安装 cable,再安装 pandoc
-
-```bash
-$ sudo apt-get install cabal-install
-$ cabal update
-$ cabal install pandoc
-```
-
-为了支持 pdf，需要安装 LaTeX
-
-```bash
-$ sudo apt-get install texlive-latex-base
-$ sudo apt-get install texlive
-```
-
-从 markdown 转为 html
-
-```bash
-$ pandoc test1.md -f markdown -t html -s -o test1.html
-```
-
-创建 LaTeX 文档
-
-```bash
-$ pandoc test1.md -f markdown -t latex -s -o test1.tex
-$ pandoc test1.md -s -o test1.pdf
-```
-
-## 参考
-
-* [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
