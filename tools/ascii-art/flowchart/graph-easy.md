@@ -3,7 +3,8 @@
 ## 安装
 
 ```bash
-$ apt-get install libgraph-easy-perl
+# Ubuntu
+$ sudo apt-get install libgraph-easy-perl
 ```
 
 ## 实验
@@ -30,6 +31,7 @@ $ graph-easy <<< '[a]->[b]->[c]->[d]->[e]'
 
 ```bash
 $ graph-easy <<< '[a]->[b]->[c] [b]->[d]->[e]'
+$ graph-easy <<< '[a]->[b]->[d]->[e] [b]->[c]'
 
 +---+     +---+     +---+     +---+
 | a | --> | b | --> | d | --> | e |
