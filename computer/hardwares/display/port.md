@@ -1,6 +1,4 @@
-# 显示
-
-## 显示器/显卡接口
+# 显示器接口（Display Port / Monitor Adapter）
 
 | 接口 | 信号     | 主流/淘汰 | 描述                                                   |
 | ---- | -------- | --------- | ------------------------------------------------------ |
@@ -11,26 +9,18 @@
 
 性能对比：`DP > HDMI > DVI > VGA`
 
----
-
-* VGA
+## VGA
 
 ![VGA](.images/VGA.png)
 
----
-
-* DVI
+## DVI
 
 ![DVI](.images/DVI.png)
 
----
-
-* HDMI
+## HDMI
 
 ![HDMI](.images/HDMI.png)
 
----
-
-* DP
+## DP
 
 ![DP](.images/DP.png)
