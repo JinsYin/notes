@@ -96,7 +96,7 @@ msg.split()
 
 ### Logpoint
 
-![Logpoint](.images/log-points.gif)
+![Logpoint](https://code.visualstudio.com/assets/docs/editor/debugging/log-points.gif)
 
 Logpoint 是断点的变体，它不会 "中断（break）" 到调试器中，而是将消息记录到控制台。
 
