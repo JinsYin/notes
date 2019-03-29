@@ -1,11 +1,11 @@
-# HDFS ÃüÁî
+# HDFS å‘½ä»¤
 
-Hadoop 1.0 ºÍ 2.0 ÃüÁîÓÐËù²»Í¬£¬ÓÐÐ©ÒÑ¾­¹ýÊ±£¨hadoop fsck, hadoop dfsadmin£©£¬ÓÐÐ©»¹ÃãÇ¿¿ÉÒÔÓÃ£¨hadoop fs£©¡£
+Hadoop 1.0 å’Œ 2.0 å‘½ä»¤æœ‰æ‰€ä¸åŒï¼Œæœ‰äº›å·²ç»è¿‡æ—¶ï¼ˆhadoop fsck, hadoop dfsadminï¼‰ï¼Œæœ‰äº›åˆ™å‹‰å¼ºå¯ä»¥ç”¨ï¼ˆhadoop fsï¼‰ã€‚
 
 ## namenode
 
 ```bash
-$ hdfs namenode -format # ¸ñÊ½»¯ namenode£¨µÚÒ»´ÎÆô¶¯ namenode Ê±Ó¦ÓÃ£©
+$ hdfs namenode -format # æ ¼å¼åŒ– namenodeï¼ˆç¬¬ä¸€æ¬¡å¯åŠ¨ namenode æ—¶åº”ç”¨ï¼‰
 ```
 
 ## classpath
@@ -21,29 +21,29 @@ $ hdfs classpath
 ## fsck
 
 ```bash
-$ hdfs fsck -move # ×ªÒÆÈ±ËðÎÄ¼þ£¨ÀýÈçÄ³¸ö½Úµã¹ÒÁË£©µ½ /lost+found
-$ hdfs fsck -delete # É¾³ýÈ±ËðÎÄ¼þ
+$ hdfs fsck -move # è½¬ç§»ç¼ºæŸæ–‡ä»¶ï¼ˆä¾‹å¦‚æŸä¸ªèŠ‚ç‚¹æŒ‚äº†ï¼‰åˆ° /lost+found
+$ hdfs fsck -delete # åˆ é™¤ç¼ºæŸæ–‡ä»¶
 $ hdfs fsck -locations # 
 ```
 
 ## dfsadmin
 
 ```bash
-$ hdfs dfsadmin -report # ²é¿´ namenode ºÍ datanode µÈÐÅÏ¢
-$ hdfs dfsadmin -refreshNodes # Ë¢ÐÂËùÓÐ½Úµã
-$ hdfs dfsadmin -safemode [get | enter | leave | wait] # °²È«Ä£Ê½ÏÂÖ»ÔÊÐí¶Á²»ÔÊÐíÐ´¡£µ±ÓÐ³ÌÐò¶Ô hdfs ½øÐÐ¶ÁÐ´²Ù×÷Ê±£¬hadoop ¼¯Èº×Ô¶¯½øÈë°²È«Ä£Ê½¡£
+$ hdfs dfsadmin -report # æŸ¥çœ‹ namenode å’Œ datanode ç­‰ä¿¡æ¯
+$ hdfs dfsadmin -refreshNodes # åˆ·æ–°æ‰€æœ‰èŠ‚ç‚¹
+$ hdfs dfsadmin -safemode [get | enter | leave | wait] # å®‰å…¨æ¨¡å¼ä¸‹åªå…è®¸è¯»ä¸å…è®¸å†™ã€‚å½“æœ‰ç¨‹åºå¯¹ hdfs è¿›è¡Œè¯»å†™æ“ä½œæ—¶ï¼Œhadoop é›†ç¾¤è‡ªåŠ¨è¿›å…¥å®‰å…¨æ¨¡å¼ã€‚
 ```
 
-## HDFS ¼¯Èº·þÎñ
+## HDFS é›†ç¾¤æœåŠ¡
 
-Hadoop 2.x Ö§³ÖÊ¹ÓÃ `hdfs` ÃüÁîÀ´Æô¶¯ HDFS ¼¯Èº£¬Õâ¿ÉÒÔÓÃÓÚÔËÐÐ docker ÈÝÆ÷·þÎñ¡£
+Hadoop 2.x æ”¯æŒä½¿ç”¨ `hdfs` å‘½ä»¤æ¥å¯åŠ¨ HDFS é›†ç¾¤ï¼Œè¿™å¯ä»¥ç”¨äºŽè¿è¡Œ docker å®¹å™¨æœåŠ¡ã€‚
 
-> hadoop 2.7.2 ÃüÁîÐÐÆô¶¯ namenode ´æÔÚ bug£¬ËùÒÔÉý¼¶µ½ 2.7.3¡£
+> hadoop 2.7.2 å‘½ä»¤è¡Œå¯åŠ¨ namenode å­˜åœ¨ bugï¼Œæ‰€ä»¥å‡çº§åˆ° 2.7.3ã€‚
 
 namenode
 ```bash
 $ mkdir -p /data/hdfs/dfs/name
-$ hdfs namenode -format -D dfs.namenode.name.dir=/data/hdfs/dfs/name # ÕâÀï»¹´æÔÚ bug£¬Ö¸¶¨µÄÅäÖÃÒÀÈ»ÎÞÐ§
+$ hdfs namenode -format -D dfs.namenode.name.dir=/data/hdfs/dfs/name # è¿™é‡Œè¿˜å­˜åœ¨ bugï¼ŒæŒ‡å®šçš„é…ç½®ä¾ç„¶æ— æ•ˆ
 $ hdfs namenode \
 -D fs.defaultFS=hdfs://0.0.0.0:9000 \
 -D hadoop.tmp.dir=/data/hdfs \
@@ -63,13 +63,13 @@ $ hdfs datanode \
 -D dfs.permissions.enabled=false
 ```
 
-## HDFS ¸ß¿ÉÓÃ¼¯Èº
+## HDFS é«˜å¯ç”¨é›†ç¾¤
 
-HDFS High Availability Using the Quorum Journal Manager¡£
+HDFS High Availability Using the Quorum Journal Managerã€‚
 
 
 
-## ²Î¿¼ÎÄÕÂ
+## å‚è€ƒæ–‡ç« 
 
 > [HDFS Commands Guide](http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html)
 > [Hadoop Commands Guide](http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/CommandsManual.html)
