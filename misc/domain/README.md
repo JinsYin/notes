@@ -3,6 +3,7 @@
 ## whois
 
 ```bash
+# ubuntu
 $ sudo apt-get install whois
 
 # 查看 baidu.com 的 whois
@@ -17,6 +18,7 @@ $ whois baidu.com
 
 ## .com
 
-* [godaddy](http://www.godaddy.com)
-* [google](domains.google.com)
+* [Name](www.name.com) - <yinrenqiang.com>
+* [GoDaddy](http://www.godaddy.com)
+* [Google Domain](domains.google.com)
 * [万网](https://wanwang.aliyun.com/)
