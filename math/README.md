@@ -17,3 +17,7 @@
 ## Python for math
 
 * [maths-with-python](https://github.com/IanHawke/maths-with-python)
+
+## 参考
+
+* [数学基础 | 拓展阅读参考书](https://time.geekbang.org/column/article/1807)
