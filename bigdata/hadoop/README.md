@@ -1,4 +1,4 @@
-# Hadoop 从入门到放弃
+# Hadoop
 
 Hadoop 版本： `2.7.2`
 

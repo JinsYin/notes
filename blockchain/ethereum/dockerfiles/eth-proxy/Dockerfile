@@ -2,7 +2,7 @@
 # Usage1: docker run -it --rm -p 9090:9090 -v /opt/ethproxy/eth-proxy.conf:/opt/ethproxy/eth-proxy.conf dockerce/eth-proxy:0.0.5
 # Usage2: docker run -it --rm -p 9090:9090 -e EP_WALLET='0x79e478b8825fc50d9fde647ccc97483b5174f66f' dockerce/eth-proxy:0.0.5
 FROM python:2.7
-MAINTAINER JinsYin <jinsyin@gmail.com>
+LABEL maintainer="jinsyin@gmail.com"
 
 ENV TZ=Asia/Shanghai
 ARG EP_VERSION=0.0.5
@@ -23,6 +23,6 @@ RUN chmod +x /chgconf.sh
 
 WORKDIR /ethproxy
 
-# ´«µİ "EP_" ¿ªÍ·µÄ»·¾³±äÁ¿¿ÉÒÔ¸Ä±äÅäÖÃÎÄ¼ş
+# ä¼ é€’ "EP_" å¼€å¤´çš„ç¯å¢ƒå˜é‡å¯ä»¥æ”¹å˜é…ç½®æ–‡ä»¶
 ENTRYPOINT ["/chgconf.sh"]
 CMD ["python", "eth-proxy.py"]

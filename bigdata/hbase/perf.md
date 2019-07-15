@@ -12,6 +12,7 @@ Workloada 文件（以下配置是较低标准）
 
 ![1](.images/1.png)
 
+以上配置是较低标准。
 
 ```sh
 recordcount=1000 # 测试数据集的记录条数
@@ -46,9 +47,9 @@ load_2.bat
 Default data size: 1 KB records (10 fields, 100 bytes each, plus key)
 每个 rowkey 包含 10 列数据，为 field0-field9。
 
-## HBase 读测试
+YCSB读写设置的配置文件 在workloads目录下
 
-YCSB 读写设置的配置文件 在 workloads 目录下
+Workloada文件
 
 Workloada 文件（以下配置是较低标准）
 
@@ -70,7 +71,6 @@ insertproportion=0 # 插入操作的百分比
 ```sh
 $ ./ycsb run hbase10 -P ../workloads/workloada –threads 10 -p measurementtype=timeseries -p columnfamily=family -p timeseries.granularity=4000 > transactions_3.dat
 ```
-
 表示启动 10 个并发线程，将测试结果存入到 transactions_3.dat 这一文件中（该文件会自动被创建）。
 
 transactions_3.dat

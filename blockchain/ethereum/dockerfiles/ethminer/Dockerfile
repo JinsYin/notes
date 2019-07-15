@@ -1,7 +1,7 @@
 # docker build --build-arg ETHMINER_VERSION=v0.12.0 -f Dockerfile -t cuda-ethminer:9.1-0.12.0 .
 # nvidia-docker run -it --rm --net=host cuda-ethminer:9.1-0.12.0 ethminer -U -M
 FROM nvidia/cuda:9.1-devel
-MAINTAINER JinsYin <jinsyin@gmail.com>
+LABEL maintainer="jinsyin@gmail.com"
 
 ENV TZ=Asia/Shanghai
 ARG ETHMINER_VERSION=v0.12.0
