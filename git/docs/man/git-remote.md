@@ -1,4 +1,4 @@
-# Git 远程
+# git-remote
 
 远程仓库默认名为 `origin`。
 

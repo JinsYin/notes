@@ -1,4 +1,4 @@
-# clone
+# git-clone
 
 <!--
 When you clone a repository with git clone, it automatically creates a remote connection called origin pointing back to the cloned repository

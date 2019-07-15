@@ -1,4 +1,6 @@
-# git fetch
+# git-fetch
+
+从其他仓库下载对象（objects）和引用（refs）
 
 <!--
 The git fetch command imports commits from a remote repository into your local repo. The resulting commits are stored as remote branches instead of the normal local branches that we’ve been working with.This gives you a chance to review changes before integrating them into your copy of the project.
