@@ -1,20 +1,51 @@
-# Unix Shell
+# Shell
 
-Shell 意为 `壳`。
+_Shell_ 意为 `壳`（Kernel 意为 `核`），是一种特殊用途的程序，用于读取用户输入的命令以执行相应的程序，所以有时也称为 _命令解释器_，同时也是编程语言。
 
-## 类型
+## 分类
 
-Unix 系统中主要有三类 shell （还有各种子分类）：
+Unix/Unix-like 系统中主要有三类 Shell （各自还有子分类）：
 
-* Bourne shell (`sh`)：默认命令提示符是 `$`
-  * Korn shell (`ksh`)
-  * Bourne Again shell (`bash`)
-  * POSIX shell (`sh`)
-* C shell (`csh`)：默认命令提示符是 `%`
-  * TENEX/TOPS C shell (`tcsh`) - BSD
-* Z shell (`zsh`)
+| 分类                | 子分类                                                                            | 命令提示符 |
+| ------------------- | --------------------------------------------------------------------------------- | ---------- |
+| Bourne shell (`sh`) | * Korn shell (`ksh`) <br> * Bourne Again shell (`bash`) <br> * POSIX shell (`sh`) | `$`        |
+| C shell (`csh`)     | * TENEX/TOPS C shell (`tcsh`) - BSD                                               | `%`        |
+| Z shell (`zsh`)     | ~                                                                                 | `%`        |
 
 Bourne shell 是第一个出现在 Unix 系统中的 shell，所以被称为标准的 shell 。
+
+## 配置文件
+
+* `~/.profile`
+* `~/.bash_profile`
+* `~/.bashrc`
+* `~/.zshrc`
+
+| shell  | 配置文件优先级                            |
+| ------ | ----------------------------------------- |
+| `sh`   | * `~/.profile`                            |
+| `bash` | 1. `~/.bash_profile` <br> 2. `~/.profile` |
+
+## Login Shell
+
+_Login shell_ 是指用户刚登录系统时，由系统创建、用以运行 shell 命令（即执行相应程序）的进程。对 Unix 系统而言，shell 只是一个用户进程。
+
+```sh
+# 查看系统可用的 Login Shell（macOS）
+$ cat /etc/shells
+/bin/bash
+/bin/csh
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+```
+
+## 执行方式
+
+1. 启动子进程 sub-shell 执行命令或脚本；如：在脚本开头指定 `#!/bin/sh` 以及命令行运行的各种命令（包括 `exec` 等命令）
+2. 在当前 shell 进程中执行脚本；如：`source x.sh`
+3. 执行 `exec` 系统调用以新进程代替原进程，但进程 PID 保持不变，如：在脚本中指定 `exec $@`
 
 ## 参考
 

@@ -1,4 +1,4 @@
-# 下载镜像（Download Mirrors）
+# Linux 发行版镜像（Download Mirrors）
 
 * [阿里云开源镜像站](http://mirrors.aliyun.com)
 * [网易开源镜像站](http://mirrors.163.com)

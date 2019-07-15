@@ -1,0 +1,1 @@
+# /proc/driver/rtc

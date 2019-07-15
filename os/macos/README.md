@@ -1,5 +1,9 @@
 # macOS
 
+macOS 之前叫 OS X 。
+
+macOS 是基于 BSD Unix 设计的，而 Linux 很大程度受到了 System-V Unix 和 GNU 工具的影响。
+
 ## 常规
 
 * 锁屏：`ctrl + command + q`

@@ -1,0 +1,1 @@
+# /proc/acpi/wakeup

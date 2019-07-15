@@ -10,7 +10,7 @@
 
 重定向：将 stderr 输出到 stdout，或者将 stdout 输出到 stderr，亦或者将 stderr/stdout 输出到文件。
 
-## stdout 重定向
+## STDOUT 重定向
 
 使用 `>` 符号将命令或程序的标准输出（正常输出）结果输出到文件（如果文件有数据会被清空），使用 `>>` 符号将命令或程序的标准输出结果追加到文件。
 
@@ -37,7 +37,7 @@ $ ls >> out.log
 $ ls 1>> out.log
 ```
 
-## stderr 重定向
+## STDERR 重定向
 
 将命令或程序的标准错误输出结果输出到文件。
 
@@ -47,7 +47,7 @@ $ ls 1>> out.log
 % non_exist_command 2> err.log
 ```
 
-## stdout vs stderr
+## STDOUT & STDERR
 
 * 将 stdout 和 stderr 全部输出一个文件
 
@@ -77,9 +77,9 @@ $ non_exist_command >& out_and_err.log
 % ls non_exist > out.log 2> err.log
 ```
 
-## stdin
+## STDIN
 
-* 从键盘获取输入
+* 从键盘获取 STDIN
 
 直接执行 `cat` 时，会等待用户从键盘输入信息，并将收到的信息输出到屏幕上。
 
@@ -105,7 +105,7 @@ abcdefghij
 EOF
 ```
 
-* 从文件获取输入
+* 从文件获取 STDIN
 
 可以使用 `<` 符号将文件作为命令的标准输入。
 
@@ -136,9 +136,9 @@ $ grep 123 < in.log
 
 ## 管道（pipe）
 
-![Linux Pipe](../.images/linux-pipe.png)
+![Linux Pipe](.images/linux-pipe.png)
 
-管道的用途是将命令或程序的输入和输出串联起来。
+管道的用途是将命令或程序的输入和输出串联起来，将前一命令的 STDOUT 作为后一命令的 STDIN 。
 
 ```bash
 % ls | grep keyword | nl | head -n 5

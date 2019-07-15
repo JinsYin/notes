@@ -1,0 +1,51 @@
+# grep
+
+`grep` 查找过滤命令
+
+## 参数
+
+| 参数   | 描述            |
+| ------ | --------------- |
+| `-i`   | 忽略大小写      |
+| `-A n` | 匹配上文 n 行   |
+| `-B n` | 匹配下文 n 行   |
+| `-C n` | 匹配上下文 n 行 |
+
+## egrep、fgrep、rgrep
+
+`egrep` = `grep -E` （已弃用）
+`fgrep` = `grep -F` （已弃用）
+`rgrep` = `grep -r`
+
+## 示例
+
+* 不分大小写
+
+```bash
+$ env | grep -i "proxy"
+```
+
+* 匹配上文
+
+```bash
+$ env | grep "HOSTNAME" -A 1
+LC_MONETARY=zh_CN.UTF-8
+TERM=xterm
+```
+
+* 匹配下文
+
+```bash
+$ env | grep "HOSTNAME" -B 1
+LC_ADDRESS=zh_CN.UTF-8
+HOSTNAME=centos-node-1
+```
+
+* 匹配上下文
+
+```bash
+$ env | grep "HOSTNAME" -C 1
+LC_ADDRESS=zh_CN.UTF-8
+HOSTNAME=centos-node-1
+LC_MONETARY=zh_CN.UTF-8
+```
