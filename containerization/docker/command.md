@@ -23,7 +23,7 @@ $ docker rm -f -v [container] # 删除容器，-f：强制删除，无论是否�
 # -d： 后台运行， -d 等同于 --detach
 # -v 挂载（针对目录而言）， 挂载到主机：-v /var/lib/mysql:/data/mysql，挂载到卷： -v mysql_data:/data/mysql
 # --entrypoint
-$ docker run -it --name [container] --net [network] --ip [ip] --hostname [host] -p [port:port] -e [ENV=...] --add-host [host:ip] --dns [8.8.8.8] -v [volume:/container/path] --entrypoint [cmd] -d [image:tag] 
+$ docker run -it --name [container] --net [network] --ip [ip] --hostname [host] -p [port:port] -e [ENV=...] --add-host [host:ip] --dns [8.8.8.8] -v [volume:/container/path] --entrypoint [cmd] -d [image:tag]
 ```
 
 ```bash
@@ -47,6 +47,18 @@ $ docker top [container] # 查看容器中正在运行的进程
 $ docker diff [container] # 查看容器内发生变化的文件
 $ docker events # 实时输出服务端事件，包括容器的创建，启动，关闭等
 $ docker logs (-f) [container] # 容器日志
+```
+
+Expose UDP 端口：
+
+```bash
+$ docker run -p 8080:8080/udp .....
+```
+
+与此同时，要求 Dockerfile 也应该（但不是必须的） Expose UDP 端口：
+
+```Dockerfile
+EXPOSE 8080/udp
 ```
 
 ## 镜像

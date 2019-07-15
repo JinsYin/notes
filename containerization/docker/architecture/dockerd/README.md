@@ -23,6 +23,20 @@
 
 ## Volume Driver
 
+## 进程分析
+
+```bash
+init
++
+|
++---dockerd
+    +
+    |
+    +---+ docker-containerd
+        |
+        +------- docker-containerd-shim
+```
+
 ## 参考
 
 * [DOCKER 源码分析（六）：DOCKER DAEMON 网络](http://blog.daocloud.io/docker-source-code-analysis-part6/)
