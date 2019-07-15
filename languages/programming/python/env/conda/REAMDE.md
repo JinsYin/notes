@@ -111,10 +111,11 @@ $ condaexit
 
 * 删除虚拟环境
 
-如果要删除某个虚拟环境，可以通过删除该环境下所有的包来实现。
-
 ```bash
-% conda remove --name python2.7 --all
+$ conda env remove --name python2.7
+
+# 还可以通过删除该环境下所有的包来实现
+$ conda remove --name python2.7 --all
 ```
 
 ## 完美应用
@@ -125,6 +126,18 @@ $ condaexit
 % conda create -n python2.7 python=2.7 anaconda
 % conda create -n python3.5 python=3.5 anaconda
 ```
+
+## Conda & pip
+
+Conda 创建虚拟环境时，会为每个 Python 新环境中安装一个 `pip`，此时可以使用 `pip` 或 `conda` 两种方式来安装 Python 包：
+
+* 如果使用 `pip`
+  * _base_ 环境安装的包位于 `${ANACONDA_HOME}/lib/<python_version>/site-packages/` 目录
+  * 其他虚拟环境安装的包位于 `${ANACONDA_HOME}/envs/<virtualenv_name>/lib/<python_version>/site-packages/` 目录
+* 如果使用 `conda`
+  * 所有安装的包均位于 `${ANACONDA_HOME}/pkgs/` 目录，每个包可能存在多个版本，每个虚拟环境引用相应版本的包。
+
+当使用 `conda` 和 `pip` 安装同一包时，
 
 ## 参考
 

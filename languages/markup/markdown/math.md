@@ -17,6 +17,11 @@ $$E = mc^{2}$$
 3. 点击 `Load unpacked` 按钮，选择克隆的仓库完成安装
 4. 在 Github 中打开包含 LaTeX 数学公式的代码仓库加以验证
 5. 参考：<https://github.com/orsharir/github-mathjax/issues/24#issuecomment-438140315>
+6. 该插件不支持 **\`\`\`math ... \`\`\`** 形式来书写数学公式，所以建议使用 **\$\$ ... \$\$**
+
+* Firefox 支持
+
+按照 [github-mathjax-firefox](https://github.com/traversaro/github-mathjax-firefox) 项目中的提示，在 firefox 浏览器中下载 xpi 插件安装即可。
 
 ## VS code 支持
 

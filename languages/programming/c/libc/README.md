@@ -1,6 +1,6 @@
 # C 标准库
 
-C 标准库（C standard library，缩写：`libc`），
+C 标准库（C standard library，缩写为 `libc`），
 
 | 名字 | 源自 | 描述 |
 | ---- | ---- | ---- |
@@ -20,3 +20,4 @@ C 标准库（C standard library，缩写：`libc`），
 ## 参考
 
 * [C 标准函数库](https://zh.wikipedia.org/wiki/C%E6%A8%99%E6%BA%96%E5%87%BD%E5%BC%8F%E5%BA%AB)
+* [Difference between C standard library and C POSIX library](https://stackoverflow.com/questions/9376837/difference-between-c-standard-library-and-c-posix-library/37969420#37969420)

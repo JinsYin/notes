@@ -1,17 +1,16 @@
-# Scala 从入门到放弃
+# Scala
 
-Scala 是一门多范式的编程语言，有马丁奥的司机（Martin Odersky）在 2003 年发明。Scala 集成了面向对象和函数式编程语言的特性。
-
+Scala 是一门多范式的编程语言，由 Martin Odersky 在 2003 年发明，集聚了面向对象和函数式编程语言的特性。
 
 ## What's scala?
 
-Scala 是一门面向对象和函数式的多范式编程语言。
+Scala 是一门面向对象（object-oriented）和函数式（functional）的多范式编程语言。
 
-* Scala is object-oriented
+> <http://docs.scala-lang.org/zh-cn/overviews/>
 
-* Scala is functional
+## Library
 
-> http://docs.scala-lang.org/zh-cn/overviews/
+[Scaladex - The Scala Library Index](https://index.scala-lang.org/)
 
 
 ## 目录
