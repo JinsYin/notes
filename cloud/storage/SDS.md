@@ -1,1 +1,0 @@
-# Software Defined Storage（SDS）

@@ -1,3 +1,0 @@
-# Kubernetes + Helm
-
-（略）
