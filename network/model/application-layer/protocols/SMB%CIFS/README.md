@@ -1,1 +1,1 @@
-# SMB
+# SMB/CIFS

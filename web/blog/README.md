@@ -1,10 +1,19 @@
 # 博客
 
-## 静态网站生成器（Static Site Generator）
+## 静态网站生成器
 
-* [hugo](https://github.com/gohugoio/hugo)
-* [hexo](https://github.com/hexojs/hexo)
-* [jekyll](https://github.com/jekyll/jekyll)
+| 框架                                           | 编程语言   |
+| --------------------------------------------------- | --------------------- |
+| [Hugo](https://github.com/gohugoio/hugo)            | Go                    |
+| [Hexo](https://github.com/hexojs/hexo)              | JS（Node.js） |
+| [Jekyll](https://github.com/jekyll/jekyll)          | Ruby                  |
+| [WordPress](https://github.com/WordPress/WordPress) | PHP                   |
+
+## 网站结构
+
+* /books/
+* /notes/
+* /page
 
 ## 参考
 

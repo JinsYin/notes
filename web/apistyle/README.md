@@ -1,9 +1,9 @@
 # API 设计风格
 
+* XML-RPC
+* SOAP
 * REST
   * GraphQL
-* SOAP
-* XML-RPC
 * Botoful
 
 ## 参考

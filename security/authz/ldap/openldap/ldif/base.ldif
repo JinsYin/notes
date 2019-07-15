@@ -1,0 +1,14 @@
+dn: dc=eway,dc=link
+dc: ibm
+objectClass: top
+objectClass: domain
+
+dn: ou=People,dc=eway,dc=link
+ou: People
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=Group,dc=eway,dc=link
+ou: Group
+objectClass: top
+objectClass: organizationalUnit

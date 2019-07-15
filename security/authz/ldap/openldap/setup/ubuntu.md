@@ -3,7 +3,7 @@
 ## 安装
 
 ```bash
-$ sudo apt-get install -y slapd
+$ sudo apt-get install -y slapd ldap-utils
 ```
 
 ```bash

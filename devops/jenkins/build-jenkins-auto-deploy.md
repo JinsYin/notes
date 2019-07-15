@@ -13,8 +13,8 @@
    本文以 Jenkins 部署 Spark 环境为例。开发人员首先将 Spark 版本号存入 TXT 格式文件中上传至 Gitlab，同时上传的还有将要在 Spark 环境中运行的 Python代码。Jenkins首先从Gitlab中取出代码与版本号，通过版本号从Docker镜像仓库中取出对应版本的Spark镜像，然后运行镜像并将本地目录与容器目录实现挂载，之后在容器中执行Python代码，完成自动部署。
 
 2.启动 Marathon-lb 镜像
-   该镜像的作用是实现服务发现，默认情况下Docker容器的端口是随机分配的，利用该镜像就可以自行指定容器端口。  
-   首先在所有Mesos Slave节点中输入docker pull mesosphere/marathon-lb，下载Marathon-lb镜像。  
+   该镜像的作用是实现服务发现，默认情况下Docker容器的端口是随机分配的，利用该镜像就可以自行指定容器端口。
+   首先在所有Mesos Slave节点中输入docker pull mesosphere/marathon-lb，下载Marathon-lb镜像。
    之后进入Marathon界面，创建应用，JSON文件内容如下：
 ```bash
 {
@@ -79,10 +79,10 @@
   ]
 }
 ```
-   以上是 JSON 文件内容，红色字段中的参数根据实际情况修改。现在启动应用。（遇到问题见问题总结1）  
+   以上是 JSON 文件内容，红色字段中的参数根据实际情况修改。现在启动应用。（遇到问题见问题总结1）
 
-3.启动 Gitlab 镜像  
-   Gitlab 用于存储代码与版本号。首先在所有 Mesos Slave 节点中执行 docker pull gitlab/gitlab-ce，下载 gitlab 镜像。  
+3.启动 Gitlab 镜像
+   Gitlab 用于存储代码与版本号。首先在所有 Mesos Slave 节点中执行 docker pull gitlab/gitlab-ce，下载 gitlab 镜像。
 
    之后进入 Marathon 界面，创建应用，JSON 文件内容如下：
 ```bash
@@ -151,44 +151,44 @@ h  },
 ]
 }
 ```
-   启动 Gitlab 后，将 Python 代码以及版本号传入 Gitlab。  
+   启动 Gitlab 后，将 Python 代码以及版本号传入 Gitlab。
 
-![png32](https://github.com/wangruofanWRF/notes/blob/master/jenkins/png/png32.png)  
+![png32](.images/png32.png)  
 zu
    另外 Gitlab 的启动速度取决于分配内存大小，所以遇到下图时应重复点击“刷新”。  
 
-![png33](https://github.com/wangruofanWRF/notes/blob/master/jenkins/png/png33.png)
+![png33](.images/png33.png)
 
-4.启动Jenkins镜像  
+4.启动Jenkins镜像
 
    参考《搭建 Jenkins on Mesos 》一文。注意确保整个集群节点可以互相连通（见问题总结2）。
 
-5.测试开始  
+5.测试开始
 
-   创建项目，配置参考下图。  
+   创建项目，配置参考下图。
    选择集群。
 
 
-![png34](https://github.com/wangruofanWRF/notes/blob/master/jenkins/png/png34.png)  
+![png34](.images/png34.png)
 
 
    配置Github Repository地址。
 
-![png35](https://github.com/wangruofanWRF/notes/blob/master/jenkins/png/png35.png)
+![png35](.images/png35.png)
 
    添加shell命令，本文省略了从镜像仓库拉取镜像的命令，其他命令视情况而定。（使用docker exec命令时，注意参数中不能加入-t）
 
-![png36](https://github.com/wangruofanWRF/notes/blob/master/jenkins/png/png36.png)
+![png36](.images/png36.png)
 
    保存后开始构建。结果如下图：
 
-![png37](https://github.com/wangruofanWRF/notes/blob/master/jenkins/png/png37.png)
+![png37](.images/png37.png)
 
    求得pi值。
 
 四.常见问题总结
 
-1.若Marathon无法启动容器可以尝试以下步骤  
+1.若Marathon无法启动容器可以尝试以下步骤
 
 配置mesos支持Docker容器
 echo 'docker,mesos' > /etc/mesos-slave/containerizers
@@ -201,7 +201,7 @@ restart mesos-slave
 
 即/etc/hosts中的IP地址与hostname互相匹配。可以以下图为参考：
 
-![png38](https://github.com/wangruofanWRF/notes/blob/master/jenkins/png/png38.png)
+![png38](.images/png38.png)
 
 ### 作者  
 本文档由沈建实创建，由王若凡整理
