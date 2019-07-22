@@ -1,5 +1,7 @@
 # Kafka
 
+2014 年 Apache Kafka 中的三位核心人员 Jay Kreps，NehaNarkhede 和 Jun Rao 联合成立 Confluent 公司，致力于为企业提供实时数据处理服务解决方案。
+
 ## 目录
 
 * [Kafka 入门](quickstart.md)

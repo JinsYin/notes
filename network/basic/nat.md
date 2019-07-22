@@ -11,6 +11,12 @@ NAT，即 Network Address Translation（网络地址转换，有时也叫 IP 地
 3. xxx
 4. xxx
 
+## 三种特定类型的 NAT
+
+* masquerading
+* port forwarding
+* redirection
+
 ## NAT 类型
 
 * 静态 NAT（Static NAT）
@@ -32,4 +38,7 @@ NAT，即 Network Address Translation（网络地址转换，有时也叫 IP 地
 
 ## NAT 实验
 
-* [思科路由器NAT配置详解](http://blog.51cto.com/yuan2/95209)
+## 参考
+
+* [Network address translation](https://en.wikipedia.org/wiki/Network_address_translation)
+* [思科路由器 NAT 配置详解](http://blog.51cto.com/yuan2/95209) 

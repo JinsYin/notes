@@ -36,6 +36,8 @@ MAC 的全称是 `Medium Access Control`，即 **媒体访问控制**，控制�
 * `轮流协议` - 今天单行出行、明天双号出行，轮着来
 * `随机接入协议` - 不管三七二十一，有事先出门，发现特堵，就回去（以太网就是这种方式）
 
+## 循环冗余检验（CRC）
+
 ## 参考
 
 * [MAC Frame Formats](http://grouper.ieee.org/groups/802/15/pub/2001/Jul01/01292r1P802-15_TG3-Proposed-Changes-to-Frame-Formats.pdf)
