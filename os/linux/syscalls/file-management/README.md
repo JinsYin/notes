@@ -14,3 +14,6 @@ get/set file attributes
 | `create()`  |          |
 | `unlink()`  |          |
 | `lseek()`   | 随机访问 |
+| `rename()`  |          |
+| `rm()`      |          |
+| `mv()`      |          |

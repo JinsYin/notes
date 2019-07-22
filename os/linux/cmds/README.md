@@ -71,4 +71,5 @@ cpu
 
 ## 参考
 
+* [List of Unix commands](https://en.wikipedia.org/wiki/List_of_Unix_commands)
 * [The art of command line](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)

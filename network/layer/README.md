@@ -1,6 +1,6 @@
-# 网络分层
+# 网络模型层
 
-## 网络标准模型（Standard model）
+## 网络模型（Network model）
 
 ![层面与层数](.images/network-model.png)
 

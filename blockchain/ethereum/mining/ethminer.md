@@ -142,6 +142,7 @@ $ telnet eu1.ethermine.org 4444
 ### systemd
 
 ```bash
+# --cuda-devices 0 限制使用哪块显卡
 $ vi /usr/lib/systemd/system/ethminer.service
 [Unit]
 Description=Ethereum ethminer

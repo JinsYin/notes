@@ -1,5 +1,8 @@
 # Linux 系统调用与库函数
 
+Linux 系统调用，也叫 Linux 编程接口（The Linux Programming Interface）。
+库函数，也就是标准库的库接口。
+
 ## 帮助
 
 ```bash

@@ -67,3 +67,4 @@ $ git push -u origin master
 * [GitHub Pages Basics](https://help.github.com/en/categories/github-pages-basics)
 * [Using a custom domain with GitHub Pages](https://help.github.com/en/articles/using-a-custom-domain-with-github-pages)
 * [Adding a Jekyll theme to your GitHub Pages site with the Jekyll Theme Chooser](https://help.github.com/en/articles/adding-a-jekyll-theme-to-your-github-pages-site-with-the-jekyll-theme-chooser)
+* [GitHub pages cheatsheet](https://devhints.io/gh-pages)

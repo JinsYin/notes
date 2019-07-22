@@ -1,5 +1,7 @@
 # 文件属性（File Attribute）
 
+文件属性是与计算机文件关联的元数据（metadata）
+
 * 文件属性
 * 扩展属性
 
@@ -10,3 +12,7 @@
 ## 文件类型
 
 在文件系统
+
+## 参考
+
+* [File attribute](https://en.wikipedia.org/wiki/File_attribute)
