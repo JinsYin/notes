@@ -1,6 +1,6 @@
 # ext2
 
-ext2 是为 Linux 内核设计的第二代扩展文件系统（second extended file system），也是第一个商业级的 Linux 文件系统
+_ext2_ 是为 Linux 内核设计的第二代扩展文件系统（second extended file system），也是第一个商业级的 Linux 文件系统
 
 ## 简介
 
@@ -32,4 +32,4 @@ ext2 是为 Linux 内核设计的第二代扩展文件系统（second extended f
 | **4KB** | 2TB          | 16TB             |
 | **8KB** | 2TB          | 32TB             |
 
-解读：在 ext2 文件系统中，当逻辑块的大小为 1KB 时，文件最大可以是 16GB，而文件系统最大可以是 4TB ，
+解读：在 ext2 文件系统中，当逻辑块的大小为 1KB 时，文件最大可以是 16GB，而文件系统最大可以是 4TB

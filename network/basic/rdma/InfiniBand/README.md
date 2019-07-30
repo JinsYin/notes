@@ -233,6 +233,7 @@ $ ifdown ib0 && ifup ib0
 
 ## 参考
 
+* [InfiniBand](https://www.kernel.org/doc/html/latest/infiniband/index.html)
 * [Red Hat Enterprise Linux (RHEL) 7.4 Driver User Manual](http://www.mellanox.com/pdf/prod_software/Red_Hat_Enterprise_Linux_(RHEL)_7.4_Driver_User_Manual.pdf)
 * [CentOS下IPoIB（IP over InfiniBand）网络接口的配置过程](http://blog.csdn.net/warren912/article/details/19419945)
 * [How to Configure and Manage Network Connections Using ‘nmcli’ Tool](https://www.tecmint.com/configure-network-connections-using-nmcli-tool-in-linux/)

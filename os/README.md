@@ -12,8 +12,8 @@
 按工作方式分类：
 
 * 批处理操作系统
-* 分时操作系统
-* 实时操作系统
+* 分时操作系统（Time-sharing Operating System）
+* 实时操作系统（Real-time Operating System）
 * 网络操作系统
 * 分布式操作系统
 
@@ -23,8 +23,11 @@
 
 按运行环境分类：
 
-* 桌面操作系统
-* 嵌入式操作系统
+* 桌面操作系统（Desktop Operating System）
+* 移动操作系统
+  * IOS
+  * Android
+* 嵌入式操作系统（Embedded Operating System）
 
 按指令长度分类：
 

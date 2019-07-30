@@ -9,7 +9,7 @@
 | 参数     | 描述                                                                                                                                            | 示例                                                                                     |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `-type`  | 文件类型：<br>* `b`：块文件<br>* `c`：字符文件<br>* `d`：目录<br>* `p`：命名管道（FIFO）<br>* `f`：普通文件<br>* `l`：符合链接<br>* `s`：Socket |                                                                                          |
-| `-exec`  | 对查找结果执行命令行                                                                                                                            | * `find . -type f -exec grep 'data' {} \;` <br> * `find . -type d -exec chmod 755 {} \;` |
+| `-exec`  | 对查找结果的每一项都执行某个命令                                                                                                                | * `find . -type f -exec grep 'data' {} \;` <br> * `find . -type d -exec chmod 755 {} \;` |
 | `-empty` | 如果文件或目录是空的则返回 True                                                                                                                 |                                                                                          |
 
 ## 示例
@@ -44,7 +44,7 @@ $ du -hm ~ --max-depth=2 | sort -nr | head -n 10
 
 ```sh
 # 排除 .git 目录（`-path ./.git -prune -o`）
-$ find . -path ./.git -prune -o -type f -exec chmod 755 {} \;
+$ find . -path ./.git -prune -o -type d -exec chmod 755 {} \;
 ```
 
 * 查找空文件或空目录
@@ -59,4 +59,11 @@ $ find . -empty -type d # 空目录
 ```sh
 $ find . -type d -exec chmod 755 {} \;
 $ find . -type d | xargs chmod 755
+```
+
+* 对比
+
+```sh
+$ find . -name "*.md" | wc -l       # 对管道前输出的所有结果统计行数
+$ find . -name "*.md" | xargs wc -l # 对管道前输出的每一项都统计行数
 ```

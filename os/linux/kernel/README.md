@@ -13,7 +13,7 @@
 
 一般情况下，会将 Linux 内核可执行文件命名为 `/boot/vmlinuz` 或与之相似的文件命令。
 
-```bash
+```sh
 # Ubuntu 14.04
 $ ll /boot/vmlinuz-4.4.0-121-generic
 -rw------- 1 root root 7045024  4月 17  2018 /boot/vmlinuz-4.4.0-121-generic
@@ -71,5 +71,5 @@ $ ll /boot/vmlinuz-4.4.0-121-generic
 
 ## 参考
 
-* [Kernels](https://wiki.archlinux.org/index.php/Kernels_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [The Linux Kernel documentation](https://www.kernel.org/doc/html/latest/index.html)
+* [Kernels](https://wiki.archlinux.org/index.php/Kernels_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))

@@ -18,23 +18,15 @@
 * POSIX IPC 介绍
 * POSIX 消息队列
 
-## 进程虚拟地址空间
+---
 
-![进程虚拟地址空间](.images/process-vas.png)
+* Signal handling
+* Process/thread creation & termination
+* Process Scheduler
 
-| -     | 描述                                             |
-| ----- | ------------------------------------------------ |
-| Stack | 包含临时数据，例如方法、函数、返回地址和局部变量 |
-| Heap  | 运行时为进程动态分配的内存                       |
-| Data  | 包含全局变量和静态变量                           |
-| Text  | 程序计数器的值和处理器寄存器的内容表示的当前活动 |
+## 目录
 
-## 进程控制块（PCB）
-
-![PCB](.images/process-pcb.png)
-
-* 进程创建时，PCB 被创建
-* 当进程状态改变是，更新某些字段
+* 进程标识符
 
 ## 上下文切换
 

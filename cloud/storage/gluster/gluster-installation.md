@@ -151,7 +151,7 @@ $ journalctl -f -u glusterd
 $ fdisk /dev/sdb
 n => p => 1 => Enter => Enter => Enter => p => w
 
-# 格式化分区
+# 格式化分区：创建文件系统（扩展分区不能格式化？）
 $ mkfs.ext4 /dev/sdb1
 
 # 如果格式化为 xfs，需要先安装 xfsprogs
