@@ -1,1 +1,1 @@
-# 显卡
+# 显卡（Graphics Card）

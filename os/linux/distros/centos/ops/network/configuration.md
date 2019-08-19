@@ -21,7 +21,7 @@ NETMASK="255.255.255.0"
 
 ```bash
 # 重启网卡
-$ ifdown em1 && ifup em1
+$ sudo ifdown em1 && ifup em1
 ```
 
 ## 修改网卡名称

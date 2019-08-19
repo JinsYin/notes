@@ -1,28 +1,34 @@
 # mknod
 
-创建设备文件（块设备或字符设备）
+创建块设备文件或字符设备文件。
+
+## 帮助
+
+```sh
+$ man mknod
+```
 
 ## 语法
 
 ```sh
-mknod [OPTION]... NAME TYPE [MAJOR MINOR]
+$ mknod [OPTION]... NAME TYPE [MAJOR MINOR]
 ```
 
 ## 选项
 
 ## 参数
 
-| 参数  | 描述                                              |
-| ----- | ------------------------------------------------- |
-| NAME  | 设备名称                                          |
-| TYPE  | 设备类型：<br> * `b`：块设备 <br> * `c`：字符设备 |
-| MAJOR | 主设备号                                          |
-| MINOR | 副设备号                                          |
+| 参数  | 描述                                   |
+| ----- | -------------------------------------- |
+| NAME  | 设备名称                               |
+| TYPE  | 设备类型（`b`：块设备，`c`：字符设备） |
+| MAJOR | 主设备号                               |
+| MINOR | 副设备号                               |
 
 ## 示例
 
 ```sh
-$ sudo chnod /tmp/swap 1 100
+$ sudo mknod /tmp/swap b 1 100
 ```
 
 ## 参考

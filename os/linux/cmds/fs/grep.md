@@ -49,3 +49,11 @@ LC_ADDRESS=zh_CN.UTF-8
 HOSTNAME=centos-node-1
 LC_MONETARY=zh_CN.UTF-8
 ```
+
+* 排除自身
+
+```sh
+$ ps aux | grep "[b]ash"
+root      3843  0.0  0.0 115564  2208 pts/0    Ss   8月08   0:00 -bash
+root      8211  0.0  0.0 115436  2088 tty1     Ss+   2018   0:00 -bash
+```

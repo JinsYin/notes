@@ -23,7 +23,7 @@
 
 ## Volume Driver
 
-## 进程分析
+## 进程层次结构
 
 ```bash
 init
@@ -35,6 +35,30 @@ init
     +---+ docker-containerd
         |
         +------- docker-containerd-shim
+```
+
+```bash
+# -S: 命名空间
+$ pstree -S `pgrep dockerd`
+dockerd─┬─docker-containe─┬─docker-containe─┬─minio(ipc,mnt,net,pid,uts)───78*[{minio}]
+        │                 │                 └─9*[{docker-containe}]
+        │                 ├─docker-containe─┬─apache2(ipc,mnt,net,pid,uts)───10*[apache2]
+        │                 │                 └─10*[{docker-containe}]
+        │                 ├─docker-containe─┬─entrypoint.sh(ipc,mnt,pid,uts)─┬─ceph───13*[{ceph}]
+        │                 │                 │                                ├─ceph-mds───22*[{ceph-mds}]
+        │                 │                 │                                ├─ceph-mgr───24*[{ceph-mgr}]
+        │                 │                 │                                ├─ceph-mon───22*[{ceph-mon}]
+        │                 │                 │                                ├─python
+        │                 │                 │                                ├─radosgw───19*[{radosgw}]
+        │                 │                 │                                ├─rbd-mirror───17*[{rbd-mirror}]
+        │                 │                 │                                ├─rpc.statd
+        │                 │                 │                                └─rpcbind
+        │                 │                 └─9*[{docker-containe}]
+        │                 └─70*[{docker-containe}]
+        ├─docker-proxy───66*[{docker-proxy}]
+        ├─docker-proxy───6*[{docker-proxy}]
+        └─74*[{dockerd}]
+
 ```
 
 ## 参考

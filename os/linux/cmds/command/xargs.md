@@ -12,7 +12,7 @@ xargs [-0opt] [-E eofstr] [-I replstr [-R replacements]] [-J replstr] [-L number
 ## 示例
 
 ```sh
-# 统计每个 md 文件的字数（使用 '/def/fd/0' 指代当前进程的标准输入 ）
+# 统计每个 md 文件的字数（其中，/def/fd/0 指代当前进程的标准输入 ）
 $ find . -name '*.md' | xargs wc -w /dev/fd/0
 ```
 

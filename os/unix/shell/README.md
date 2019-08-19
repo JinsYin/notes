@@ -47,6 +47,11 @@ $ cat /etc/shells
 2. 在当前 shell 进程中执行脚本；如：`source x.sh`
 3. 执行 `exec` 系统调用以新进程代替原进程，但进程 PID 保持不变，如：在脚本中指定 `exec $@`
 
+## 工作环境
+
+Login shell：先读取 `/etc/profile` 文件，然后读取 `~/.bash_profile` 文件
+non-login shell：读取 `~/.bashrc`
+
 ## 参考
 
 * [Guide to Unix/Explanations/Choice of Shell](https://en.wikibooks.org/wiki/Guide_to_Unix/Explanations/Choice_of_Shell)

@@ -1,6 +1,9 @@
 # Linux
 
-严格来说，Linux 指的是 `Linux Kernel`，平时所说的 Linux 指的是 Linux 发行版。
+## 定义
+
+* 狭义：[Linux Kernel](https://www.kernel.org)
+* 广义：[Linux 发行版](distros/README.md)
 
 ## 架构
 
