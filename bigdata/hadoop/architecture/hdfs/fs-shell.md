@@ -6,7 +6,7 @@ FS shell 需要传递像 `scheme://authority/path` 的 URIs 参数，HDFS 的 sc
 
 如果在配置文件指定了 `fs.defaultFS` 为 `hdfs://namenodehost`，可以将 `hdfs://namenodehost/parent/child` 简写为 `/parent/child`。
 
-```bash
+```sh
 $ bin/hdfs fs <args>
 ```
 
@@ -14,7 +14,7 @@ $ bin/hdfs fs <args>
 
 `appendToFile` 追加本地文件或标准输入（stdin）到 HDFS
 
-```bash
+```sh
 $ hdfs dfs -appendToFile localfile1 localfile2 /user/hadoop/hadoopfile # 支持多个输入，/user/hadoop/hadoopfile 不需要事先创建好
 $ hdfs dfs -appendToFile - /user/hadoop/hadoopfile # 从 stdin 中读取输入（CTRL + C 结束输入）
 ```
@@ -23,7 +23,7 @@ $ hdfs dfs -appendToFile - /user/hadoop/hadoopfile # 从 stdin 中读取输入�
 
 `cat` 输出文件内容到标准输出（stdout）。
 
-```bash
+```sh
 $ hdfs dfs -cat /user/hadoop/hadoopfile
 ```
 
@@ -31,7 +31,7 @@ $ hdfs dfs -cat /user/hadoop/hadoopfile
 
 `checksum` 返回文件的 checksum 信息。
 
-```bash
+```sh
 $ hdfs dfs -checksum /user/hadoop/hadoop/hadoopfile
 ```
 
@@ -39,7 +39,7 @@ $ hdfs dfs -checksum /user/hadoop/hadoop/hadoopfile
 
 `chgrp`  改变文件、目录的归属组，默认组：supergroup。
 
-```bash
+```sh
 $ hdfs dfs -chgrp (-R) GROUP URI [URI ...]
 $ hdfs dfs -chgrp -R root /usr # 改变 /usr 及子目录的组
 ```
@@ -48,7 +48,7 @@ $ hdfs dfs -chgrp -R root /usr # 改变 /usr 及子目录的组
 
 `chmod` 改变文件、目录的权限。
 
-```bash
+```sh
 $ hdfs dfs -chmod (-R) [MODE] URI [URI ...]
 $ hdfs dfs -chmod -R 777 /user/hadoop # 改变目录及子目录的权限
 $ hdfs dfs -chmod 640 /user/hadoop/hadoopfile # 改变文件的权限
@@ -58,7 +58,7 @@ $ hdfs dfs -chmod 640 /user/hadoop/hadoopfile # 改变文件的权限
 
 `chown` 改变文件的所有者。
 
-```bash
+```sh
 $ hdfs dfs -chown (-R) [OWNER][:[GROUP]] URI [URI ]
 $ hdfs dfs -chown -R root:root /user/hadoop
 $ hdfs dfs -chown root:root /user/hadoop/hadoopfile
@@ -68,7 +68,7 @@ $ hdfs dfs -chown root:root /user/hadoop/hadoopfile
 
 `copyFromLocal` 拷贝本地文件到 HDFS。类似 `put`，不同的是 copyFromLocal 的源被限制为一个本地文件。
 
-```bash
+```sh
 $ hdfs dfs -copyFromLocal <localsrc> URI
 $ hdfs dfs -copyFromLocal ./README.md /README.md
 $ hdfs dfs -copyFromLocal ./README.md /user/hadoop # 拷贝到 /user/hadoop 目录
@@ -78,7 +78,7 @@ $ hdfs dfs -copyFromLocal ./README.md /user/hadoop # 拷贝到 /user/hadoop 目�
 
 `copyToLocal` 拷贝 HDFS 文件到本地。类似 `get`，不同的是 copyToLocal 的目标被限制为一个本地文件。
 
-```bash
+```sh
 $ hdfs dfs -copyToLocal URI <localdst>
 $ hdfs dfs -copyToLocal /user/hadoop/hadoopfile ./hadoopfile
 ```
@@ -88,7 +88,7 @@ $ hdfs dfs -copyToLocal /user/hadoop/hadoopfile ./hadoopfile
 `count` 输出对应路径的目录数、文件数、字节数。
 -count -q：输出 QUOTA, REMAINING_QUATA, SPACE_QUOTA, REMAINING_SPACE_QUOTA, DIR_COUNT, FILE_COUNT, CONTENT_SIZE, PATHNAME。
 
-```bash
+```sh
 $ hdfs dfs -count [-q] [-h] <paths> # -h 人类可读
 ```
 
@@ -96,7 +96,7 @@ $ hdfs dfs -count [-q] [-h] <paths> # -h 人类可读
 
 `cp` 从 HDFS 拷贝文件到 HDFS，不支持本地。
 
-```bash
+```sh
 $ hdfs dfs -cp [-f] [-p | -p[topax]] URI [URI ...] <dest>
 $ hdfs dfs -cp -f /user/hadoop/hadoopfile1 /user/hadoop/hadoopfile2 # -f: 如果 hadoopfile2 存在会被覆写
 ```
@@ -105,7 +105,7 @@ $ hdfs dfs -cp -f /user/hadoop/hadoopfile1 /user/hadoop/hadoopfile2 # -f: 如果
 
 `df` 查看剩余空间。
 
-```bash
+```sh
 $ hdfs dfs -df [-h] URI [URI ...]
 $ hdfs dfs -df -h /
 ```
@@ -123,7 +123,7 @@ $ hdfs dfs -du -h /user
 
 `find` 查找正则匹配的文件。
 
-```bash
+```sh
 $ hdfs dfs -find <path> ... <expression> ...
 $ hdfs dfs -find / -name test.md # 区分大小写
 $ hdfs dfs -find / -iname test.md # 不区分大小写
@@ -133,7 +133,7 @@ $ hdfs dfs -find / -iname test.md # 不区分大小写
 
 `get` 从 HDFS 拷贝文件到本地。
 
-```bash
+```sh
 $ hdfs dfs -get <src> <localdst>
 $ hdfs dfs -get /user/hadoop/hadoopfile
 $ hdfs dfs -get /user/hadoop/hadoopfile hdfsfile # 重命名
@@ -143,7 +143,7 @@ $ hdfs dfs -get /user/hadoop/hadoopfile hdfsfile # 重命名
 
 `ls` 列出文件和目录。
 
-```bash
+```sh
 $ hdfs dfs -ls (-h) (-R) / # 列举根目录文件，-R：含子目录
 $ hdfs dfs -ls /README.txt
 -rw-r--r--   1 root supergroup       1366 2017-01-01 00:00 /README.txt
@@ -154,7 +154,7 @@ $ hdfs dfs -ls /README.txt
 
 `mkdir` 创建目录。
 
-```bash
+```sh
 $ hdfs dfs -mkdir [-p] <paths>
 $ hdfs dfs -mkdir -p /user/hadoop/hive
 ```
@@ -163,7 +163,7 @@ $ hdfs dfs -mkdir -p /user/hadoop/hive
 
 `mv` 从 HDFS 移动文件到 HDFS，不支持本地。
 
-```bash
+```sh
 $ hdfs dfs -mv URI [URI ...] <dest>
 $ hdfs dfs -mv /user/hadoop/file1 /user/hadoop/file2
 ```
@@ -172,7 +172,7 @@ $ hdfs dfs -mv /user/hadoop/file1 /user/hadoop/file2
 
 `put` 上传一个或多个本地文件或者标准输入到 HDFS。
 
-```bash
+```sh
 $ hdfs dfs -put <localsrc> ... <dst>
 $ hdfs dfs -put localfile /user/hadoop/hadoopfile
 $ hdfs dfs -put localfile1 localfile2 /user/hadoop/
@@ -183,7 +183,7 @@ $ hdfs dfs -put - /user/hadoop/hadoopfile
 
 `rm` 删除 HDFS 中的文件或目录。
 
-```bash
+```sh
 $ hdfs dfs -rm [-f] [-r |-R] [-skipTrash] URI [URI ...]
 $ hdfs dfs -rm /user/hadoop/hadoopfile
 $ hdfs dfs -rm -r /user/hadoop # 删除目录及其所有子内容，-r == -R
@@ -193,7 +193,7 @@ $ hdfs dfs -rm -r /user/hadoop # 删除目录及其所有子内容，-r == -R
 
 `rmdir` 删除 HDFS 的目录。
 
-```bash
+```sh
 $ hdfs dfs -rmdir [--ignore-fail-on-non-empty] URI [URI ...]
 $ hdfs dfs -rmdir /user/hadoop
 ```
@@ -202,7 +202,7 @@ $ hdfs dfs -rmdir /user/hadoop
 
 `setrep` 修改文件的副本数。
 
-```bash
+```sh
 $ hdfs dfs -setrep [-R] [-w] <numReplicas> <path>
 $ hdfs dfs -setrep -R 2 /usr/hadoop # 修改副本数
 $ hdfs dfs -D dfs.replication=1 -put test.txt /user/hadoop # 上传文件并指定副本数
@@ -212,7 +212,7 @@ $ hdfs dfs -D dfs.replication=1 -put test.txt /user/hadoop # 上传文件并指�
 
 `stat` 打印文件、目录的描述信息。
 
-```bash
+```sh
 $ hdfs dfs -stat [format] <path> ...
 $ hdfs dfs -stat "%F %u:%g %b %y %n" /user/hadoop/hadoopfile
 ```
@@ -221,7 +221,7 @@ $ hdfs dfs -stat "%F %u:%g %b %y %n" /user/hadoop/hadoopfile
 
 `tail` 输出文件的最后 1KB 到标准输出。
 
-```bash
+```sh
 $ hdfs dfs -tail [-f] URI
 $ hdfs dfs -tail -f /user/hadoop/hadoopfile
 ```
@@ -230,7 +230,7 @@ $ hdfs dfs -tail -f /user/hadoop/hadoopfile
 
 `test` 测试。
 
-```bash
+```sh
 # -d: f the path is a directory, return 0.
 # -e: if the path exists, return 0.
 # -f: if the path is a file, return 0.
@@ -241,7 +241,7 @@ $ hdfs dfs -test -[defsz] URI
 
 ## text
 
-```bash
+```sh
 $ hdfs dfs -text <src>
 $ hdfs dfs -text /user/hadoop/hadoopfile
 ```
@@ -250,7 +250,7 @@ $ hdfs dfs -text /user/hadoop/hadoopfile
 
 `touchz` 创建一个空文件。
 
-```bash
+```sh
 $ hdfs dfs -touchz URI [URI ...]
 $ hdfs dfs -touchz /user/hadoop/hadoopfile
 ```
@@ -258,7 +258,7 @@ $ hdfs dfs -touchz /user/hadoop/hadoopfile
 ## truncate
 
 `truncate` 截取文件为指定长度（单位：字节）
-```bash
+```sh
 $ hdfs dfs -truncate [-w] <length> <paths>
 $ hdfs dfs -truncate -w 55 /user/hadoop/file1
 ```

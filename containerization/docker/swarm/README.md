@@ -19,28 +19,28 @@ Docker swarm 默认使用`overlay`作为多主机网络通信 driver, 支持`负
 
 创建集群
 
-```bash
+```sh
 # 创建 manager
 $ docker swarm init --advertise-addr [ip] # 本地主机 IP
 ```
 
-```bash
+```sh
 # 获取添加 manager 的方法
 $ docker swarm join-token manager
 ```
 
-```bash
+```sh
 # 获取添加 worker 的方法
 $ docker swarm join-token worker
 ```
 
-```bash
+```sh
 # 集群节点
 $ docker node ls
 $ docker node inspect [node]
 ```
 
-```bash
+```sh
 # 角色转换
 $ docker node promote [node] # 转换为 manager
 $ docker node demote [node] # 转换为 worker
@@ -48,7 +48,7 @@ $ docker node demote [node] # 转换为 worker
 
 ## 服务及任务管理
 
-```bash
+```sh
 $ docker service create --name web --replicas 3 -p 8080:80 nginx:1.11.9-alpine # 自动 pull 镜像
 $ docker service ls
 $ docker service inspect web # 服务信息
@@ -72,7 +72,7 @@ service mode ("replicated" and "global" services)
 
 ### ERROR 1
 
-```bash
+```sh
 $ docker swarm init --advertise-addr 192.168.111.199
 Error response from daemon: --cluster-store and --cluster-advertise daemon configurations are incompatible with swarm mode
 ```

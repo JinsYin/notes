@@ -2,7 +2,7 @@
 
 ## Debian/Ubuntu
 
-```bash
+```sh
 # Chrome
 $ sudo apt-get install google-chrome-stable
 

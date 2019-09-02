@@ -14,7 +14,7 @@ Go 语言只有一个循环结构，即 `for` 循环。需要注意的是，Go �
 
 * 范例
 
-```golang
+```go
 package main
 
 import "fmt"
@@ -36,7 +36,7 @@ func main() {
 
 类似 `for` 循环，`if` 语句可以在条件表达式之前执行一个简单的初始化语句，该语句声明的变量其作用域仅在 `if` 语句范围内（包括 `else` 语句块）。同样，表达式外不需要小括号 `()`，但大括号 `{}` 是必须的。
 
-```golang
+```go
 package main
 
 import (
@@ -71,7 +71,7 @@ func main() {
 
 `swtich` 的 `case` 语句从上到下依次执行，直到匹配成功为止。
 
-```golang
+```go
 // 当 i == 0 时 f() 不会被调用
 switch i {
 case 0:
@@ -83,7 +83,7 @@ case f():
 
 没有条件的 switch 同 `switch true` 一样。
 
-```golang
+```go
 switch {
 case t.Hour() < 12:
     fmt.Println("Good morning.")
@@ -96,7 +96,7 @@ default:
 
 * 范例
 
-```golang
+```go
 package main
 
 import (
@@ -132,7 +132,7 @@ func main() {
 
 * 范例
 
-```golang
+```go
 package main
 
 import "fmt"

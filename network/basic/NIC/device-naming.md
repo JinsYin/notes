@@ -12,13 +12,13 @@ CentOS7 开始，Systemd 和 udev 引入了一致网络设备命名（CONSISTENT
 
 ## 关闭 “一致性网络设备命名法”
 
-```bash
+```sh
 # 修改过 GRUB2 启动参数
 $ vi /etc/default/grub
 GRUB_CMDLINE_LINUX="... net.ifnames=0 biosdevname=0"
 ```
 
-```bash
+```sh
 # 重构 GRUB2 配置文件
 $ grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -26,7 +26,7 @@ $ grub2-mkconfig -o /boot/grub2/grub.cfg
 $ grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 ```
 
-```bash
+```sh
 # 重命名网卡配置
 $ mv /etc/sysconfig/network-scripts/ifcfg-p4p1 /etc/sysconfig/network-scripts/ifcfg-eth0
 $ sed 's|p4p1|eth0|g' /etc/sysconfig/network-scripts/ifcfg-eth0

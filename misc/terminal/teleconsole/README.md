@@ -4,7 +4,7 @@ Teleconsole 是一个免费服务，用于与你信任的人共享终端会话�
 
 ## 安装
 
-```bash
+```sh
 # 最新
 $ curl https://www.teleconsole.com/get.sh | sh
 ```
@@ -13,7 +13,7 @@ $ curl https://www.teleconsole.com/get.sh | sh
 
 * 启动会话
 
-```bash
+```sh
 $ teleconsole
 Starting local SSH server on localhost...
 Requesting a disposable SSH proxy on as.teleconsole.com for root...
@@ -26,7 +26,7 @@ To stop broadcasting, exit current shell by typing 'exit' or closing the window.
 
 * 好友连接
 
-```bash
+```sh
 # 通过会话 ID 连接
 $ teleconsole join asff06df7c4fd7f1ef83a62bd7b5c85eb06ba31762
 
@@ -36,7 +36,7 @@ $ google-chrome https://as.teleconsole.com/s/ff06df7c4fd7f1ef83a62bd7b5c85eb06ba
 
 * 关闭会话
 
-```bash
+```sh
 # Ctrl+d
 $ exit
 ```
@@ -45,7 +45,7 @@ $ exit
 
 * 启动会话
 
-```bash
+```sh
 # 假设想要邀请好友访问本地的 localhost:8888 服务
 $ teleconsole -f localhost:8888 # 可以省略 localhost
 Starting local SSH server on localhost...
@@ -58,7 +58,7 @@ WebUI for this session: https://as.teleconsole.com/s/9dd31d9f5b3de0c7ebea12a8999
 
 * 好友访问
 
-```bash
+```sh
 # 新增 ATTENTION，好友可以通过 localhost:9000 访问到代理端相应的服务
 $ teleconsole join as9dd31d9f5b3de0c7ebea12a8999d694cdaab83d9
 Teleconsole: joining session...

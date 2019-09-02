@@ -15,7 +15,7 @@
 
 * 语法格式
 
-```golang
+```go
 func recursion() {
     recursion() // 调用函数自身
 }
@@ -25,7 +25,7 @@ func recursion() {
 
 * 范例
 
-```golang
+```go
 // 阶乘
 func factorial(n uint64) uint64 {
     if n > 0 {
@@ -51,7 +51,7 @@ func main() {
 
 ## 参数列表
 
-```golang
+```go
 func f(a ...interface{}) {
 }
 ```
@@ -60,13 +60,13 @@ func f(a ...interface{}) {
 
 下面两种方式是完全等价的。
 
-```golang
+```go
 func f() (x int) { // 函数体中不能再声明变量 x
     return         // 返回值为 x
 }
 ```
 
-```golang
+```go
 func f() int {
     var x int
     return x

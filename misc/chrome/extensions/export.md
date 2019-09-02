@@ -6,7 +6,7 @@
 2. 选择 **Developer mode**，然后复制 Extension ID
 3. 进入（查询）插件存储目录
 
-```bash
+```sh
 # Linux - Chrome
 $ cd ~/.config/google-chrome/Default/Extensions/<ID>/<VERSION>
 

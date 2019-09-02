@@ -4,7 +4,7 @@
 
 ### 安装
 
-```bash
+```sh
 pip install isort
 ```
 
@@ -36,7 +36,7 @@ from third_party import lib3
 print("yo")
 ```
 
-```bash
+```sh
 # 排序并修改文件
 $ isort example.py
 

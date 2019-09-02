@@ -2,7 +2,7 @@
 
 ## 用户切换
 
-```bash
+```sh
 # 登录到 root 用户
 $ sudo -i
 
@@ -14,7 +14,7 @@ $ su - <username>
 
 * 新增用户
 
-```bash
+```sh
 # -m 创建用户 Home 目录（/home/<username>）
 # -s 设置 Login shell
 $ useradd -m <username> -s /bin/bash # 需要 root 权限
@@ -22,7 +22,7 @@ $ useradd -m <username> -s /bin/bash # 需要 root 权限
 
 * 删除用户
 
-```bash
+```sh
 # 需要 root 权限
 $ userdel <username>
 
@@ -32,13 +32,13 @@ $ rm -rf /home/<username>
 
 * 修改用户名
 
-```bash
+```sh
 $ usermod -l <NewName> <OldName>
 ```
 
 ## 用户组管理
 
-```bash
+```sh
 # 查询所有组
 $ sudo groups
 ```
@@ -47,7 +47,7 @@ $ sudo groups
 
 * 设置/修改密码
 
-```bash
+```sh
 # 修改当前用户的密码
 $ passwd
 

@@ -18,7 +18,7 @@
 
 检查：
 
-```bash
+```sh
 # 检查 PCIe 版本、速率和宽度
 $ lspci -s 82:00.0 -vvv | grep "Vendor specific"
 
@@ -58,7 +58,7 @@ BIOS 调优参数（如有必要可以升级 BIOS）：
 
 PCIe 宽度决定了设备可以并行使用的 PCIe 通道数，如宽度为 `x8`，则表示有 8 条通道（lane）。
 
-```bash
+```sh
 # x4 表明有 4 条通道
 $ lspci -s "04:00.0" -vvv | grep Width
 LnkCap: Port #0, Speed 8GT/s, Width x4, ASPM L1, Exit Latency L0s unlimited, L1 <64us
@@ -69,7 +69,7 @@ LnkSta: Speed 8GT/s, Width x4, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
 
 PCIe 速率以 `GT/s` 为单位，表示“每秒钟十亿次传输”，它和 PCIe 宽度共同确定了 PCIe 的最大带宽（bindwidth = speed * width）。
 
-```bash
+```sh
 # 8GT/s 指的是 PCIe 3.0 的原始速率（capabilities and status）
 $ lspci -s "04:00.0" -vvv | grep Speed
 LnkCap: Port #0, Speed 8GT/s, Width x4, ASPM L1, Exit Latency L0s unlimited, L1 <64us
@@ -81,7 +81,7 @@ LnkCtl2: Target Link Speed: 8GT/s, EnterCompliance- SpeedDis
 
 PCIe 最大有效负载大小决定了 PCIe 数据包的最大大小或 PCIe MTU 的最大大小（类似于网络协议）。这意味着较大的 PCIe 传输会被分解为 PCIe MTU 大小的数据包。该参数仅由系统设置，并取决于芯片组架构（x86_64, Power8, ARM 等）
 
-```bash
+```sh
 # MaxPayload 256 bytes
 $ lspci -s "04:00.0" -vvv | grep DevCtl: -C 2
 DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s unlimited, L1 unlimited
@@ -95,14 +95,14 @@ DevCtl: Report errors: Correctable- Non-Fatal+ Fatal+ Unsupported+
 
 PCIe Max Read Request 确定允许的最大 PCIe 读取请求。
 
-```bash
+```sh
 $ lspci -s "04:00.0" -vvv | grep MaxReadReq
 MaxPayload 256 bytes, MaxReadReq 4096 bytes
 ```
 
 不同于其他参数，该参数可以通过 `setpci` 命令进行修改：
 
-```bash
+```sh
 # 先查询该值，避免覆盖
 $ setpci -s "04:00.0" 68.w
 5936 # 第一个数字是 PCIe Max Read Request selector
@@ -124,7 +124,7 @@ PCIe 的性能很可能会影响到 IB 网卡的性能。PCIe 传输数据包括
 Maximum PCIe Bandwidth = SPEED * WIDTH * (1 - ENCODING) - 1Gb/s
 ```
 
-```bash
+```sh
 # PCIe 3.0 (8GT/s) x4 width
 > Maximum PCIe Bandwidth = 8G * 4 * (1 - 2/130) - 1G = ~30.5Gb/s
 
@@ -153,14 +153,14 @@ systemctl disable cups gpm ip6tables mdmonitor mdmpd bluetooth iptables irqbalan
 
 * 启用以下服务
 
-```bash
+```sh
 systemctl start cpuspeed nscd crond ntpd ntp network tuned
 systemctl enable cpuspeed nscd crond ntpd ntp network tuned
 ```
 
 * 设置 system profile 为了网络性能和延迟
 
-```bash
+```sh
 $ tuned-adm profile latency-performance
 $ cpupower frequency-set --governor performance
 
@@ -171,7 +171,7 @@ Current active profile: latency-performance
 
 * 系统参数
 
-```bash
+```sh
 # 重启或运行 sysctl -p 立即生效（添加时记得把注释删除）
 $ vi /etc/sysctl.conf
 kernel.numa_balancing=0 # 关闭 numa-balancing
@@ -193,7 +193,7 @@ net.ipv4.tcp_low_latency=1
 net.ipv4.tcp_adv_win_scale=1
 ```
 
-```bash
+```sh
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
@@ -203,7 +203,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
 **mlx4_en** 内核模块有一个可选参数，可以调整内核空闲循环以获得更好的延迟。这将改善 CPU 唤醒实际，但可能会导致更高的功耗。
 
-```bash
+```sh
 $ vi /etc/modprobe.d/mlx4_core.conf
 options mlx4_core enable_sys_tune=1
 ```
@@ -212,7 +212,7 @@ options mlx4_core enable_sys_tune=1
 
 要将 NIC 使用优化为 IP 转发：
 
-```bash
+```sh
 $ vi /etc/modprobe.d/mlx4_core.conf
 # 优化为支持 IP 转发
 options mlx4_en inline_thold=0
@@ -224,7 +224,7 @@ options mlx4_core log_num_mgm_entry_size=-7
 
 最后，重启 driver：
 
-```bash
+```sh
 rmmod mlx4_en mlx4_core
 modprobe mlx4_en mlx4_core
 ```
@@ -237,7 +237,7 @@ modprobe mlx4_en mlx4_core
 
 开启 RPS：
 
-```bash
+```sh
 $ cat /sys/class/net/ib0/device/local_cpus
 00000000,00000000,00000000,00000000,00000000,000aaaaa
 
@@ -258,7 +258,7 @@ Conflicting CPU frequency values detected: 2399.938000 != 1200.036000. CPU Frequ
 
 需要检查每个 core 的频率是否一致且等于最大值：
 
-```bash
+```sh
 # 检查支持的最大 CPU 频率
 $ cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq
 

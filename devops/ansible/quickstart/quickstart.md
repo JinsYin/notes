@@ -6,7 +6,7 @@
 
 * 一键安装
 
-```bash
+```sh
 $ ops/ansible/install-ansible.sh
 ```
 
@@ -14,7 +14,7 @@ $ ops/ansible/install-ansible.sh
 
 * 免秘钥配置
 
-```bash
+```sh
 # 生成公私钥
 $ ssh-keygen -t rsa -P ''
 
@@ -24,7 +24,7 @@ $ ssh-copy-id <host>
 
 * ansible 配置
 
-```bash
+```sh
 $ cp /etc/ansible/{ansible.cfg,ansible.cfg.bak}
 
 $ vi /etc/ansible/ansible.cfg
@@ -32,7 +32,7 @@ remote_port = 22
 private_key_file = ~/.ssh/id_rsa
 ```
 
-```bash
+```sh
 $ vi /etc/ansible/hosts
 [test_cluster]
 192.168.1.[221:223]
@@ -40,7 +40,7 @@ $ vi /etc/ansible/hosts
 
 * 小测试
 
-```bash
+```sh
 # ping 所有节点（Ansible 默认使用当前用户名连接远程主机）
 $ ansible all -m ping
 192.168.1.221 | SUCCESS => {
@@ -57,7 +57,7 @@ $ ansible all -m ping
 }
 ```
 
-```bash
+```sh
 # 使用 bruce 用户连接远程主机
 $ ansible all -m ping -u bruce
 

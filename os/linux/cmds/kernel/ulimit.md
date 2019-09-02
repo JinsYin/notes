@@ -2,7 +2,7 @@
 
 User limits - 用于限制用户对 **系统资源** 的使用。ulimit 提供对 shell 可用资源及其启动的进程的控制。soft limit 是 Kernel 对相应资源强制执行的值。
 
-```bash
+```sh
 $ ulimit -a
 core file size          (blocks, -c) 0
 data seg size           (kbytes, -d) unlimited
@@ -22,7 +22,7 @@ virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
 ```
 
-```bash
+```sh
 # 每个进程的 hard nofiles limits
 $ ulimit -Hn
 4096
@@ -38,7 +38,7 @@ $ ulimit -Sn
 
 ### 临时性修改
 
-```bash
+```sh
 # nofiles
 $ ulimit -n 1024
 
@@ -53,14 +53,14 @@ $ ulimit -l ulimited
 
 * 方式一
 
-```bash
+```sh
 # 退出重新登录即生效
 $ echo "ulimit -u unlimited" >> /root/.bashrc
 ```
 
 * 方式二
 
-```bash
+```sh
 $ vi /etc/security/limits.conf
 #<domain>        <type>  <item>  <value>
 #*               -       core             <value>
@@ -97,19 +97,19 @@ $ vi /etc/security/limits.conf
 
 ## 其他
 
-```bash
+```sh
 # 获取进程的 PID
 $ ps aux | grep <process-name>
 ```
 
 ### 查看某进程的 limits
 
-```bash
+```sh
 # 查看该进程的 limits
 $ cat /proc/<pid>/limits
 ```
 
-```bash
+```sh
 # 用户级限制（针对进程、用户、用户组、或者所有<*>），退出重新登录生效
 $ vi /etc/security/limits.conf
 * soft nofile 4096
@@ -124,7 +124,7 @@ $ vi /etc/security/limits.conf
 
 * ubuntu 修改 open files
 
-```bash
+```sh
 # 查看系统最大值
 $ cat /proc/sys/fs/file-max
 

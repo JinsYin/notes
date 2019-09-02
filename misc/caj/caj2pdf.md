@@ -2,7 +2,7 @@
 
 ## 离线转换
 
-```bash
+```sh
 # 获取开源工具
 git@github.com:JeziL/caj2pdf.git && cd caj2pdf
 

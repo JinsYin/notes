@@ -1,6 +1,6 @@
 # 验证集群
 
-```bash
+```sh
 $ netstat -tpln | grep -E 'ceph|rados'
 tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      2804820/radosgw
 tcp        0      0 192.168.8.220:6789      0.0.0.0:*               LISTEN      2804273/ceph-mon
@@ -12,7 +12,7 @@ tcp        0      0 192.168.8.220:6803      0.0.0.0:*               LISTEN      
 tcp        0      0 192.168.8.220:6804      0.0.0.0:*               LISTEN      2804519/ceph-osd
 ```
 
-```bash
+```sh
 $ ps aux | grep ceph
 167      2804273  0.1  0.1 488872 44296 ?        Ssl  16:04   0:00 /usr/bin/ceph-mon --cluster ceph --setuser ceph --setgroup ceph -i Yin --mon-data /var/lib/ceph/mon/ceph-Yin --public-addr 192.168.8.220:6789
 167      2804352  0.2  0.2 612476 90460 ?        Ssl  16:04   0:02 ceph-mgr --cluster ceph --setuser ceph --setgroup ceph -i Yin

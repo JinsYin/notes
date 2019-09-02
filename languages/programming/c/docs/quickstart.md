@@ -10,7 +10,7 @@ $ vim --version
 
 * 编译器
 
-```bash
+```sh
 $ gcc --version
 ```
 
@@ -52,7 +52,7 @@ int main()
 gcc 4.7
 gcc 5.1.0 --> 2015-04-22 --> `-std=gnu11`
 
-```bash
+```sh
 # 使用 C89 标准编译
 $ gcc -std=c89 hello-c89.c
 

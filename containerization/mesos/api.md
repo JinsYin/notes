@@ -2,7 +2,7 @@
 
 ## 查询任务和框架
 
-```bash
+```sh
 # 查询所有运行任务
 $ curl -XGET http://leader.mesos:5050/master/tasks
 
@@ -12,7 +12,7 @@ $ curl -XGET http://leader.mesos:5050/master/frameworks
 
 ## 从框架中 kill 任务 （忘了是否都有效）
 
-```bash
+```sh
 $ curl -XPOST http://leader.mesos:5050/api/v1/scheduler -H 'Content-Type:application/json; Accept:application/json; Connection:close' -d '{
    "type": "SUBSCRIBE",
    "subscribe"  : {
@@ -24,7 +24,7 @@ $ curl -XPOST http://leader.mesos:5050/api/v1/scheduler -H 'Content-Type:applica
 }'
 ````
 
-```bash
+```sh
 $ curl -XPOST http://leader.mesos:5050/api/v1/scheduler -H 'Content-Type: application/json' -d '{
     "type": "KILL",
     "kill": {
@@ -33,7 +33,7 @@ $ curl -XPOST http://leader.mesos:5050/api/v1/scheduler -H 'Content-Type: applic
 }'
 ```
 
-```bash
+```sh
 $ curl -XPOST http://leader.mesos:5050/api/v1/scheduler -H 'Content-Type: application/json;Mesos-Stream-Id' -d '{
     "framework_id": {"value" : "7d93d301-2845-46a8-b406-c7a6c4edd3b6-0001"},
     "type": "KILL",
@@ -46,17 +46,17 @@ $ curl -XPOST http://leader.mesos:5050/api/v1/scheduler -H 'Content-Type: applic
 
 ## 撤销框架
 
-```bash
+```sh
 $ curl -XPOST http://leader.mesos:5050/api/v1/scheduler -H 'Content-Type: application/json' -d '{
     "framework_id": {"value": "7d93d301-2845-46a8-b406-c7a6c4edd3b6-0017"},
     "type": "TEARDOWN"
 }'
 ```
 
-```bash
+```sh
 % curl -XPOST http://leader.mesos:5050/master/teardown -d 'frameworkId=7d93d301-2845-46a8-b406-c7a6c4edd3b6-0014'
 ```
 
-```bash
+```sh
 % /opt/spark/sbin/stop-mesos-dispatcher.sh
 ```

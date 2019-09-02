@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 ELASTIC_VERSION="6.5.0"
 
 curl -L https://artifacts.elastic.co/downloads/kibana/kibana-${ELASTIC_VERSION}-x86_64.rpm -o /tmp/kibana.rpm
@@ -22,7 +22,7 @@ rpm -ivh /tmp/kibana.rpm && rm -f /tmp/kibana.rpm
 
 * 修改配置
 
-```bash
+```sh
 # 服务端口
 sed -i "s|#server.port: 5601|server.port: 5601|g" /etc/kibana/kibana.yml
 
@@ -37,7 +37,7 @@ sed -i 's|#elasticsearch.url.*|elasticsearch.url: "http://192.168.10.160:9200"|g
 
 （需要先运行 Elaticsearch）
 
-```bash
+```sh
 systemctl enable kibana
 systemctl start kibana
 systemctl status kibana # 状态
@@ -46,7 +46,7 @@ journalctl -f -u kibana # 日志
 
 验证：
 
-```bash
+```sh
 # 正常情况响应为空，否则响应 "Kibana server is not ready yet"
 $ curl http://192.168.10.160:5601
 ```

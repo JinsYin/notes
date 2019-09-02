@@ -4,19 +4,19 @@
 
 * 查看
 
-```bash
+```sh
 $ vagrant plugin list
 ```
 
 * 安装
 
-```bash
+```sh
 $ vagrant plugin install <plugin-name>
 ```
 
 * 卸载
 
-```bash
+```sh
 $ vagrant plugin uninstall <plugin-name>
 ```
 
@@ -27,19 +27,19 @@ $ vagrant plugin uninstall <plugin-name>
 
 vagrant-hostmanager 插件可以将虚拟机的 ip 和 hostname 自动添加到宿主机和虚拟机的 `/etc/hosts` 中，使宿主机与虚拟机之间、虚拟机与虚拟机之间可以通过 hostname 来访问（ping、ssh）。
 
-```bash
+```sh
 $ # 安装插件
 $ vagrant plugin install vagrant-hostmanager
 ```
 
-```bash
+```sh
 $ # 常用配置
 config.hostmanager.enabled = true      # 启用 hostmanager 插件
 config.hostmanager.manage_guest = true # 更新虚拟机的 hosts 文件
 config.hostmanager.manage_host = true  # 更新宿主机的 hosts 文件
 ```
 
-```bash
+```sh
 $ # 更新 hosts 文件（在 Vagrantfile 目录下运行）
 $ vagrant hostmanager
 ```
@@ -48,7 +48,7 @@ $ vagrant hostmanager
 
 某些 virtualbox 类型的 box 没法设置共享目录，这是因为 box 里面没有安装 VirtualBox Guest Additions 。vagrant-vbguest 插件可以帮助我们在虚拟机上安装或者更新 VirtualBox Guest Additions 。
 
-```bash
+```sh
 $ # 安装插件
 $ vagrant plugin install vagrant-vbguest
 $
@@ -59,7 +59,7 @@ $ # 运行中的虚拟机中安装 VirtualBox Guest Additions （Vagrantfile 目
 $ vagrant vbguest --do install node1
 ```
 
-```bash
+```sh
 $ # 常用配置
 config.vbguest.auto_update = false # 关闭自动更新，因为每次重启虚拟机都会检查 GuestAdditions 的版本并自动更新
 config.vbguest.no_remote = true    # 不从远程下载 GuestAdditions ios 文件
@@ -72,7 +72,7 @@ config.vbguest.iso_path = <path>   # GuestAdditions iso 文件路径
 
 vagrant-bindfs 插件用于设置 nfs 类型的共享目录。
 
-```bash
+```sh
 $ # 安装
 $ vagrant plugin install vagrant-bindfs
 ```
@@ -81,14 +81,14 @@ $ vagrant plugin install vagrant-bindfs
 
 vagrant-libvirt 通过 libvirt 连接 kvm 等 provider。
 
-```bash
+```sh
 $ # 安装插件
 $ vagrant plugin install vagrant-libvirt
 ```
 
 * vagrant-cachier
 
-```bash
+```sh
 $ # 安装插件
 $ vagrant plugin install vagrant-cachier
 ```

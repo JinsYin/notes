@@ -2,7 +2,7 @@
 
 ## AptGet
 
-```bash
+```sh
 # 安装软件包
 $ apt-get install <package>
 
@@ -21,7 +21,7 @@ $ apt-get purge <package>
 
 ## AptCache
 
-```bash
+```sh
 # 查看软件包的版本
 $ apt-cache policy dnsutils
 $ apt-cache madison dnsutils
@@ -36,7 +36,7 @@ $ apt-cache showpkg dnsutils
 
 对于 Ubuntu 桌面版最好不要执行以下操作：
 
-```bash
+```sh
 # 这会升级 kernel 等所有软件包，可能导致软件不兼容，最终导致系统奔溃
 $ apt-get upgrade
 
@@ -50,7 +50,7 @@ $ apt-get autoremove
 
 * 编译安装
 
-```bash
+```sh
 $ ./configure
 $ make
 $ make install
@@ -58,7 +58,7 @@ $ make install
 
 * 卸载
 
-```bash
+```sh
 # 删除所有中间或输出文件
 $ make clean
 
@@ -74,7 +74,7 @@ $ rm /usr/local/bin/python3*
 
 或
 
-```bash
+```sh
 $ make clean && make distclean
 
 # 删除安装的包或软链接

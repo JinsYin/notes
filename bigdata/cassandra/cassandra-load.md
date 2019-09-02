@@ -4,7 +4,7 @@
 
 * 文件格式
 
-```bash
+```sh
 $ head examples/ais.csv -n 2
 235103214,1472745528,0,248,0,2955492.000000,51531425.000000,1384229,3498,0.514444,16350,17800,,,1200&0.1&&&&
 244630015,1472745528,0,248,5,4528250.000000,51230048.000000,1395045,3292,0.514444,29840,51100,,,0&0.1&&&&
@@ -26,11 +26,11 @@ cqlsh> COPY myspace.mytable(unique_id,acquisition_time,target_type,data_source,d
 
 ## BulkLoad
 
-```bash
+```sh
 $ cqlsh -f schema.cql
 ```
 
-```bash
+```sh
 $ sstableloader -d <node-ip> data/quote/historical_prices
 ```
 

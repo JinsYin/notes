@@ -2,32 +2,32 @@
 
 ## 登录 root 用户
 
-```bash
+```sh
 $ sudo -i
 ```
 
 ## 创建 developer 用户
 
-```bash
+```sh
 $ useradd -d /home/developer -m developer
 ```
 
 ## 修改密码
 
-```bash
+```sh
 $ passwd developer
 ```
 
 ## 设置 root 权限
 
-```bash
+```sh
 $ echo "developer ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/developer
 $ sudo chmod 0440 /etc/sudoers.d/developer
 ```
 
 ## 登录
 
-```bash
+```sh
 $ su - developer
 ```
 

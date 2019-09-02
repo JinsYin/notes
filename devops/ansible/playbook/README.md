@@ -6,7 +6,7 @@ Ansible 脚本：Ansible Playbook 。
 
 ## 用法
 
-```bash
+```sh
 $ ansible-playbook deploy.yml
 ```
 
@@ -23,7 +23,7 @@ $ ansible-playbook deploy.yml
 | become_method | 与 become 一起用，可选值：`sudo`/`su`/`pfexec`/`doas`|
 | become_user | |
 
-```bash
+```sh
 # 脚本中使用 become 时，执行 playbook 可以加参数 --ask-become-pass，则执行时后提示输入 sudo 密码
 $ ansible-playbook deploy.yml --ask-become-pass
 ```
@@ -317,7 +317,7 @@ index.html.j2 ：
   - debug: msg="Hello world"
 ```
 
-```bash
+```sh
 # K/V 形式
 ansible-playbook playbook.yml --extra-vars "hosts=web user=root"
 

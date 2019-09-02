@@ -8,7 +8,7 @@
 
 在目录上挂载包含文件系统的文件（如 `example.img`）需要两步：
 
-```bash
+```sh
 # 第一步：用一个 Loop 设备节点连接文件
 $ losetup /dev/loop0 example.img
 
@@ -16,14 +16,14 @@ $ losetup /dev/loop0 example.img
 $ mount /dev/loop0 /home/you/dir
 ```
 
-```bash
+```sh
 # 二合一
 $ mount -o loop example.img /home/you/dir
 ```
 
 * 卸载
 
-```bash
+```sh
 $ umount /home/you/dir
 # 或
 $ umount /dev/loop<N>

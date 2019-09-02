@@ -6,22 +6,22 @@
 
 ## 目录层级
 
-| 子目录              | 描述                   |
-| ------------------- | ---------------------- |
-| `/proc/`            | 系统相关信息           |
-| `/proc/[pid]/`      | 进程相关信息           |
-| `/proc/net/`        | 网络和套接字的状态信息 |
-| `/proc/sys/fs/`     | 文件系统相关设置       |
-| `/proc/sys/kernel/` | 常规的内核设置         |
-| `/proc/sys/net/`    | 网络和套接字的设置     |
-| `/proc/sys/vm/`     | 内存管理设置           |
-| `/proc/sysvipc/`    | System V IPC 对象信息  |
+| 子目录            | 描述                   |
+| ----------------- | ---------------------- |
+| /proc/            | 系统相关信息           |
+| /proc/[pid]/      | 进程相关信息           |
+| /proc/net/        | 网络和套接字的状态信息 |
+| /proc/sys/fs/     | 文件系统相关设置       |
+| /proc/sys/kernel/ | 常规的内核设置         |
+| /proc/sys/net/    | 网络和套接字的设置     |
+| /proc/sys/vm/     | 内存管理设置           |
+| /proc/sysvipc/    | System V IPC 对象信息  |
 
-| symlink       | 描述 | 示例                                |
-| ------------- | ---- | ----------------------------------- |
-| `mounts`      |      | `mounts -> self/mounts`             |
-| `self`        |      | `self -> 795328`                    |
-| `thread-self` |      | `thread-self -> 795328/task/795328` |
+| symlink     | 描述 | 示例                                |
+| ----------- | ---- | ----------------------------------- |
+| mounts      |      | `mounts -> self/mounts`             |
+| self        |      | `self -> 795328`                    |
+| thread-self |      | `thread-self -> 795328/task/795328` |
 
 | 子文件 | 描述 |
 | ------ | ---- |
@@ -44,7 +44,7 @@ $ cat /pro/sys/kernel/pid_max
 
 ```bash
 # 手册页
-$ man proc
+$ man 5 proc
 ```
 
 ```bash
@@ -204,4 +204,21 @@ $ tree -L 1
  *
  *
  */
+```
+
+## 挂载 procfs
+
+运行时手动挂载：
+
+```sh
+# /proc 是标准挂载点
+# 尝试改变挂载点会发现两者的内容一致：sudo mount -t proc proc /tmp/proc
+$ sudo mount -t proc proc /proc
+```
+
+引导时自动挂载：
+
+```sh
+$ sudo vi /etc/fstab
+proc /proc proc noauto 0 0
 ```

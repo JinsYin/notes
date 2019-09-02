@@ -13,7 +13,7 @@ For the 10GbE network the bandwidth performance range achieved is 9.48Gb/s to 9.
 For the 40GbE network the bandwidth performance range achieved is 36.82Gb/s to 38.43Gb/s
 -->
 
-```bash
+```sh
 # Server Side
 $ iperf -s
 
@@ -34,7 +34,7 @@ fio --directory=/mnt/cephblockstorage --direct=1 --rw=$Action --bs=$BlockSize --
 -- $bs=4k,128k,8m
 -->
 
-```bash
+```sh
 $ rbd -c /etc/ceph/ceph.conf -p benchmark create benchmrk --size 6144000
 #> rbd map benchmrk --pool benchmark --secret /etc/ceph/client.admin
 #> mkfs.ext4 /dev/rbd1

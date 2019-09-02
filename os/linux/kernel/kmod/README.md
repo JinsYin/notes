@@ -8,9 +8,15 @@ _内核模块（Kernel Module）_ 是可以按需加载或卸载的内核代码�
 
 * 热插拔 - 某些总线（如 USB 和 FirewWire）允许在系统运行时连接设备，当系统检测到新设备时，通过加载对应的模块，可以将必要的驱动程序添加到内核中
 
+## 目录
+
+* [黑白名单](list.md)
+* [常见内核模块](modules.md)
+* [配置模块加载顺序]()
+
 ## 获取信息
 
-```bash
+```sh
 # 查看加载的内核模块
 $ lsmod
 
@@ -23,7 +29,7 @@ $ modprobe -D ip_vs
 
 ## 手动加载卸载
 
-```bash
+```sh
 # 加载内核模块
 $ modprobe ip_vs
 
@@ -37,7 +43,7 @@ $ rmmod ip_vs # modprobe -r ip_vs
 
 ### CentOS
 
-```bash
+```sh
 $ cd /etc/sysconfig/modules/
 
 # 名称根据模块名来命名
@@ -54,7 +60,7 @@ $ chmod +x bonding.modules
 
 其他情况：
 
-```bash
+```sh
 $ /etc/modules-load.d/kvm.conf
 kvm
 kvm_intel
@@ -62,22 +68,12 @@ kvm_intel
 
 ### Ubuntu
 
-```bash
+```sh
 # 一行一个，参数可以在模块名之后指定；最后重启
 $ vi /etc/modules
 kvm
 bonding
 ```
-
-## 常用内核模块
-
-* kvm
-* ceph
-* bonding
-
-## 白名单
-
-## 黑名单
 
 ## 参考
 

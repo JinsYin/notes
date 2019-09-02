@@ -4,14 +4,14 @@
 
 * server
 
-```bash
+```sh
 $ udaddy
 udaddy: starting server
 ```
 
 * client
 
-```bash
+```sh
 $ udaddy -s 10.0.10.160
 udaddy: starting client
 udaddy: connecting
@@ -26,14 +26,14 @@ return status 0 # 0 表示连通
 
 * server
 
-```bash
+```sh
 $ rdma_server
 rdma_server: start
 ```
 
 * client
 
-```bash
+```sh
 $ rdma_client -s 10.0.10.160
 rdma_client: start
 rdma_client: end 0 # 0 表示连通
@@ -45,13 +45,13 @@ rdma_client: end 0 # 0 表示连通
 
 * server
 
-```bash
+```sh
 % ibping -S
 ```
 
 * client
 
-```bash
+```sh
 # 传递的是 Port GUID，不是 Node GUID 和 System GUID，Port GUID 可以使用 'iblinkinfo' 命令获取
 $ ibping -G 0x0002c903000d81f9
 ```
@@ -60,7 +60,7 @@ $ ibping -G 0x0002c903000d81f9
 
 `ibdiagnet` 工具用于查看整个子网的诊断（diagnostic）信息。
 
-```bash
+```sh
 $ ibdiagnet -lw 4x -ls 5 -c 1000
 ----------------------------------------------------------------
 -I- Stages Status Report:

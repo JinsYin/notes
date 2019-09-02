@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 ELASTIC_VERSION="6.5.0"
 
 curl -L https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTIC_VERSION}.rpm -o /tmp/elasticsearch.rpm
@@ -22,7 +22,7 @@ rpm -ivh /tmp/elasticsearch.rpm && rm -f /tmp/elasticsearch.rpm
 
 * 配置
 
-```bash
+```sh
 sed -i 's|#network.host.*|network.host: 192.168.10.160|g' /etc/elasticsearch/elasticsearch.yml # 0.0.0.0
 sed -i 's|#http.port.*|http.port: 9200|g' /etc/elasticsearch/elasticsearch.yml
 ```
@@ -30,13 +30,13 @@ sed -i 's|#http.port.*|http.port: 9200|g' /etc/elasticsearch/elasticsearch.yml
 <!--
 设置密码：
 
-```bash
+```sh
 $ bin/elasticsearch-setup-passwords interactive
 ``` -->
 
 * 启动
 
-```bash
+```sh
 systemctl enable elasticsearch
 systemctl start elasticsearch
 systemctl status elasticsearch # 状态
@@ -47,7 +47,7 @@ journalctl -f -u elasticsearch # 日志
 
 * HTTP GET
 
-```bash
+```sh
 $ curl http://192.168.10.160:9200
 {
   "name" : "BwbAcqQ",

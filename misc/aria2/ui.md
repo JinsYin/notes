@@ -8,7 +8,7 @@ WebUI 作为客户端连接 aria2 守护进程，所以需要先在后台启动 
 
 ## webui-aria2
 
-```bash
+```sh
 # Go to "http://localhost"
 $ docker run -d --name webui-aria2 --restart=always -p 80:80 timonier/webui-aria2:latest
 ```

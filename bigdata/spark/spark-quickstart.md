@@ -5,7 +5,7 @@
 
 * Host
 
-```bash
+```sh
 $ # master
 $ sbin/start-master.sh
 $
@@ -15,7 +15,7 @@ $ sbin/start-slave.sh spark://[MASTER-IP]:7077
 
 * Docker
 
-```bash
+```sh
 $ # master
 $ docker run -it --name=spark-master --net=host -d dockerce/spark:2.0.2 master
 $
@@ -28,7 +28,7 @@ $ docker run -it --name=spark-worker --net=host -d dockerce/spark:2.0.2 worker s
 
 测试前确保已经安装了所需的 JDK、Python 和 R 运行时环境。
 
-```bash
+```sh
 $ # Scala、Java
 $ bin/run-example SparkPi
 $
@@ -44,7 +44,7 @@ $ bin/spark-submit examples/src/main/r/dataframe.R
 
 * scala
 
-```bash
+```sh
 $ # SparkContext 会运行一个 Web UI： http://localhost:4040
 $ bin/spark-shell
 $
@@ -72,7 +72,7 @@ spark-shell 命令：
 
 * python
 
-```bash
+```sh
 $ bin/pyspark
 $ bin/pyspark --master local[*]
 ```
@@ -150,7 +150,7 @@ object SimpleApp {
 
 * 项目目录结构
 
-```bash
+```sh
 $ find .
 .
 ./build.sbt
@@ -176,13 +176,13 @@ libraryDependencies += "org.apache.spark" %% "spark-core" % "2.0.2"
 
 * 项目打包
 
-```bash
+```sh
 $ sbt package
 ```
 
 * 提交部署
 
-```bash
+```sh
 $ bin/spark-submit \
   --class "SimpleApp" \
   --master local[4] \

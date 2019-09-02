@@ -2,7 +2,7 @@
 
 ## Ubuntu 14.04
 
-```bash
+```sh
 # 64 bit
 $ wget http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_amd64_ubuntu14.04.deb
 
@@ -12,7 +12,7 @@ $ wget http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_i386_ubuntu
 
 ## Ubuntu 16.04
 
-```bash
+```sh
 # 1.1.0
 $ wget http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb
 

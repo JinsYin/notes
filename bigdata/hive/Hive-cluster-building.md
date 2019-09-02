@@ -16,13 +16,13 @@
 hive 依赖 hadoop 的 hdfs 和 mapreduce,其中 hdfs 作底层数据存储，mapreduce 作数据计算。具体配置如下：
 a) $HIVE_HOME/conf/hive-env.sh 和 /etc/environment 中指定 HADOOP_HOME和HADOOP_CONF_DIR 路径。（前提当然是下载并安装了 hadoop-bin）
 b) $HADOOP_HOME/etc/hadoop/core-site.xml 配置
-```bash
+```sh
         <name>fs.defaultFS</name>
         <value>hdfs://192.168.1.xxx:9000</value>
 ```
 注意：并不需要启动 hadoop 服务，只需要像上面一样指定远程 hdfs 路径即可，其他都不用配置。我试过在 hiveserver2 启动的时候指定 hdfs 路径，不过并不 work。（hive --service hiveserver --hiveconf fs.defaultFS=hdfs://xxx:9000）
 测试一下：
-```bash
+```sh
 hdfs dfs -ls /
                  hive --service metatool -listFSRoot (嵌入模式好像不行)
 ```
@@ -49,7 +49,7 @@ Metastore 支持三种部署模式：
 
 该模式 metastore service 作为内置服务运行在 hiveserver2（默认端口 10000 ）主进程中（不用单独启动 hive –service metastore，默认端口 9083），metastore database（mysql 等等）则运行在另外一个进程，或者另一台主机。metastore service 和 metastore database 之间通过 jdbc 通信。如果使用远程 MySQL：
     a) mysql 增加远程和用户访问权限
-  ```bash
+  ```sh
     sed -i 's|bind-address.*|bind-address = 0.0.0.0' /etc/mysql/my.cnf
     service mysql restart
     mysql -h 192.168.1.xxx -u root -p
@@ -57,20 +57,20 @@ Metastore 支持三种部署模式：
     flush privileges; # 使权限生效
 ```
 b) mysql-connector-java
-```bash
+```sh
     MYSQL_CONNECTOR_VERSION=5.1.40
     wget -O $HIVE_HOME/lib/mysql-connector-java-$MYSQL_CONNECTOR_VERSION.jar \
  http://central.maven.org/maven2/mysql/mysql-connector-java/$MYSQL_CONNECTOR_VERSION/mysql-connector-java-$MYSQL_CONNECTOR_VERSION.jar
 ```
 b) hive-site.xml 中配置 mysql  (cp hive-default.xml.template hive-site.xml)
-```bash
+```sh
         javax.jdo.option.ConnectionURL ==  jdbc:mysql://192.168.1.xxx/metastore?createDatabaseIfNotExist=true&amp;useSSL=false
          javax.jdo.option.ConnectionDriverName ==  com.mysql.jdbc.Driver
          javax.jdo.option.ConnectionUserName == root
          javax.jdo.option.ConnectionPassword ==  hive123456
 ```
 c) 还有几个 property 需要配置一下（$HIVE_HOME 改成实际路径）
-```bash
+```sh
     hive.exec.local.scratchdir == $HIVE_HOME/tmp
     hive.downloaded.resources.dir ==  $HIVE_HOME/tmp/resources
     hive.querylog.location == $HIVE_HOME/tmp/querylog
@@ -106,13 +106,13 @@ mysql(一台)  ← hive –service hiveserver2 (多台，内置 Metastore servic
 hiveserver2 的高可用有两种方式，一种是用 haproxy 作负载均衡(过程略)，一种是用 zookeeper 作 leader 选举。也可以两种模式一起使用。
 zookeeper 方式需要修改配置：
 hive.server2.thrift.bind.host == 192.168.1.x (需要填写确切的主机 IP，不然 zookeeper 无法通过主机名发现彼此，除非添加 /etc/hosts 主机 IP 对应信息)
-```bash
+```sh
   hive.server2.support.dynamic.service.discovery == true
     hive.zookeeper.quorum == 192.168.1.1:2181，192.168.1.2:2181，192.168.1.3:2181
     hive.zookeeper.namespace == hiveserver2
 ```
     测试一下（我还是连接不上）：
-```bash
+```sh
   beeline -u
   jdbc:hive2://host1.com:2181,host2.com:2181,host3.com:2181;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
   -n root
@@ -131,7 +131,7 @@ c) hive 既可以连接 hiveserver2（hive –service hiveserver2, port:10000）
 d) beeline 连接的是 hiveserver2, hiveserver2 再连接到内置或者远程的 metastore service
 
 3.版本
-```bash
+```sh
 # 系统：centos 7
 hive --service version： 1.2.1
 java –version # 1.8.0
@@ -139,7 +139,7 @@ hadoop version # 2.7.2
 ```
 
 4.主从节点
-```bash
+```sh
 # cat /etc/hosts
 192.168.1.122   clusterSlave1
 192.168.1.124   clusterSlave3
@@ -147,7 +147,7 @@ hadoop version # 2.7.2
 ```
 
 5.主节点安装 mysql
-```bash
+```sh
 ## 只在clusterMaster 上安装mysql-server
 yum install mysql-server -y
 service mysqld start
@@ -158,7 +158,7 @@ service mysqld start
 ```
 
 6.主节点配置 hive
-```bash
+```sh
 ## clusterMaster
 ## 下载并解压Hive-2.1.1
 ## vi /root/.bashrc
@@ -219,7 +219,7 @@ $HADOOP_HOME/bin/hadoop fs -chmod g+w /user/hive/warehouse # hive.metastore.ware
 ```
 
 7.从节点
-```bash
+```sh
 ## 主节点clusterMaster
 scp –r /root/Cloud//root/Cloud/apache-hive-2.1.1-bin/ root@192.168.1.122/root/Cloud/
 scp –r /root/Cloud//root/Cloud/apache-hive-2.1.1-bin/ root@192.168.1.124/root/Cloud/
@@ -248,7 +248,7 @@ beeline -u jdbc:hive2://localhost:10000 -n root –p Hive.123456
 ```
 ###################### 以下略########################
 
-```bash
+```sh
 ## Hive Web Interface
 bin/hive --service hwi &
 

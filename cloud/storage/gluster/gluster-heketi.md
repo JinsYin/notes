@@ -7,7 +7,7 @@ Heketi 是一个基于 RESTful API 的 GlusterFS 卷管理框架。它提供 RES
 
 在任一 GlusterFS 节点上安装
 
-```bash
+```sh
 # 安装统一的版本
 $ heketi_version=5.0.1
 $ yum --enablerepo=centos-gluster312 install -y heketi-${heketi_version} heketi-client-${heketi_version}

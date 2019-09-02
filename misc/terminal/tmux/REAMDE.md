@@ -8,7 +8,7 @@ Tmux 即 terminal multiplexer，它可以在单个屏幕中创建多个终端/�
 
 * 内置安装
 
-```bash
+```sh
 # Ubuntu
 $ apt-get install -y tmux
 
@@ -18,7 +18,7 @@ $ yum install -y tmux
 
 * 安装最新（推荐）
 
-```bash
+```sh
 sudo -i
 
 TMUX_VER="2.7"
@@ -68,7 +68,7 @@ cp ./tmux /usr/local/bin/
 
 用户配置文件：`~/.tmux.conf`，全局配置文件：`/etc/tmux.conf`。
 
-```bash
+```sh
 $ vi ~/.tmux.conf
 # 将快捷键前缀 `Ctrl+b` 修改为 `Ctrl+a`
 unbind C-b
@@ -112,21 +112,21 @@ bind -r C-l resize-pane -R 10 # 绑定Ctrl+l为往→调整面板边缘10个单�
 set-option -g base-index 1
 ```
 
-```bash
+```sh
 # 生效
 $ tmux source ~/.tmux.conf
 ```
 
 ### 配置命令
 
-```bash
+```sh
 # 方式二
 $ tmux set -g prefix C-s
 ```
 
 ## 命令
 
-```bash
+```sh
 # 查看快捷键
 $ tmux list-keys
 
@@ -148,12 +148,12 @@ $ tmux a -t <session-name>
 
 * Resurrect
 
-```bash
+```sh
 mkdir ~/.tmux/plugins && cd ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tmux-resurrect.git
 ```
 
-```bash
+```sh
 # 增加配置
 $ vi ~/.tmux.conf
 run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux

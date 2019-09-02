@@ -227,6 +227,10 @@ function getName() {
 
 ASCII 表格：<https://ozh.github.io/ascii-tables/>
 
+分隔符 `:---`：向左对齐
+分隔符 `---:`：向右对齐
+分隔符 `:---:`：居中对齐
+
 ---
 
 ## 引入问题（Issue reference）

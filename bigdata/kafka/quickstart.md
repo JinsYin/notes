@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 SCALA_VERSION="2.11"
 KAFKA_VERSION="2.0.0"
 
@@ -20,20 +20,20 @@ Kafka 需要使用 Zookeeper 作为服务发现，所以必须先启动 Zookeepe
 
 * 启动 Zookeeper
 
-```bash
+```sh
 $ bin/zookeeper-server-start.sh [-daemon] config/zookeeper.properties
 [2018-11-16 09:53:45,937] INFO binding to port 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.NIOServerCnxnFactory)
 ```
 
 * 启动 Kafka
 
-```bash
+```sh
 # 监听在所有网卡，广告到 192.168.10.199
 sed -i 's|#listeners=PLAINTEXT://:9092|listeners=PLAINTEXT://:9092|g' config/server.properties
 sed -i 's|#advertised.listeners=.*|advertised.listeners=PLAINTEXT://192.168.10.199:9092|g' config/server.properties
 ```
 
-```bash
+```sh
 # zookeeper znode 为 "/"
 $ bin/kafka-server-start.sh [-daemon] config/server.properties
 [2018-11-16 09:54:56,817] INFO Awaiting socket connections on 0.0.0.0:9092. (kafka.network.Acceptor)
@@ -41,7 +41,7 @@ $ bin/kafka-server-start.sh [-daemon] config/server.properties
 
 * 验证
 
-```bash
+```sh
 $ netstat -tpln | grep "9092"
 tcp6    0   0 :::9092   :::*    LISTEN  4627/java
 ```
@@ -50,7 +50,7 @@ tcp6    0   0 :::9092   :::*    LISTEN  4627/java
 
 * 创建 topic
 
-```bash
+```sh
 $ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
 Created topic "test".
 ```
@@ -59,13 +59,13 @@ Created topic "test".
 
 * 查看 topic
 
-```bash
+```sh
 # 查看所有 topic
 $ bin/kafka-topics.sh --list --zookeeper localhost:2181
 test
 ```
 
-```bash
+```sh
 # 查看 topic 详情
 $ bin/kafka-topics.sh --describe --topic test --zookeeper localhost:2181
 Topic:test  PartitionCount:1    ReplicationFactor:1 Configs:
@@ -74,7 +74,7 @@ Topic:test  PartitionCount:1    ReplicationFactor:1 Configs:
 
 * 发布消息
 
-```bash
+```sh
 # 启动一个消费者，它从文件或 stdin 获取输入，并发送给 Kafka 集群
 $ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 > This is a message
@@ -83,14 +83,14 @@ $ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 
 * 订阅消息
 
-```bash
+```sh
 # 启动一个消费者，它将消息转储到 stdout
 $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test [--from-beginning]
 ```
 
 * 日志数据
 
-```bash
+```sh
 # 存储日志文件的目录（路径取决于 config/server.properties 中的 log.dirs 参数）
 $ tree -L 2 /tmp/kafka-logs/
 ├── __consumer_offsets-8
@@ -120,12 +120,12 @@ $ tree -L 2 /tmp/kafka-logs/
 
 * 配置
 
-```bash
+```sh
 cp config/server.properties config/server-1.properties
 cp config/server.properties config/server-2.properties
 ```
 
-```bash
+```sh
 # 监听在所有网口，广播到 192.168.10.199
 sed -i 's|broker.id=0|broker.id=1|g' config/server-1.properties
 sed -i 's|#listeners=PLAINTEXT://:9092|listeners=PLAINTEXT://:9093|g' config/server-1.properties
@@ -133,7 +133,7 @@ sed -i 's|#advertised.listeners=.*|advertised.listeners=PLAINTEXT://192.168.10.1
 sed -i 's|log.dirs=/tmp/kafka-logs|log.dirs=/tmp/kafka-logs-1|g' config/server-1.properties
 ```
 
-```bash
+```sh
 # 监听在所有网口，广播到 192.168.10.199
 sed -i 's|broker.id=0|broker.id=2|g' config/server-2.properties
 sed -i 's|#listeners=PLAINTEXT://:9092|listeners=PLAINTEXT://:9094|g' config/server-2.properties
@@ -143,7 +143,7 @@ sed -i 's|log.dirs=/tmp/kafka-logs|log.dirs=/tmp/kafka-logs-2|g' config/server-2
 
 * 启动
 
-```bash
+```sh
 # 保持之前启动的服务
 bin/kafka-server-start.sh -daemon config/server-1.properties
 bin/kafka-server-start.sh -daemon config/server-2.properties
@@ -151,7 +151,7 @@ bin/kafka-server-start.sh -daemon config/server-2.properties
 
 * 验证
 
-```bash
+```sh
 $ netstat -tpln | grep -E "9092|9093|9094"
 tcp6    0   0 :::9094   :::*    LISTEN  6838/java
 tcp6    0   0 :::9093   :::*    LISTEN  14199/java
@@ -159,13 +159,13 @@ tcp6    0   0 :::9093   :::*    LISTEN  14199/java
 
 创建带三个副本的 topic：
 
-```bash
+```sh
 # 共生成 2 × 4 个分区，即 8 个目录；三个 broker 的分区数应该是 3、3、2
 $ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 2 --partitions 4 --topic mytopic
 Created topic "mytopic".
 ```
 
-```bash
+```sh
 $ bin/kafka-topics.sh --describe --topic mytopic --zookeeper localhost:2181
 Topic:mytopic   PartitionCount:4    ReplicationFactor:2 Configs:
     Topic: mytopic  Partition: 0    Leader: 2   Replicas: 2,1   Isr: 2,1
@@ -182,7 +182,7 @@ Topic:mytopic   PartitionCount:4    ReplicationFactor:2 Configs:
 
 干掉 Broker 1：
 
-```bash
+```sh
 $ ps aux | grep server-1.properties
 root      6516  1.2 10.8 7227704 860568 pts/2  Sl   11:49   2:55 /usr/lib/jvm/jre-1.8.0-openjdk/bin/java
 
@@ -191,7 +191,7 @@ $ kill -9 6516
 
 再次查看 Topic 详情：
 
-```bash
+```sh
 # Broker 1 不再处于 in-sync 副本集中
 $ bin/kafka-topics.sh --describe --topic mytopic --zookeeper localhost:2181
 Topic:mytopic   PartitionCount:4    ReplicationFactor:2 Configs:

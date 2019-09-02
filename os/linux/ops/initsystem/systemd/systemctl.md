@@ -4,19 +4,19 @@
 
 * 启动
 
-```bash
+```sh
 $ systemctl start docker.service
 ```
 
 * 开机自启动
 
-```bash
+```sh
 $ systemctl enable docker.service
 ```
 
 * 重启
 
-```bash
+```sh
 # 重新加载 service
 $ systemctl daemon-reload
 
@@ -25,19 +25,19 @@ $ systemctl restart docker.service
 
 * 查看状态
 
-```bash
+```sh
 $ systemctl status docker.service
 ```
 
 * 查看日志
 
-```bash
+```sh
 $ journalctl -xe
 ```
 
 * 查看 service 内容
 
-```bash
+```sh
 # 方法一
 $ systemctl cat docker.service
 
@@ -47,13 +47,13 @@ $ cat /usr/lib/systemd/system/docker.service
 
 * 查看 unit 是否存在
 
-```bash
+```sh
 $ systemctl list-unit-files | grep docker.service
 ```
 
 * 查看启动的 unit
 
-```bash
+```sh
 $ systemctl list-units | grep docker.service
 ```
 

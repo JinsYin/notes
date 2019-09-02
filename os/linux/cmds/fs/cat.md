@@ -17,7 +17,7 @@
 
 * 将 stdin 作为文件输入
 
-```bash
+```sh
 $ cat <<EOF > /tmp/file
 1234567890
 abcdefghij

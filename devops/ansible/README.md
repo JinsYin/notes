@@ -26,7 +26,7 @@ Ansible之所以不需要agent，原理在于其将要执行的命令或者脚�
 
 ## 安装
 
-```bash
+```sh
 # Debian/Ubuntu
 $ apt-get install -y ansible
 ```

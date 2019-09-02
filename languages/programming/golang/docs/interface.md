@@ -8,7 +8,7 @@
 
 ## 定义
 
-```golang
+```go
 type INTERFACE_NAME interface {
     METHOD_NAME1 [return_type]
     ......

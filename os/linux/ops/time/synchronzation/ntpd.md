@@ -2,7 +2,7 @@
 
 ## 查看时间
 
-```bash
+```sh
 # 查看系统时间
 $ date
 
@@ -12,7 +12,7 @@ $ clock
 
 ## 修改时区
 
-```bash
+```sh
 # 修改
 $ ln -svf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
@@ -23,7 +23,7 @@ Thu, 18 Oct 2018 15:18:41 +0800
 
 ## 同步系统时间
 
-```bash
+```sh
 # ntpdate 软件包已被弃用
 $ yum install -y ntp
 

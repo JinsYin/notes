@@ -16,7 +16,7 @@
    该镜像的作用是实现服务发现，默认情况下Docker容器的端口是随机分配的，利用该镜像就可以自行指定容器端口。
    首先在所有Mesos Slave节点中输入docker pull mesosphere/marathon-lb，下载Marathon-lb镜像。
    之后进入Marathon界面，创建应用，JSON文件内容如下：
-```bash
+```sh
 {
   "id": "/marathon-lb",
   "cmd": null,
@@ -85,7 +85,7 @@
    Gitlab 用于存储代码与版本号。首先在所有 Mesos Slave 节点中执行 docker pull gitlab/gitlab-ce，下载 gitlab 镜像。
 
    之后进入 Marathon 界面，创建应用，JSON 文件内容如下：
-```bash
+```sh
 {
   "id": "/gitlab",
   "cmd": null,

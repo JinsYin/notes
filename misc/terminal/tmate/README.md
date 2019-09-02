@@ -4,14 +4,14 @@ Tmate 即 teammates，作为 tmux 的一个分支，它们使用相同的配置�
 
 ## 安装 tmate
 
-```bash
+```sh
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:tmate.io/archive
 sudo apt-get update
 sudo apt-get install tmate
 ```
 
-```bash
+```sh
 # tmate show-messages 报错及解决方法
 # tmate: /home/yin/anaconda3/lib/libcrypto.so.1.0.0: no version information available (required by /usr/lib/x86_64-linux-gnu/libssh.so.4)
 $ mv /home/yin/anaconda3/lib/libcrypto.so.1.0.0 /home/yin/anaconda3/lib/libcrypto.so.1.0.0.bak
@@ -29,6 +29,6 @@ $ mv /home/yin/anaconda3/lib/libcrypto.so.1.0.0 /home/yin/anaconda3/lib/libcrypt
 
 由于 <tmate.io> 服务器需要通过本地 ssh 密钥来认证客户机，因此其中一个必备条件就是生成 SSH 密钥 key。 记住，每个系统都要有自己的 SSH 密钥。
 
-```bash
+```sh
 ssh-keygen -t rsa
 ```

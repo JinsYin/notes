@@ -2,7 +2,7 @@
 
 ## OpenLDAP
 
-```bash
+```sh
 $ docker run -d --name openldap \
   --restart=always \
   -p 389:389 \
@@ -14,7 +14,7 @@ $ docker run -d --name openldap \
   osixia/openldap:1.2.3
 ```
 
-```bash
+```sh
 # 默认 -D: cn=admin,dc=example,dc=org
 # 默认 -w: admin
 $ docker exec openldap ldapsearch -x -H ldap://localhost:389 -b "dc=eway,dc=link" -D "cn=admin,dc=eway,dc=link" -w admin
@@ -23,7 +23,7 @@ $ docker exec openldap ldapsearch -x -H ldaps://localhost:636 -b "dc=eway,dc=lin
 
 ## PhpLDAPadmin
 
-```bash
+```sh
 $ docker run -d --name phpldapadmin \
   --restart=always \
   -p 6443:443 \
@@ -32,7 +32,7 @@ $ docker run -d --name phpldapadmin \
   osixia/phpldapadmin:0.7.2
 ```
 
-```bash
+```sh
 # curl -k https://localhost:6443
 $ google-chrome https://localhost:6443
 ```

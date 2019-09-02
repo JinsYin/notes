@@ -2,7 +2,7 @@
 
 ## 命令行交互
 
-```bash
+```sh
 root@node:~$ python
 Python 3.5.3 (default, Aug 22 2017, 20:36:50)
 [GCC 4.8.4] on linux
@@ -30,14 +30,14 @@ print("Python Version: %s" % sys.version_info[0])
 
 ### 执行 Python 代码
 
-```bash
+```sh
 # 方式一：运行时环境由当前解释器决定，即 python2
 $ python2 hello_world.py
 Hello, World
 Python Version: 2
 ```
 
-```bash
+```sh
 # 方式二：运行时环境由 "#!/usr/bin/env python3" 决定
 $ chmod +x hello_world.py && ./hello_world.py
 Hello, World

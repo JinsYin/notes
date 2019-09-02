@@ -12,21 +12,21 @@
 
 ## 创建块设备镜像
 
-```bash
+```sh
 # rbd create --size {megabytes} {pool-name}/{image-name}
 $ rbd create --size 1024 rbd/foo
 ```
 
 ## 查看镜像列表
 
-```bash
+```sh
 # rbd ls {poolname}
 $ rbd ls rbd
 ```
 
 ## 查看镜像信息
 
-```bash
+```sh
 # rbd info {pool-name}/{image-name}
 $ rbd info rbd/foo
 rbd image 'foo':
@@ -43,7 +43,7 @@ rbd image 'foo':
 
 ## 调整镜像大小
 
-```bash
+```sh
 # 增加
 $ rbd resize --size 2048 rbd/foo
 
@@ -53,7 +53,7 @@ $ rbd resize --size 512 rbd/foo --allow-shrink
 
 ## 删除块设备镜像
 
-```bash
+```sh
 # rbd rm {pool-name}/{image-name}
 $ rbd rm rbd/foo
 ```

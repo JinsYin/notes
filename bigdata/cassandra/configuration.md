@@ -77,7 +77,7 @@ fe80\:0\:0\:0\:202\:b3ff\:fe1e\:8329=DC1:RAC3
 
 ### 修改 open files
 
-```bash
+```sh
 # 临时修改
 $ ulimit -n 102400
 $ ulimit -n
@@ -88,6 +88,6 @@ $ ulimit –a
 
 ## nofile: 最大文件打开数，nproc：最大进程数
 
-```bash
+```sh
 docker -d --default-ulimit nofile=20480:40960 (nproc=1024:2048)
 ```

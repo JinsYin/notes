@@ -21,13 +21,13 @@
 
 * 不分大小写
 
-```bash
+```sh
 $ env | grep -i "proxy"
 ```
 
 * 匹配上文
 
-```bash
+```sh
 $ env | grep "HOSTNAME" -A 1
 LC_MONETARY=zh_CN.UTF-8
 TERM=xterm
@@ -35,7 +35,7 @@ TERM=xterm
 
 * 匹配下文
 
-```bash
+```sh
 $ env | grep "HOSTNAME" -B 1
 LC_ADDRESS=zh_CN.UTF-8
 HOSTNAME=centos-node-1
@@ -43,7 +43,7 @@ HOSTNAME=centos-node-1
 
 * 匹配上下文
 
-```bash
+```sh
 $ env | grep "HOSTNAME" -C 1
 LC_ADDRESS=zh_CN.UTF-8
 HOSTNAME=centos-node-1

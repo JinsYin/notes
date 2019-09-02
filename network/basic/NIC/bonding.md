@@ -6,7 +6,7 @@
 
 * 临时加载
 
-```bash
+```sh
 # 临时加载
 $ modprobe bonding
 
@@ -17,7 +17,7 @@ bonding     141566  0
 
 * 开机自动加载
 
-```bash
+```sh
 $ cd /etc/sysconfig/modules/
 
 # 名称根据模块名来命名
@@ -55,7 +55,7 @@ $ chmod +x bonding.modules
 
 方式一：最稳定
 
-```bash
+```sh
 TYPE=Ethernet
 NAME=bond0 # 自定义
 DEVICE=bond0 # 自定义
@@ -73,7 +73,7 @@ DNS1=114.114.114.114
 
 方式二：这种方式虽然是官方建议的，但测试下来丢包率太高
 
-```bash
+```sh
 $ vi /etc/sysconfig/network-scripts/ifcfg-bond0
 TYPE=Bond
 NAME=bond0 # 自定义
@@ -93,7 +93,7 @@ DNS1=114.114.114.114
 
 * 网卡 １
 
-```bash
+```sh
 # 备份
 $ cp /etc/sysconfig/network-scripts/{ifcfg-em1,ifcfg-em1.bak}
 
@@ -110,7 +110,7 @@ NM_CONTROLLED=no
 
 * 网卡 2
 
-```bash
+```sh
 $ vi /etc/sysconfig/network-scripts/ifcfg-em2
 TYPE=Ethernet
 DEVICE=em2
@@ -124,7 +124,7 @@ NM_CONTROLLED=no
 
 * 网卡 3
 
-```bash
+```sh
 $ vi /etc/sysconfig/network-scripts/ifcfg-em3
 TYPE=Ethernet
 DEVICE=em3
@@ -138,12 +138,12 @@ NM_CONTROLLED=no
 
 ### 检测、验证
 
-```bash
+```sh
 # 重启网络服务
 $ systemctl restart network
 ```
 
-```bash
+```sh
 # 确认 bonding 设备已经正确加载，或者绑定了哪些网口
 $ cat /proc/net/bonding/bond0
 Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
@@ -180,12 +180,12 @@ Permanent HW addr: 14:18:77:2d:cf:bf
 Slave queue ID: 0
 ```
 
-```bash
+```sh
 # 列出所有网口
 $ ifconfig
 ```
 
-```bash
+```sh
 # 查看所有存在的 bond （即使并没有 up）
 $ cat /sys/class/net/bonding_masters
 bond0
@@ -195,7 +195,7 @@ bond0
 
 进行以下操作，再试图拔掉网线。
 
-```bash
+```sh
 # 其他机器 ping 本机
 $ ping 192.168.10.103
 

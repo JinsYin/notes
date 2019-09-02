@@ -10,7 +10,7 @@ module_name, package_name, ClassName, method_name, ExceptionName, function_name,
 
 ### 安装
 
-```bash
+```sh
 # 用 Python3 安装的 yapf，仅限格式化 Python3 的代码
 $ pip install yapf
 ```
@@ -70,7 +70,7 @@ split_before_logical_operator = true
 
 * 格式化
 
-```bash
+```sh
 # 格式化并打印，但不修改文件
 $ yapf example.py
 

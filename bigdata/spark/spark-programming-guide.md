@@ -51,7 +51,7 @@ appName 参数是 Spark 应用显示在集群 UI 上的名称。master 参数是
 在 Spark shell 中，默认已经为你创建了一个指定的内置 SparkContext 对象，变量名为 `sc`。所以 spark-shell 里不能自建 SparkContext 对象。你可以通过 `--master` 参数来设置要连接到哪个集群，以及传递一个逗号分隔的 jar 包列表给 `--jars` 参数，以便将这些 jar 包加到 classpath 中。你还可以通过 `--packages` 参数来添加以逗号分隔的 maven 依赖项。同样，还可以通过 `--repositories` 参数添加 maven repository 地址。
 
 
-```bash
+```sh
 $ # 在本地 4 个 CPU core 上运行实例
 $ bin/spark-shell --master local[4]
 $

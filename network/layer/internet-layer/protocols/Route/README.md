@@ -16,7 +16,7 @@
 
 ### 根据目的 IP 地址配置路由
 
-```bash
+```sh
 # 缺省表名时添加规则到 main 路由表（via 指定的是下一跳）
 $ ip route add 10.176.48.0/20 via 10.176.32.1 dev eth1
 
@@ -37,7 +37,7 @@ $ ip route show table 10   # 查询 10 路由表
 2. 根据 `源 IP 地址`、`入口设备`、`TOS` 等信息选择相应的路由表
 3. 数据包在路由表中查找路由，不同来源的数据包走不同的路由
 
-```bash
+```sh
 # 来自 192.168.1.0/24 网段的数据包使用 table 10 的路由表
 $ ip rule add from 192.168.1.0/24 table 10
 
@@ -55,7 +55,7 @@ $ ip rule show
 
 ### 设置路由优先级
 
-```bash
+```sh
 # 一条路由规则走多条路径，下一跳分别是 100.100.100.1 和 200.200.200.1，权重分别是 1 和 2
 $ ip route add default scope global nexthop via 100.100.100.1 weight 1 nexthop via 200.200.200.1 weight 2
 ```
@@ -71,7 +71,7 @@ $ ip route add default scope global nexthop via 100.100.100.1 weight 1 nexthop v
   * 有的是 `/32`，即一个一对一连接；运营商 1 给路由器分配的地址是 `183.134.189.34/32`，而运营商网络中的网关是 `183.134.188.1/32`
   * 有的是 `/30`，即一个特别小的网段；运营商 2 给路由器分配的地址是 `60.190.27.190/30`，而运营商网络中的网关是 `60.190.27.189/30`
 
-```bash
+```sh
 # 路由器配置的路由规则（简单解释：src 60.190.27.190 是 dev eth3 的 IP 地址）
 $ ip route list table main
 60.190.27.189/30 dev eth3 proto kernel scope link src 60.190.27.190
@@ -90,7 +90,7 @@ default via 183.134.188.1 dev eth2
 
 假设要对租户 A　进行限速：
 
-```bash
+```sh
 # 添加一个路由表
 $ echo 200 speed >> /etc/iproute2/rt_tables
 

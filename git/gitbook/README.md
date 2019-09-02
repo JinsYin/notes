@@ -9,7 +9,7 @@
 
 * 安装 nodejs 和 npm
 
-```bash
+```sh
 # Ubuntu
 $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
@@ -23,7 +23,7 @@ $ npm --version
 
 * 安装 GitBook
 
-```bash
+```sh
 $ npm install gitbook-cli -g
 ```
 
@@ -31,7 +31,7 @@ $ npm install gitbook-cli -g
 
 * 创建一本书
 
-```bash
+```sh
 # 在当前目录下初始化 GitBook 项目
 $ gitbook init # other: gitbook init ./directory
 
@@ -44,7 +44,7 @@ $ gitbook build # other: gitbook build ./directory --output=./outputFolder
 
 ## 项目结构
 
-```bash
+```sh
 $ gitbook init
 $ tree .
 .

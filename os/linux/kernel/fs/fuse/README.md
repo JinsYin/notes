@@ -44,6 +44,7 @@ FUSE（Filesystem in Userspace，即用户空间文件系统）是 Unix 和 Unix
 
 ## 参考
 
+* Documentation/filesystems/fuse.txt
 * [libfuse/libfuse](https://github.com/libfuse/libfuse)
 * [Filesystem in Userspace](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)
 * [用户态文件系统 ( FUSE ) 框架分析和实战](https://cloud.tencent.com/developer/article/1006138)

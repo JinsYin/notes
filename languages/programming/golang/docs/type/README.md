@@ -38,13 +38,13 @@
 
 * 语法格式
 
-```golang
+```go
 T(v) // 将值 v 转换为类型 T
 ```
 
 * 范例
 
-```golang
+```go
 func main() {
     var sum, count int
     var mean float32
@@ -63,7 +63,7 @@ func main() {
 
 当声明的右侧是有类型的，新变量的类型与其相同：
 
-```golang
+```go
 var i int
 j := i // j is an int
 ```

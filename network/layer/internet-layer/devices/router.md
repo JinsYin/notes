@@ -16,7 +16,7 @@
 
 静态路由其实就是在路由器等三层设备上配置一条条规则。该规则包括 `目标地址`、`子网掩码`、`转发的网口`、`网关`，其中网关必须和其中一个网卡位于同一局域网。形如：
 
-```bash
+```sh
 $ ip route show dev eth1
 default via 192.168.16.1  proto static
 192.168.16.0/24  proto kernel  scope link  src 192.168.16.100  metric 1

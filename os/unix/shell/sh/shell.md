@@ -21,7 +21,7 @@ start-namenode.sh
 
 ## 关键字 `$`
 
-```bash
+```sh
 # 假设运行以下脚本
 $ ./run-script.sh user 123456
 ```
@@ -33,7 +33,7 @@ $ ./run-script.sh user 123456
 `$0`: 既然`$1`返回第一个参数，$0 自然就返回脚本的文件名, 如："run-script.sh"
 `$?`: 获取上一个命令的返回（ `return`） 值/退出（ `exit` ）状态（`0` 表示 success，非零表示 failure）
 
-```bash
+```sh
 $ cat run-script.sh
 #!/bin/sh
 
@@ -58,7 +58,7 @@ echo "Return value is $ret"
 
 `exit` 会退出当前脚本，`return` 只是结束了当前函数。相同的是，无论是返回值还是退出状态都是数字。
 
-```bash
+```sh
 #!/bin/bash
 
 retfunc()
@@ -97,7 +97,7 @@ echo "We will never see this"
 
 处理文件:
 
-```bash
+```sh
 if [ -f FILE ] fi; # 若文件存在， 则返回 true（支持正则）
 if [ -e FILE ] fi; # 若文件存在， 则返回 true（不支持正则）
 if [ -r FILE ] fi; # 若文件可读（readable），则返回 true
@@ -109,14 +109,14 @@ if [ ! -s FILE ] fi; # 若文件为空，则返回 true。这里很容易与 -z 
 
 处理整数:
 
-```bash
+```sh
 # NUM1 和 NUM2 都是整数，不可以是小数
 if [ NUM1 OP NUM2 ] fi;  # OP 可以是 -eq、-ne、-lt、-le、-gt、-eg
 ```
 
 处理字符串:
 
-```bash
+```sh
 # STRING1 和 STRING2 都是字符串
 if [ STRING1 == STRING2 ] fi; # 若两个字符串相等，则返回 true
 if [ STRING1 !=  STRING2 ] fi; # 若两个字符串不相等，则返回 true
@@ -128,7 +128,7 @@ if [ -z STRING ] fi; # 若字符串长度为 0（zero），则返回 true
 
 处理表达式:
 
-```bash
+```sh
 $ if [ ! EXPR ] fi; # 若表达式为 false, 则返回 true
 $ if [ ( EXPR ) ]; fi; # 若表达式的值为 false, 则返回 true
 $ if [ \( EXPR1 \) -a \( EXPR2 \) ] fi; # 若表达式 EXPR1 和表达式 EXPR2 皆为 true, 则返回 true
@@ -143,7 +143,7 @@ $ if [ ( EXPR1 ) ] || [ ( EXPR2 ) ]; fi # 同上
 
 `: ${VARIABLE:=DEFAULT_VALUE}` 表示如果 VARIABLE 变量不存在的话，将 DEFAULT_VALUE 的值赋值个 VARIABLE 变量。
 
-```bash
+```sh
 $ DEFAULT_VALUE="123"
 
 $ echo "x=$x"
@@ -163,7 +163,7 @@ x=123
 
 常见的示例：
 
-```bash
+```sh
 # 把 666 赋值给 VARIABLE，再把 VARIABLE 赋值给 FOO
 $ FOO=${VARIABLE:="666"}
 ```
@@ -172,7 +172,7 @@ $ FOO=${VARIABLE:="666"}
 
 `VARIABLE3=${VARIABLE2:-$VARIABLE1}` 表示如果 VARIABLE2 不存在的话，将 VARIABLE1 的值赋值给 VARIABLE3，否则将 VARIABLE2 的只赋值给 VARIABLE3，另外，VARIABLE1 不会赋值给 VARIABLE2。
 
-```bash
+```sh
 $ vi defvalue.sh
 #!/bin/bash
 variable1=$1
@@ -194,7 +194,7 @@ first-value
 
 `eval` 可调用脚本中的函数。
 
-```bash
+```sh
 $ cat x.sh
 #!/bin/bash
 
@@ -207,7 +207,7 @@ eval $@
 
 脚本外执行 fx 函数。
 
-```bash
+```sh
 % x.sh fx
 ```
 

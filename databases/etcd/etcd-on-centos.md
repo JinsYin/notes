@@ -16,7 +16,7 @@
 
 ## 安装
 
-```bash
+```sh
 # 版本
 $ export ETCD_VERSION=2.3.7
 
@@ -29,13 +29,13 @@ $ yum install -y etcd-${ETCD_VERSION}
 
 * 启动
 
-```bash
+```sh
 $ systemctl start etcd.service
 ```
 
 * 默认配置
 
-```bash
+```sh
 $ vi /usr/lib/systemd/system/etcd.service
 [Unit]
 Description=Etcd Server
@@ -59,7 +59,7 @@ WantedBy=multi-user.target
 
 * 测试
 
-```bash
+```sh
 $ etcdctl set foo bar
 
 $ etcdctl get foo
@@ -69,7 +69,7 @@ $ etcdctl rm /foo
 
 测试完成后：
 
-```bash
+```sh
 # 停止服务
 $ systemctl stop etcd.service
 
@@ -81,7 +81,7 @@ $ rm -rf /var/lib/etcd/*
 
 * Token
 
-```bash
+```sh
 $ uuidgen
 f0834740-74dc-43c2-9fde-4b8e5c7aa3df
 ```
@@ -137,7 +137,7 @@ ETCD_INITIAL_CLUSTER_STATE="new"
 
 * 启动
 
-```bash
+```sh
 $ systemctl start etcd.service
 
 $ systemctl enable etcd.service
@@ -145,7 +145,7 @@ $ systemctl enable etcd.service
 
 * 测试
 
-```bash
+```sh
 # 查看集群健康状态
 $ etcdctl cluster-health
 
@@ -167,7 +167,7 @@ $ curl http://172.28.128.100:2379/v2/members
 
 在已存在的集群上注册新节点：
 
-```bash
+```sh
 $ etcdctl --endpoints http://172.28.128.100:2379,http://172.28.128.101:2379,172.28.128.102:2379 member add etcd103 http://10.0.1.4:2380
 $
 $ etcdctl --endpoints http://172.28.128.100:2379,http://172.28.128.101:2379,172.28.128.102:2379 member list
@@ -175,7 +175,7 @@ $ etcdctl --endpoints http://172.28.128.100:2379,http://172.28.128.101:2379,172.
 
 修改配置，其中 Cluster State 为 `existing`，另外不需要 Token：
 
-```bash
+```sh
 $ cat /etc/etcd/etcd.conf
 ETCD_NAME="etcd103"
 ETCD_DATA_DIR="/var/lib/etcd/etcd103"
@@ -189,7 +189,7 @@ ETCD_INITIAL_CLUSTER_STATE=existing
 
 * 移除节点
 
-```bash
+```sh
 # 获取节点 ID
 $ etcdctl member list
 

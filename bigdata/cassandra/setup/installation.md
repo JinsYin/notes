@@ -12,7 +12,7 @@
 
 ## 要求
 
-```bash
+```sh
 $ python --version
 Python 2.7.5
 
@@ -22,7 +22,7 @@ OpenJDK Runtime Environment (build 1.8.0_171-b10)
 OpenJDK 64-Bit Server VM (build 25.171-b10, mixed mode)
 ```
 
-```bash
+```sh
 # 先关闭防火墙，否则节点之间可能无法相互发现
 $ systemctl stop firewalld
 $ systemctl disable firewalld
@@ -34,7 +34,7 @@ $ systemctl disable firewalld
 
 如果 Cassandra 存储盘大于 2T，需要使用 `parted` 来分区，否则使用 `fdisk`。
 
-```bash
+```sh
 $ parted /dev/sdb
 
 # 创建 GPT 分区表
@@ -48,13 +48,13 @@ quit
 
 * 格式化分区
 
-```bash
+```sh
 mkfs -xfs /dev/sdb1
 ```
 
 * 挂载存储盘
 
-```bash
+```sh
 $ mkdir -p /data/cassandra
 
 # 手动挂载
@@ -73,7 +73,7 @@ UUID=b9eb1854-9cb3-446e-8d25-3b94ce051801 /data/cassandra xfs defaults 0 0
 
 ## CentOS
 
-```bash
+```sh
 # 选择的是 Cassandra 3.0
 $ vi /etc/yum.repos.d/cassandra.repo
 [cassandra]
@@ -84,7 +84,7 @@ repo_gpgcheck=1
 gpgkey=https://www.apache.org/dist/cassandra/KEYS
 ```
 
-```bash
+```sh
 # 安装 3.0.x 中的指定版本
 $ yum install -y cassandra-3.0.16*
 
@@ -94,7 +94,7 @@ $ yum install -y cassandra
 
 ## Debian/Ubuntu
 
-```bash
+```sh
 # 30x
 echo "deb http://www.apache.org/dist/cassandra/debian 30x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 
@@ -108,7 +108,7 @@ sudo apt-get install cassandra
 
 ## 配置
 
-```bash
+```sh
 # 如果因某些原因启动过 Cassandra（如配置错误），必须先删除其数据
 $ systemctl stop cassandra
 $ rm -rf /var/lib/cassandra/data/system/*
@@ -165,7 +165,7 @@ rack=R2
 
 如果重新创建改变了存储目录：
 
-```bash
+```sh
 $ rm -rf /var/lib/cassandra
 
 $ ln -s /data/cassandra /var/lib/cassandra
@@ -176,7 +176,7 @@ $ chown cassandra:cassandra /var/lib/cassandra
 
 ## 启动
 
-```bash
+```sh
 systemctl daemon-reload
 
 systemctl start cassandra
@@ -187,7 +187,7 @@ systemctl enable cassandra
 
 查看日志：
 
-```bash
+```sh
 # 状态日志
 $ systemctl status cassandra
 
@@ -197,7 +197,7 @@ $ tail -f /var/log/cassandra/cassandra.log
 
 ## 状态
 
-```bash
+```sh
 $ nodetool status
 Datacenter: DCHK
 ================
@@ -211,7 +211,7 @@ UN  192.168.10.202  108.64 KB  256          67.8%             c9709cfe-c755-4073
 
 ## 问题
 
-```bash
+```sh
 # 节点重启后，状态一直是 DN，cassandra.log 没有错
 $ tail -f /var/log/cassandra/system.log
 WARN  [OptionalTasks:1] 2018-07-20 15:44:26,471 CassandraRoleManager.java:360 - CassandraRoleManager skipped default role setup: some nodes were not ready

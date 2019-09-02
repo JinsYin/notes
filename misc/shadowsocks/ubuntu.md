@@ -8,7 +8,7 @@
 
 使用自动代理需要配置 PAC （Proxy Autoproxy Config，代理自动配置）。[GenPAC](https://github.com/JinnLynn/GenPAC) 是基于 gfwlist 的 PAC 文件生成工具，支持自定义规则。
 
-```bash
+```sh
 # 安装最新版本的 genpac
 $ pip install --upgrade https://github.com/JinnLynn/genpac/archive/master.zip
 

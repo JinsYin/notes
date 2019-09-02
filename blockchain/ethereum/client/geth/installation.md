@@ -2,7 +2,7 @@
 
 ## Ubuntu 环境
 
-```bash
+```sh
 # sudo
 $ apt-get install software-properties-common
 $ add-apt-repository -y ppa:ethereum/ethereum
@@ -10,13 +10,13 @@ $ apt-get update
 $ apt-get install geth
 ```
 
-```bash
+```sh
 $ geth --datadir=~/.ethereum --fast --cache=512
 ```
 
 ## Docker 环境
 
-```bash
+```sh
 $ docker run -d --privileged \
   -n ethereum-node \
   -v /root:/root \

@@ -2,7 +2,7 @@
 
 平均负载是最常见、最重要的系统性能指标，可以快速查看系统整体性能，反映系统整体负载情况。
 
-```bash
+```sh
 $ uptime
 --------
 14:37:24 up 43 days,  5:27, 18 users,  load average: 1.78, 1.76, 1.60
@@ -35,7 +35,7 @@ $ uptime
 
 首先需要知道系统有几个 CPU：
 
-```bash
+```sh
 # 逻辑核数（包括超线程）
 $ grep 'processor' /proc/cpuinfo | wc -l
 4
@@ -63,7 +63,7 @@ CPU 使用率，是单位时间内 CPU 繁忙情况的统计。
 | stress-ng | stress 的下一代                                                                                                                                                                                                                                                     |
 | sysstat   | 用于监控和分析系统性能：<br> * `mpstat`：多核处理器性能分析工具，用来实时查看每个 CPU 的性能指标以所有 CPU 的平均指标 <br> * `pidstat`：进程性能分析工具，用来实时查看进程的 CPU、内存、I/O 及上下文切换等性能指标 <br> * `iostat`：CPU 统计、设备和分区的 I/O 统计 |
 
-```bash
+```sh
 # RHEL（安装较新版本的 sysstat，其 pidstat 包含 %wait 列）
 $ yum install stress stress-ng
 $ yum localinstall https://rpmfind.net/linux/opensuse/tumbleweed/repo/oss/x86_64/sysstat-12.0.3-1.1.x86_64.rpm
@@ -79,7 +79,7 @@ $ apt install stress stress-ng sysstat
 
 ## 模拟实验
 
-```bash
+```sh
 # 14:37:24           // 当前时间
 # up 43 days,  5:27  // 系统运行时间
 # 18 users           // 正在登录的用户数
@@ -89,7 +89,7 @@ $ uptime
 14:37:24 up 43 days,  5:27, 18 users,  load average: 1.78, 1.76, 1.60
 ```
 
-```bash
+```sh
 $ cat /proc/loadavg
 1.78 1.76 1.60 1/3095 1461266
 ```
@@ -104,7 +104,7 @@ $ cat /proc/loadavg
 
 1. 模拟一个 CPU 的使用率达到 100% 的场景
 
-```bash
+```sh
 # 对一个 CPU 压测五分钟
 $ stress --cpu 1 --timeout 300s
 -------------------------------
@@ -113,7 +113,7 @@ stress: info: [15706] dispatching hogs: 1 cpu, 0 io, 0 vm, 0 hdd
 
 2. 实时查看平均负载的变化情况
 
-```bash
+```sh
 # [-d]：高亮显示变化区域
 $ watch -d uptime
 -----------------
@@ -122,7 +122,7 @@ $ watch -d uptime
 
 3. 查看 CPU 使用率的变化情况
 
-```bash
+```sh
 # [-P ALL]：监控所有 CPU
 # [5]：每隔 5 秒输出一组数据
 $ mpstat -P ALL 5
@@ -141,7 +141,7 @@ Linux 3.10.0-693.el7.x86_64 (ip-192-168-1-171.ceph.ew)  2019年05月31日     _x
 
 4. 查看哪个进程导致了 CPU 使用率较高
 
-```bash
+```sh
 # [-u]：报告 CPU 使用率/利用率
 # [5]：每隔 5 秒输出一组数据
 $ pidstat -u 5
@@ -159,14 +159,14 @@ Linux 3.10.0-693.el7.x86_64 (ip-192-168-1-171.ceph.ew)  2019年05月31日     _x
 
 1. 模拟 I/O 压力
 
-```bash
+```sh
 # [--hdd]：表示读写临时文件
 $ stress-ng --io 1 --hdd 1 --timeout 900s
 -----------------------------------------
 stress-ng: info:  [27233] dispatching hogs: 1 hdd, 1 io
 ```
 
-```bash
+```sh
 # 不停地执行 sync() 系统调用，以刷新缓存区内存到磁盘
 # 对于新机，缓存区较小，会导致无法产生大的 I/O，而更多的是系统调用，所以仅观测到 `系统 CPU 使用率` 升高
 # stress --io 1 --timeout 300s
@@ -174,7 +174,7 @@ stress-ng: info:  [27233] dispatching hogs: 1 hdd, 1 io
 
 1. 实时查看平均负载的变化情况
 
-```bash
+```sh
 $ watch -d uptime
 -----------------
 ... load average: 3.16, 3.04, 3.11
@@ -182,7 +182,7 @@ $ watch -d uptime
 
 3. 查看 CPU 使用率的变化情况
 
-```bash
+```sh
 $ mpstat -P ALL 5
 -----------------
 10时15分33秒  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
@@ -195,7 +195,7 @@ $ mpstat -P ALL 5
 
 1. 查看哪个进程导致了 iowat 较高
 
-```bash
+```sh
 # [-u]：CPU 使用率
 # [-d]：报告 I/O 统计
 # [5]：每隔 5 秒输出一组数据
@@ -224,7 +224,7 @@ $ pidstat -u -d 5
 
 1. 模拟 10 个进程
 
-```bash
+```sh
 # 系统只有 4 个 CPU
 $ stress --cpu 10 --timeout 300s
 --------------------------------
@@ -233,7 +233,7 @@ stress: info: [25809] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd
 
 2. 实时查看平均负载的变化情况
 
-```bash
+```sh
 $ watch -d uptime
 -----------------
 ... load average: 10.08, 8.00, 4.75 # 1 分钟的平均负载逐步增加到 10.00
@@ -241,7 +241,7 @@ $ watch -d uptime
 
 3. 查看 CPU 使用率的变化情况
 
-```bash
+```sh
 # 由此可见 CPU 是满载的
 $ mpstat -P ALL 5
 -----------------
@@ -257,7 +257,7 @@ Linux 3.10.0-693.el7.x86_64 (ip-192-168-1-171.ceph.ew)  2019年05月31日     _x
 
 4. 查看进程情况
 
-```bash
+```sh
 $ pidstat -u -d 5
 -----------------
 ```

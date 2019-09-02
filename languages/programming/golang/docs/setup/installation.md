@@ -4,14 +4,14 @@
 
 * Linux
 
-```bash
+```sh
 $ wget https://dl.google.com/go/go1.11.11.linux-amd64.tar.gz     # 下载
 $ sudo tar -xzvf /tmp/go1.11.11.linux-amd64.tar.gz -C /usr/local # 解压
 ```
 
 * macOS
 
-```bash
+```sh
 $ wget https://dl.google.com/go/go1.11.11.darwin-amd64.tar.gz # 下载
 $ sudo tar -zxvf go1.11.11.darwin-amd64.tar.gz -C /usr/local  # 解压
 ```

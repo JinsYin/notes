@@ -4,7 +4,7 @@
 
 * 方式一（推荐）
 
-```bash
+```sh
 # node_exporter unit file （创建 node_exporter.service 文件）
 $ vi /etc/systemd/system/node_exporter.service
 [Unit]
@@ -18,7 +18,7 @@ ExecStart=/usr/local/bin/node_exporter $OPTIONS
 WantedBy=multi-user.target
 ```
 
-```bash
+```sh
 $ chmod 664 /etc/systemd/system/node_exporter.service
 
 # 解决 node_expoter unit file 中的环境变量（创建 node_expoter 文件）
@@ -30,7 +30,7 @@ $ mkdir -p /var/lib/node_exporter/textfile_collector
 
 * 方式二
 
-```bash
+```sh
 # docker unit file （创建 docker.service 文件）
 $ vi /usr/lib/systemd/system/docker.service
 [Unit]
@@ -57,7 +57,7 @@ StartLimitInterval=60s
 WantedBy=multi-user.target
 ```
 
-```bash
+```sh
 $ chmod 664 /usr/lib/systemd/system/docker.service
 
 # 如需配置其他信息，需要创建 docker.service.d 目录
@@ -69,7 +69,7 @@ $ cat /usr/lib/systemd/system/docker.service.d/docker.conf
 Environment="DOCKER_OPTIONS=--storage-driver=overlay --log-level=error --exec-opt=native.cgroupdriver=cgroupfs --insecure-registry=172.1.0.0/16 --insecure-registry=172.254.0.0/16 --registry-mirror=https://registry.docker-cn.com
 ```
 
-```bash
+```sh
 # 需要 reload
 $ systemctl daemon-reload
 ```

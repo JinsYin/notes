@@ -4,7 +4,7 @@
 
 使用 rbd 命令可以映射一个镜像为内核模块。映射前需要先加载 rbd 内核模块。
 
-```bash
+```sh
 # 加载
 $ modprobe rbd
 
@@ -17,13 +17,13 @@ libceph               282661  1 rbd
 
 ## 映射块设备
 
-```bash
+```sh
 # rbd map {pool-name}/{image-name} --id {user-name} --keyring {/path/to/keyring}
 $ rbd map rbd/foo --id admin --keyring /etc/ceph/ceph.client.admin.keyring
 /dev/rbd0
 ```
 
-```bash
+```sh
 # 如果映射错误，查看错误日志
 $ dmesg | tail # 或 journalctl -f
 rbd: image foo: image uses unsupported features: 0x38
@@ -59,13 +59,13 @@ rbd image 'foo':
 
 ## 查看已映射的块设备
 
-```bash
+```sh
 $ rbd showmapped
 id pool image snap device
 0  rbd  foo   -    /dev/rbd0
 ```
 
-```bash
+```sh
 $ ls /dev/rbd0
 /dev/rbd0
 
@@ -75,7 +75,7 @@ $ ls /dev/rbd/rbd/foo
 
 ## 取消块设备映射
 
-```bash
+```sh
 # rbd unmap /dev/rbd/{poolname}/{imagename}
 $ rbd unmap /dev/rbd/rbd/foo
 $ rbd unamp /dev/rbd0

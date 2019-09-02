@@ -1,6 +1,6 @@
 # pm2
 
-```bash
+```sh
 $ npm install -g pm2 # 安装
 $ pm2 start app.js # 任务
 $ pm2 list # 列表

@@ -18,7 +18,7 @@ Tusk 支持在 Evernote 和印象笔记之间相互切换。
 
 安装：
 
-```bash
+```sh
 # 下载 deb 文件即可
 $ google-chrome https://github.com/klaussinani/tusk/releases
 ```
@@ -33,7 +33,7 @@ $ google-chrome https://github.com/klaussinani/tusk/releases
 
 修改桌面文件：
 
-```bash
+```sh
 # 解决没有 ico 问题
 $ wget https://www.yinxiang.com/media/img/favicon.ico -O /opt/Tusk/tusk.ico
 
@@ -50,7 +50,7 @@ Categories=Office;
 
 增加命令：
 
-```bash
+```sh
 $ ln -s /opt/Tusk/tusk /usr/local/bin/evernote
 ```
 

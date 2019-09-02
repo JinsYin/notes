@@ -2,10 +2,10 @@
 
 ## 安装
 
-```bash
+```sh
 brew install openldap
 
-sudo dnf -y install openldap-servers openldap-clients 
+sudo dnf -y install openldap-servers openldap-clients
 
 sudo apt-get install slapd ldap-utils
 ```

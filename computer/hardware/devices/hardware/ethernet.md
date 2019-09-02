@@ -2,7 +2,7 @@
 
 ## 网卡设备
 
-```bash
+```sh
 # 网卡物理设备（yum install -y pciutils）
 $ lspci | grep -i 'ethernet controller'
 01:00.0 Ethernet controller: Broadcom Limited NetXtreme BCM5720 Gigabit Ethernet PCIe
@@ -12,7 +12,7 @@ $ lspci | grep -i 'ethernet controller'
 82:00.0 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)
 ```
 
-```bash
+```sh
 # 网卡设备速率
 $ ethtool p4p1 | grep Speed
 Speed: 10000Mb/s
@@ -22,7 +22,7 @@ Speed: 10000Mb/s
 
 * 安装驱动
 
-```bash
+```sh
 # CentOS 7 默认已加载
 $ modprobe ixgbe
 ```

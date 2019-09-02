@@ -6,7 +6,7 @@
 
 * **使用内置源安装 python2**
 
-```bash
+```sh
 $ # 通常，默认安装了 python 2.7
 $ python --version
 Python 2.7.6
@@ -17,7 +17,7 @@ $ apt-get install python
 
 * **使用内置源安装 python3**
 
-```bash
+```sh
 $ # 通常，默认安装了 python 3.4
 $ python3 --version
 Python 3.4.3
@@ -28,7 +28,7 @@ $ apt-get install python3
 
 * **编译安装**
 
-```bash
+```sh
 # 会自动安装 python 和 pip
 $ wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
 $ tar xzf Python-3.5.3.tgz
@@ -49,7 +49,7 @@ $ rm /usr/bin/pip3 && ln -s /usr/local/bin/pip3 /usr/bin/pip3
 
 * **使用内置源 python-pip**
 
-```bash
+```sh
 $ # 通常，默认安装了 python-pip（python2.7）
 $ pip --version
 pip 9.0.1 from /usr/local/lib/python2.7/dist-packages (python 2.7)
@@ -63,7 +63,7 @@ $ pip install --upgrade pip
 
 * **使用内置源 python3-pip**
 
-```bash
+```sh
 $ # 安装
 $ apt-get install python3-pip
 

@@ -2,6 +2,6 @@
 
 ## History
 
-```bash
+```sh
 ls ~/.cassandra/cqlsh_history
 ```

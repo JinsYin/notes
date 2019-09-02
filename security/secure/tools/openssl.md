@@ -8,7 +8,7 @@ OpenSSL 签发证书的过程：先签发根证书，再通过该根证书签发
 
 * Ubuntu
 
-```bash
+```sh
 $ openssl version
 OpenSSL 1.0.1f 6 Jan 2014
 
@@ -18,7 +18,7 @@ $ apt-get install openssl
 
 * CentOS
 
-```bash
+```sh
 $ openssl version
 OpenSSL 1.0.1e-fips 11 Feb 2013
 
@@ -55,7 +55,7 @@ CentOS 中 OpenSSL 的配置文件位于 `/etc/pki/tls/openssl.cnf`。
 
 Ubuntu 的根证书目录是 `/usr/local/share/ca-certificates/`。添加完证书之后需要更新，更新完成后会将证书内容追加到 `/etc/ssl/certs/ca-certificates` 文件中。
 
-```bash
+```sh
 # 添加 CA 根证书
 $ cp Test_CA.crt /usr/local/share/ca-certificates
 
@@ -74,7 +74,7 @@ $ sudo dpkg-reconfigure ca-certificates
 
 CentOS 的根证书目录是 `/etc/pki/ca-trust/source/anchors/`
 
-```bash
+```sh
 # 安装 ca-certificates 包
 $ yum install ca-certificates
 
@@ -114,7 +114,7 @@ $ update-ca-trust extract
 
 * 使用 openssl 工具一键私钥和 CSR 文件：
 
-```bash
+```sh
 # 生成 CSR 文件（mydomain.csr）的同时生成私钥文件（myprivate.key）
 $ openssl req -new -nodes -sha256 -newkey rsa:2048 -keyout myprivate.key -out mydomain.csr
 ```
@@ -135,7 +135,7 @@ $ openssl req -new -nodes -sha256 -newkey rsa:2048 -keyout myprivate.key -out my
 
 * 使用 openssl 工具单独生成私钥和 CSR 文件
 
-```bash
+```sh
 # 生成 2048 位的 RSA 私钥，私钥文件名为： www.mydomain.com.key
 # 指定 -des3 参数后会提示需要为 www.mydoamin.com.key 设定密码保护，请设置密码并牢记
 $ openssl genrsa -des3 -out www.mydomain.com.key 2048
@@ -166,7 +166,7 @@ CSR 提交给 CA，CA 一般有 2 种认证方式：
 
 步骤：生成CA私钥（.key）-->生成CA证书请求（.csr）-->自签名得到根证书（.crt）（CA 给自已颁发的证书）。
 
-```bash
+```sh
 # Generate CA private key
 $ openssl genrsa -out ca.key 2048
 
@@ -181,7 +181,7 @@ $ openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt
 
 1. 生成专用秘钥和公用证书
 
-```bash
+```sh
 $ openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem  -days 365 -out certificate.pem
 ```
 
@@ -198,25 +198,25 @@ $ openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem  -days 365 -out cert
 
 2. 检查已创建的证书
 
-```bash
+```sh
 $ openssl x509 -text -noout -in certificate.pem
 ```
 
 3. 将密钥和证书组合在 PKCS#12（P12） 捆绑软件中
 
-```bash
+```sh
 $ openssl pkcs12 -inkey key.pem -in certificate.pem -export -out certificate.p12
 ```
 
 4. 验证您的 P12 文件
 
-```bash
+```sh
 $ openssl pkcs12 -in certificate.p12 -noout -info
 ```
 
 ### 签发证书
 
-```bash
+```sh
 $ openssl ca -cert cacert.pem -keyfile cakey.pem -in nginx.csr -out nginx.crt
 ```
 

@@ -6,7 +6,7 @@
 
 如果系统软件源中有符合条件的 ansible 版本，直接安装即可。
 
-```bash
+```sh
 # EPEL 源中的 ansible 版本更新一些
 $ yum install -y epel-release
 
@@ -27,7 +27,7 @@ $ ansible --version
 
 如果系统软件源中没有符合条件的 ansible 版本，可以直接 [下载](https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/) RPM 包自行安装。
 
-```bash
+```sh
 # ansible 2.6.9
 $ curl -OL https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/ansible-2.6.9-1.el7.ans.noarch.rpm
 $ yum install ansible-2.6.9-1.el7.ans.noarch.rpm
@@ -38,7 +38,7 @@ $ ansible --version
 
 ## Ubuntu 系统
 
-```bash
+```sh
 $ apt-get install software-properties-common
 $ apt-add-repository ppa:ansible/ansible
 $ apt-get update
@@ -50,7 +50,7 @@ ansible 2.4.3.0
 
 ## PIP 安装
 
-```bash
+```sh
 pip install --upgrade pip
 pip install --upgrade ansible
 ```

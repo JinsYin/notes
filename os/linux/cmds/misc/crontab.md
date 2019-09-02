@@ -2,7 +2,7 @@
 
 ## 定义
 
-```bash
+```sh
 $ cat /etc/crontab
  ┌───────────── 分 (0 - 59)
  │ ┌───────────── 时 (0 - 23)
@@ -16,7 +16,7 @@ $ cat /etc/crontab
 
 ## 命令
 
-```bash
+```sh
 # 查看
 $ crontab -l
 

@@ -10,13 +10,13 @@ SSH 直接通过 TTY 获取用户密码并登录目标主机，以确保密码�
 
 * 安装
 
-```bash
+```sh
 $ yum install -y sshpass
 ```
 
 * sshpass & ssh-copy-id
 
-```bash
+```sh
 $ sshpass -p <password> ssh-copy-id root@192.168.1.100
 ```
 

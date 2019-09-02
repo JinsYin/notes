@@ -15,14 +15,14 @@ Cassandra 使用类 SQL 命令 `cql` 来操作数据库。
 
 * 版本
 
-```bash
+```sh
 $ cassandra -v
 3.11.2
 ```
 
 * 集群状态
 
-```bash
+```sh
 $ nodetool status
 Datacenter: datacenter1
 =======================
@@ -34,7 +34,7 @@ UN  127.0.0.1  258.36 KiB  256          100.0%            550bee1d-3cdb-4e67-b08
 
 * 客户端连接
 
-```bash
+```sh
 # 详
 $ cqlsh -u <username> -p <password> -k <keyspace> x.x.x.x 9042
 

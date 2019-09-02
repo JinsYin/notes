@@ -2,7 +2,7 @@
 
 ## 检查系统运行时间
 
-```bash
+```sh
 # 信息保存在 /proc/uptime 文件中
 $ uptime
 15:06:20 up 32 days,  4:09,  1 user,  load average: 0.00, 0.08, 0.11
@@ -12,7 +12,7 @@ $ uptime
 
 ## 检查系统重启历史
 
-```bash
+```sh
 $ last reboot
 reboot   system boot  3.10.0-862.el7.x Fri Nov  2 10:56 - 15:13 (32+04:16)
 reboot   system boot  3.10.0-862.el7.x Thu Nov  1 17:33 - 10:50  (17:17)

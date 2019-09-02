@@ -2,7 +2,7 @@
 
 ## 常用命令
 
-```bash
+```sh
 # 查询相关的包
 $ rpm -qa ansible
 
@@ -12,7 +12,7 @@ $ rpm -ql ansible
 
 ## 安装
 
-```bash
+```sh
 # 本地安装
 $ yum localinstall -y /tmp/docker-1.12.6.rpm
 ```

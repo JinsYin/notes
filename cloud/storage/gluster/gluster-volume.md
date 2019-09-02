@@ -13,7 +13,7 @@
 * 条带复制卷（Stripe 与 AFR 的组合），最少需要 4 个节点才能创建。创建 volume 是 stripe 2 replica 2 server = 4 个节点
 * 三种模式混合。至少需要 8 个节点。stripe 2 replica 2，每 4 个节点组成一组。
 
-```bash
+```sh
 # 分布式卷
 $ gluster volume create gv1 gluster1:/data/gluster/gv1 gluster2:/data/gluster/gv1 gluster3:/data/gluster/gv1 force
 
@@ -41,7 +41,7 @@ $ gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/ex
 
 * 基本操作
 
-```bash
+```sh
 # 创建 volume
 $ gluster volume create gv0 replica 2 gluster2:/data/gluster/gv0 gluster3:/data/gluster/gv0
 
@@ -54,7 +54,7 @@ $ gluster volume stop gv0 && gluster volume delete gv0
 
 * 卷的状态
 
-```bash
+```sh
 $ gluster volume status gv0
 Status of volume: gv0
 Gluster process                             TCP Port  RDMA Port  Online  Pid
@@ -64,7 +64,7 @@ Brick gluster3:/data/gluster/gv0            49152     0          Y       16185
 Self-heal Daemon on localhost               N/A       N/A        Y       16206
 Self-heal Daemon on gluster1                N/A       N/A        Y       27145
 Self-heal Daemon on gluster2                N/A       N/A        Y       28272
- 
+
 Task Status of Volume gv0
 ------------------------------------------------------------------------------
 There are no active volume tasks
@@ -72,10 +72,10 @@ There are no active volume tasks
 
 * heal（修复）
 
-```bash
+```sh
 # 启动完全修复
 $ gluster volume heal gv0 full
-Launching heal operation to perform full self heal on volume gv0 has been successful 
+Launching heal operation to perform full self heal on volume gv0 has been successful
 Use heal info commands to check status.
 
 # 查看需要修复的文件
@@ -103,7 +103,7 @@ Number of entries in split-brain: 0
 
 Quota 功能主要是对挂载点下的某个目录进行容量限制，如 `/mnt/gluster/gdir`，而不是对卷的容量进行限制。
 
-```bash
+```sh
 # 激活 quota 功能
 $ gluster volume quota gv0 enable
 volume quota : success
@@ -130,7 +130,7 @@ volume quota : success
 
 * brick
 
-```bash
+```sh
 # 移除 brick
 $ gluster volume remove-brick gv0 replica 2 gluster3:/data/gluster/gv0 force
 ```
@@ -140,7 +140,7 @@ $ gluster volume remove-brick gv0 replica 2 gluster3:/data/gluster/gv0 force
 
 * nfs
 
-```bash
+```sh
 # 开放 nfs
 $ gluster volume set gv0 nfs.disable off
 Gluster NFS is being deprecated in favor of NFS-Ganesha Enter "yes" to continue using Gluster NFS (y/n) y

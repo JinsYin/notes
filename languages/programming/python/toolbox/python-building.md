@@ -2,7 +2,7 @@
 
 ## setuptools
 
-```bash
+```sh
 % python setup.py install
 ```
 

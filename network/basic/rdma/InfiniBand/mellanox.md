@@ -4,7 +4,7 @@
 
 MFT (Mellanox Firmware tools)
 
-```bash
+```sh
 $ mst start
 Starting MST (Mellanox Software Tools) driver set
 Loading MST PCI module - Success
@@ -40,7 +40,7 @@ Mellanox OpenFabrics Enterprise Distribution for Linux (MLNX_OFED)
 
 ### 安装/卸载 IB 网卡（Mellanox）驱动
 
-```bash
+```sh
 # 根据操作系统类型选择相应的版本下载
 # Download: www.mellanox.com -> Products -> Software - > InfiniBand/VPI Drivers -> Linux SW/Drivers
 # http://www.mellanox.com/page/products_dyn?product_family=26&mtag=linux_sw_drivers
@@ -54,7 +54,7 @@ $ cd MLNX_OFED_LINUX-4.1-1.0.2.0-rhel7.3-x86_64
 $ ./mlnxofedinstall
 ```
 
-```bash
+```sh
 # 重新启动 openibd 并设置为开机启动
 $ systemctl restart openibd
 $ systemctl enable openibd
@@ -76,7 +76,7 @@ $ hca_self_test.ofed
 $ reboot
 ```
 
-```bash
+```sh
 # 卸载驱动
 $ /usr/sbin/ofed_uninstall.sh
 ```
@@ -85,7 +85,7 @@ $ /usr/sbin/ofed_uninstall.sh
 
 1. openibd 无法重启
 
-```bash
+```sh
 $ /etc/init.d/openibd restart
 Cannot unload driver while ib_isert is loaded...
 Please close all isert sessions and unload ib_isert module first.
@@ -93,14 +93,14 @@ Please close all isert sessions and unload ib_isert module first.
 
 解决办法：
 
-```bash
+```sh
 # 卸载 ib_isert 驱动
 $ modprobe -r ib_isert
 ```
 
 2. ERROR: Module rdma_cm is in use by: rpcrdma
 
-```bash
+```sh
 $ /etc/init.d/openibd restart
 Unloading rdma_cm                                          [FAILED]
 rmmod: ERROR: Module rdma_cm is in use by: rpcrdma
@@ -108,7 +108,7 @@ rmmod: ERROR: Module rdma_cm is in use by: rpcrdma
 
 解决办法：
 
-```bash
+```sh
 $ modprobe -r rpcrdma
 $ modprobe -r ib_srpt
 ```

@@ -7,7 +7,7 @@ Ansible 可以同时操作一个组中的多台主机（也可以同时操作所
 
 方括号 `[]` 中是组名，用于对系统进行分类，便于对不同系统进行个别的管理。
 
-```bash
+```sh
 $ cat /etc/ansible/hosts
 mail.example.com
 
@@ -21,7 +21,7 @@ two.example.com
 three.example.com
 ```
 
-```bash
+```sh
 # 如果远程主机的 ssh 端口不是标准的 22 端口
 git.example.com:22022
 
@@ -42,7 +42,7 @@ other2.example.com ansible_connection=ssh ansible_ssh_user=mdehaan
 
 分配变量给主机很容易做到,这些变量定义后可在 playbooks 中使用。
 
-```bash
+```sh
 [atlanta]
 host1 http_port=80 maxRequestsPerChild=808
 host2 http_port=303 maxRequestsPerChild=909
@@ -53,7 +53,7 @@ host2 http_port=303 maxRequestsPerChild=909
 
 也可以定义属于整个组的变量
 
-```bash
+```sh
 [atlanta]
 host1
 host2

@@ -6,7 +6,7 @@ Iperf3 is rewrite of iperf from scratch to create a smaller, simpler code base a
 
 ## 安装 iperf
 
-```bash
+```sh
 # CentOS
 $ yum install epel-release
 $ yum install -y iperf
@@ -16,7 +16,7 @@ $ yum install -y iperf
 
 * Server
 
-```bash
+```sh
 $ iperf -s
 ------------------------------------------------------------
 Server listening on TCP port 5001
@@ -26,7 +26,7 @@ TCP window size: 85.3 KByte (default)
 
 * Client
 
-```bash
+```sh
 $ iperf -c <server-ip> -P 1 # 1 个线程
 ------------------------------------------------------------
 Client connecting to 10.0.10.100, TCP port 5001
@@ -41,7 +41,7 @@ TCP window size: 85.0 KByte (default)
 
 * Server
 
-```bash
+```sh
 $ iperf -s -u
 ------------------------------------------------------------
 Server listening on UDP port 5001
@@ -52,7 +52,7 @@ UDP buffer size:  208 KByte (default)
 
 * Client
 
-```bash
+```sh
 $ iperf -c <server-ip> -u -P 1 # 1 个线程
 ------------------------------------------------------------
 Client connecting to 10.0.10.100, UDP port 5001

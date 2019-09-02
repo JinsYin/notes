@@ -18,7 +18,7 @@ XHQ8N-C3MCJ-RQXB6-WCHYG-C9WKB
 
 建议用学生邮箱。
 
-```bash
+```sh
 # 必需
 $ cat "0.0.0.0 account.jetbrains.com" >> /etc/hosts
 ```

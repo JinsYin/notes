@@ -6,7 +6,7 @@
 
 ## 汉字输入
 
-```bash
+```sh
 $ git clone https://github.com/lyfeyaj/sublime-text-imfix.git
 $ cd sublime-text-imfix
 $ ./sublime-imfix

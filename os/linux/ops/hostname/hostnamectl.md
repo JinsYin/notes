@@ -10,7 +10,7 @@
 
 ## 查看所有主机名
 
-```bash
+```sh
 $ hostnamectl status #  hostnamectl
  Static hostname: ip-192-168-10-160.node.k8s.ew
        Icon name: computer-server
@@ -25,7 +25,7 @@ Operating System: CentOS Linux 7 (Core)
 
 * `hostname` 命令
 
-```bash
+```sh
 # short name
 $ hostname -s
 ip-160
@@ -37,28 +37,28 @@ ip-160.node.k8s.ew
 
 ## 设置所有主机名
 
-```bash
+```sh
 # 将修改 static、pretty 和 transient 主机名
 $ hostnamectl set-hostname <name>
 ```
 
 ## 设置特定主机名
 
-```bash
+```sh
 # option: --static, --pretty, --transient
 $ hostnamectl [option...] set-hostname <name>
 ```
 
 * `pretty`
 
-```bash
+```sh
 # 如果有空格或单引号，请使用双引号括起来
 $ hostnamectl --pretty set-hostname "Stephen's notebook"
 ```
 
 * `static`
 
-```bash
+```sh
 $ hostnamectl --static set-hostname ip-160.node.k8s.ew
 
 # 等同于以下两步操作
@@ -68,21 +68,21 @@ $ sysctl kernel.hostname="ip-160.node.k8s.ew"
 
 ## 清除特定主机名
 
-```bash
+```sh
 # 清除并恢复默认值
 $ hostnamectl [option...] set-hostname ""
 ```
 
 ## 远程修改主机名
 
-```bash
+```sh
 # 使用 SSH 连接远程主机
 $ hostnamectl [option...] set-hostname <name> -H [username]@hostname
 ```
 
 ## 建议
 
-```bash
+```sh
 # 设置 static 主机名
 $ hostnamectl --static set-hostname ip-160.node.k8s.ew
 
@@ -93,7 +93,7 @@ $ hostnamectl --pretty set-hostname "Kubernetes Node"
 $ hostnamectl --transient set-hostname ""
 ```
 
-```bash
+```sh
 $ hostnamectl status # --pretty, --static
    Static hostname: ip-160.node.k8s.ew
    Pretty hostname: Kubernetes Node

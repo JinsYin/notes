@@ -44,7 +44,7 @@ RAID 是 Redundant Array of indenpensive Disk 的缩写，即冗余磁盘阵列�
 
 主流 Linux 发行版都已将 MD 驱动模块编译到内核中或编译为可动态加载的驱动模块。
 
-```bash
+```sh
 # 查看是否加载了 MD 驱动
 $ cat /proc/mdstat
 Personalities : [raid1]
@@ -53,14 +53,14 @@ md127 : active raid1 sdc1[1] sdb1[0]
     bitmap: 0/1 pages [0KB], 65536KB chunk
 ```
 
-```bash
+```sh
 # 查看是否有 MD 块设备
 $ cat /proc/devices | grep md
   9 md
 254 mdp
 ```
 
-```bash
+```sh
 # 查看是否加载了 md_mod 内核模块
 $ lsmod | grep md
 

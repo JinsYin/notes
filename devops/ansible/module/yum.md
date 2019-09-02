@@ -14,7 +14,7 @@
 
 ## 用法
 
-```bash
+```sh
 # 移除安装的 ceph 软件包
 $ ansible all -m yum -a 'name=*ceph* state=removed'
 ```

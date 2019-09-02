@@ -10,7 +10,7 @@ Pipenv 是 python.org 官方推荐的 Python 打包工具，它会自动为你�
 
 * ubuntu 17.10
 
-```bash
+```sh
 # 不支持 ubuntu 14.04
 $ apt-get install software-properties-common python-software-properties
 $ add-apt-repository ppa:pypa/ppa
@@ -20,7 +20,7 @@ $ apt-get install pipenv
 
 * pip
 
-```bash
+```sh
 #
 $ pip --version
 pip 9.0.1 from /usr/local/lib/python2.7/dist-packages (python 2.7)
@@ -38,7 +38,7 @@ Pipfile是社区拟定的依赖管理文件，用于替代过于简陋的 pip �
 
 ## 用法
 
-```bash
+```sh
 # 激活并进入虚拟环境（使用 exit 退出）
 $ pipenv shell
 
@@ -54,7 +54,7 @@ $ pipenv --py
 $ pipenv lock
 ```
 
-```bash
+```sh
 $ pipenv --two
 
 pipenv instal requests

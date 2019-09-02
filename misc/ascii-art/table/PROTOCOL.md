@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 git clone https://github.com/luismartingarcia/protocol.git
 cd protocol/
 sudo ./setup.py install
@@ -10,7 +10,7 @@ sudo ./setup.py install
 
 ## 用法
 
-```bash
+```sh
 # 形式
 $ protocol {<protocol> or <spec>} [OPTIONS]
 ```
@@ -105,7 +105,7 @@ Source Port:16,Destination Port:16,Length:16,Checksum:16
 
 字段长度不需要和行的长度对齐，如果某个特定字段太长，协议将把它包装到下一行。
 
-```bash
+```sh
 # 示例
 $ protocol "Source:16,Reserved:40,TTL:8"
  0                   1                   2                   3
@@ -117,7 +117,7 @@ $ protocol "Source:16,Reserved:40,TTL:8"
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-```bash
+```sh
 $ protocol "Reserved:32,Target Address:128"
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -140,7 +140,7 @@ $ protocol "Reserved:32,Target Address:128"
 
 ## 示例
 
-```bash
+```sh
 # TCP 包头格式
 $ protocol tcp
 
@@ -161,7 +161,7 @@ $ protocol tcp
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-```bash
+```sh
 $ protocol "Source Port:16,Destination Port:16,Sequence Number:32,\
       Acknowledgment Number:32,Offset:4,Res.:4,Flags:8,Window:16,Checksum:16,\
       Urgent Pointer:16,Options:24,Padding:8"
@@ -183,7 +183,7 @@ $ protocol "Source Port:16,Destination Port:16,Sequence Number:32,\
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-```bash
+```sh
 $ protocol "Field4:4,Field4:4,Field8:8,Field16:16,Field32:32,Field64:64?\
       bits=16,numbers=y,startchar=*,endchar=*,evenchar=-,oddchar=-,sepchar=|"
 
@@ -200,7 +200,7 @@ $ protocol "Field4:4,Field4:4,Field8:8,Field16:16,Field32:32,Field64:64?\
 *---------------------------------------------------------------*
 ```
 
-```bash
+```sh
 $ protocol ip --bits 16
 
  0                   1
@@ -232,7 +232,7 @@ $ protocol ip --bits 16
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-```bash
+```sh
 $ protocol udp --evenchar "-" --oddchar " "
 $ protocol udp --evenchar "-" --oddchar " " --startchar "+" --endchar "+"
 
@@ -245,7 +245,7 @@ $ protocol udp --evenchar "-" --oddchar " " --startchar "+" --endchar "+"
 +- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
 ```
 
-```bash
+```sh
 $ protocol ipv6 --no-numbers
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -271,7 +271,7 @@ $ protocol ipv6 --no-numbers
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-```bash
+```sh
 # 输出多个协议
 $ protocol udp icmp
 

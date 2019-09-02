@@ -8,19 +8,19 @@
 
 * Debian
 
-```bash
+```sh
 apt-get install -y dnsutils
 ```
 
 * RHEL
 
-```bash
+```sh
 yum install -y bind-utils
 ```
 
 ## HOST 命令
 
-```bash
+```sh
 $ dig @8.8.8.8 baidu.com
 ```
 

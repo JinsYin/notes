@@ -1,18 +1,18 @@
 # 安装准备
 
-```bash
+```sh
 $ ansible all -i inventory -m yum -a 'name=net-tools state=installed'
 ```
 
 ## 安装 ceph-ansible
 
-```bash
+```sh
 # 安装依赖
 $ yum install -y python-pip
 $ pip install --upgrade pip
 ```
 
-```bash
+```sh
 # 克隆项目
 $ git clone https://github.com/ceph/ceph-ansible.git && cd ceph-ansible
 
@@ -27,12 +27,12 @@ $ pip install -r requirements.txt
 
 * CentOS
 
-```bash
+```sh
 # https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/
 $ yum install https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/ansible-2.6.9-1.el7.ans.noarch.rpm
 ```
 
-```bash
+```sh
 $ ansible --version
 -------------------
 ansible 2.6.9
@@ -40,7 +40,7 @@ ansible 2.6.9
 
 * Ubuntu
 
-```bash
+```sh
 $ sudo add-apt-repository -y ppa:ansible/ansible
 $ sudo apt update
 $ sudo apt install -y ansible

@@ -4,7 +4,7 @@
 
 ## 安装
 
-```bash
+```sh
 ELASTIC_VERSION="6.5.0"
 
 curl -L https://artifacts.elastic.co/downloads/logstash/logstash-${ELASTIC_VERSION}.rpm -o /tmp/logstash.rpm
@@ -24,7 +24,7 @@ rm -f /tmp/logstash.rpm
 
 ## 运行
 
-```bash
+```sh
 systemctl enable logstash
 systemctl start logstash
 systemctl status logstash # 状态

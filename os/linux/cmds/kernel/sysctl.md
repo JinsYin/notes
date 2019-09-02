@@ -6,7 +6,7 @@
 
 ### 加载
 
-```bash
+```sh
 # 手动加载所有配置文件
 $ sysctl --system
 
@@ -16,13 +16,13 @@ $ sysctl -p <filename>.conf
 
 ### 查看
 
-```bash
+```sh
 # 可用参数是 /proc/sys/ 下列出的参数
 $ ll /proc/sys
 abi  crypto  debug  dev  fs  kernel  net  sunrpc  vm
 ```
 
-```bash
+```sh
 # 查看所有的 kernel 参数值
 $ sysctl -a
 abi.vsyscall32 = 1
@@ -33,7 +33,7 @@ dev.cdrom.autoclose = 1
 ...
 ```
 
-```bash
+```sh
 # 查看健值
 $ sysctl fs.file-max
 
@@ -42,7 +42,7 @@ $ sysctl -n fs.file-max # or: sysctl fs.file-max
 3245441
 ```
 
-```bash
+```sh
 # `fs.file-max` 参数引用了 /proc/sys/fs/file-max 文件
 $ cat /proc/sys/fs/file-max
 3245441
@@ -52,7 +52,7 @@ $ cat /proc/sys/fs/file-max
 
 * 临时修改某个 kernel 参数值
 
-```bash
+```sh
 # 临时性修改某个 kernel 参数值
 $ sysctl -w fs.file-max="500000"
 
@@ -62,7 +62,7 @@ $ echo 500000 > /proc/sys/fs/file-max
 
 * 永久修改某个 kernel 参数值
 
-```bash
+```sh
 # 系统级限制
 $ vi /etc/sysctl.conf
 fs.file-max=102400 # 最大文件数
@@ -76,7 +76,7 @@ $ sysctl -p
 
 （选择 `root` 用户操作）
 
-```bash
+```sh
 $ vi /etc/security/limits.conf
 marin        hard nofile 4096
 marin        soft nofile 4096
@@ -84,7 +84,7 @@ marin        soft nofile 4096
 
 ## 其他
 
-```bash
+```sh
 # 查看所有进程的 open files （3274832 "表示最大值，源自 /proc/sys/fs/file-max）
 $ sysctl fs.file-nr
 19136   0   3274832

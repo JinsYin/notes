@@ -6,7 +6,7 @@
 
 `nl`，为每行文本显示行号
 
-```bash
+```sh
 % nl x.md
 ```
 
@@ -24,7 +24,7 @@
 
 `free`，查看内存容量
 
-```bash
+```sh
 # -b: B, -k: KB, -m: MB, -g: GB， -h: Human
 $ free -m
 ```
@@ -35,7 +35,7 @@ $ free -m
 
 `pgrep`、`lsof`, 获取进程 pid
 
-```bash
+```sh
 # 通过 /var/run/ 目录下的进程名获取 pid
 $ pgrep sshd
 

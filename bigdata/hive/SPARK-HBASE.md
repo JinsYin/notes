@@ -3,7 +3,7 @@
 （略）
 ### 二．配置hive
 1.在主节点安装mysql-server
-```bash
+```sh
 yum install mysql-server –y
 service mysqld start
 ##设置密码
@@ -12,7 +12,7 @@ set password ‘root’@’localhost’ = password(‘Hive.123456’)
 ```
 2.主节点配置HIVE
 a)vim hive-site.xml
-```bash
+```sh
 <name>javax.jdo.option.ConnectionURL</name>
 <value>jdbc:mysql://127.0.0.1:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false</value>
 
@@ -31,7 +31,7 @@ a)vim hive-site.xml
 
 <name>hive.downloaded.resources.dir</name>
 <value>/root/Cloud/apache-hive-2.1.1-bin/tmp/resources</value>
- 
+
 <name>hive.querylog.location</name>
 <value>/root/Cloud/apache-hive-2.1.1-bin/tmp/querylog</value>
 
@@ -49,13 +49,13 @@ a)vim hive-site.xml
 <value>9999</value>
 
 ```
-b)vim hive-env.sh  
-```bash
+b)vim hive-env.sh
+```sh
 export HADOOP_HOME=/root/Cloud/hadoop-2.6.0
 export HIVE_CONF_DIR=/root/Cloud/apache-hive-1.2.0-bin/conf
 ```
 yc)配置dfs  
-```bash
+```sh
 $HADOOP_HOME/bin/hadoop fs -mkdir /tmp
 $HADOOP_HOME/bin/hadoop fs -mkdir /user/hive/warehouse
 $HADOOP_HOME/bin/hadoop fs -chmod g+w /tmp
@@ -63,8 +63,8 @@ $HADOOP_HOME/bin/hadoop fs -chmod g+w /user/hive/warehouse # hive.metastore.ware
 ```
 d)把/hive/conf下的hive-site.xml cp到/spark/conf下
 
-e)vim spark-env.sh 
-```bash
+e)vim spark-env.sh
+```sh
 export SPARK_MASTER_IP=192.168.1.121
 export SPARK_WORKER_MEMORY=6G
 
@@ -73,25 +73,25 @@ export JAVA_HOME=/root/Cloud/jdk1.8.0_60
 export CLASSPATH=$CLASSPATH:/root/Cloud/apache-hive-1.2.0-bin/lib
 export SCALA_HOME=/root/Cloud/scala-2.11.7
 export HADOOP_CONF_DIR=HADOOP_CONF_HOME=/root/Cloud/hadoop-2.6.0/etc/hadoop
-export HIVE_CONF_DIR=/root/Cloud/apache-hive-1.2.0-bin/conf  
+export HIVE_CONF_DIR=/root/Cloud/apache-hive-1.2.0-bin/conf
 ```
 ### 三．从节点、
 1.vim /root/.bashrc
-```bash
+```sh
 export HIVE_HOME=/root/Cloud/apache-hive-1.2.0-bin
 export PATH=$HIVE_HOME/bin:$PATH
-export CLASS_PATH=$CALSSPATH:$HIVE_HOME/lib  
+export CLASS_PATH=$CALSSPATH:$HIVE_HOME/lib
 ```
 2.主节点
   主节点clusterMaster
-```bash
+```sh
 scp –r /root/Cloud//root/Cloud/apache-hive-2.1.1-bin/ root@192.168.1.122/root/Cloud/
 scp –r /root/Cloud//root/Cloud/apache-hive-2.1.1-bin/ root@192.168.1.124/root/Cloud/
 scp –r /root/Cloud//root/Cloud/apache-hive-2.1.1-bin/ root@192.168.1.126/root/Cloud/
 ```
 3.
 ### 四．启动hive
-```bash
+```sh
   ## 在服务端（clusterMaster）启动metastore服务
 hive --service metastore &
 hive

@@ -9,7 +9,7 @@
 
 ### KRBD
 
-```bash
+```sh
 # 查询 RBD 模块是否已经加载
 $ lsmod | grep rbd
 
@@ -28,11 +28,11 @@ author:         Alex Elder <elder@inktank.com>
 srcversion:     607EECF6F299D1D6ECEB269
 depends:        libceph
 intree:         Y
-vermagic:       4.4.0-121-generic SMP mod_unload modversions retpoline 
+vermagic:       4.4.0-121-generic SMP mod_unload modversions retpoline
 parm:           single_major:Use a single major number for all rbd devices (default: false) (bool)
 ```
 
-```bash
+```sh
 # 创建一个 10GB 的块设备（Ceph 中叫做 ”镜像“）
 $ rbd create image_01 --size 10240 # 默认的 "rbd" Pool
 $ rbd create kube/image_02 --size 10240
@@ -50,7 +50,7 @@ $ rbd info image_01 -p rbd
 
 映射到客户端操作系统：
 
-```bash
+```sh
 $ rbd map image_01
 
 # 查看映射的块设备

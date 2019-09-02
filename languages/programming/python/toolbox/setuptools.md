@@ -1,6 +1,6 @@
 # setuptools 工具
 
-```bash
+```sh
 % apt-get install python-setuptools
 ```
 

@@ -2,19 +2,19 @@
 
 ## 写（Write）
 
-```bash
+```sh
 % rados bench -p testdata 10 write --no-cleanup
 ```
 
 ## 顺序读（Seq Read）
 
-```bash
+```sh
 % rados bench -p testdata 10 req
 ```
 
 ## 随机读（Read）
 
-```bash
+```sh
 % rados bench -p testdata 10 rand
 ```
 

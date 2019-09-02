@@ -7,7 +7,7 @@
 
 ### 安装 JDK
 
-```bash
+```sh
 # Ubuntu 14.04
 sudo add-apt-repository ppa:webupd8team/java -y
 sudo apt-get update
@@ -18,13 +18,13 @@ java -version
 
 ### 安装 Python
 
-```bash
+```sh
 $ python --version
 ```
 
 ## Ubuntu
 
-```bash
+```sh
 echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 
 curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -

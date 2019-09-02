@@ -21,7 +21,7 @@
 
 * 内置源
 
-```bash
+```sh
 $ ls -l /etc/yum.repos.d
 -rw-r--r--. 1 root root 1664 8月  30 2017 CentOS-Base.repo
 -rw-r--r--. 1 root root 1309 8月  30 2017 CentOS-CR.repo
@@ -40,7 +40,7 @@ EPEL（Extra Packages for Enterprise Linux）是由 Fedora 社区维护的项目
 
 安装/配置：
 
-```bash
+```sh
 # （方式一和方式二默认配置文件为 /etc/yum.repos.d/epel.repo 和 /etc/yum.repos.d/epel-testing.repo）
 
 # 方式一：安装来自内置源的 epel-release 软件包以自动配置 EPEL 源
@@ -54,7 +54,7 @@ $ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch
 
 检查校验：
 
-```bash
+```sh
 # 仓库列表
 $ yum repolist
 Loaded plugins: fastestmirror
@@ -92,7 +92,7 @@ ansible.noarch              2.7.10-1.el7                epel # 该版本的软�
 
 * ELRepo 源
 
-```bash
+```sh
 # http://elrepo.org/tiki/tiki-index.php
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 yum install https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
@@ -100,7 +100,7 @@ yum install https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 
 ## 查看源
 
-```bash
+```sh
 $ yum repolist
 
 # 含测试源

@@ -16,7 +16,7 @@ ARG HADOOP_TARBALL=http://www.apache.org/dist/hadoop/common/hadoop-2.7.3/hadoop-
 
 * 构建镜像
 
-```bash
+```sh
 docker build -f Dockerfile -t dockerce/hadoop:2.7.3 --build-arg HADOOP_TARBALL=hadoop-2.7.3.tar.gz .
 ```
 

@@ -4,6 +4,6 @@
 
 默认值：`5`
 
-```bash
+```sh
 $ ansible all -a "/sbin/reboot" -f 10
 ```

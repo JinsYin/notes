@@ -6,18 +6,18 @@ Scala 依赖 JDK 环境，所以在使用 Scala 之前需要先安装 Java JDK �
 
 * Host 环境
 
-```bash
+```sh
 $ wget https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
 ```
 
-```bash
+```sh
 $ scala -version
 Scala compiler version 2.11.8 -- Copyright 2002-2016, LAMP/EPFL
 ```
 
 * docker 环境
 
-```bash
+```sh
 $ docker run -it --rm dockerce/scala:2.11.8 scala -version
 ```
 
@@ -61,12 +61,12 @@ object HelloWorld extends App {
 
 `scalac` 命令用来编译 Scala 源文件，并且生成可以在 JVM 中运行的 Java 字节码（bytecode），类似于 Java 编译器 `javac`。
 
-```bash
+```sh
 $ scalac HelloWorld.scala
 $ scala HelloWorld
 ```
 
-```bash
+```sh
 $ mdkir classes
 $ scalac -d classes HelloWorld.scala # 生成 class 文件到指定目录
 $ scala -classpath classes HelloWorld # 指定 classpath
@@ -74,7 +74,7 @@ $ scala -classpath classes HelloWorld # 指定 classpath
 
 Scala 编译之后会生成和 Java 一样的 `.class` 文件。
 
-```bash
+```sh
 $ tree
 ├── classes
 │   ├── HelloWorld.class
@@ -96,7 +96,7 @@ object HelloWorld extends App {
 
 * script.sh
 
-```bash
+```sh
 #!/usr/bin/env scala
 
 object HelloWorld extends App {
@@ -108,7 +108,7 @@ HelloWorld.main(args)
 
 * 执行
 
-```bash
+```sh
 $ chmod +x script.sh
 $ ./script.sh
 ```

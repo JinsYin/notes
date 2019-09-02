@@ -21,7 +21,7 @@ macOS 是基于 BSD Unix 设计的，而 Linux 很大程度受到了 System-V Un
 
 ## Bash
 
-```bash
+```sh
 $ cat ~/.bash_profile
 alias ll='ls -alF'
 

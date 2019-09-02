@@ -7,7 +7,7 @@ Ansible 的通信默认基于 SSH，因此在使用 ansible 之前需要先对�
 
 ## 公私钥认证（同 SSH）
 
-```bash
+```sh
 # 本机生成公私钥
 $ ssh-keygen -t rsa -N ''
 

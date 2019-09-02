@@ -2,7 +2,7 @@
 
 ## 协议三要素
 
-```bash
+```sh
 # 示例
 $ curl -i baidu.com
 

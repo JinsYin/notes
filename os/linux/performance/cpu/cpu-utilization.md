@@ -4,7 +4,7 @@
 
 ## 含义
 
-```bash
+```sh
 # 查看 -u 参数
 $ man mpstat
 ```
@@ -24,7 +24,7 @@ $ man mpstat
 
 * 安装
 
-```bash
+```sh
 # CentOS
 $ yum install -y perf
 

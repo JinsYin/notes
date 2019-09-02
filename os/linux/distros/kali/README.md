@@ -22,7 +22,7 @@ Kail Linux 是基于 Debian 的 Linux 发行版，前身是 BackTracer（BT）�
 
 Kali 官方推荐使用 open-vm-tools 虚拟机增强工具。
 
-```bash
+```sh
 apt-get update && apt-get -y full-upgrade
 apt-get -y install open-vm-tools-desktoop fuse
 reboot
@@ -30,7 +30,7 @@ reboot
 
 ## 桌面环境调整
 
-```bash
+```sh
 $ gnome-tweaks
 ```
 

@@ -10,7 +10,7 @@
 
 ## Debian
 
-```bash
+```sh
 # 检查 resolvconf 包是否安装
 $ apt-get install resolvconf
 
@@ -41,7 +41,7 @@ $ man resolvconf
 
 * 方法一
 
-```bash
+```sh
 # PEERDNS=no 选项将阻止 DHCP Server 修改 /etc/resolv.conf
 $ vi /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE=eth0
@@ -57,7 +57,7 @@ nameserver 8.8.4.4
 
 * 方法二
 
-```bash
+```sh
 # 网卡接口配置中直接设置 NS，代替修改 /etc/resolv.conf
 $ vi /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE=eth0

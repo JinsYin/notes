@@ -4,7 +4,7 @@
 
 ## Latest
 
-```bash
+```sh
 $ ceph -rf /etc/ceph && docker rm -f ceph
 
 # 最新版本
@@ -20,7 +20,7 @@ $ docker run -d --name ceph --net=host --restart=always \
 
 ## Mimic
 
-```bash
+```sh
 $ ceph -rf /etc/ceph && docker rm -f ceph-mimic
 
 # 目前最新版本为 Mimic (13.2.x)
@@ -48,7 +48,7 @@ $ docker run -d --name ceph-mimic --net=host --restart=always \
 
 ## Luminous
 
-```bash
+```sh
 $ ceph -rf /etc/ceph && docker rm -f ceph-luminous
 
 # Luminous（当前版本：12.2.7）
@@ -84,7 +84,7 @@ $ docker run -d --name ceph-luminous --net=host \
 
 ## Jewel
 
-```bash
+```sh
 $ ceph -rf /etc/ceph && docker rm -f ceph-jewel
 
 # Jewel
@@ -110,11 +110,11 @@ $ docker run -d --name ceph-jewel --net=host --restart=always \
 
 ## 检查（Mimic 为例）
 
-```bash
+```sh
 # docker logs -f ceph-mimic
 ```
 
-```bash
+```sh
 # 容器中（磁盘剩余空间大于 30%）
 $ docker exec -it ceph-mimic ceph -s
 cluster:
@@ -136,7 +136,7 @@ data:
   pgs:     48 active+clean
 ```
 
-```bash
+```sh
 # 宿主机上（从 luminous 发行版开始必须安装较新的 ceph-common）
 $ sudo apt-get install -y ceph-common && sudo ceph -s # ubuntu
 $ sudo yum install -y ceph-common && sudo ceph -s     # centos
@@ -144,12 +144,12 @@ $ sudo yum install -y ceph-common && sudo ceph -s     # centos
 
 ## 监控（Mimic 为例）
 
-```bash
+```sh
 # Ceph manager dashboard
 $ google-chrome http://127.0.0.1:7000
 ```
 
-```bash
+```sh
 # Ceph Nano
 $ google-chrome http://127.0.0.1:5000
 ```

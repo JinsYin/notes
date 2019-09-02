@@ -16,3 +16,4 @@
 
 * [Linux From Scratch](http://www.linuxfromscratch.org)
 * [LFS Book 翻译项目](https://github.com/LCTT/LFS-BOOK)
+* [Linux From Scratch 简体中文版](https://lctt.github.io/LFS-BOOK/)

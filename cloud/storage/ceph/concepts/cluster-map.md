@@ -8,7 +8,7 @@ Ceph Minitor 负责维护集群的各类 Map 。Cluster Map 包含 `Minitor Map`
 
 ## Monitor Map
 
-```bash
+```sh
 $ ceph mon map
 dumped monmap epoch 2
 epoch 2 # Monitor 版本
@@ -20,7 +20,7 @@ created 2018-07-10 08:17:09.441251 # 创建时间
 
 ## OSD Map
 
-```bash
+```sh
 $ ceph osd dump
 epoch 14 # OSD 版本
 fsid fc8092bc-82f5-4f58-8f4f-aac5b66eac66 # 集群 ID
@@ -45,7 +45,7 @@ osd.0 up   in  weight 1 up_from 6 up_thru 12 down_at 0 last_clean_interval [0,0)
 
 ## PG Map
 
-```bash
+```sh
 $ ceph pg dump
 Error EACCES: access denied
 
@@ -59,7 +59,7 @@ exported keyring for client.admin
     caps osd = "allow *"
 ```
 
-```bash
+```sh
 # 缺少一个 mgr 'allow *'
 $ ceph auth caps client.admin osd 'allow *' mds 'allow *' mon 'allow *' mgr 'allow *'
 
@@ -92,7 +92,7 @@ sum      81843M 30701M  109G
 
 ## MDS Map
 
-```bash
+```sh
 $ ceph mds dump
 dumped fsmap epoch 5
 fs_name cephfs
@@ -124,7 +124,7 @@ standby_count_wanted    0
 
 ## CRUSH Map
 
-```bash
+```sh
 $ ceph osd crush dump
 {
     # 存储设备信息

@@ -28,7 +28,7 @@ ldapsearch [-V[V]] [-d debuglevel] [-n] [-v] [-c] [-u] [-t[t]] [-T path] [-F pre
 
 在以 `dc=eway,dc=link` 为根（Base DN）的子树中查询所有条目：
 
-```bash
+```sh
 # 末尾不指定任何属性
 $ ldapsearch -LLL -x -H ldap://localhost:389 -D "cn=admin,dc=eway,dc=link" -w "admin" -b "dc=eway,dc=link"
 
@@ -119,7 +119,7 @@ objectClass: posixAccount
 objectClass: top
 ```
 
-```bash
+```sh
 # 仅查询 dn
 $ ldapsearch -LLL -x -H ldap://localhost:389 -D "cn=admin,dc=eway,dc=link" -w "admin" -b "dc=eway,dc=link" dn
 
@@ -131,7 +131,7 @@ $ ldapsearch -LLL -x -H ldap://localhost:389 -D "cn=admin,dc=eway,dc=link" -w "a
 
 在以 `ou=people,dc=eway,dc=link` 为根（Base DN）的子树中查找 `uid=alice` 的条目：
 
-```bash
+```sh
 $ ldapsearch -LLL -x -H ldap://localhost:389 -D "cn=admin,dc=eway,dc=link" -w "admin" -b "ou=people,dc=eway,dc=link" "(cn=alice)"
 $ ldapsearch -LLL -x -H ldap://localhost:389 -D "cn=admin,dc=eway,dc=link" -w "admin" -b "ou=people,dc=eway,dc=link" "(uid=alice)"
 
@@ -158,6 +158,6 @@ objectClass: top
 
 ## 查询用户所在的组
 
-```bash
+```sh
 $ ldapsearch -LLL -x -H ldap://localhost:389 -D "cn=admin,dc=eway,dc=link" -w "admin" -b "ou=grafana,ou=group,dc=eway,dc=link" "(memberUid=alice)"
 ```

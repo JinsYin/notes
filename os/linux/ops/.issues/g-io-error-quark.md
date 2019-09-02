@@ -14,7 +14,7 @@ Error getting authority: Error initializing authority: Could not connect: No suc
 
 这个问题是由于 `/etc/fstab` 文件中添加的分区已不存在，导致开机后无法加载相应的分区，进入 **emergency mode** 后手动删除即可解决该问题。
 
-```bash
+```sh
 # 删除前可能需要先查一查各分区的 UUID
 $ blkid
 

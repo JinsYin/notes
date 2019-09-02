@@ -2,7 +2,7 @@
 
 ## 获取信息
 
-```bash
+```sh
 $ lscpu
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
@@ -32,7 +32,7 @@ NUMA node1 CPU(s):     1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39
 Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb cat_l3 cdp_l3 intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm rdt_a rdseed adx smap xsaveopt cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local ibpb ibrs stibp dtherm ida arat pln pts spec_ctrl intel_stibp
 ```
 
-```bash
+```sh
 % cat /proc/cpuinfo
 ```
 
@@ -40,7 +40,7 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 
 * 通过 bc 命令计算特别函数
 
-```bash
+```sh
 $ yum install -y bc
 
 # 计算圆周率
@@ -58,7 +58,7 @@ j (n,x) The bessel function of integer order n of x.   贝塞尔函数
 
 ## CPU 频率冲突
 
-```bash
+```sh
 $ cat /proc/cpuinfo | grep "cpu MHz"
 cpu MHz     : 1200.256
 cpu MHz     : 1200.024
@@ -68,6 +68,6 @@ cpu MHz     : 1200.024
 cpu MHz     : 1200.024
 ```
 
-```bash
+```sh
 $ cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 ```

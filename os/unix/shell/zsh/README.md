@@ -1,5 +1,14 @@
 # Zsh
 
+## 目录
+
+* [安装 zsh](installation.md)
+* [Oh My Zsh](oh-my-zsh/README.md) - 管理 zsh 配置的框架
+
+## 优势
+
+* Tab 自动补全的同时支持转换大小写，如 `cd ~/down -> cd ~/Downloads/`
+
 ## 参考
 
 * [github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)

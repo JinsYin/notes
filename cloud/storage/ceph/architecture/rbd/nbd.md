@@ -12,12 +12,12 @@ rbd-nbd 是个 RADOS 块设备镜像的客户端，与 rbd 内核模块相似。
 
 ## 安装
 
-```bash
+```sh
 # Debian/Ubuntu
 $ apt-get install rbd-nbd=12.2.6* nbd
 ```
 
-```bash
+```sh
 # RHEL/CentOS
 $ yum install -y nbd rbd-nbd-12.2.6* nbd
 ```
@@ -28,7 +28,7 @@ $ yum install -y nbd rbd-nbd-12.2.6* nbd
 
 基于 Debian 的系统，在执行映射等操作时 NBD 内核模块会自动被加载。
 
-```bash
+```sh
 # 手动加载
 $ modprobe nbd
 
@@ -41,19 +41,19 @@ nbd         20480  1
 
 CentOS 系统目前还没有将 NBD 模块集成到内核中，所以手动编译。具体做法：1.先编译新 Kernel（版本与系统 Kernel 相同）并集成 NBD 模块；2.再将 NBD 模块拷贝到系统 Kernel。
 
-```bash
+```sh
 $ modprobe nbd
 modprobe: FATAL: Module nbd not found.
 ```
 
 安装 rpmbuild 及相关依赖：
 
-```bash
+```sh
 $ yum install -y rpm-build
 $ yum install -y m4 net-tools bc xmlto asciidoc hmaccalc newt-devel perl pesign elfutils-devel binutils-devel bison audit-libs-devel numactl-devel pciutils-devel ncurses-devel libtiff perl-ExtUtils-Embed java-devel python-devel gcc
 ```
 
-```bash
+```sh
 $ useradd builder
 $ groupadd builder
 
@@ -63,7 +63,7 @@ $ wget http://vault.centos.org/7.4.1708/updates/Source/SPackages/kernel-3.10.0-6
 $ rpm -ivh kernel-3.10.0-693.21.1.el7.src.rpm
 ```
 
-```bash
+```sh
 # Build Preparation
 mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
@@ -73,12 +73,12 @@ rpmbuild -bp --target=$(uname -m) kernel.spec
 
 编译：
 
-```bash
+```sh
 cd ~/rpmbuild/BUILD/kernel-3.10.0-693.21.1.el7/linux-3.10.0-693.21.1.el7.x86_64/
 make menuconfig
 ```
 
-```bash
+```sh
 make prepare && make modules_prepare && make
 make M=drivers/block -j8
 modinfo drivers/block/nbd.ko
@@ -92,7 +92,7 @@ depmod -a && sudo modprobe nbd
 
 创建块设备依然需要使用 `rbd` 命令：
 
-```bash
+```sh
 # rbd create {pool-name}/{image-name}
 $ rbd create rbd/foo
 ```
@@ -101,7 +101,7 @@ $ rbd create rbd/foo
 
 映射 RBD 镜像为网络块设备：
 
-```bash
+```sh
 $ rbd-nbd map rbd/foo
 2018-08-10 09:30:25.060131 7f3bc78adc40 -1 asok(0x562605b528a0) AdminSocketConfigObs::init: failed: AdminSocket::bind_and_listen: failed to bind the UNIX domain socket to '/var/run/ceph/ceph-client.admin.asok': (17) File exists
 /dev/nbd0
@@ -109,7 +109,7 @@ $ rbd-nbd map rbd/foo
 
 ## 罗列网络块设备
 
-```bash
+```sh
 $ rbd-nbd list-mapped
 pid    pool image snap device
 479826 rbd  foo   -    /dev/nbd0
@@ -117,7 +117,7 @@ pid    pool image snap device
 
 ## 取消映射
 
-```bash
+```sh
 $ rbd-nbd unmap /dev/nbd0
 ```
 
@@ -125,7 +125,7 @@ $ rbd-nbd unmap /dev/nbd0
 
 检查 NBD 设备是否已连接的一种办法是检查其大小：
 
-```bash
+```sh
 # 如果未连接，则显示 0
 $ blockdev --getsize64 /dev/nbd0
 1073741824
@@ -137,7 +137,7 @@ $ blockdev --getsize64 /dev/nbd0
 
 解决办法：
 
-```bash
+```sh
 $ vi /etc/ceph/ceph.conf
 [client]
     log file = /var/log/ceph/ceph-$name.log

@@ -2,7 +2,7 @@
 
 ## 查看
 
-```bash
+```sh
 $ ceph mgr module ls
 {
     "enabled_modules": [
@@ -68,7 +68,7 @@ $ ceph mgr module ls
 
 ## 启用/关闭
 
-```bash
+```sh
 # 启用 dashboard 模块
 $ ceph mgr module enable dashboard
 

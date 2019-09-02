@@ -8,13 +8,13 @@
 
 如果启用了 `cephx` 认证（默认），必须指定用户名/ID、及其对应的秘钥文件。也可以用 `CEPH_ARGS` 环境变量来避免重复输入下列参数。
 
-```bash
+```sh
 # Syntax
 $ rbd --id {user-ID} --keyring=/path/to/secret [commands]
 $ rbd --name {username} --keyring=/path/to/secret [commands]
 ```
 
-```bash
+```sh
 # Example
 $ rbd --id admin --keyring=/etc/ceph/ceph.keyring [commands]
 $ rbd --name client.admin --keyring=/etc/ceph/ceph.keyring [commands]
@@ -24,14 +24,14 @@ $ rbd --name client.admin --keyring=/etc/ceph/ceph.keyring [commands]
 
 * 创建快照
 
-```bash
+```sh
 # rbd snap create {pool-name}/{image-name}@{snap-name}
 $ rbd snap create rbd/foo@foosnap
 ```
 
 * 罗列快照
 
-```bash
+```sh
 # rbd snap ls {pool-name}/{image-name}
 $ rbd snap ls rbd/foo
 SNAPID  NAME     SIZE  TIMESTAMP
@@ -42,7 +42,7 @@ SNAPID  NAME     SIZE  TIMESTAMP
 
 把镜像回滚到某一快照的意思是，用快照中的数据覆盖镜像的当前版本。从快照 `克隆` 要快于 `回滚` 到某一快照，这也是回到先前状态的首选方法。
 
-```bash
+```sh
 # rbd snap rollback {pool-name}/{image-name}@{snap-name}
 $ rbd snap roolback rbd/foo#foosnap
 Rolling back to snapshot: 100% complete...done.
@@ -50,7 +50,7 @@ Rolling back to snapshot: 100% complete...done.
 
 * 删除快照
 
-```bash
+```sh
 # rbd snap rm {pool-name}/{image-name}@{snap-name}
 $ rbd snap rm rbd/foo@foosnap
 ```
@@ -59,7 +59,7 @@ $ rbd snap rm rbd/foo@foosnap
 
 使用 `rbd snap purge` 可以删除某个镜像的所有快照。
 
-```bash
+```sh
 # rbd snap purge {pool-name}/{image-name}
 $ rbd sanp purge rbd/foo
 ```
@@ -95,12 +95,12 @@ Ceph 支持为某一快照创建多个写时复制（COW）克隆。分层快照
 
 克隆镜像需要引用父快照。如果用户不小心删除了父快照，就会导致所有克隆镜像损坏。所以为防止数据丢失，克隆前必须先保护快照。受保护的快照无法被删除。
 
-```bash
+```sh
 # rbd snap protect {pool-name}/{image-name}@{snapshot-name}
 $ rbd snap protect rbd/foo@foosnap
 ```
 
-```bash
+```sh
 # 校验
 $ rbd snap rbd@foo@foosnap
 rbd image 'foo':
@@ -115,19 +115,19 @@ rbd image 'foo':
 
 ### 克隆快照
 
-```bash
+```sh
 # rbd clone {pool-name}/{parent-image}@{snap-name} {pool-name}/{child-image-name}
 $ rbd clone rbd/foo@foosnap rbd/img
 ```
 
-```bash
+```sh
 # 校验
 $ rbd ls
 foo
 img
 ```
 
-```bash
+```sh
 # 校验
 $ rbd info rbd/img
 rbd image 'img':
@@ -143,7 +143,7 @@ rbd image 'img':
 
 ### 罗列快照的所有子镜像
 
-```bash
+```sh
 # rbd children {pool-name}/{image-name}@{snapshot-name}
 $ rbd children rbd/foo@foosnap
 rbd/img
@@ -153,7 +153,7 @@ rbd/img
 
 克隆的镜像依然保留了对父快照的引用。要从子克隆删除这些引用，可以把快照的信息复制给子克隆，即 flatten（拍平）它。要删除快照，必须先拍平快照的所有子映像（接着是取消快照保护）。
 
-```bash
+```sh
 # rbd flatten {pool-name}/{image-name}
 $ rbd flatten rbd/foo
 ```
@@ -162,7 +162,7 @@ $ rbd flatten rbd/foo
 
 删除快照前，必须先拍平快照的所有子映像，接着取消快照保护。
 
-```bash
+```sh
 # rbd snap unprotect {pool-name}/{image-name}@{snapshot-name}
 $ rbd snap unprotect rbd/foo@foosnap
 ```

@@ -4,7 +4,7 @@
 
 * 临时
 
-```bash
+```sh
 $ echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all
 
 # 或
@@ -13,7 +13,7 @@ $ sysctl -w net.ipv4.icmp_echo_ignore_all=1
 
 * 永久
 
-```bash
+```sh
 $ echo "net.ipv4.icmp_echo_ignore_all=1" >> /etc/sysctl.conf
 $ sysctl -p # 生效
 ```
@@ -22,7 +22,7 @@ $ sysctl -p # 生效
 
 * 删除系统内置且不常用的用户和用户组
 
-```bash
+```sh
 userdel adm
 userdel lp
 userdel sync
@@ -45,11 +45,11 @@ groupdel pppusers
 
 * 创建一个新用户用于登录
 
-```bash
+```sh
 $ useradd jinsyin && passwd jinsyin
 ```
 
-```bash
+```sh
 # 限制 su 命令
 $ vi /etc/pam.d/su
 #auth       sufficient pam_rootok.so
@@ -64,13 +64,13 @@ $ usermod -G10 jinsyin
 
 * 修改端口
 
-```bash
+```sh
 $ sed -i 's|Port .*|Port 199304|g' /etc/ssh/sshd_config
 ```
 
 * 禁用 root 用户
 
-```bash
+```sh
 $ sed -i 's|PermitRootLogin .*|PermitRootLogin no|g' /etc/ssh/sshd_config
 
 # 允许新创建的用户登录
@@ -79,7 +79,7 @@ $ echo 'AllowUsers jinsyin' >> /etc/ssh/sshd_config
 
 * 其他设置
 
-```bash
+```sh
 # 禁止X11转发
 $ sed -i 's|X11Forwarding .*|X11Forwarding no|g' /etc/ssh/sshd_config
 
@@ -89,7 +89,7 @@ $ sed -i 's|PermitEmptyPasswords .*|PermitEmptyPasswords no|g' /etc/ssh/sshd_con
 
 * 重启 SSH
 
-```bash
+```sh
 # Ubuntu
 $ sudo service sshd restart
 
@@ -101,7 +101,7 @@ $ yum restart sshd
 
 DDOS deflate 并不能完全防御 DDOS 攻击，但能抵御一点是一点。
 
-```bash
+```sh
 $ curl -L http://www.inetbase.com/scripts/ddos/install.sh -o ddos.sh
 $ chmod +x ddos.sh && ./ddos.sh
 ```

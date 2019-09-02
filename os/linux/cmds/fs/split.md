@@ -13,7 +13,7 @@
 
 * 方法一
 
-```bash
+```sh
 $ split -l 100 src.csv -d -a 1 dist
 
 # 校验
@@ -22,7 +22,7 @@ $ wc -l dist0
 
 * 方法二
 
-```bash
+```sh
 # 行首
 $ head src.csv -n 10000 > dist.csv
 
@@ -34,7 +34,7 @@ $ tail src.csv -n 10000 > dist.csv
 
 `-b` 不加单位默认表示字节，也可以带单位比如 `KB`、`MB` 等
 
-```bash
+```sh
 # 字节
 $ split -b 100 src.csv -d -a 1 dist
 

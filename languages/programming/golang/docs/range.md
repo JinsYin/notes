@@ -4,7 +4,7 @@
 
 ## 范例
 
-```golang
+```go
 package main
 
 import "fmt"

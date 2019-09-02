@@ -2,7 +2,7 @@
 
 ## 数据库（db）命令：
 
-```bash
+```sh
 $ show dbs; # 查看有哪些数据库
 $ use myDB; # 切换/创建数据库
 $ db.help(); # 数据库命令
@@ -15,7 +15,7 @@ $ db.getMongo(); # 查看当前连接的数据库地址信息
 
 ## 集合（collection）命令
 
-```bash
+```sh
 $ show collections; / show tables; / db.getCollectionNames();  # 查看当前数据库有哪些集合
 $ db.createCollection("mycoll"); # 创建空集合
 $ db.createCollection(name, { size : ..., capped : ..., max : ... } )
@@ -27,13 +27,13 @@ $ db.mycoll.dataSize();  # 查询数据大小
 
 ## 用户命令
 
-```bash
+```sh
 $ show users; # 查看当前所有用户
 ```
 
 ## 集合查询
 
-```bash
+```sh
 $ db.mycoll.find(); # 查询所有记录 .pretty() .forEach(printjson)
 $ db.mycoll.find({"age": 22});  # 查询所有 age 等于 22 的记录
 $ db.mycoll.find({age: {$gte: 23, $lte: 26}});  # 查询所有 age >= 23 且 age <= 26的记录
@@ -50,7 +50,7 @@ $ db.mycoll.find({gender: {$exists: true}}); # 查询某个字段是否存在
 
 ## 索引
 
-```bash
+```sh
 $ db.mycoll.createIndex({name: 1}); # 创建索引， {backgroud:true} 后台执行
 $ db.mycoll.getIndexes(); # 查询所有索引
 $ db.mycoll.totalIndexSize(); # 查询总索引记录大小
@@ -61,7 +61,7 @@ $ db.mycoll.dropIndex({"indexKey": 1}); # 删除制定索引
 
 ## 增、删、改
 
-```bash
+```sh
 $ db.mycoll.insert({name: 'yin', age: 24, gender: true}); # 插入一条记录, 如果集合不存在自动创建
 $ db.mycoll.insertMany([{name: 'abc', age: 1}, {name: 'efd', age: 26}]); # 插入多条记录（数组）
 $ db.mycoll.update({age: 24}, {$set: {name: 'jins'}}, false, true); # 更新，第一个 boolean 值表示是否 upsert（更新或添加）, 第二个表示是否更新 multi 个,

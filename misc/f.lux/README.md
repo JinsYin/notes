@@ -2,12 +2,12 @@
 
 ## 安装
 
-```bash
+```sh
 # Redshift 可以提供夜灯功能
 $ sudo apt-get install redshift-gtk
 ```
 
-```bash
+```sh
 sudo add-apt-repository ppa:nathan-renniewaldock/flux
 sudo apt-get update
 sudo apt-get install fluxgui

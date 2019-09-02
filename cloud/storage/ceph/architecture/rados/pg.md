@@ -10,7 +10,7 @@
 
 查询 PG 映射 OSD 的集合，即 PG 具体分配到 OSD 的归属：
 
-```bash
+```sh
 $ POOL_ID=2
 
 # 从左到右：PG 编号、PG 所映射到的 OSD 集合

@@ -12,7 +12,7 @@
 
 查看 facts 变量：
 
-```bash
+```sh
 $ ansible all -m setup
 192.168.1.221 | SUCCESS => {
     "ansible_facts": {
@@ -57,7 +57,7 @@ $ ansible all -m setup
 
 `ping` 模块用于测试远程主机的运行状态。
 
-```bash
+```sh
 $ ansible test_cluster -m ping
 192.168.1.222 | success >> {
     "changed": false,
@@ -97,7 +97,7 @@ $ ansible test_cluster -m ping
 * touch: 如果文件不存在，则创建一个新文件；如果文件/目录已存在，则更新其最后修改时间
 * absent: 删除文件、目录，取消链接文件
 
-```bash
+```sh
 # 创建软链接
 $ ansible test_cluster -m file -a "src=/etc/resolv.conf dest=/tmp/resolv.conf state=link"
 
@@ -119,7 +119,7 @@ $ ansible test_cluster -m file -a "path=/tmp/resolv.conf state=absent"
 * src: 被复制到远程主机的本地文件，可以是绝对路径，也可以是相对路径。如果路径是一个目录，则递归复制。如果路径使用 "/" 结尾，则只复制目录里的内容，如果没有使用 "/" 结尾，则包含目录在内的整个内容全部复制，类似 rsync
 * dest: 要将源文件复制到的目标主机的绝对路径；如果源文件是一个目录，那么该路径也必须是一个目录
 
-```bash
+```sh
 ansible test_cluster -m copy -a "src=/etc/ansible/ansible.cfg dest=/tmp/ansible.cfg group=root owner=root mode=0644"
 ```
 
@@ -139,7 +139,7 @@ ansible test_cluster -m copy -a "src=/etc/ansible/ansible.cfg dest=/tmp/ansible.
 * remove: 一个文件名，当该文件不存在是，则该选项不执行
 * executable: 切换 shell 来执行指令，该执行路径必须是一个绝对路径
 
-```bash
+```sh
 ansible test_cluster -m command -a "uptime"
 ```
 
@@ -151,7 +151,7 @@ ansible test_cluster -m command -a "uptime"
 支持$HOME和”<”, “>”, “|”, “;” and “&”
 -->
 
-```bash
+```sh
 # 在本地创建一个 shell 脚本
 
 $ cat <<EOF > /tmp/getdate.sh
@@ -162,7 +162,7 @@ EOF
 $ chmod +x /tmp/getdate.sh
 ```
 
-```bash
+```sh
 # 分发本地脚本到远程主机
 $ ansible test_cluster -m copy -a "src=/tmp/getdate.sh dest=/tmp/getdate.sh group=root owner=root mode=0755"
 
@@ -177,7 +177,7 @@ $ ansible test_cluster -m shell -a "/tmp/getdate.sh"
 
 ### 用法
 
-```bash
+```sh
 ansible all -m service -a 'name=httpd state=started enabled=yes'
 ```
 
@@ -192,13 +192,13 @@ ansible all -m service -a 'name=httpd state=started enabled=yes'
 
 ## user
 
-```bash
+```sh
 ansible all -m user -a "name=alice password=<password>"
 ```
 
 ## git
 
-```bash
+```sh
 ansible web -m git -a "repo=git://foo.example.org/repo.git dest=/srv/myapp version=HEAD"
 ```
 
@@ -210,7 +210,7 @@ ansible web -m git -a "repo=git://foo.example.org/repo.git dest=/srv/myapp versi
 
 ### 用法
 
-```bash
+```sh
 ansible all -m template -a 'src=/etc/ansible/hosts dest=/tmp/hosts'
 ```
 
@@ -228,7 +228,7 @@ synchronize：使用rsync同步文件
 user：系统用户管理
 group：系统用户组管理
 
-```bash
+```sh
 $ ansible-doc -l
 acl                  Sets and retrieves file ACL information.
 add_host             add a host (and alternatively a group) to the ansible-playbo

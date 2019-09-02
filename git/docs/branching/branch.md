@@ -13,34 +13,34 @@
 
 ## 创建分支
 
-```bash
+```sh
 $ git branch <name>
 $ git branch --track [name] [remote-branch] # 新建分支，并与指定远程分支建立追踪关系
 ```
 
 ## 切换分支
 
-```bash
+```sh
 $ git checkout <name>
 $ git checkout - # 求换到上一个分支（类似 cd -）
 ```
 
 ## 创建 + 切换分支
 
-```bash
+```sh
 $ git checkout -b <name>
 $ git checkout -b <name> [origin/name] # 同时还要与远程分支进行关联
 ```
 
 ## 建立分支追踪关系
 
-```bash
+```sh
 $ git branch --set-upstream-to=origin/<branch> dev # 将本地分支与指定的远程分支建立追踪关系
 ```
 
 ## 合并某分支到当前分支
 
-```bash
+```sh
 $ git merge <name> # Fast-Forward 模式，删除分支后不会保留 commit 日志
 $ git merge --no-ff <name> # Non-Fast-Forward 模式，删除分支后会保留 commit 日志（推荐）
 $ git cherry-pick [commit] # 选择一个 commit，合并进当前分支
@@ -48,12 +48,12 @@ $ git cherry-pick [commit] # 选择一个 commit，合并进当前分支
 
 ## 删除分支
 
-```bash
+```sh
 $ git branch -d <name> # 删除本地分支，被合并后才能被删除，或者是空分支也能被删除
 $ git branch -D <name> # 删除本地分支，没被合并也能被删除
 ```
 
-```bash
+```sh
 # 前两个命令都可以用于删除远程分支（需要确保远程分支不是 Default branch）
 $ git push origin :[branch]
 $ git push origin --delete [branch]
@@ -62,14 +62,14 @@ $ git branch -dr [origin/branch] # 只在本地删除，远程并没有真正删
 
 ## 推送分支到远程
 
-```bash
+```sh
 $ git push -u origin master # 第一次推送需要建立分支关联
 $ git push origin master # 第二次推送不用再加 -u
 ```
 
 ## 对比分支差异
 
-```bash
+```sh
 $ git log dev ^master # 查看 dev 分支有的，而 master 分支没有的内容
 $ git log master ^dev # 查看 master 分支有的，而 dev 分支没有的内容
 ```

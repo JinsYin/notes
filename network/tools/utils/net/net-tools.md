@@ -13,13 +13,13 @@
 
 * centos
 
-```bash
+```sh
 $ sudo yum install -y net-tools
 ```
 
 * ubuntu
 
-```bash
+```sh
 $ sudo apt-get install -y net-tools
 ```
 
@@ -27,19 +27,19 @@ $ sudo apt-get install -y net-tools
 
 * tcp
 
-```bash
+```sh
 $ netstat -tpln
 ```
 
 * udp
 
-```bash
+```sh
 $ netstat -upln
 ```
 
 * all
 
-```bash
+```sh
 $ netstat -apln
 ```
 
@@ -47,7 +47,7 @@ $ netstat -apln
 
 * 网卡接口信息
 
-```bash
+```sh
 # 查看已启用的网卡接口信息
 $ ifconfig
 
@@ -60,14 +60,14 @@ $ ifconfig eth0
 
 * 开/关网卡接口
 
-```bash
+```sh
 $ ifconfig eth0 down
 $ ifconfig eth0 up
 ```
 
 * 网卡接口分配 IP 地址
 
-```bash
+```sh
 # 设置/修改网关
 $ ifconfig eth0 192.168.10.2
 
@@ -80,13 +80,13 @@ $ ifconfig eth0 192.168.10.4 netmask 255.255.255.0
 
 * 删除 IP 地址
 
-```bash
+```sh
 $ ifconfig eth0 0
 ```
 
 * 更改网络接口的 MAC 地址
 
-```bash
+```sh
 $ ifconfig eth0 hw ether 08:00:27:75:2a:66
 ```
 
@@ -94,7 +94,7 @@ $ ifconfig eth0 hw ether 08:00:27:75:2a:66
 
 * 查看路由
 
-```bash
+```sh
 $ route -n
 
 $ netstat -rn
@@ -104,17 +104,17 @@ $ ip route [show]
 
 * 添加/修改路由
 
-```bash
+```sh
 # 添加/修改默认路由
 $ route add default gw 192.168.10.1 eth0
 
 # 添加/修改指定路由
-$ route add -net 172.14.32.0/24 gw 192.168.1.1 dev eth0  
+$ route add -net 172.14.32.0/24 gw 192.168.1.1 dev eth0
 ```
 
 * 删除路由
 
-```bash
+```sh
 # 删除默认路由
 $ route del default gw 192.168.10.1 eth0
 
@@ -124,7 +124,7 @@ $ route del -net 172.14.32.0/24
 
 ## arp
 
-```bash
+```sh
 $ arp -na
 ```
 

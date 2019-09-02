@@ -8,6 +8,14 @@ _Ext2_ 是为 Linux 内核设计的第二代扩展文件系统（second extended
 * 设计者：Rémy Card
 * 设计目的：取代 ext
 
+## 概念
+
+* 块组（Block Groups）
+* 目录（Directories）
+* Inode
+* 超级块
+* 符号连接
+
 ## 数据结构
 
 ### inode

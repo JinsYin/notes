@@ -10,7 +10,7 @@
 
 `ceph-mon` 默认总是监听在 `Public Network` 的 `6789` 端口上。
 
-```bash
+```sh
 # {ip-address} 为 Public Network IP
 # iptables -A INPUT -i {iface} -p tcp -s {ip-address}/{netmask} --dport 6789 -j ACCEPT
 $ iptables -A INPUT -i em1 -p tcp -s 192.168.1.0/24 --dport 6789 -j ACCEPT
@@ -22,7 +22,7 @@ $ iptables -A INPUT -i em1 -p tcp -s 192.168.10.0/24 --dport 6789 -j ACCEPT # Pu
 
 `ceph-mds` 默认监听 `Public Network` 上从 `6800` 起的第一个可用端口。
 
-```bash
+```sh
 # {ip-address} 为 Public Network IP
 # iptables -A INPUT -i {iface} -m multiport -p tcp -s {ip-address}/{netmask} --dports 6800:7300 -j ACCEPT
 $ iptables -A INPUT -i em1 -m multiport -p tcp -s 192.168.1.0/24 --dports 6800:7300 -j ACCEPT
@@ -40,7 +40,7 @@ $ iptables -A INPUT -i em1 -m multiport -p tcp -s 192.168.10.0/24 --dports 6800:
 
 ![OSD Firewall](.images/osd-firewall.png)
 
-```bash
+```sh
 # {ip-address} 为 Public Network IP 或 Cluster Network IP，如果分开了 Public Network 和 Cluster Network，必须分别为之设置防火墙
 # iptables -A INPUT -i {iface} -m multiport -p tcp -s {ip-address}/{netmask} --dports 6800:7300 -j ACCEPT
 $ iptables -A INPUT -i em1 -m multiport -p tcp -s 192.168.1.0/24 --dports 6800:7300 -j ACCEPT

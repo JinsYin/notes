@@ -2,7 +2,7 @@
 
 ## 安装 Vagrant
 
-```bash
+```sh
 $ # ubuntu
 $ sudo apt-get install -y vagrant
 $
@@ -19,7 +19,7 @@ Vagrant 默认使用 virtualbox 作为 provider, 同时也支持 hyperv、libvir
 
 * VirtualBox
 
-```bash
+```sh
 $ # ubuntu
 $ sudo apt-get install -y virtualbox
 $

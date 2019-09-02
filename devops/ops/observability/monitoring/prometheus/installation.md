@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 PROMETHEUS_VERSION="2.2.1"
 
 rm -rf /tmp/prometheus* && mkdir -p /tmp/prometheus
@@ -25,7 +25,7 @@ rm -rf /tmp/prometheus*
 
 ## 运行
 
-```bash
+```sh
 $ cat <<EOF > /etc/systemd/system/prometheus.service
 [Unit]
 Description=Prometheus Server
@@ -46,14 +46,14 @@ WantedBy=multi-user.target
 EOF
 ```
 
-```bash
+```sh
 systemctl daemon-reload
 systemctl enable prometheus
 systemctl start prometheus
 systemctl status prometheus
 ```
 
-```bash
+```sh
 # 验证
 $ curl -L http://localhost:9090
 ```
@@ -62,7 +62,7 @@ $ curl -L http://localhost:9090
 
 Prometheus 支持在运行时重新加载配置（`/etc/prometheus/prometheus.yml`），且如果格式不正确是不会被应用的。支持两种方式：
 
-```bash
+```sh
 # 1. 发送 SIGHUP 给 Prometheus 进程
 $ killall -HUP prometheus
 

@@ -20,7 +20,7 @@ nodetool [(-p <port> | --port <port>)]
 
 ## 查看集群信息
 
-```bash
+```sh
 $ nodetool describecluster
 Cluster Information:
     Name: ECassandra
@@ -32,7 +32,7 @@ Cluster Information:
 
 ## 查看 Keyspace 的圆环节点信息
 
-```bash
+```sh
 # CREATE KEYSPACE myspace WITH replication={'class': 'SimpleStrategy', 'replication_factor': 2}
 $ nodetool decribering myspace
 TokenRange(start_token:-20581068291495794, end_token:-14728228113595374, endpoints:[192.168.10.201, 192.168.10.200], rpc_endpoints:[192.168.10.201, 192.168.10.200], endpoint_details:[EndpointDetails(host:192.168.10.201, datacenter:DCHK, rack:R2), EndpointDetails(host:192.168.10.200, datacenter:DCHK, rack:R2)])
@@ -44,12 +44,12 @@ TokenRange(start_token:-8371557560962077843, end_token:-8315370236528078734, end
 
 ## 移除节点
 
-```bash
+```sh
 # 若节点状态为 UN（在将要移除的节点上执行该命令）
 $ nodetool decommission
 ```
 
-```bash
+```sh
 # 若节点状态为 DN（或者关闭进程：systemctl stop cassandra）
 $ nodetool removenode -- {<status>|<force>|<ID>}
 ```
@@ -60,14 +60,14 @@ $ nodetool removenode -- {<status>|<force>|<ID>}
 * force：
 * ID：已 Down 节点的 UUID（不能自己移除自己）
 
-```bash
+```sh
 # 如果 nodetool removenode 失败
 $ nodetool assassinate
 ```
 
 ## History
 
-```bash
+```sh
 ls ~/.cassandra/nodetool.history
 ```
 

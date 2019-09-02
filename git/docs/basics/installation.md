@@ -2,7 +2,7 @@
 
 ## Linux 系统
 
-```bash
+```sh
 # Ubuntu
 $ sudo apt-get install -y git
 
@@ -12,7 +12,7 @@ $ sudo yum install -y git
 
 ## 验证检查
 
-```bash
+```sh
 $ git --version
 git version 2.20.1
 ```

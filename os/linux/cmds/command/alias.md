@@ -4,7 +4,7 @@ Linux 的 `alias` 可以用于临时设置别名，如果需要别名永久生�
 
 ## 命令
 
-```bash
+```sh
 # 查看别名
 $ alias
 
@@ -17,7 +17,7 @@ $ unalias <alias-name>
 
 ## 永久生效
 
-```bash
+```sh
 # 直接添加到 “~/.bashrc” 文件中
 $ echo "alias ll='ls -alF'" >> ~/.bashrc
 $ source ~/.bashrc

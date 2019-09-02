@@ -2,13 +2,13 @@
 
 ## 安装
 
-```bash
+```sh
 # Ubuntu
 $ sudo apt-get install gitk
 ```
 
 ## 使用
 
-```bash
+```sh
 $ cd gitproject/ && gitk
 ```

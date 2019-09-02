@@ -6,7 +6,7 @@
 
 ## 安装
 
-```bash
+```sh
 # REHL/CentOS
 $ yum install -y bridge-utils
 
@@ -18,7 +18,7 @@ $ apt-get install -y bridge-utils
 
 * 查看网桥
 
-```bash
+```sh
 # 查看所有网桥
 $ brctl show
 
@@ -31,20 +31,20 @@ $ brctl showmacs xxxx
 
 * 添加网桥
 
-```bash
+```sh
 # 创建网桥
 $ brctl addbr bridge0
 ```
 
 * 关闭 STP（生成树协议）
 
-```bash
+```sh
 $ brctl stp bridge0 off
 ```
 
 * 删除网桥
 
-```bash
+```sh
 $ brctl delbr bridge0
 ```
 
@@ -52,7 +52,7 @@ $ brctl delbr bridge0
 
 添加以太网物理接口，意思是：将这些物理接口附加到刚生成的逻辑（虚拟）网桥接口 bridge0 上。现在，原来的两个以太网物理接口变成了网桥上的两个逻辑端口。
 
-```bash
+```sh
 $ brctl addif bridge0 eth0
 
 # 可以添加多个
@@ -61,13 +61,13 @@ $ brctl addif bridge0 eth0 eth1
 
 * 删除物理接口
 
-```bash
+```sh
 $ brctl delif br0 eth0 eth1
 ```
 
 * 配置网络
 
-```bash
+```sh
 # 配置网段，并启动
 $ ifconfig bridge0 172.27.1.0/24 up
 
@@ -79,7 +79,7 @@ $ ifconfig bridge0
 
 * 配置开机激活
 
-```bash
+```sh
 $ vim /etc/network/interfaces
 iface bridge0 inet static
   address 10.10.10.1

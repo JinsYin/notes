@@ -25,7 +25,7 @@
 
 ## 进程层次结构
 
-```bash
+```sh
 init
 +
 |
@@ -37,7 +37,7 @@ init
         +------- docker-containerd-shim
 ```
 
-```bash
+```sh
 # -S: 命名空间
 $ pstree -S `pgrep dockerd`
 dockerd─┬─docker-containe─┬─docker-containe─┬─minio(ipc,mnt,net,pid,uts)───78*[{minio}]

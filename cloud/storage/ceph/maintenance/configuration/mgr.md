@@ -2,7 +2,7 @@
 
 ## Modules
 
-```bash
+```sh
 $ ceph mgr module ls
 {
     "enabled_modules": [
@@ -21,7 +21,7 @@ $ ceph mgr module ls
 }
 ```
 
-```bash
+```sh
 # 启用模块
 $ ceph mgr module enable prometheus
 
@@ -31,20 +31,20 @@ $ ceph mgr module disable prometheus
 
 ### Prometheus
 
-```bash
+```sh
 # 配置 IP 和 端口
 $ ceph config-key put mgr/prometheus/server_addr 192.168.8.220
 $ ceph config-key put mgr/prometheus/server_port 9283 # 默认端口
 ```
 
-```bash
+```sh
 # 启用 prometheus 模块
 $ ceph mgr module enable prometheus
 ```
 
 浏览器打开：<http://192.168.8.220:9283/metrics>
 
-```bash
+```sh
 # Prometheus
 $ docker run -d --name prometheus -p 9090:9090 prom/prometheus:v1.0.0
 
@@ -58,13 +58,13 @@ $ docker run -d --name grafana -p 3000:3000 grafana/grafana:3.1.1
 
 默认 `dashboard` 以及启用，如需手动配置：
 
-```bash
+```sh
 # 配置 IP 和 端口
 $ ceph config-key put mgr/dashboard/server_addr 192.168.8.220
 $ ceph config-key put mgr/dashboard/server_port 7000 # 默认端口
 ```
 
-```bash
+```sh
 # 启用 dashboard 模块
 $ ceph mgr module enable dashboard
 ```
@@ -73,7 +73,7 @@ $ ceph mgr module enable dashboard
 
 ## Services
 
-```bash
+```sh
 $ ceph mgr services
 {
     "dashboard": "http://192.168.8.220:7000/"

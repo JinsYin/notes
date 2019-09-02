@@ -2,7 +2,7 @@
 
 ## 使用 docker 部署 mongodb server
 
-```bash
+```sh
 $ docker run -it --name mongodb -v mongodb_data:/data/db -p 27017:27017 -d mongo
 ```
 
@@ -15,6 +15,6 @@ $ docker run -it --name mongodb -v mongodb_data:/data/db -p 27017:27017 -d mongo
 
 ## 命令行连接
 
-```bash
+```sh
 $ mongo --host 127.0.0.1 --port 27017
 ```

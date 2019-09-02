@@ -4,18 +4,18 @@
 
 * centos
 
-```bash
+```sh
 $ yum install -y xxxxxx
 ```
 
 * ubuntu
 
-```bash
+```sh
 $ apt-get install -y vlan
 ```
 
 ## 命令
 
-```bash
+```sh
 $ vconfig
 ```

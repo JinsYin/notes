@@ -6,7 +6,7 @@ Ceph 默认启用了身份认证（authentication）和授权（authorization）
 
 以下操作是等价的：
 
-```bash
+```sh
 # 没有指定用户名和 keyring
 $ ceph health
 
@@ -16,7 +16,7 @@ $ ceph --keyring=/etc/ceph/ceph.client.admin.keyring -n client.admin health
 
 环境变量可以避免重复输入：
 
-```bash
+```sh
 % export CEPH_ARGS="--name client.jins --keyring ceph.jins.alice.keyring --conf ceph.conf"
 % ceph health
 ```
@@ -77,7 +77,7 @@ Caps：
 
 * **罗列用户**
 
-```bash
+```sh
 $ ceph auth list # -o {filename}
 installed auth entries:
 
@@ -109,7 +109,7 @@ mgr.Yin
 
 * **获取用户**
 
-```bash
+```sh
 # ceph auth get {TYPE.ID}
 # ceph auth export {TYPE.ID}
 # 返回 keyring （包括用户名、密钥和 caps）
@@ -124,7 +124,7 @@ $ ceph auth get cllient.admin # -o client.admin.keyring
 
 * **查看用户密钥**
 
-```bash
+```sh
 # 密钥用于身份认证
 # ceph auth print-key {TYPE}.{ID}
 # ceph auth get-key {TYPE}.{ID}
@@ -140,7 +140,7 @@ AQCrt2pbdgMZIhAAQ1MZrvFqDdpdt2Rl1m+hvw==
 | `ceph auth get-or-create`     | 同上，并返回 keyfile（含用户名和密钥）                          |
 | `ceph auth get-or-create-key` | 创建用户并返回密钥。对只需要密钥的客户端是有用的（如：libvirt） |
 
-```bash
+```sh
 $ ceph auth add client.jins mon 'allow r' osd 'allow rw pool=rbd'
 added key for client.jins
 
@@ -162,13 +162,13 @@ AQAoSXJbf7onOBAATiKenOQUTtuO+N4PU+oTEg==
 
 语法：
 
-```bash
+```sh
 ceph auth caps USERTYPE.USERID {daemon} 'allow [r|w|x|*|...] [pool={pool-name}] [namespace={namespace-name}]' [{daemon} 'allow [r|w|x|*|...] [pool={pool-name}] [namespace={namespace-name}]']
 ```
 
 例如：
 
-```bash
+```sh
 $ ceph auth get client.jins
 [client.jins]
     key = AQCiS3JbZcf+GhAAO7/32Osh5vhVu9QaEwGgMA==
@@ -187,13 +187,13 @@ updated caps for client.brian-manager
 
 清除 caps：
 
-```bash
+```sh
 ceph auth caps client.ringo mon ' ' osd ' '
 ```
 
 * **删除用户**
 
-```bash
+```sh
 # ceph auth rm {TYPE}.{ID}
 # ceph auth del {TYPE}.{ID}
 $ ceph auth del client.ringo
@@ -202,7 +202,7 @@ updated
 
 * **导入用户**
 
-```bash
+```sh
 # 导入一个或多个用户
 # ceph auth import -i /path/to/keyring
 $ ceph auth import -i /etc/ceph/ceph.keyring
@@ -223,7 +223,7 @@ After you create a user (e.g., client.ringo), you must get the key and add it to
 
 * **创建 keyring**
 
-```bash
+```sh
 # 创建一个空的 keyring
 # ceph-authtool --create-keyring/-C /path/to/keyring
 $ ceph-authtool -C /etc/ceph/ceph.keyring
@@ -231,7 +231,7 @@ $ ceph-authtool -C /etc/ceph/ceph.keyring
 
 * **将用户加入 keyring**
 
-```bash
+```sh
 #
 $ ceph auth get client.jins -o /etc/ceph/ceph.client.jins.keyring
 
@@ -240,7 +240,7 @@ ceph-authtool /etc/ceph/ceph.keyring --import-keyring /etc/ceph/ceph.client.admi
 
 * **创建用户**
 
-```bash
+```sh
 # 新用户仅存在与 keyring 中，不会加入到 Ceph 存储集群
 $ ceph-authtool -n client.ringo --cap osd 'allow rwx' --cap mon 'allow rwx' /etc/ceph/ceph.keyring
 
@@ -250,7 +250,7 @@ $ ceph auth add client.ringo -i /etc/ceph/ceph.keyring
 
 * **修改用户属性**
 
-```bash
+```sh
 $ ceph-authtool /etc/ceph/ceph.keyring -n client.ringo --cap osd 'allow rwx' --cap mon 'allow rwx'
 
 $ ceph auth import -i /etc/ceph/ceph.keyring

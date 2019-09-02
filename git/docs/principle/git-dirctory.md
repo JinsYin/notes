@@ -2,7 +2,7 @@
 
 Git 的数据结构存储在当前项目的 `.git` 目录中。
 
-```bash
+```sh
 $ cd myproject && tree .git
 .git
 ├── branches
@@ -33,7 +33,7 @@ $ cd myproject && tree .git
 
 * HEAD
 
-```bash
+```sh
 $ cat .git/HEAD
 ref: refs/heads/master
 
@@ -45,7 +45,7 @@ ref: refs/heads/test
 
 * .git/config
 
-```bash
+```sh
 $ cat .git/config
 [core]
     repositoryformatversion = 0
@@ -67,7 +67,7 @@ $ cat .git/config
 
 * refs
 
-```bash
+```sh
 $ cat .git/refs/heads/master
 f01e8e8d194770a2e4134815be41ae1214b6a41c
 

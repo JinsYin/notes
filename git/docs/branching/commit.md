@@ -8,23 +8,23 @@
 
 ## 实验一 · 修改最新 commit 的 message
 
-```bash
+```sh
 git init e1 && cd e1
 echo "README" > README.md
 git add . && git commit -m "README"
 ```
 
-```bash
+```sh
 $ git log --oneline
 a9c0935 (HEAD -> master) README
 ```
 
-```bash
+```sh
 $ git commit --amend
 Document # 修改后的 message
 ```
 
-```bash
+```sh
 # Commit ID 和 message 都不相同
 $ git log --oneline
 b03da2e (HEAD -> master) Document

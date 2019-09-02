@@ -21,14 +21,14 @@ KafkaOffsetMonitor 的安装部署较为简单，所有的资源都打包到一�
 
 进入 /root/Cloud/kafka-0.10.0.1/bin/kafka-offset 路径下
 
-```bash
-$ chmod +x  mobile_start_en.sh  
+```sh
+$ chmod +x  mobile_start_en.sh
 $ ./mobile_start_en.sh
 ```
 
 ![Kafka OffsetMonitor Start](./img/kafka-offset-monitor-start.png)
 
-进程 2314，即为：KafkaOffsetMonitor 
+进程 2314，即为：KafkaOffsetMonitor
 
 ![Kafka OffsetMonitor Check](./img/kafka-offset-monitor-check.png)
 

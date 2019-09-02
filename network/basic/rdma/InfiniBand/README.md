@@ -13,7 +13,7 @@ InfiniBand 是一种基于交换的串行 I/O 互连体系结构，运行速度�
 
 ### Enabling IPoIB using OFED
 
-```bash
+```sh
 $ vi /etc/infiniband/openib.conf
 IPOIB_LOAD=yes
 SET_IPOIB_CM=yes
@@ -26,7 +26,7 @@ $ ifconfig -a
 
 ### Enabling IPoIB using RHEL or CentOS Provided Software
 
-```bash
+```sh
 $ vi /etc/rdma/rdma.conf
 IPOIB_LOAD=yes
 
@@ -44,7 +44,7 @@ Mellanox InfiniBand,主要包括 HCA（主机通道适配器）和交换机两�
 
 ### Firmware Burning
 
-```bash
+```sh
 # 检查设备的 PCI 地址
 $ lspci | grep Mellanox
 04:00.0 InfiniBand: Mellanox Technologies MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE] (rev b0)
@@ -69,7 +69,7 @@ ConnectX®-3/ConnectX®-3 Pro/ConnectX®-4/ConnectX®-4 Lx/ConnectX®-
 ports. By default both ConnectX®-4 VPI ports are initialized as InfiniBand ports. If you
 wish to change the port type use the mstconfig after the driver is loaded.
 
-```bash
+```sh
 # 安装 mstflint 工具
 $ yum install -y mstflint
 
@@ -92,7 +92,7 @@ Mellanox **ConnectX®-4** / **ConnectX®-4 Lx**/ **ConnectX®-5** / **ConnectX®
 
 如果要卸载内核模块，需要先卸载 `mlx*_en`/`mlx*_ib`，再卸载 `mlx*_core`。
 
-```bash
+```sh
 # 加载驱动
 $ modprobe mlx5_ib
 
@@ -110,7 +110,7 @@ $ modprobe -r mlx5_ib
 | **rdma-core** | RDMA core userspace libraries and daemons                                                           |
 | **libibmad**  | Low layer InfiniBand diagnostic and management program. OpenFabrics Alliance InfiniBand MAD library |
 
-```bash
+```sh
 # 安装
 $ yum install libibverbs librdmacm libibcm libibmad libibumad libmlx4
 libmlx5 opensm ibutils infiniband-diags srptools perftest mstflint rdmacmutils
@@ -125,7 +125,7 @@ ibverbs-utils librdmacm-utils -y
 
 #### 安装 RDMA 软件包
 
-```bash
+```sh
 # 安装 RDMA（卸载：yum -y groupremove "Infiniband Support"）
 $ yum -y groupinstall "Infiniband Support"
 
@@ -135,7 +135,7 @@ $ yum -y install opensm # infiniband-diags perftest gperf
 
 #### 启动 RDMA 服务
 
-```bash
+```sh
 $ systemctl start rdma
 $ systemctl start opensm
 
@@ -153,7 +153,7 @@ $ reboot
 
 ### 命令
 
-```bash
+```sh
 # 查看 ib 网卡状态，如果是 Active 表示已启动
 $ ibstat
 CA 'mlx4_0'
@@ -179,14 +179,14 @@ $ sminfo
 sminfo: sm lid 4 sm guid 0x2c903000d81f9, activity count 1329328 priority 14 state 3 SMINFO_MASTER
 ```
 
-```bash
+```sh
 $ nmcli dev status
 
 $ nmcli connect show
 $ nmcli connect show -a
 ```
 
-```bash
+```sh
 $ # 启动子网管理(subnet manager)
 $ service opensmd start
 
@@ -194,7 +194,7 @@ $ # 开机自启动
 $ chkconfig opensmd on
 ```
 
-```bash
+```sh
 # 重启 ib（Infiniband） 网卡
 $ service openibd restart
 ```
@@ -203,14 +203,14 @@ $ service openibd restart
 
 临时配置静态 IP ：
 
-```bash
+```sh
 # ip a
 $ ip address add 10.0.10.100/24 dev ib0
 ```
 
 永久配置静态 IP ：
 
-```bash
+```sh
 # 需要确保开机后 NM Controlled 自启动
 $ cat /etc/sysconfig/network-scripts/ifcfg-ib0
 TYPE="Infiniband"
@@ -227,7 +227,7 @@ NM_CONTROLLED="yes"
 
 重启网络接口：
 
-```bash
+```sh
 $ ifdown ib0 && ifup ib0
 ```
 

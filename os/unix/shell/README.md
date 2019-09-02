@@ -28,7 +28,7 @@ Bourne shell 是第一个出现在 Unix 系统中的 shell，所以被称为标�
 
 ## Login Shell
 
-_Login shell_ 是指用户刚登录系统时，由系统创建、用以运行 shell 命令（即执行相应程序）的进程。对 Unix 系统而言，shell 只是一个用户进程。
+_Login shell_ 是指用户刚登录系统时，由系统创建、用来运行 shell 命令（即执行相应程序）的进程。对 Unix/Unix-like 系统而言，shell 仅仅是一个用户进程。
 
 ```sh
 # 查看系统可用的 Login Shell（macOS）

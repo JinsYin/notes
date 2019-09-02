@@ -7,7 +7,7 @@
 使用 mysql 作为 hive 的元数据存储，减少了查询过程中执行语义检查的时间。
 
 ### 2.版本
-```bash
+```sh
 # 系统：centos 7
 # Hive version： 2.1.1
 java –version # 1.8.0
@@ -15,7 +15,7 @@ hadoop version # 2.6.0
 ```
 
 ### 3.主从节点
-```bash
+```sh
 # cat /etc/hosts
 192.168.1.121   clusterMaster
 192.168.1.122   clusterSlave1
@@ -24,7 +24,7 @@ hadoop version # 2.6.0
 ```
 
 ### 4.主节点安装 mysql
-```bash
+```sh
 ## 只在clusterMaster 上安装 mysql-server
 yum install mysql-server -y
 service mysqld start
@@ -35,7 +35,7 @@ service mysqld start
 ```
 
 ### 5.主节点配置 hive
-```bash
+```sh
 ## clusterMaster
 ## 下载并解压 Hive-2.1.1
 ## vi /root/.bashrc
@@ -91,7 +91,7 @@ $HADOOP_HOME/bin/hadoop fs -chmod g+w /user/hive/warehouse # hive.metastore.ware
 ```
 
 ### 6.从节点
-```bash
+```sh
 ## 主节点 clusterMaster
 scp –r /root/Cloud//root/Cloud/apache-hive-2.1.1-bin/ root@192.168.1.122/root/Cloud/
 scp –r /root/Cloud//root/Cloud/apache-hive-2.1.1-bin/ root@192.168.1.124/root/Cloud/

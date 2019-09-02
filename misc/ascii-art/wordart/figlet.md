@@ -2,13 +2,13 @@
 
 ## 安装
 
-```bash
+```sh
 $ sudo apt-get install figlet
 ```
 
 ## 实验
 
-```bash
+```sh
 $ figlet HelloWorld
  _   _      _ _    __        __         _     _
 | | | | ___| | | __\ \      / /__  _ __| | __| |

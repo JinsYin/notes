@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 # qperf 来自 epel-release 源
 $ yum install -y epel-release qperf
 ```
@@ -11,7 +11,7 @@ $ yum install -y epel-release qperf
 
 * server
 
-```bash
+```sh
 # 默认监听在 TCP/19765，可以使用 --listen_port 选项进行修改
 $ qperf
 
@@ -23,7 +23,7 @@ $ firewall-cmd --add-port=19765/tcp
 
 * client
 
-```bash
+```sh
 # 单位是 MB/sec、GB/sec 等
 $ qperf -t 60 <server-ip> tcp_bw
 tcp_bw:
@@ -39,7 +39,7 @@ tcp_bw:
 
 * client
 
-```bash
+```sh
 $ qperf -vvs <server-ip> tcp_lat
 tcp_lat:
     latency         =    15.8 us

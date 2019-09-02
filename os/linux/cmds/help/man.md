@@ -2,6 +2,13 @@
 
 注：手册页默认在 `less` 程序中打开（`q`：退出，空格：下一页，`b`：上一页）。
 
+## 安装
+
+```sh
+# CentOS
+$ sudo yum install -y man-pages
+```
+
 ## Section
 
 手册页分为以下几个部分（sections）：
@@ -28,7 +35,7 @@
 
 当上述部分的名字相同时，需要指定从哪个部分获取正确的手册页（指定数字即可）。
 
-```bash
+```sh
 # man 手册
 $ man man
 
@@ -47,7 +54,7 @@ $ man 3 write # 库函数手册
 
 ## 示例
 
-```bash
+```sh
 # WRITE(2) 中的 2 指的是这是第 2 部分
 $ man 2 write
 
@@ -67,7 +74,7 @@ SYNOPSIS
 
 如果不知道函数或命令的名称，可以使用 `apropos` 程序搜索所列关键字的手册页描述，并查找认为匹配的命令或函数。
 
-```bash
+```sh
 $ apropos "working directory"
 chdir (2)            - change working directory
 fchdir (2)           - change working directory

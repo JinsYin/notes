@@ -41,7 +41,7 @@ val rdd = sc.wholeTextFiles("/my/dir1,/my/dir2,/my/paths/part-00[0-5]*,/a/specif
 
 RDD 以分区（partition）的形式分布在集群中的多台机器上，每个分区代表数据集的一个子集，并且每个分区的大小不一定相同。分区定义了 Spark 中数据的并行单位，分区的数量决定了 Spark 并行计算的能力。Spark 并行处理多个分区，每个分区内的数据对象则是顺序处理。
 
-```bash
+```sh
 $ # 第二个参数代表分区的个数
 $ val rdd = sc.parallelize(Array(1, 2, 3, 4), 4)
 ```
@@ -613,7 +613,7 @@ println(sortedRDD22.partitions.length)  // 2
 
 func 的返回值将作为一个分组。
 
-```bash
+```sh
 val rdd = sc.parallelize(1 to 9, 5)
 rdd.groupBy(x => {
   if (x % 2 == 0) "A"
@@ -734,7 +734,7 @@ sc.textFile("R.md").count()
 
 对 `(K, V)` 类型的 RDD 中 key 相同的元素的 value 进行求和，最终返回一个 `Map[K, Long]`。另外，元素的 value 不一定要是数值型，因为 countByKey 内部把元素的 value 都映射成了 `1L`。`rdd.countBykey()` 等同于 `rdd.mapValues(_ => 1L).reduceByKey(_ + _).collect.toMap`。
 
-```bash
+```sh
 // 求单词数（不用在调用 collect 函数）
 sc.textFile("R.md").flapMap("""[^a-zA-Z]+""").map(word => (word, 1)).countByKey.foreach(println)
 ```

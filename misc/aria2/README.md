@@ -4,7 +4,7 @@ aria2 是一个轻量级的 **多源**、**多协议** 命令行下载程序，�
 
 ## 安装
 
-```bash
+```sh
 # Debian/Ubuntu
 $ sudo apt-get install -y aria2
 
@@ -17,7 +17,7 @@ $ brew install aria2
 
 ## 命令行下载
 
-```bash
+```sh
 # HTTP
 $ aria2c http://example.org/mylinux.iso
 

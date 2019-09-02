@@ -12,13 +12,13 @@
 
 ## 转换
 
-```bash
+```sh
 # 利用pl脚本将/etc/passwd 和/etc/shadow生成LDAP能读懂的文件格式
 # ./migrate_base.pl > /tmp/base.ldif
 # ./migrate_passwd.pl  /etc/passwd > /tmp/passwd.ldif
 # ./migrate_group.pl  /etc/group > /tmp/group.ldif
 ```
 
-```bash
+```sh
 ldapadd -x -D "cn=admin,dc=example,dc=com" -W -f /tmp/base.ldif
 ```

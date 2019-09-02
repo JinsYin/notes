@@ -1,6 +1,6 @@
 # Conda 常用命令
 
-```bash
+```sh
 # 查看安装了哪些软件包及其版本
 $ conda list
 

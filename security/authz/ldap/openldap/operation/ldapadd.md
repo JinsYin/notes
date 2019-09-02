@@ -22,6 +22,6 @@ ldapadd  [-V[V]]  [-d debuglevel]  [-n]  [-v]  [-c]  [-f file]  [-S file] [-M[M]
 
 ## 导入
 
-```bash
+```sh
 $ ldapadd -x -D "cn=admin,dc=eway,dc=link" -w "admin" -f ldap.ldif
 ```

@@ -6,7 +6,7 @@
 
 * 定义
 
-```golang
+```go
 type STRUCT_TYPE_NAME struct {
     field1 T1
     ......
@@ -18,7 +18,7 @@ type STRUCT_TYPE_NAME struct {
 
 结构体使用 `.` 来访问结构体字段。
 
-```golang
+```go
 // 声明 + 初始化
 var struct_name STRUCT_TYPE_NAME
 struct_name.field1 = ...
@@ -30,7 +30,7 @@ var struct_name STRUCT_TYPE_NAME{field1: ..., fieldn: ...}
 
 * 示例
 
-```golang
+```go
 // 定义
 var Person struct {
     age int
@@ -50,7 +50,7 @@ var person Person{age: 20, name: "jins"} // var person Person{20, "jins"}
 
 结构体字段可以通过结构体指针来访问。对于结构体指针 `p`，我们可以通过 `(*p).X` 或 `p.X` 来访问结构体字段 `X`。
 
-```golang
+```go
 func main() {
     var person Person{age: 20, name: "jins"}
     var p *Persion
@@ -69,14 +69,12 @@ func main() {
 
 * 结构体数组
 
-```golang
+```go
 // 声明
 var sa [3]Person
-sa = {{20, "a"}, {21, "b"}, {22, "c"}}
+sa = { {20, "a"}, {21, "b"}, {22, "c"} }
 ```
 
-```golang
-func main() {
-    var
-}
+```go
+func main() {}
 ```

@@ -17,7 +17,7 @@
 
 哪些操作会导致分离头指针
 
-```bash
+```sh
 # 1
 $ git checkout [commit_id]
 
@@ -27,26 +27,26 @@ $ git rebase
 
 切换到 master 前的解决办法：
 
-```bash
+```sh
 # 强制将 master 分支执行头指针的位置（如果 master 分支还有新提交的话慎用）
 $ git branch -f master HEAD && git checkout master
 ```
 
-```bash
+```sh
 # 使用新分支来保存分离的提交
 $ git branch v001 [commit-id]
 ```
 
 切换到 master 后的解决办法：
 
-```bash
+```sh
 # 查看最近的提交 ID，然后再 checkout 回来；不过如果不管它，过段时间会作为垃圾回收掉
 $ git reflog
 ```
 
 ## 实验一 · 分离头指针
 
-```bash
+```sh
 git init e1 && cd e1/
 
 echo 'print("Hello,world")' > main.py
@@ -56,7 +56,7 @@ git add main.py && git commit -m 'Python Code'
 git add README.md && git commit -m 'Python Document'
 ```
 
-```bash
+```sh
 # 提交历史
 $ git log --oneline
 c155d2e (HEAD -> master) Python Document
@@ -81,13 +81,13 @@ HEAD is now at 9e89670 Python Code
 
 * 分离头指针后做一些提交
 
-```bash
+```sh
 echo "# Test Code" > test.py
 
 git add test.py && git commit -m "Test Code"
 ```
 
-```bash
+```sh
 $ git branch
 * (HEAD detached from 9e89670)
   master
@@ -103,13 +103,13 @@ c155d2e (master) Python Document
 
 * 若没有此时还未绑定到具体分支
 
-```bash
+```sh
 $ git checkout -b fix-1
 ```
 
 * 尝试切换到 master 分支
 
-```bash
+```sh
 $ git checkout master
 ```
 

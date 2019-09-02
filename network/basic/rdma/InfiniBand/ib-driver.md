@@ -10,7 +10,7 @@
 
 ### 安装 RDMA 软件包
 
-```bash
+```sh
 # 安装 RDMA（卸载：yum -y groupremove "Infiniband Support"）
 $ yum groupinfo "Infiniband Support"
 $ yum -y groupinstall "Infiniband Support"
@@ -21,7 +21,7 @@ $ yum -y install infiniband-diags opensm # infiniband-diags perftest gperf
 
 ### 启动 RDMA 服务
 
-```bash
+```sh
 $ systemctl start rdma
 $ systemctl start opensm
 
@@ -39,7 +39,7 @@ $ reboot
 
 ### 修改 memlock
 
-```bash
+```sh
 # 临时修改
 $ ulimit -l unlimited
 

@@ -2,24 +2,24 @@
 
 ## 环境
 
-```bash
+```sh
 $ uname -r
 4.2.0-27-generic
 ```
 
-```bash
+```sh
 $ python --version
 Python 2.7.6
 ```
 
-```bash
+```sh
 $ java -version
 java version "1.8.0_121"
 Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
 ```
 
-```bash
+```sh
 % sudo update-alternatives --config java
 ```
 
@@ -27,7 +27,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
 
 ## 编译
 
-```bash
+```sh
 # 进入 mesos 目录
 $ mkdir build && cd build
 $ ../configure
@@ -38,7 +38,7 @@ $ make install
 
 编译好之后除了在 `build` 目录下生成 mesos 相关文件外，还有如下文件：
 
-```bash
+```sh
 /usr/local/etc/mesos # mesos相关配置文件
 /usr/local/bin/mesos # mesos相关执行文件
 /usr/local/include/mesos
@@ -64,32 +64,32 @@ $ make install
 
 * 命令一
 
-```bash
+```sh
 % mesos
 % mesos-ps
 ```
 
 如果提示 "from mesos import http" python 没有的 mesos 包。执行：
 
-```bash
+```sh
 % cp -r /usr/local/lib/python2.7/site-packages/mesos* /usr/local/lib/python2.7/dist-packages/
 ```
 
 * 命令二
 
-```bash
+```sh
 % mesos-resolve
 ```
 
 如果提示没有 libmesos.so 文件，执行
 
-```bash
+```sh
 % sudo echo /usr/lib /etc/ld.so.conf
 % sudo echo /usr/local/lib /etc/ld.so.conf
 % sudo ldconfig -v
 ```
 
-```bash
+```sh
 % mesos-master
 % mesos-slave
 % mesos-agent

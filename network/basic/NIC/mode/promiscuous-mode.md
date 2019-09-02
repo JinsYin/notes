@@ -16,7 +16,7 @@ Linux 操作系统设置、取消网卡混杂模式时都需要管理员权限�
 
 * net-tools
 
-```bash
+```sh
 # 设置
 $ sudo ifconfig eth1 promisc
 
@@ -30,7 +30,7 @@ $ sudo ifconfig eth1 -promisc
 
 * iproute2
 
-```bash
+```sh
 # 设置
 $ sudo ip link set eth1 promisc on
 
@@ -44,7 +44,7 @@ $ sudo ip link set eth1 promisc off
 
 ### 永久设置
 
-```bash
+```sh
 $ sudo vi /etc/rc.local
 ifconfig eth1 promisc # or: ip link set eth1 promisc on
 ```

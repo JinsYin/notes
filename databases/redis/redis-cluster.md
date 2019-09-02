@@ -2,7 +2,7 @@
 
 ## 安装、运行（master 和 slave）
 
-```bash
+```sh
 $ sudo add-apt-repository ppa:chris-lea/redis-server
 $ sudo apt-get update
 $ sudo apt-get install redis-server -y
@@ -12,7 +12,7 @@ $ sudo apt-get install redis-server -y
 
 1000 个请求，10 个并发，5个管道（pipeline）
 
-```bash
+```sh
 $ redis-benchmark -q -n 1000 -c 10 -P 5
 ```
 
@@ -20,25 +20,25 @@ $ redis-benchmark -q -n 1000 -c 10 -P 5
 
 设置 keepalive timer：
 
-```bash
+```sh
 $ sed -i -r 's/tcp-keepalive.*/tcp-keepalive 60/g' /etc/redis/redis.conf
 ```
 
 允许所有机器连接：
 
-```bash
+```sh
 $ sed -i -r 's/bind\s+127.0.0.1/# bind 127.0.0.1/g' /etc/redis/redis.conf
 ```
 
 设置密码
 
-```bash
+```sh
 $ sed -i -r 's|#\s+requirepass.*|requirepass 123456|g' /etc/redis/redis.conf| grep requirepass
 ```
 
 其他
 
-```bash
+```sh
 $ sed -i -r 's/#\s+maxmemory-policy.*/maxmemory-policy noeviction/g' /etc/redis/redis.conf
 $ sed -i -r 's/appendonly\s+no/appendonly yes/g' /etc/redis/redis.conf
 $ sed -i -r 's/appendfilename.*/appendfilename "redis-staging-ao.aof"/g' /etc/redis/redis.conf | grep appendfilename
@@ -46,19 +46,19 @@ $ sed -i -r 's/appendfilename.*/appendfilename "redis-staging-ao.aof"/g' /etc/re
 
 重启
 
-```bash
+```sh
 $ sudo service redis-server restart
 ```
 
 远程试一试
 
-```bash
+```sh
 $ redis-cli -h 192.168.1.* -p 6379 -a 123456
 ```
 
 ## 配置 slave
 
-```bash
+```sh
 $ # 允许所有机器连接
 $ sed -i -r 's/bind\s+127.0.0.1/# bind 127.0.0.1/g' /etc/redis/redis.conf
 $
@@ -70,12 +70,12 @@ $ sed -i -r 's/#\s+slaveof.*/slaveof 192.168.1.220 6379/g' /etc/redis/redis.conf
 $
 $ # 设置 master 密码
 $ sed -i -r 's/#\s+masterauth.*/masterauth 123456/g' /etc/redis/redis.conf
-$ 
+$
 $ # 重启
 $ sudo service redis-server restart
 ```
 
-```bash
+```sh
 # 在 master 上连接 slave
 $ redis-cli -h 192.168.1.* -p 6379
 $

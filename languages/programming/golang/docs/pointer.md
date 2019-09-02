@@ -6,7 +6,7 @@
 
 类型 `*T` 是一个指向 `T` 类型值的指针类型，其对应的零值为 `nil`，即空指针。
 
-```golang
+```go
 var p *int // p 指向 int 型变量值的指针
 ```
 
@@ -14,7 +14,7 @@ var p *int // p 指向 int 型变量值的指针
 
 `&` 运算符生成一个指向其操作数的指针，即操作数的内存地址。
 
-```golang
+```go
 i := 123
 p = &i // &i 返回 123 的内存地址
 ```
@@ -23,7 +23,7 @@ p = &i // &i 返回 123 的内存地址
 
 `*` 运算符表示指针指向的底层值。
 
-```golang
+```go
 fmt.Println(*p) // 通过指针 p 读取变量 i
 *p = 321        // 通过指针 p 修改变量 i
 ```
@@ -34,13 +34,13 @@ fmt.Println(*p) // 通过指针 p 读取变量 i
 
 * 语法格式
 
-```golang
+```go
 var ptr [SIZE]*variable_type
 ```
 
 * 示例
 
-```golang
+```go
 package main
 
 import "fmt"

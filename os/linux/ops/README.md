@@ -72,7 +72,7 @@
 
 * 脚本（需要考虑重复执行）
 
-```bash
+```sh
 #!/bin/bash
 # RHEL
 
@@ -174,13 +174,13 @@ main $@
 
 破坏：
 
-```bash
+```sh
 vi /etc/hosts
 ```
 
 ## 参考
 
-```bash
+```sh
 #!/bin/bash
 rm -f ./authorized_keys; touch ./authorized_keys
 sed -i '/StrictHostKeyChecking/ s/^#/ /; /StrictHostKeyChecking/ s/ask/no/' /etc/ssh/ssh_config

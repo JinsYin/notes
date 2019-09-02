@@ -9,7 +9,7 @@
 
 Ceph 客户端只需要在 `[client]` 下配置 Monitor 地址即可。
 
-```bash
+```sh
 # ceph -s --name client.jins --keyring ceph.client.jins.keyring --conf ceph.conf
 $ cat ceph.conf
 [client]

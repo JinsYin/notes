@@ -27,13 +27,13 @@ scala 版本 2.11.8， 本地 jdk 版本 1.8。
 
 2. 解压并 mv
 
-```bash
+```sh
 $ mv sbt/ /usr/local/share
 ```
 
 3. 修改环境变量
 
-```bash
+```sh
 $ sudo vi /etc/environment
 SBT_HOME=/usr/local/share/sbt
 PATH=$PATH:$SBT_HOME/bin
@@ -41,7 +41,7 @@ PATH=$PATH:$SBT_HOME/bin
 
 4. 更新环境变量
 
-```bash
+```sh
 $ source /etc/environment
 ```
 

@@ -29,14 +29,14 @@
 
 `glusterd` 守护进程默认监听 tcp/24007 端口，但在 gluster 节点上还不止开放该端口，因为每增加一个 brick 就会新开一个端口（用 `gluster volume status` 命令查看）。
 
-```bash
+```sh
 $ systemctl stop firewalld
 $ systemctl disable firewalld
 ```
 
 * 关闭 selinux
 
-```bash
+```sh
 # 临时
 $ setenforce 1
 
@@ -46,7 +46,7 @@ $ sed -i 's|SELINUX=enforcing|SELINUX=disabled|g' /etc/selinux/config
 
 * 修改主机名
 
-```bash
+```sh
 $ hostnamectl --static set-hostname <hostname>
 ```
 
@@ -54,7 +54,7 @@ $ hostnamectl --static set-hostname <hostname>
 
 如果使用 hostname 加入 Gluster 节点到集群，必须确保所有节点都可以解析 hostname，`包括客户端节点`。另外，也可以直接使用 IP 地址加入节点到集群。
 
-```bash
+```sh
 $ vi /etc/hosts
 192.168.1.221 gluster1
 192.168.1.222 gluster2
@@ -66,7 +66,7 @@ $ vi /etc/hosts
 
 ### 添加安装源
 
-```bash
+```sh
 # 添加 EPEL 源
 $ yum install -y epel-release
 
@@ -78,7 +78,7 @@ $ yum install -y centos-release-gluster312
 
 * server
 
-```bash
+```sh
 # 查看组件版本
 $ yum list glusterfs --show-duplicates
 
@@ -104,7 +104,7 @@ glusterfs-api-3.12.6-1.el7.x86_64
 
 客户端需要安装 `glusterfs-fuse` 等软件包以支持 GlusterFS 文件系统的挂载。
 
-```bash
+```sh
 # 安装指定版本
 $ gversion=3.12.6
 
@@ -123,7 +123,7 @@ glusterfs-fuse-3.12.6-1.el7.x86_64
 
 ## 运行服务
 
-```bash
+```sh
 # 启动 glusterfs server
 $ systemctl start glusterd
 $ systemctl enable glusterd
@@ -146,7 +146,7 @@ $ journalctl -f -u glusterd
 
 如果是实验环境且没有额外的存储盘，可以跳过此步骤，通过创建本地目录（`mkdir -p /data/gluster`）来代替。如果是生产环境，最好先对磁盘组建 RAID 。
 
-```bash
+```sh
 # 创建主分区
 $ fdisk /dev/sdb
 n => p => 1 => Enter => Enter => Enter => p => w
@@ -171,14 +171,14 @@ $ echo "/dev/sdb1 /data/gluster ext4 defaults 0 0" | tee --append /etc/fstab
 
 在 Gluster 集群中的任一节点上依次加入其他节点，它会自动在其他节点上连接 peer 节点。
 
-```bash
+```sh
 $ gluster peer probe gluster2
 $ gluster peer probe gluster3
 ```
 
 * 查看集群状态（gluster1 节点）
 
-```bash
+```sh
 $ gluster peer status
 Number of Peers: 2
 
@@ -193,7 +193,7 @@ State: Peer in Cluster (Connected)
 
 * 查看存储池（gluster1 节点）
 
-```bash
+```sh
 $ gluster pool list
 UUID                                  Hostname   State
 a2b01b4e-87a9-4f9a-9ed6-3fe271b2f5bd  gluster2   Connected
@@ -203,7 +203,7 @@ d986ae16-ba82-40ad-9bf3-51a88d5be6ce  gluster3   Connected
 
 * 踢出集群（可选）
 
-```bash
+```sh
 $ gluster peer detach gluster3
 ```
 
@@ -214,13 +214,13 @@ $ gluster peer detach gluster3
 
 在两个节点上创建 brick（目录）。如果没有手动创建，它会自动创建。
 
-```bash
+```sh
 $ mkdir -p /data/gluster/gv0
 ```
 
 * 创建 volume（任一节点）
 
-```bash
+```sh
 # ２ 个副本容易脑裂，使用 force 跳过
 $ gluster volume create gv0 replica 2 gluster2:/data/gluster/gv0 gluster3:/data/gluster/gv0 force
 volume create: gv0: success: please start the volume to access data
@@ -232,13 +232,13 @@ volume create: gv0: success: please start the volume to access data
 
 为了访问数据需要先启动 volume。如果启动失败，可以查看 /var/log/glusterfs 目录下的日志文件。
 
-```bash
+```sh
 $ gluster volume start gv0
 ```
 
 * 查看 volume 信息
 
-```bash
+```sh
 $ gluster volume info gv0
 Volume Name: gv0
 Type: Replicate
@@ -258,7 +258,7 @@ performance.client-io-threads: off
 
 * 查看 volume 状态
 
-```bash
+```sh
 $ gluster volume status
 Status of volume: gv0
 Gluster process                             TCP Port  RDMA Port  Online  Pid
@@ -277,7 +277,7 @@ There are no active volume tasks
 
 ## 性能调优
 
-```bash
+```sh
 # 开启指定 volume 的配额
 $ gluster volume quota gv0 enable
 
@@ -300,7 +300,7 @@ $ gluster volume set gv0 performance.write-behind on
 
 安装 GlusterFS 客户端并 mount GlusterFS 文件系统（客户端必须加入 gluster fs hosts 否则会报错）
 
-```bash
+```sh
 $ yum install -y glusterfs glusterfs-fuse
 
 $ mkdir -p /mnt/gluster
@@ -324,7 +324,7 @@ $ ll /data/gluster
 
 * 客户端挂载
 
-```bash
+```sh
 # 挂载 GlusterFS 文件系统
 $ mkdir -p /mnt/gluster/gv0
 $ mount -t glusterfs gluster3:/gv0 /mnt/gluster/gv0 # 可以使用 IP 地址
@@ -348,7 +348,7 @@ $ umount -t glusterfs gluster3:/gv0
 
 ## 测试
 
-```bash
+```sh
 [root@gclient ~]# for i in `seq -w 1 3`; do cp -rp /var/log/messages /mnt/gluster/messages-$i; done
 
 [root@gclient ~]# ll /mnt/gluster
@@ -372,7 +372,7 @@ $ umount -t glusterfs gluster3:/gv0
 
 * 日志
 
-```bash
+```sh
 $ tail -f /var/log/glusterfs/glusterd.log
 
 $ tail -f /var/log/glusterfs/glustershd.log

@@ -28,7 +28,7 @@ ARP 请求和应答的报文格式：
 
 * 查看本地 ARP 缓存表
 
-```bash
+```sh
 $ arp -v # arp -a
 Address                  HWtype  HWaddress           Flags Mask            Iface
 172.17.0.3               ether   02:42:ac:11:00:03   C                     docker0
@@ -41,14 +41,14 @@ Entries: 5  Skipped: 0  Found: 5
 
 * 删除 IP-MAC 映射
 
-```bash
+```sh
 # 对应的 HWaddress 会变成 incomplete
 $ sudo arp -d 172.17.0.3
 ```
 
 * 向目标主机发送 ARP 请求
 
-```bash
+```sh
 # 可能收不到响应
 $ arping -I eth1 192.168.16.101
 

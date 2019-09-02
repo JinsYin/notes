@@ -10,7 +10,7 @@
 
 * CentOS
 
-```bash
+```sh
 # sudo
 $ yum install -y ntp
 $ ntpdate cn.pool.ntp.org
@@ -21,7 +21,7 @@ $ systemctl restart ntpd
 
 * Ubuntu
 
-```bash
+```sh
 # sudo
 $ apt-get install -y ntp
 $ ntpdate cn.pool.ntp.org
@@ -37,7 +37,7 @@ $ service ntp restart
 * 安装 Geth（略，自己挖矿时需要）
 * 安装 ethminer
 
-```bash
+```sh
 # 官方下载地址： https://github.com/ethereum-mining/ethminer/tags
 ```
 
@@ -45,7 +45,7 @@ $ service ntp restart
 
 * OpenCL
 
-```bash
+```sh
 $ ethminer -G -M --opencl-device 0
 $ ethminer -G -M --opencl-device 1
 $ ethminer -G -M --opencl-device 2
@@ -53,7 +53,7 @@ $ ethminer -G -M --opencl-device 2
 
 * CUDA
 
-```bash
+```sh
 $ ethminer -U -M
 ```
 
@@ -61,7 +61,7 @@ $ ethminer -U -M
 
 Geth 目前尽支持本地 CPU 挖矿。
 
-```bash
+```sh
 # 会自动同步区块
 $ geth --etherbase 1 --mine # 1 表示本地账户索引
 $ geth --etherbase '0xa4d8e9cae4d04b093aac82e6cd355b6b963fb7ff' --mine
@@ -73,7 +73,7 @@ $ geth --etherbase '0xa4d8e9cae4d04b093aac82e6cd355b6b963fb7ff' --mine
 
 * IPC-RPC 接口（默认开启）
 
-```bash
+```sh
 $ geth account new
 $ geth --rpc --rpccorsdomain localhost 2>> geth.log &
 
@@ -83,7 +83,7 @@ $ tail -f geth.log
 
 * HTTP-RPC 接口
 
-```bash
+```sh
 # 30303: peer 之间同步区块，8545: 客户端访问
 $ geth --etherbase '0xa4d8e9cae4d04b093aac82e6cd355b6b963fb7ff' --rpc --rpcaddr 0.0.0.0 --rpcport 8545 --rpccorsdomain localhost
 
@@ -93,7 +93,7 @@ $ ethminer -U -F http://192.168.10.40:8545
 
 * WS-RPC 接口（没有测试通过，可能是 ethminer 不支持 websocket）
 
-```bash
+```sh
 $ geth --etherbase '0xa4d8e9cae4d04b093aac82e6cd355b6b963fb7ff' --ws --wsaddr 0.0.0.0 --wsport 8546 --wsorigins "*"
 
 # CUDA GPU
@@ -104,7 +104,7 @@ $ ethminer -U -F ws://192.168.10.40:8546
 
 ### 命令行挖矿
 
-```bash
+```sh
 # 显存低于 2G 需要进行如下设置，否则忽略
 $ export GPU_FORCE_64BIT_PTR=0
 $ export GPU_MAX_HEAP_SIZE=100
@@ -131,7 +131,7 @@ $ ethminer -U -S eu1.ethermine.org:4444 -FS eu1.ethermine.org:14444 -O 79e478b88
 
 测试矿池服务器（stratum server）：
 
-```bash
+```sh
 # 通过 ping 包选择延时最短的矿池服务器
 $ ping eu1.ethermine.org
 
@@ -141,7 +141,7 @@ $ telnet eu1.ethermine.org 4444
 
 ### systemd
 
-```bash
+```sh
 # --cuda-devices 0 限制使用哪块显卡
 $ vi /usr/lib/systemd/system/ethminer.service
 [Unit]
@@ -159,7 +159,7 @@ RestartSec=5
 WantedBy=multi-user.target
 ```
 
-```bash
+```sh
 # 启动
 $ systemctl start ethminer
 $ systemctl enable ethminer
@@ -174,7 +174,7 @@ $ systemctl disable ethminer
 
 ### Docker 挖矿
 
-```bash
+```sh
 # 基准测试
 $ nvidia-docker run -it dockerce/cuda-ethminer:9.1-0.12.0 ethminer -U -M
 
@@ -191,7 +191,7 @@ $ nvidia-docker run -d --name ethminer --net=host --restart=always dockerce/cuda
 
 ### 代理矿池挖矿
 
-```bash
+```sh
 # 启动代理（传递 "EP_" 开头的环境变量可以改变配置文件，也可以自行挂载 /ethproxy/eth-proxy.conf）
 $ docker run -d --name ethproxy --net=host --restart=always \
   -e EP_HOST="0.0.0.0" -e EP_PORT="9090" \
@@ -204,12 +204,12 @@ $ docker run -d --name ethproxy --net=host --restart=always \
   -e EP_MONITORING="True" -e EP_MONITORING_EMAIL="yrqiang@163.com" dockerce/eth-proxy:0.0.5
 ```
 
-```bash
+```sh
 # 选择代理进行挖矿
 $ nvidia-docker run -d --name ethminer --net=host --restart=always dockerce/cuda-ethminer:9.0-0.12.0 ethminer -U -F http://192.168.10.51:9090/Y
 ```
 
-```bash
+```sh
 # 打开浏览器查看数据
 $ curl https://ethermine.org/miners/79e478b8825fc50d9fde647ccc97483b5174f66f
 ```

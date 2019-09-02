@@ -4,7 +4,7 @@
 
 ## 用法
 
-```bash
+```sh
 yum [options] [command] [package ...]
 ```
 
@@ -14,7 +14,7 @@ yum [options] [command] [package ...]
 
 ## Update 与 Upgrade
 
-```bash
+```sh
 $ yum update  # 更新包/源，且升级内核（谨慎使用）
 $ yum upgrade # 更新包，不升级内核
 
@@ -24,20 +24,20 @@ $ yum --disablerepo="*" --enablerepo="repoA" update
 
 * 设置 yum update 不升级内核
 
-```bash
+```sh
 $ # 方法一： 在 /etc/yum.conf 中的 [main] 的最后添加
 exclude=kernel*
 exclude=centos-release* # redhat-release*
 ```
 
-```bash
+```sh
 $ # 方法二
 $ yum --exclude=kernel* --exclude=centos-release* update
 ```
 
 ## 列出所有的 repository
 
-```bash
+```sh
 $ yum repolist
 
 $ yum repolist all
@@ -47,7 +47,7 @@ $ yum repolist all
 
 * epel
 
-```bash
+```sh
 $ yum install -y epel-release
 
 # or
@@ -56,7 +56,7 @@ $ rpm -Uvh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 * elrepo
 
-```bash
+```sh
 $ rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 
 $ rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
@@ -66,7 +66,7 @@ $ rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 
 `yum` 默认保留下载的包和包数据文件，所以在以后的操作中不会重新下载。
 
-```bash
+```sh
 $ # 清除所有缓存的包
 $ yum clean packages
 $
@@ -83,7 +83,7 @@ $ yum clean all
 
 如果添加了 repo 到 /etc/yum.repos.d，可以使用以下命令来刷新缓存、更新 repo。
 
-```bash
+```sh
 $ yum makecache
 
 $ yum makecache fast
@@ -91,19 +91,19 @@ $ yum makecache fast
 
 ## 查询已安装的包
 
-```bash
+```sh
 $ rpm -qa | grep docker
 ```
 
 ## 查看软件包信息
 
-```bash
+```sh
 $ yum info docker
 ```
 
 ## 列出所有软件版本
 
-```bash
+```sh
 $ yum list docker --showduplicate
 ```
 
@@ -111,7 +111,7 @@ $ yum list docker --showduplicate
 
 * 源安装
 
-```bash
+```sh
 $ # 安装最新版本
 $ yum install docker
 $
@@ -121,7 +121,7 @@ $ yum install docker-1.12.6
 
 * 本地安装
 
-```bash
+```sh
 $ yum localinstall -y /tmp/docker-1.12.6.rpm
 ```
 
@@ -131,19 +131,19 @@ $ yum localinstall -y /tmp/docker-1.12.6.rpm
 
 使用最快的 mirror
 
-```bash
+```sh
 $ yum install yum-plugin-fastestmirror
 ```
 
 * protectbase
 
-```bash
+```sh
 $ yum install yum-plugin-protectbase
 ```
 
 * yum-config-manager
 
-```bash
+```sh
 $ yum install yum-utils
 ```
 

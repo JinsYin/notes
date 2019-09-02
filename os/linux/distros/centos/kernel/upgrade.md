@@ -2,7 +2,7 @@
 
 ## 当前环境
 
-```bash
+```sh
 # 系统版本
 $ cat /etc/redhat-release
 CentOS Linux release 7.4.1708 (Core)
@@ -18,7 +18,7 @@ $ uname -r
 
 * 升级 kernel
 
-```bash
+```sh
 # 查看官方镜像仓库提供的新版本的 kernel
 $ yum list kernel --showduplicates
 kernel.x86_64    3.10.0-693.el7         base
@@ -37,7 +37,7 @@ $ yum list kernel --showduplicates
 
 * 升级 kernel 相关的包
 
-```bash
+```sh
 # 查询与 kernel 相关的包
 $ rpm -qa | grep kernel
 
@@ -56,7 +56,7 @@ $ yum install -y kernel-devel-3.10.0-693.11.1.el7*
 
 * 升级 kernel
 
-```bash
+```sh
 $ wget http://vault.centos.org/7.3.1611/updates/x86_64/Packages/kernel-3.10.0-514.26.2.el7.x86_64.rpm
 
 # 安装指定版本的 kernel
@@ -68,7 +68,7 @@ $ yum list kernel --showduplicates
 
 * 升级 kernel 相关的包
 
-```bash
+```sh
 # 查询与 kernel 相关的包
 $ rpm -qa | grep kernel
 
@@ -85,7 +85,7 @@ $ yum install -y kernel-devel-3.10.0-514.26.2.el7.x86_64.rpm
 
 ### 在 GRUB 中设置默认的 kernel 版本
 
-```bash
+```sh
 # 查看可用的 kernel 版本
 $ sudo awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg
 0 : CentOS Linux (3.10.0-514.26.2.el7.x86_64) 7 (Core)
@@ -105,7 +105,7 @@ $ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ### 设置默认 kernel 后重启
 
-```bash
+```sh
 # 重启
 $ reboot
 
@@ -116,7 +116,7 @@ $ 3.10.0-514.26.2.el7.x86_64
 
 ### 移除旧版本的 kernel
 
-```bash
+```sh
 $ yum install yum-utils
 
 # 方法一

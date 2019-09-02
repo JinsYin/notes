@@ -8,13 +8,13 @@
 
 * 声明
 
-```golang
+```go
 var s []T
 ```
 
 * 初始化
 
-```golang
+```go
 // 直接初始化
 var s []T = []T{element1, element2, ..., elementN}
 
@@ -33,7 +33,7 @@ var s []T = make([]T, length, capacity) // capacity 是可选参数
 
 数组的长度是固定的，而切片类似于没有长度的数组。切片的零值为 `nil`，nil 切片的长度和容量都是 0 且没有底层数组。
 
-```golang
+```go
 // 这是一个数组
 [3]bool{true, true, false}
 
@@ -43,13 +43,13 @@ var s []T = make([]T, length, capacity) // capacity 是可选参数
 
 ## 内置函数
 
-| 函数名    | 说明      |
-| -------- | -------- |
-| len(s)   | 获取数组或切片的长度 |
-| cap(s)   | 获取数组或切片的容量 |
-| make([]T, len, cap) | 创建一个动态大小的数组，并返回一个引用该数组的切片；cap 参数可选 |
-| copy(dst, src)    | 拷贝原切片元素到新切片         |
-| append(s []T, elems ...T) | 向原切片追加新元素，并返回新切片 |
+| 函数名                    | 说明                                                             |
+| ------------------------- | ---------------------------------------------------------------- |
+| len(s)                    | 获取数组或切片的长度                                             |
+| cap(s)                    | 获取数组或切片的容量                                             |
+| make([]T, len, cap)       | 创建一个动态大小的数组，并返回一个引用该数组的切片；cap 参数可选 |
+| copy(dst, src)            | 拷贝原切片元素到新切片                                           |
+| append(s []T, elems ...T) | 向原切片追加新元素，并返回新切片                                 |
 
 切片的长度等于它所包含的元素个数。
 切片的容量是从切片的第一个元素开始算起，直到其底层数组的最后一个元素这之间的元素个数，即 `cap(slice) == cap(underlyingArrayOfSlice) - lowBoundOfSlice`。
@@ -60,7 +60,7 @@ var s []T = make([]T, length, capacity) // capacity 是可选参数
 
 切片可以包含任何类型，包括其它的切片。
 
-```golang
+```go
 board := [][]string{
     []string{"_", "_", _"},
     []string{"_", "_", _"},
@@ -72,7 +72,7 @@ board[1][1] = "X"
 
 ## 范例
 
-```golang
+```go
 package main
 
 import "fmt"

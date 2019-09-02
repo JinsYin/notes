@@ -4,7 +4,7 @@
 
 Cassandra 要求 Java 环境。下面安装 oracle-java-8（非 openjdk-8）：
 
-```bash
+```sh
 # ubuntu 14.04
 $ sudo add-apt-repository ppa:webupd8team/java -y
 $ sudo apt-get update
@@ -17,7 +17,7 @@ $ java -version
 
 Cassandra 3 要求 python 2.7
 
-```bash
+```sh
 $ python --version
 ```
 
@@ -25,7 +25,7 @@ $ python --version
 
 * Ubuntu 14.04
 
-```bash
+```sh
 # ubuntu 14.04
 $ echo "deb http://www.apache.org/dist/cassandra/debian 39x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 $ sudo apt-get update
@@ -37,7 +37,7 @@ $ service cassandra start
 
 * Centos 7
 
-```bash
+```sh
 $ cat /etc/yum.repos.d/datastax.repo
 [datastax-ddc]
 name = DataStax Repo for Apache Cassandra
@@ -46,7 +46,7 @@ enabled = 1
 gpgcheck = 0
 ```
 
-```bash
+```sh
 $ sudo yum install datastax-ddc
 $ sudo service cassandra start
 $ nodetool status
@@ -56,7 +56,7 @@ $ nodetool status
 
 （在所有节点执行以下操作）
 
-```bash
+```sh
 # 删除默认数据
 $ sudo service cassandra stop
 $ sudo rm -rf /var/lib/cassandra/data/system/*
@@ -76,7 +76,7 @@ endpoint_snitch: GossipingPropertyFileSnitch
 auto_bootstrap: false
 ```
 
-```bash
+```sh
 $ sudo service cassandra start
 $ sudo nodetool status
 $ cqlsh <your_server_ip> 9042
@@ -88,7 +88,7 @@ $ cqlsh <your_server_ip> 9042
 
 * Linux 中临时修改
 
-```bash
+```sh
 # 软:硬
 $ ulimit -n 40960:40960 # nofile
 $ ulimit -u 65535:65535 # nproc
@@ -97,18 +97,18 @@ $ ulimit -a
 
 * Linux 中永久修改
 
-```bash
+```sh
 ```
 
 * dockerd 中修改
 
-```bash
+```sh
 $ dockerd --default-ulimit nofile=40960:40960 nproc=65535:65535
 ```
 
 * docker 容器中修改
 
-```bash
+```sh
 $ docker run -it --rm --ulimit nofile=40960:40960 --ulimit nproc=65535:65535 -d cassandra:3.9
 ```
 

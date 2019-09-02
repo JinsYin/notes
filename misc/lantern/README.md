@@ -6,6 +6,6 @@
 
 ## 删除命令行代理
 
-```bash
+```sh
 $ unset $(env | grep -i 'proxy' | awk -F '=' '{print $1}') && grep -i 'proxy'
 ```

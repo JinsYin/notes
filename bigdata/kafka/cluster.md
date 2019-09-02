@@ -9,7 +9,7 @@
 
 ## 安装
 
-```bash
+```sh
 SCALA_VERSION="2.11"
 KAFKA_VERSION="2.0.1"
 
@@ -59,7 +59,7 @@ zookeeper.connect=192.168.1.121:2181,192.168.1.122:2181,192.168.1.124:2181
 
 ## 运行
 
-```bash
+```sh
 vi /etc/systemd/system/kafka-zookeeper.service
 [Unit]
 Description=Apache Zookeeper server (Kafka)
@@ -79,7 +79,7 @@ ExecStop=/opt/kafka/bin/zookeeper-server-stop.sh
 WantedBy=multi-user.target
 ```
 
-```bash
+```sh
 $ vi /etc/systemd/system/kafka.service
 [Unit]
 Description=Apache Kafka server (broker)
@@ -103,13 +103,13 @@ WantedBy=multi-user.target
 
 在 kafka 中创建名为 “121_test__topic1” 的 topic，该 topic 切分为 4 份，每一份备份数为 3
 
-```bash
+```sh
 $ /usr/share/kafka/kafka-topics.sh --create --zookeeper 192.168.1.121:2181 --replication-factor 3 --partitions 4 --topic  121_test_topic1
 ```
 
 列出所有 topic:
 
-```bash
+```sh
 $ /usr/share/kafka/kafka-topics.sh --list --zookeeper 192.168.1.121:2181,192.168.1.122:2181,192.168.1.126:2181
 ```
 

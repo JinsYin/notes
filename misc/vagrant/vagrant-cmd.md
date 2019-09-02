@@ -4,7 +4,7 @@
 
 实际使用过程中发现，`vagrant` 命令特别容易输错，而且有些子命令也有些不方便。
 
-```bash
+```sh
 $ # 方式一
 $ alias va='vagrant'
 
@@ -27,7 +27,7 @@ $ source ~/.bashrc
 
 ## Box 管理
 
-```bash
+```sh
 $ # 从官网添加，默认添加到 ~/.vagrant.d/boxes 目录，官网：https://app.vagrantup.com/boxes/search
 $ vagrant box add centos/7
 $
@@ -51,7 +51,7 @@ $ vagrant box remove [name]
 
 初始化完成后会在当前目录下生成一个 Vagrantfile 文件，基于该文件可以即可启动开发环境，启动后打开 VirtualBox 找到运行虚拟机（默认没有 GUI）。另外，也可以直接从已编辑的 Vagrantfile 中启动 VM 开发环境。
 
-```bash
+```sh
 $ # 初始化
 $ vagrant init centos/7
 $
@@ -73,7 +73,7 @@ $ vagrant provision --provision-with shell
 
 * 状态
 
-```bash
+```sh
 $ # 查看全局状态（可以获取虚拟机的 ID 和状态）
 $ vagrant global-status
 $
@@ -88,7 +88,7 @@ $ vagrant status
 
 如果不指定 ID，默认是针对所有 VM 进行操作。
 
-```bash
+```sh
 $ # 暂停（暂停后进入 saved 状态）
 $ vagrant suspend 1a2b3c4d
 $
@@ -118,7 +118,7 @@ $ vagrant destroy 1a2b3c4d
 
 默认的用户名/密码：`vagrant/vagrant`。
 
-```bash
+```sh
 $ # ssh 配置
 $ vagrant ssh-config
 $ vagrant ssh-config 1a2b3c4d
@@ -133,7 +133,7 @@ $ vagrant ssh 1a2b3c4d
 
 * vagrant-hostmanager 插件
 
-```bash
+```sh
 $ # 先修改配置，再更新虚拟机与宿主机的 hosts 文件
 $ vagrant hostmanager
 ```
@@ -145,7 +145,7 @@ $ vagrant hostmanager
 
 配置好开发环境后即可打包分发给其他用户，打包好后在当前目录下生成一个 package.box 文件。
 
-```bash
+```sh
 $ # 会自动关机
 $ vagrant package 1a2b3c4d
 ```

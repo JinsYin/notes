@@ -4,7 +4,7 @@
 
 为了确保硬件满足业务需求，可以使用 `cassandra-stress` 工具进行压力测试。
 
-```bash
+```sh
 $ cassandra-stress help
 ```
 

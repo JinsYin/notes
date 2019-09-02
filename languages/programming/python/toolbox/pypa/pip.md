@@ -8,7 +8,7 @@
 
 * CentOS
 
-```bash
+```sh
 $ yum install -y python-pip
 
 # 更新
@@ -17,7 +17,7 @@ $ pip install --upgrade pip
 
 * Ubuntu
 
-```bash
+```sh
 $ apt-get install python-pip
 
 # 更新
@@ -26,7 +26,7 @@ $ pip install --upgrade pip
 
 ## 命令
 
-```bash
+```sh
 # 查看已安装的软件包
 $ pip freeze
 ```
@@ -35,7 +35,7 @@ $ pip freeze
 
 * pip freeze
 
-```bash
+```sh
 # 导出依赖
 $ pip freeze > requirements.txt
 
@@ -47,7 +47,7 @@ $ pip install -r requirements.txt
 
 `pip freeze` 保存的是当前环境中使用 `pip install` 安装的所有软件包及依赖，这会包含一些当前项目没有使用到的软件包。而 `pipreqs` 是根据项目代码的导入情况来生成依赖文件。
 
-```bash
+```sh
 $ pip install pipreqs
 
 $ pipreqs /home/project/location

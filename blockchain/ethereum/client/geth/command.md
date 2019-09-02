@@ -2,7 +2,7 @@
 
 ## 账户管理
 
-```bash
+```sh
 # 创建账户（需要设置密码，且必须牢记该密码）
 $ geth account new
 
@@ -12,21 +12,21 @@ $ geth account list
 
 ## 钱包管理
 
-```bash
+```sh
 ```
 
 ## 交互环境（JavaScript）
 
 （账户余额等信息需要同步主链才有数据）
 
-```bash
+```sh
 # 进入交互模式，将 STDERR 输出到文件
 $ geth console 2>> geth.log
 ```
 
 * 账户管理
 
-```bash
+```sh
 # 查询账户
 > eth.accounts
 > personal.listAccounts
@@ -40,7 +40,7 @@ $ geth console 2>> geth.log
 
 * 交易
 
-```bash
+```sh
 # 查询账户余额
 > eth.getBalance(eth.accounts[0])
 > eth.getBalance("0x...")
@@ -53,7 +53,7 @@ $ geth console 2>> geth.log
 
 * 挖矿
 
-```bash
+```sh
 # 启动 CPU 挖矿
 > miner.start()
 
@@ -63,7 +63,7 @@ $ geth console 2>> geth.log
 
 * 智能合约
 
-```bash
+```sh
 # 定义、编译智能合约
 > source = "contract test { function multiply(uint a) returns(uint d) { return a * 7; } }"
 > contract = eth.compile.solidity(source).test

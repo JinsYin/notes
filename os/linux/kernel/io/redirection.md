@@ -16,21 +16,21 @@
 
 * **>**
 
-```bash
+```sh
 $ ls > out.log
 
 # 等同于
 $ ls 1> out.log
 ```
 
-```bash
+```sh
 # 由于 stdout 的结果为空，所以 out.log 的内容也是为空的（没有产生正常的输出）
 $ ls non_exist > out.log
 ```
 
 * **>>**
 
-```bash
+```sh
 $ ls >> out.log
 
 # 等同于
@@ -41,7 +41,7 @@ $ ls 1>> out.log
 
 将命令或程序的标准错误输出结果输出到文件。
 
-```bash
+```sh
 % ls non_exist 2> err.log
 
 % non_exist_command 2> err.log
@@ -53,7 +53,7 @@ $ ls 1>> out.log
 
 `2>&1` 表示把 stderr 导入到 stdout；然后再通过 `>` 将 stdout 输出到文件。
 
-```bash
+```sh
 $ non_exist_command > out_and_err.log 2>&1
 
 # OR
@@ -65,7 +65,7 @@ $ non_exist_command >& out_and_err.log
 
 变换一下，通过 `1>&2` 先把 stdout 导入到 stderr，再输出到文件，结果是一样的。
 
-```bash
+```sh
 % non_exist_command > out_and_err.log 1>&2
 ```
 
@@ -73,7 +73,7 @@ $ non_exist_command >& out_and_err.log
 
 将 stdout 输出到 out.log 文件，而将 stderr 输出到 err.log 文件。
 
-```bash
+```sh
 % ls non_exist > out.log 2> err.log
 ```
 
@@ -83,13 +83,13 @@ $ non_exist_command >& out_and_err.log
 
 直接执行 `cat` 时，会等待用户从键盘输入信息，并将收到的信息输出到屏幕上。
 
-```bash
+```sh
 % cat
 ```
 
 也可以结合 `<<EOF` 和 `EOF` 将多个输入一并输入到 stdin。
 
-```bash
+```sh
 $ cat <<EOF
 1234567890
 abcdefghij
@@ -98,7 +98,7 @@ EOF
 
 通常的做法是将多行输入一并输出到文件。
 
-```bash
+```sh
 $ cat <<EOF > /tmp/output.txt
 1234567890
 abcdefghij
@@ -109,7 +109,7 @@ EOF
 
 可以使用 `<` 符号将文件作为命令的标准输入。
 
-```bash
+```sh
 $ cat < in.log
 
 # 等同于
@@ -121,7 +121,7 @@ $ cat in.log
 
 我们常用到的 grep、head 等操作文件的命令也是这个原理。
 
-```bash
+```sh
 $ grep 123 in.log
 
 # 等同于
@@ -130,7 +130,7 @@ $ grep 123 < in.log
 
 从某个文件获取输入，再输出到另一个文件中。
 
-```bash
+```sh
 % cat < in.log > out.log
 ```
 
@@ -140,7 +140,7 @@ $ grep 123 < in.log
 
 管道的用途是将命令或程序的输入和输出串联起来，将前一命令的 STDOUT 作为后一命令的 STDIN 。
 
-```bash
+```sh
 % ls | grep keyword | nl | head -n 5
 ```
 

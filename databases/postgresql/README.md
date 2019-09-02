@@ -4,14 +4,14 @@
 
 - ubuntu 部署
 
-```bash
+```sh
 $ sudo apt-get install postgresql
 ```
 
 - docker 部署
 
 默认情况, `postgres` 用户和数据库会被创建, 端口为 5432.
-```bash
+```sh
 $ docker run -it --name postgresql -p 5432:5432 \
 -e POSTGRES_USER=root \
 -e POSTGRES_PASSWORD=root123456 \
@@ -23,18 +23,18 @@ $ docker run -it --name postgresql -p 5432:5432 \
 
 - 命令行
 
-```bash
+```sh
 $ sudo apt-get install postgresql-client
 ```
 
 - GUI
 
-```bash
+```sh
 $ sudo apt-get install pgadmin3
 ```
 
 ## 连接服务器
 
-```bash
+```sh
 $ psql -h 127.0.0.1 -U postgres -p 5432 -W root123456
 ```

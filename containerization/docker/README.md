@@ -25,7 +25,7 @@
 
 如果想要在容器中使用 init 进程（如：`systemd`），必须要确保第一个进程（`PID=1`）是 init 进程，而不是其他进程（如：`sh`、`bash`）。另外，为了连接 DBus，容器还必须拥有特权（`privileged`）。
 
-```bash
+```sh
 # CentOS（/sbin/init -> ../lib/systemd/systemd）
 $ docker run -d --privileged=true --name centos74 centos:7.4.1708 /sbin/init
 

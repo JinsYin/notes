@@ -1,6 +1,6 @@
 # Cassandra 压力测试
 
-```bash
+```sh
 $ cassandra-stress help
 Usage:      cassandra-stress <command> [options]
 Help usage: cassandra-stress help <command>
@@ -39,7 +39,7 @@ legacy               : Legacy support mode
 
 * 写入 1 亿行
 
-```bash
+```sh
 $ cassandra-stress write n=100000000 -node 192.168.100.200
 Results:
 op rate                   : 77697 [WRITE:77697]
@@ -64,19 +64,19 @@ END
 
 * 读取 1 亿行
 
-```bash
+```sh
 $ cassandra-stress read n=100000000 -node 192.168.100.200
 ```
 
 * 持续读取 10 分钟
 
-```bash
+```sh
 $ cassandra-stress read duration=10m -node 192.168.100.200
 ```
 
 * 持续写入 10 分钟
 
-```bash
+```sh
 $ cassandra-stress write duration=10m -node 192.168.100.200
 ```
 

@@ -105,19 +105,19 @@ Ceph 可以在运行时修改 `ceph-osd`、`ceph-mon`、`ceph-mds` 守护进程�
 
 配置方法：
 
-```bash
+```sh
 # {daemon-type}: osd、mon、mds
 $ ceph tell {daemon-type}.{id or *} injectargs --{name} {value} [--{name} {value}]
 ```
 
-```bash
+```sh
 $ ceph tell osd.0 injectargs --debug-osd 20 --debug-ms 1
 debug_osd=20/20 debug_ms=1/1
 ```
 
 ### 查看
 
-```bash
+```sh
 # ceph daemon {daemon-type}.{id} config show | less
 $ ceph daemon osd.0 config show | less # 需要在 osd.0 所在的主机运行，确保 /var/run/ceph/ceph-osd.0.asok 存在
 ```

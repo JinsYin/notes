@@ -9,7 +9,7 @@
 
 ### 单机伪分布式
 
-```bash
+```sh
 $ docker run -it --name cassandraOne --ip 172.17.0.2 --ulimit nofile=102400:102400 \
  -v /data/cassandra/cassandraOne:/var/lib/cassandra \
  -e CASSANDRA_CLUSTER_NAME=CassandraCluster \
@@ -24,7 +24,7 @@ $ docker run -it --name cassandraOne --ip 172.17.0.2 --ulimit nofile=102400:1024
  -d cassandra:3.9
 ```
 
-```bash
+```sh
 $ docker run -it --name cassandraTwo --ip 172.17.0.3 --ulimit nofile=102400:102400 --link cassandraOne:cassandra \
  -v /data/cassandra/cassandraTwo:/var/lib/cassandra \
  -e CASSANDRA_CLUSTER_NAME=CassandraCluster \
@@ -45,7 +45,7 @@ $ docker run -it --name cassandraTwo --ip 172.17.0.3 --ulimit nofile=102400:1024
 
 docker network create --driver=bridge --subnet=172.172.0.0/16 --gateway=172.172.0.1 cassandra-net
 
-```bash
+```sh
 $ docker run -it --name cassandra-node-1 --net cassandra-net \
  --ip 172.172.0.2 --ulimit nofile=102400:102400 \
  -v cassandra-data-1:/var/lib/cassandra \
@@ -61,7 +61,7 @@ $ docker run -it --name cassandra-node-1 --net cassandra-net \
  -d cassandra:3.9
 ```
 
-```bash
+```sh
 $ docker run -it --name cassandra-node-2 --net cassandra-net \
  --ip 172.172.0.3 --ulimit nofile=102400:102400 --link cassandra-node-1:cassandra \
  -v cassandra-data-2:/var/lib/cassandra \
@@ -78,13 +78,13 @@ $ docker run -it --name cassandra-node-2 --net cassandra-net \
 
 * 集群状态
 
-```bash
+```sh
 $ docker exec -it cassandra-node-1 nodetool status
 ```
 
 * 客户端连接
 
-```bash
+```sh
 $ docker run -it --rm --net cassandra-net cassandra:3.9 cqlsh 172.172.0.2 9042
 ```
 
@@ -164,7 +164,7 @@ $ docker run -it --name cassandraTwo --ulimit nofile=1024000:1024000 \
 
 * manager
 
-```bash
+```sh
 $ docker swarm init
 $ docker swarm join-token worker
 $ docker swarm join-token manager
@@ -172,7 +172,7 @@ $ docker swarm join-token manager
 
 * worker
 
-```bash
+```sh
 $ docker swarm join \
 --token SWMTKN-1-36k9vo3odmvn3xzp6u3s39s8w0ww1ajcu1npahg37uy01gnqkx-32bxwaf80xwykwe5xtnihqez6 \
 192.168.1.17:2377
@@ -180,7 +180,7 @@ $ docker swarm join \
 
 ### 部署
 
-```bash
+```sh
 // manager 节点
 $ docker service create --name cassandra --replicas 2 --publish 7000:7000 --publish 7001:7001 --publish 7199:7199 --publish 9042:9042 cassandra:3.9
 ```

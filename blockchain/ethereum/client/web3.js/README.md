@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 # Node
 $ npm install web3
 ```

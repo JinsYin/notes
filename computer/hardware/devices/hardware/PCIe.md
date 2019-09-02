@@ -8,7 +8,7 @@ PCI Express slots on the motherboard can be wider then the number of lanes conne
 
 检查 PCIe 卡的通道数，以及对应的主板 PCIe 总线的插槽数：
 
-```bash
+```sh
 # lspci | grep Mellanox
 $ lspci -s 82:00.0 -vvv | grep -E 'LnkCap:|LnkSta:' | grep 'Width'
 LnkCap: Port #8, Speed 5GT/s, Width x8, ASPM L0s, Exit Latency L0s unlimited, L1 unlimited

@@ -14,7 +14,7 @@ iproute2 包含以下命令行工具：
 
 * ubuntu
 
-```bash
+```sh
 $ apt-get install iproute2
 ```
 
@@ -22,7 +22,7 @@ $ apt-get install iproute2
 
 * 查看
 
-```bash
+```sh
 $ ip a
 
 $ ip addr show
@@ -35,13 +35,13 @@ $ ip -6 addr show dev eth0
 
 * 网卡接口分配 IP 地址
 
-```bash
+```sh
 $ ip addr add 192.168.10.10/24 dev eth0
 ```
 
 * 删除 IP 地址
 
-```bash
+```sh
 $ ip addr del 192.168.10.10/24 dev eth0
 ```
 
@@ -49,7 +49,7 @@ $ ip addr del 192.168.10.10/24 dev eth0
 
 * 查看
 
-```bash
+```sh
 $ ip a
 
 $ ip link show
@@ -62,20 +62,20 @@ $ ip -6 link show dev eth0
 
 * 开/关网卡接口
 
-```bash
+```sh
 $ ip link set dev eth0 down
 $ ip link set dev eth0 up
 ```
 
 * 删除网卡接口
 
-```bash
+```sh
 $ ip link delete dev eth0
 ```
 
 * 更改网络接口的 MAC 地址
 
-```bash
+```sh
 $ ip link set dev eth0 address 08:00:27:75:2a:67
 ```
 
@@ -83,7 +83,7 @@ $ ip link set dev eth0 address 08:00:27:75:2a:67
 
 * 查看路由
 
-```bash
+```sh
 $ ip route [show]
 
 $ route -n
@@ -93,7 +93,7 @@ $ netstat -rn
 
 * 添加路由
 
-```bash
+```sh
 # 添加默认路由
 $ ip route add default via 192.168.10.1 dev eth0
 
@@ -103,19 +103,19 @@ $ ip route add 172.14.32.0/24 via 192.168.1.1 dev eth0
 
 * 修改路由
 
-```bash
+```sh
 $ ip route replace default via 192.168.10.1 dev eth0
 ```
 
 * 删除路由
 
-```bash
+```sh
 $ ip route del 172.14.32.0/24
 ```
 
 ## ss
 
-```bash
+```sh
 $ ss -l
 ```
 

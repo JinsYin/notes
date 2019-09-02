@@ -65,7 +65,7 @@ $ sudo sh -c 'echo 123 > /etc/README.md'
 
 * 重定向 -> 追加到文件末尾
 
-```bash
+```sh
 $ tee -a /tmp/file <<EOF
 1234567890
 abcdefghij

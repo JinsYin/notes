@@ -2,7 +2,7 @@
 
 ## 查看日志、状态
 
-```bash
+```sh
 $ # 状态
 $ systemctl status ceph-osd@0.service
 

@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 # Ubuntu
 $ sudo apt-get install libgraph-easy-perl
 ```
@@ -11,7 +11,7 @@ $ sudo apt-get install libgraph-easy-perl
 
 * 从左到右
 
-```bash
+```sh
 # [a] <-> [b]
 # [a] ==> [b]
 # [a] ..> [b]
@@ -29,7 +29,7 @@ $ graph-easy <<< '[a]->[b]->[c]->[d]->[e]'
 
 * 分支
 
-```bash
+```sh
 $ graph-easy <<< '[a]->[b]->[c] [b]->[d]->[e]'
 $ graph-easy <<< '[a]->[b]->[d]->[e] [b]->[c]'
 
@@ -46,7 +46,7 @@ $ graph-easy <<< '[a]->[b]->[d]->[e] [b]->[c]'
 
 * 闭环
 
-```bash
+```sh
 $ graph-easy <<< '[a]->[b]->[d]->[e] [b]->[c]->[b]'
 $ graph-easy <<< '[a]->[b]->[c]->[b]->[d]->[e]'
 
@@ -65,7 +65,7 @@ $ graph-easy <<< '[a]->[b]->[c]->[b]->[d]->[e]'
 
 * 合流
 
-```bash
+```sh
 $ graph-easy <<< '[a]->[b]->[c] [d]->[e]->[b]'
 
 +---+     +---+     +---+
@@ -79,7 +79,7 @@ $ graph-easy <<< '[a]->[b]->[c] [d]->[e]->[b]'
 +---+     +---+
 ```
 
-```bash
+```sh
 $ graph-easy <<< '[a],[b]->[c]'
 $ graph-easy <<< '[a]->[c][b]->[c]'
 $ graph-easy <<< '[a]->[c] [b]->[c]'
@@ -91,7 +91,7 @@ $ graph-easy <<< '[a]->[c] [b]->[c]'
 
 * 流程之间添加文字说明
 
-```bash
+```sh
 $ graph-easy <<< '[a]->[b]- true ->[c]->[d]- FeedBack ->[a]'
 $ graph-easy <<< '[a]->[b]->{label:"true";}[c]->[d]->{label:"FeedBack";}[a]'
 
@@ -105,7 +105,7 @@ $ graph-easy <<< '[a]->[b]->{label:"true";}[c]->[d]->{label:"FeedBack";}[a]'
 
 * 虚线框
 
-```bash
+```sh
 $ graph-easy <<< '[a] -> [b]{border:1px dotted black;}'
 +---+     .....
 | a | --> : b :
@@ -114,7 +114,7 @@ $ graph-easy <<< '[a] -> [b]{border:1px dotted black;}'
 
 * 从上到下
 
-```bash
+```sh
 $ graph-easy <<< 'graph{flow:south;}[a]->[b]->[c]'
 
 +---+
@@ -136,7 +136,7 @@ $ graph-easy <<< 'graph{flow:south;}[a]->[b]->[c]'
 
 * 读文件画流程图
 
-```bash
+```sh
 $ cat flowchart.txt
 
 [Task] -> [Created] -> [Audit 1] -> [Audit 2] -> [Execute Task]
@@ -144,7 +144,7 @@ $ cat flowchart.txt
 [Audit 2] ..> [Created]
 ```
 
-```bash
+```sh
 $ graph-easy flowchart.txt
 
                .................
@@ -158,7 +158,7 @@ $ graph-easy flowchart.txt
 
 * 同上
 
-```bash
+```sh
 $ cat flowchart.txt
 
 [Instapaper] {size: 2,7;}
@@ -175,7 +175,7 @@ $ cat flowchart.txt
 [Webtask(Serverless)] -> [ZenHub]{ origin: Webtask(Serverless); offset: 2,2}
 ```
 
-```bash
+```sh
 $ graph-easy flowchart.txt
 
                                          +----------+                                 +--------+

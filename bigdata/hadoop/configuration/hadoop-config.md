@@ -40,7 +40,7 @@ namenode 节点需要配置
     <value>/data/hdfs/dfs/name</value>
 </property>
 ```
- 
+
 datanode 节点需要配置
 ```xml
 <!-- 默认值是 file://${hadoop.tmp.dir}/dfs/data -->
@@ -130,7 +130,7 @@ namenode 和 datanode 节点需要配置
 </property>
 ```
 
-```bash
+```sh
 $ $HADOOP_PREFIX/bin/hdfs zkfc -formatZK
 ```
 

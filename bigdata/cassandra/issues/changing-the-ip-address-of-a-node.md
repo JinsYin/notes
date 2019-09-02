@@ -17,7 +17,7 @@
 
 下面以改变 `192.168.10.200`（千兆）为 `192.168.100.200`（万兆）为例：
 
-```bash
+```sh
 # 脑裂
 $ nodetool drain
 
@@ -31,7 +31,7 @@ $ sed -i 's|192.168.10.200|192.168.100.200|g' /etc/cassandra/conf/cassandra.yaml
 $ systemctl start cassandra
 ```
 
-```bash
+```sh
 # 最后待所有 seed 节点都更改完成后，更新所有节点（包括 seed 节点）的配置，不需要重启服务
 $ sed -i 's|seeds: "192.168.10.200,192.168.10.201,192.168.10.202"|seeds: "192.168.100.200,192.168.100.201,192.168.100.202"|g' /etc/cassandra/conf/cassandra.yaml
 ```

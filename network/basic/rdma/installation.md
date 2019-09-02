@@ -6,12 +6,12 @@ RHEL/CentOS 7.x 中，`Infiniband Support` Group 包含 RDMA 相关的所有软�
 
 * 检查 IB 卡类型
 
-```bash
+```sh
 $ lspci | grep Mellanox
 04:00.0 InfiniBand: Mellanox Technologies MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE] (rev b0)
 ```
 
-```bash
+```sh
 # 查看详细信息
 $ lspci -s "04:00.0" -vvv
 04:00.0 InfiniBand: Mellanox Technologies MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE] (rev b0)
@@ -73,7 +73,7 @@ $ lspci -s "04:00.0" -vvv
 
 * 查看 IB 卡的 PSID
 
-```bash
+```sh
 $ ibv_devinfo | grep board_id
 board_id:   MT_0D81120009
 ```
@@ -89,7 +89,7 @@ board_id:   MT_0D81120009
 
 ## 安装
 
-```bash
+```sh
 # 查看相关的软件包
 $ yum groupinfo "Infiniband Support" # yum group info "Infiniband Support"
 Group: Infiniband Support
@@ -139,21 +139,21 @@ Group: Infiniband Support
 
 * 方式一
 
-```bash
+```sh
 # 默认仅安装 mandatory 和 default 两部分的软件包
 $ yum groupinstall -y "Infiniband Support"
 ```
 
 * 方式二（推荐）
 
-```bash
+```sh
 # 如果想安装 mandatory、default 和 optional 部分的软件包，执行以下命令
 $ yum --setopt=group_package_types=default,mandatory,optional groupinstall -y "Infiniband Support"
 ```
 
 ## 卸载、更新
 
-```bash
+```sh
 # 卸载
 $ yum groupremove -y "Infiniband Support"
 
@@ -165,7 +165,7 @@ $ yum groupupdate -y "Infiniband Support"
 
 当检查到支持 RDMA 的硬件时，无论是 InfiniBand 还是 iWARP 或 RoCE/IBoE，udev 会指示 `systemd` 启动 `rdma` 服务。
 
-```bash
+```sh
 # 手动启动服务
 $ systemctl start rdma.service
 $ systemctl enable rdma.service
@@ -177,7 +177,7 @@ $ journalctl -f -u rdma.service
 
 如果正在使用 InfiniBand transport 且子网中没有托管交换机，必须启动 Subnet Manager（SM）。可以执行 `ibstat` 命令检查 IB 网络是否已连通，从而决定是否需要启动 `opensm` 服务。只需在子网中的任一台机器执行次操作即可：
 
-```bash
+```sh
 # 需要安装 optional 部分的软件包
 $ systemctl start opensm.service
 $ systemctl enable opensm.service
@@ -185,7 +185,7 @@ $ systemctl enable opensm.service
 
 ## 验证网络连通性
 
-```bash
+```sh
 $ ibstat
 CA 'mlx4_0'
   CA type: MT26428
@@ -210,7 +210,7 @@ CA 'mlx4_0'
 
 如果 SM 正在运行，必须在卸载驱动前停止它。
 
-```bash
+```sh
 systemctl stop opensm.service
 systemctl stop rdma.service
 
@@ -242,7 +242,7 @@ systemctl disable rdma.service
 | ISER_LOAD       | yes/no           | 加载 ISER initiator  模块 |
 | FIXUP_MTRR_REGS | yes/no           | 修改系统 mtrr 寄存器      |
 
-```bash
+```sh
 # 默认
 $ cat /etc/rdma/rdma.conf
 # Load IPoIB
@@ -269,14 +269,14 @@ TECH_PREVIEW_LOAD=no
 
 RDMA 通信要求固定计算机中的物理内存（意味着如果整个计算机上在可用内存上运行不足，则不允许内核将该内存交换到 paging file）。固定内存需要特权（privileged），为了允许除了 root 之外的用户运行大型 RDMA 程序，可能需要增加运行非 root 用户在系统中固定的内存量。
 
-```bash
+```sh
 # 退出重新登录即生效
 $ vi /etc/security/limits.d/rdma.conf
 * soft memlock unlimited
 * hard memlock unlimited
 ```
 
-```bash
+```sh
 # 立即生效
 $ ulimit -l unlimited
 ```

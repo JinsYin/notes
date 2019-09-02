@@ -2,13 +2,13 @@
 
 ## 检查 Ceph 版本是否有 RDMA 支持
 
-```bash
+```sh
 $ strings /usr/bin/ceph-osd | grep -i rdma
 ```
 
 ## 查看 IB/网络设备
 
-```bash
+```sh
 # IB 设备：mlx4_0
 # 网络设备：ib0
 $ ibdev2netdev
@@ -31,7 +31,7 @@ As mentioned below mapping via rbd-nbd module should be used.
 
 ## 配置 Ceph
 
-```bash
+```sh
 $ cat /etc/ceph/ceph.conf
 [global]
 

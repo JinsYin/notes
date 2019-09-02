@@ -31,25 +31,25 @@ auth client required = none
 
 创建 `client.admin` keyring：
 
-```bash
+```sh
 ceph auth get-or-create client.admin mon 'allow *' mds 'allow *' osd 'allow *' -o /etc/ceph/ceph.client.admin.keyring
 ```
 
 创建 Monitor 集群所需的 keyring：
 
-```bash
+```sh
 ceph-authtool --create-keyring /var/lib/ceph/mon/ceph-${id}/keyring--gen-key -n mon. --cap mon 'allow *'
 ```
 
 为 OSD 生成 keyring：
 
-```bash
+```sh
 ceph auth get-or-create osd.{$id} mon 'allow rwx' osd 'allow *' -o /var/lib/ceph/osd/ceph-{$id}/keyring
 ```
 
 为 MDS 生成 keyring：
 
-```bash
+```sh
 ceph auth get-or-create mds.{$id} mon 'allow rwx' osd 'allow *' mds 'allow *' -o /var/lib/ceph/mds/ceph-{$id}/keyring
 ```
 

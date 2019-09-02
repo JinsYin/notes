@@ -10,7 +10,7 @@ Alpine Linux 使用了 musl，可能和其他 Linux 发行版使用的 glibc 实
 
 * Docker
 
-```bash
+```sh
 $ docker run -it --name alpine alpine:3.5 sh
 ```
 

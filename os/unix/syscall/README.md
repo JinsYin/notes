@@ -44,7 +44,7 @@ int main()
 }
 ```
 
-```bash
+```sh
 $ gcc io.c -o io
 
 # 用法一

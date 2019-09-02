@@ -7,7 +7,7 @@
 
 ### 账户管理
 
-```bash
+```sh
 $ docker run -d --name ethereum-node --privileged \
   -p 8545:8545 -p 30303:30303 \
   -v /root:/root \
@@ -22,7 +22,7 @@ $ docker run -d --name ethereum-node --privileged \
 
 算法是内存难解的，为了使 DAG 适合内存，每个 GPU 需要 1-2GB 内存。GPU 挖矿软件是基于 `OpenCL` 实现的。
 
-```bash
+```sh
 eth account new // Set-up ethereum account if you do not have one
 geth --rpc --rpccorsdomain localhost 2>> geth.log &
 ethminer -G // -G for GPU, -M for benchmark
@@ -38,14 +38,14 @@ tail -f geth.log
 
 * 相关命令
 
-```bash
+```sh
 # 获取 OpenCL 设备列表
 $ ethminer --list-devices
 ```
 
 * 基准测试
 
-```bash
+```sh
 # 通过 CUDA 使用 GPU 作基准测试（126839357）
 $ ethminer -U -M
 

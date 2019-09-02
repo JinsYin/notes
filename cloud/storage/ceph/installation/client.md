@@ -4,12 +4,12 @@
 
 ### 安装
 
-```bash
+```sh
 # 系统
 $ yum install ceph-common
 ```
 
-```bash
+```sh
 # 安装和集群相同的版本
 $ ceph_version=12.2.4
 
@@ -27,7 +27,7 @@ $ rpm --import 'https://download.ceph.com/keys/release.asc'
 
 ### 配置
 
-```bash
+```sh
 # 从 Monitor 节点拷贝 Ceph 配置文件和 admin.keyring 到客户端节点
 $ scp /etc/ceph/<cluster_name>.conf <user>@<client_host>:/etc/ceph/
 $ scp /etc/ceph/<cluster_name>.client.admin.keyring <user>@<client_host:/etc/ceph/
@@ -35,12 +35,12 @@ $ scp /etc/ceph/<cluster_name>.client.admin.keyring <user>@<client_host:/etc/cep
 
 ## DEBIAN
 
-```bash
+```sh
 # 系统版本（旧）
 $ apt-get install ceph-common
 ```
 
-```bash
+```sh
 # 安装和集群相同的版本
 $ CEPH_RELEASE="luminous"
 

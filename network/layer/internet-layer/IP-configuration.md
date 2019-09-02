@@ -18,14 +18,14 @@
 
 * net-tools
 
-```bash
+```sh
 $ sudo ifconfig eth1 10.0.0.2/24
 $ sudo ifconfig eth1 up
 ```
 
 * iproute2
 
-```bash
+```sh
 $ sudo ip addr add 10.0.0.2/24 dev eth1
 $ sudo ip link set up eth1
 ```
@@ -51,7 +51,7 @@ DNS1=114.114.114.114
 DNS2=8.8.8.8
 ```
 
-```bash
+```sh
 # ifdown eth1 && ifup eth1
 $ sudo systemctl restart network
 ```
@@ -70,7 +70,7 @@ iface eth0 inet static
   broadcast 192.168.0.255
 ```
 
-```bash
+```sh
 # sudo /etc/init.d/networking restart
 $ sudo service networking restart
 ```
@@ -93,7 +93,7 @@ IPADDR=x.x.x.x # 公网 IP 地址
 NETMASK=z.z.z.z # 公网 IP 地址的子网掩码
 ```
 
-```bash
+```sh
 # 启用
 $ ifdown eth0:0 && ifup eth0:0
 

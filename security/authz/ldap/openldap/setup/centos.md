@@ -11,7 +11,7 @@
 | compat-openldap  |                                                     |
 | phpLDAPadmin     |                                                     |
 
-```bash
+```sh
 $ yum install -y openldap openldap-servers openldap-clients # openldap-devel compat-openldap
 
 # 查看安装的软件包
@@ -51,13 +51,13 @@ $ sldap -V
 
 配置 OpenLDAP 最正确的姿势是通过 ldapmodify命令执行一系列自己写好的ldif文件，而不要修改任何OpenLDAP装好的配置文件。
 
-```bash
+```sh
 # 生成加密的密码（每次执行都不一样）
 $ slappasswd -s 123456
 {SSHA}0qrpJ5LK9n+O5FOgyXiRL4chdgvCjBAB
 ```
 
-```bash
+```sh
 # 添加或修改
 $ vi /etc/openldap/slapd.d/cn=config/olcDatabase\=\{2\}hdb.ldif
 olcSuffix: dc=eway,dc=link # 根域
@@ -65,14 +65,14 @@ olcRootDN: cn=root,dc=eway,dc=link # 管理员用户名
 olcRootPW: {SSHA}0qrpJ5LK9n+O5FOgyXiRL4chdgvCjBAB # 管理员密码
 ```
 
-```bash
+```sh
 $ sed -i -e "s|cn=Manager,dc=my-domain,dc=com|cn=root,dc=eway,dc=link|g" \
   /etc/openldap/slapd.d/cn=config/olcDatabase\=\{1\}monitor.ldif
 ```
 
 验证配置是否正确：
 
-```bash
+```sh
 $ slaptest -u
 5c3ee69e ldif_read_file: checksum error on "/etc/openldap/slapd.d/cn=config/olcDatabase={1}monitor.ldif"
 5c3ee69e ldif_read_file: checksum error on "/etc/openldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif"
@@ -81,7 +81,7 @@ config file testing succeeded
 
 ## 运行
 
-```bash
+```sh
 $ cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
 
 # 启动
@@ -102,7 +102,7 @@ $ journalctl -f -u slapd
 
 * 设置管理员密码
 
-```bash
+```sh
 #
 $ slappasswd
 New password:
@@ -112,7 +112,7 @@ Re-enter new password:
 
 * 新建文件
 
-```bash
+```sh
 $ touch chrootpw.ldif
 
 echo "dn: olcDatabase={0}config,cn=config" >> chrootpw.ldif
@@ -123,7 +123,7 @@ echo "olcRootPW: {SSHA}bVIaZCbrmkFO6CcpfAhRdJTXefjAPOeM" >> chrootpw.ldif
 
 * 导入该文件
 
-```bash
+```sh
 $ ldapadd -Y EXTERNAL -H ldapi:/// -f chrootpw.ldif
 SASL/EXTERNAL authentication started
 SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
@@ -133,7 +133,7 @@ modifying entry "olcDatabase={0}config,cn=config"
 
 * 导入基本 Schema（可以有选择地导入）
 
-```bash
+```sh
 $ cd /etc/openldap/schema/
 ldapadd -Y EXTERNAL -H ldapi:/// -D "cn=config" -f cosine.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -D "cn=config" -f nis.ldif

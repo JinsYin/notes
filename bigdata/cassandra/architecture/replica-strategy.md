@@ -15,7 +15,7 @@ CREATE KEYSPACE dw WITH replication = {'class': 'SimpleStrategy', ‘replication
 
 查看节点状态和相关环的信息：
 
-```bash
+```sh
 # 除第一个 Token 外，其他是从小到大的顺序排列的，而第一 Token 是最后一个 Token 的值，所以组成了一个环
 $ nodetool ring | head -n 15
 Datacenter: DCHK
@@ -36,7 +36,7 @@ Address          Rack        Status State   Load            Owns                
 
 可以发现每台机器在环中的数目均一致：
 
-```bash
+```sh
 $ nodetool ring | grep 192.168.100.200 | wc -l
 256
 

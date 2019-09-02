@@ -4,7 +4,7 @@
 
 ## 定义
 
-```golang
+```go
 // 声明
 var map_variable map[key_type]value_type // 默认值为 nil
 
@@ -14,7 +14,7 @@ map_variable := make(map[key_type]value_type)
 
 ## 范例
 
-```golang
+```go
 package main
 
 import "fmt"

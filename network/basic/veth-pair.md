@@ -14,13 +14,13 @@ ip link add eth1-br1 type veth peer name phy-br1
 
 网络命名空间用于隔离网络设备，例如 Docker 中有多个容器，每个容器对应一个 namespace，而不同的容器有不同的网络设备。
 
-```bash
+```sh
 $ ip nsnet add
 ```
 
 ## 创建 veth pair
 
-```bash
+```sh
 # 创建
 $ ip link add veth0 type veth peer name veth1
 

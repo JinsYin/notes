@@ -57,7 +57,7 @@ blob 对象的内容其实就是文件自身的内容。需要注意的是，查
 
 ## 常用命令
 
-```bash
+```sh
 # 查看对象类型
 $ git cat-file -t [ObjectID]
 
@@ -69,7 +69,7 @@ $ git cat-file -p [ObjectID]
 
 1. 新建 Git 版本库
 
-```bash
+```sh
 $ git init gitobj && cd gitobj/
 
 # 添加项目内容
@@ -81,7 +81,7 @@ $ find .git/objects -type f
 
 2. 添加到暂存区
 
-```bash
+```sh
 $ git add .
 
 # Git 创建了一个对象文件
@@ -97,7 +97,7 @@ $ git cat-file -p c25857 # Hello,world
 
 3. 提交到版本库
 
-```bash
+```sh
 $ git commit -m 'Document'
 
 # Git 创建了 4 个对象文件
@@ -118,7 +118,7 @@ $ git log --oneline -1
 d86e7d (HEAD) Document
 ```
 
-```bash
+```sh
 # 对象内容
 $ git cat-file -p d86e7d
 tree 9642a9eb10b8fce3ec11e3d17ccba83825a256f6
@@ -145,12 +145,12 @@ Hello,world
 
 通过底层命令 `hash-object` 可以将任意数据保存到 `.git` 目录，并返回相应的健值。
 
-```bash
+```sh
 $ echo 'test content' | git hash-object -w --stdin
 d670460b4b4aece5915caf5c68d12f560a9fe3e4
 ```
 
-```bash
+```sh
 $ find .git/objects -type f
 .git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4
 
@@ -164,7 +164,7 @@ test content
 
 1. 新建 Git 仓库
 
-```bash
+```sh
 $ git init G3 && cd G3/
 
 # 添加相同的项目内容的三个不同文件
@@ -173,7 +173,7 @@ $ echo "Hello" | tee README.md README.rst README.txt
 
 2. 提交到版本库
 
-```bash
+```sh
 $ git add .
 
 # Git 只创建了一个对象

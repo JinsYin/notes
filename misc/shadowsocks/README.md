@@ -11,7 +11,7 @@ Shadowsocks-libev 既可以用作 shadowsocks server（`ss-server`，配置和 s
 
 * Docker
 
-```bash
+```sh
 # 官方希望你是这样使用的（docker inspect），但这样只能作为 Server 使用
 $ docker run -d --name ss-server --restart=always \
   -p 1314:1314 \
@@ -30,7 +30,7 @@ $ docker run -d --name ss-server -p 1314:1314 --restart=always \
 
 * Ubuntu
 
-```bash
+```sh
 # 安装 shadowsocks-libev
 $ sudo apt-get install software-properties-common -y
 $ sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev
@@ -38,7 +38,7 @@ $ sudo apt-get update
 $ sudo apt install shadowsocks-libev
 ```
 
-```bash
+```sh
 # 修改配置
 $ vi /etc/default/shadowsocks-libev
 $ vi /etc/shadowsocks-libev/config.json
@@ -58,7 +58,7 @@ $ /etc/init.d/shadowsocks-libev start
 
 * CentOS
 
-```bash
+```sh
 # 安装 shadowsocks-libev
 $ yum install epel-release -y
 $ yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto c-ares-devel libev-devel libsodium-devel mbedtls-devel -y
@@ -73,13 +73,13 @@ $ yum install shadowsocks-libev
 
 * Docker
 
-```bash
+```sh
 $ docker run -d --name ss --restart=always -p 1314:1314 ficapy/shadowsocks -s 0.0.0.0 -p 1314 -k password -m aes-256-cfb
 ```
 
 * Ubuntu
 
-```bash
+```sh
 $ apt-get install python-pip
 
 # 安装最新版本
@@ -97,7 +97,7 @@ $ ssserver -d stop
 
 * CentOS
 
-```bash
+```sh
 $ yum install python-setuptools && easy_install pip
 $ pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 
@@ -120,7 +120,7 @@ $ cat /etc/shadowsocks.json
 $ ssserver -c /etc/shadowsocks.json -d stop
 ```
 
-```bash
+```sh
 # 修改配置
 $ vi /etc/shadowsocks-libev/config.json
 $ vi /etc/sysconfig/shadowsocks-libev
@@ -137,7 +137,7 @@ shadowsocks-qt5 用于直连 shadowsocks server，所以需要在 shadowsocks-qt
 
 * ubuntu
 
-```bash
+```sh
 $ sudo add-apt-repository ppa:hzwhuang/ss-qt5
 $ sudo apt-get update
 $ sudo apt-get install shadowsocks-qt5
@@ -147,7 +147,7 @@ $ sudo apt-get install shadowsocks-qt5
 
 * Docker
 
-```bash
+```sh
 # 端口映射不知道为什么不可行
 $ docker run -d --name ss-local --net=host --restart=always \
   shadowsocks/shadowsocks-libev ss-local -s 12.34.56.78 -p 1314 -l 1080 -k xxx -m aes-256-cfb
@@ -155,7 +155,7 @@ $ docker run -d --name ss-local --net=host --restart=always \
 
 * Ubuntu
 
-```bash
+```sh
 # 配置
 $ vi /etc/shadowsocks-libev/config.json
 {
@@ -176,7 +176,7 @@ $ nohup ss-local -c /etc/shadowsocks-libev/config.json >> /var/log/shadowsocks-l
 
 除配置路径与 Ubuntu 有所不同外，其他均一致：
 
-```bash
+```sh
 # 配置
 $ vi /etc/shadowsocks-libev/config.json
 $ vi /etc/sysconfig/shadowsocks-libev

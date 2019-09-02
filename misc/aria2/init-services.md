@@ -2,7 +2,7 @@
 
 ## Systemd（aria2.service）
 
-```bash
+```sh
 $ vi /usr/lib/systemd/system/aria2.service
 [Unit]
 Description=Aria2c download manager
@@ -24,7 +24,7 @@ WantedBy=multi-user.target
 
 ## Upstart（Aria2 init.d script）
 
-```bash
+```sh
 # chmod +x /etc/init.d/aria2c
 $ vi /etc/init.d/aria2
 #!/bin/sh

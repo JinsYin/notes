@@ -30,7 +30,7 @@ IB 网卡在该模式下可以发送的 IPoIB 消息的大小没有限制，但�
 
 IPoIB 设备具有 20 字节的硬件地址。弃用的 `ifconfig` 工具无法为 IPoIB 设备找到正确的硬件地址，应该使用 `iproute` 包中的 `ip` 工具。
 
-```bash
+```sh
 # 前 4 个字节是标志和队列对号："80:00:02:08"
 # 接下来的 8 个字节是子网前缀："fe:80:00:00:00:00:00:00"，默认子网前缀：“0xfe:80:00:00:00:00:00:00”
 # 最后 8 个字节是 IPoIB 设备所连接的 InfiniBand 端口的 GUID 地址："00:02:c9:03:00:29:3e:bb"
@@ -40,7 +40,7 @@ link/infiniband 80:00:02:08:fe:80:00:00:00:00:00:00:00:02:c9:03:00:29:3e:bb brd 
 
 ## 网络配置
 
-```bash
+```sh
 $ vi /etc/sysconfig/network-scripts/ifcfg-ib0
 TYPE=InfiniBand
 NAME=ib0 # 不需要匹配 DEVICE
@@ -57,7 +57,7 @@ GATEWAY=10.0.10.1
 NETMASK=255.255.255.0
 ```
 
-```bash
+```sh
 # 连接 IB 网络
 $ ifdown ib0 && ifup ib0
 
@@ -71,7 +71,7 @@ $ ip link show ib0 | grep mtu
 
 * 第一步：找出需要重命名的设备的 GUID
 
-```bash
+```sh
 # link/infiniband 后接的是 IPoIB 接口的 20 字节硬件地址，最后 8 个字节即所需的 GUID 地址： “02:c9:03:00:0c:c8:9b”
 $ ip link show ib0
 ib0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast state UP mode DEFAULT group default qlen 256
@@ -80,7 +80,7 @@ ib0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 2044 qdisc pfifo_fast state UP mode D
 
 * 第二步：在 rules 文件中添加条目
 
-```bash
+```sh
 # mlx4 为设备名称，所有地址小写
 $ vi /etc/udev/rules.d/70-persistent-ipoib.rules
 ACTION=="add", SUBSYSTEM=="net", DRIVERS=="?*", ATTR{type}=="32", ATTR{address}=="?*02:c9:03:00:0c:c8:9b", NAME="mlx4_ib0"
@@ -90,7 +90,7 @@ ACTION=="add", SUBSYSTEM=="net", DRIVERS=="?*", ATTR{type}=="32", ATTR{address}=
 
 除了重启可以生效外，还可以通过删除 `ib_ipoib` 内核模块再重新加载来强制重命名 IPoIB 接口。
 
-```bash
+```sh
 % rmmod ib_ipoib
 % modprobe ib_ipoib
 ```

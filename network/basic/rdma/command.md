@@ -4,7 +4,7 @@
 
 * ibstat
 
-```bash
+```sh
 $ ibstat
 CA 'mlx4_0' # 驱动名称
     CA type: MT26428 # 型号（MT：Mellanox Technologies）
@@ -37,7 +37,7 @@ CA 'mlx4_0' # 驱动名称
 
 * ibstatus
 
-```bash
+```sh
 $ ibstatus
 Infiniband device 'mlx4_0' port 1 status: # 该网卡已连接
     default gid: fe80:0000:0000:0000:0002:c903:0029:3e1f
@@ -62,7 +62,7 @@ Infiniband device 'mlx4_0' port 2 status: # 该网卡未连接
 
 * ibhosts
 
-```bash
+```sh
 # 查看 IB 网络上的所有主机（从左至右：节点 GUID、IB 端口号、设备名称）
 $ ibhosts
 Ca  : 0x0002c903000d7aac ports 1 "ip-160 HCA-1"
@@ -74,7 +74,7 @@ Ca  : 0x0002c903000cc89a ports 1 "ip-210 mlx4_0"
 
 * ibswitches
 
-```bash
+```sh
 # 查看 IB 网络上的所有交换机（从左至右：节点 GUID、端口号、设备名称）
 $ ibswitches
 Switch  : 0x0002c9020046c588 ports 36 "Infiniscale-IV Mellanox Technologies" base port 0 lid 2 lmc 0
@@ -82,7 +82,7 @@ Switch  : 0x0002c9020046c588 ports 36 "Infiniscale-IV Mellanox Technologies" bas
 
 * ibnodes
 
-```bash
+```sh
 # 上面两个命令的结合（推荐使用）
 $ ibnodes
 Ca  : 0x0002c903000d7aac ports 1 "ip-160 HCA-1"
@@ -97,7 +97,7 @@ Switch  : 0x0002c9020046c588 ports 36 "Infiniscale-IV Mellanox Technologies" bas
 
 * iblinkinfo
 
-```bash
+```sh
 # 设备名称，端口 GUID，虚拟 lanes 的数量，信号传输速率，端口状态，物理状态，链接的设备（这里是交换机）
 CA: ip-160 HCA-1:
       0x0002c903000d7aad      5    1[  ] ==( 4X          10.0 Gbps Active/  LinkUp)==>       2   33[  ] "Infiniscale-IV Mellanox Technologies" ( )
@@ -150,7 +150,7 @@ CA: ip-210 mlx4_0:
 
 * ibnetdiscover
 
-```bash
+```sh
 vendid=0x2c9
 devid=0xbd36
 sysimgguid=0x2c9020046c58b
@@ -202,7 +202,7 @@ Ca  1 "H-0002c903000cc89a"                          # "ip-210 mlx4_0"
 
 * ibv_devinfo
 
-```bash
+```sh
 $ ibv_devinfo
 hca_id: mlx4_0 # 驱动名称
     transport:          InfiniBand (0)
@@ -235,7 +235,7 @@ hca_id: mlx4_0 # 驱动名称
 
 * ibdev2netdev
 
-```bash
+```sh
 # IB 卡端口映射到网络设备
 $ ibdev2netdev
 mlx4_0 port 1 ==> ib0 (Up)
@@ -246,7 +246,7 @@ mlx4_0 (mt26428 - MT1037X01146) KESTREL        QDR             fw 2.9.1000 port 
 
 * ibv_devices
 
-```bash
+```sh
 $ ibv_devices
 device                 node GUID
 ------              ----------------
@@ -255,7 +255,7 @@ mlx4_0              0002c903000cc89a
 
 * 其他
 
-```bash
+```sh
 # ib0
 $ cat /sys/class/net/ib0/dev_id
 0x0
@@ -269,7 +269,7 @@ mlx4_0
 
 ## Mellanox Driver Modules
 
-```bash
+```sh
 $ lsmod | grep devlink
 devlink                42368  3 mlx4_en,mlx4_ib,mlx4_core
 ```

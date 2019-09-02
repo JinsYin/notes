@@ -2,7 +2,7 @@
 
 ## Flash 支持
 
-```bash
+```sh
 # Debian/Ubuntu
 $ sudo apt-get install adobe-flashplugin
 ```

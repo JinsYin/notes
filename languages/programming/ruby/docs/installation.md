@@ -2,7 +2,7 @@
 
 ## Ubuntu
 
-```bash
+```sh
 # 添加源
 $ apt-add-repository ppa:brightbox/ruby-ng
 $ apt-get update

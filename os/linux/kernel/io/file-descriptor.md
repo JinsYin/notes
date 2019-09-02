@@ -40,7 +40,7 @@ prog <INPUT_FILENAME >OUTPUT_FILENAME
 
 ## 命令
 
-```bash
+```sh
 # stdin 从 /dev/pts/19 读取数据，写入到了 C00003491.png
 $ ls /proc/772894/fd
 total 0

@@ -1,5 +1,7 @@
 # 内存管理（Memory Management）
 
+> mm 既是 memory 的缩写，也是 memory management 的缩写
+
 * 内存分配
 * 内存映射
 * 虚拟内存操作
@@ -50,3 +52,5 @@ Linux 将虚拟地址空间划分为两个部分：内核空间和用户空间
 * [Paging](https://en.wikipedia.org/wiki/Paging)
 * [Memory Management](https://www.kernel.org/doc/html/latest/admin-guide/mm/index.html)
 * [Linux Memory Management Documentation](https://www.kernel.org/doc/html/latest/vm/index.html)
+* [内核如何管理内存](https://zhuanlan.zhihu.com/p/34223136)
+* [内存管理](https://github.com/freelancer-leon/notes/blob/master/kernel/mm/mm.md)

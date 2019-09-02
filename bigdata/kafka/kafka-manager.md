@@ -2,7 +2,7 @@
 
 ## 安装 SBT
 
-```bash
+```sh
 $ curl https://bintray.com/sbt/rpm/rpm > bintray-sbt-rpm.repo
 $ sudo mv bintray-sbt-rpm.repo /etc/yum.repos.d/
 $ sudo yum install -y sbt
@@ -12,19 +12,19 @@ $ sudo yum install -y sbt
 
 默认下载最新版（kafka-manager-1.3.1.6）
 
-```bash
+```sh
 $ git clone https://github.com/yahoo/kafka-manager
 $ cd kafka-manager
 ```
 
-```bash
+```sh
 $ sbt clean dist # 编译需要很长时间
 $ ls -l target/universal/kafka-manager-1.3.1.6.zip # 编译好的文件
 ```
 
 解压上图中的 zip 文件
 
-```bash
+```sh
 $ unzip kafka-manager-1.3.1.6.zip
 $ cd kafka-manager-1.3.1.6
 ```
@@ -38,7 +38,7 @@ kafka-manager.zkhosts Zookeeper 集群的 hostname 和端口
 
 启动 kafka manager
 
-```bash
+```sh
 $ bin/kafka-manager
 ```
 
@@ -65,7 +65,7 @@ Topic 列表信息：
 
 ## 容器化
 
-```bash
+```sh
 $ docker run -itd \
     --restart=always \
     --name=kafka-manager \

@@ -13,7 +13,7 @@
 
 ### 时钟同步
 
-```bash
+```sh
 # ntpdate 软件包已被弃用
 $ yum install -y ntp
 
@@ -35,13 +35,13 @@ $ clock # 查看 BIOS 时间（或 hwclock -r）
 
 ### 部署
 
-```bash
+```sh
 # 生成一个集群 ID
 $ uuidgen
 b685757a-7492-4260-b7a9-059852d3894d
 ```
 
-```bash
+```sh
 $ vi /etc/ceph/ceph.conf
 [global]
 fsid = b685757a-7492-4260-b7a9-059852d3894d
@@ -68,7 +68,7 @@ host = c
 mon addr = 192.168.1.224
 ```
 
-```bash
+```sh
 # 生成 Monitor 的 keyring
 $ ceph-authtool --create-keyring /etc/ceph/ceph.mon.keyring --gen-key -n mon. --cap mon 'allow *'
 
@@ -78,7 +78,7 @@ $ cat /etc/ceph/ceph.mon.keyring
     caps mon = "allow *"
 ```
 
-```bash
+```sh
 # 生成管理员（client.admin） 的 keyring
 $ ceph-authtool --create-keyring /etc/ceph/ceph.client.admin.keyring --gen-key -n client.admin --set-uid=0 --cap mon 'allow *' --cap osd 'allow *' --cap mds 'allow *' --cap mgr 'allow *'
 
@@ -92,7 +92,7 @@ $ cat /etc/ceph/ceph.client.admin.keyring
     caps osd = "allow *"
 ```
 
-```bash
+```sh
 # 将 client keyring 加入到 Monitor keyring
 $ ceph-authtool /etc/ceph/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.admin.keyring
 
@@ -109,22 +109,22 @@ $ cat /etc/ceph/ceph.mon.keyring
     caps osd = "allow *"
 ```
 
-```bash
+```sh
 # 生成 monmap
 $ monmaptool --create --add a 192.168.1.222 --fsid b685757a-7492-4260-b7a9-059852d3894d /etc/ceph/monmap
 ```
 
-```bash
+```sh
 # 创建 Monitor （id 设置为 0 后会相应地自动创建 Monitor 目录：/var/lib/ceph/mon/ceph-0）
 $ ceph-mon --mkfs --id a --monmap /etc/ceph/monmap --keyring /etc/ceph/ceph.mon.keyring --conf /etc/ceph/ceph.conf
 ```
 
-```bash
+```sh
 # 修改权限
 $ chown ceph:ceph -R /var/lib/ceph/mon/ceph-a
 ```
 
-```bash
+```sh
 # 启动 Monitor 服务
 
 # 手动方式

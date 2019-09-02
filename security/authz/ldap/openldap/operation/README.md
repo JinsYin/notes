@@ -4,7 +4,7 @@
 
 操作命令均来自 `ldap-utils` 软件包，其中，以 `ldap` 开头的命令为客户端工具，以 `slap` 开头的命令以服务器端工具。
 
-```bash
+```sh
 # Ubuntu
 $ sudo apt-get install -y ldap-utils
 ```

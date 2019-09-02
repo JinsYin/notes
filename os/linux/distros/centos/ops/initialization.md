@@ -22,7 +22,7 @@
 
 EPEL（Extra Packages for Enterprise Linux）由 Fedora 社区打造的开源项目，旨在为 RHEL 及其发行版提供额外的软件包。
 
-```bash
+```sh
 # 安装 epel-release 以自动配置 EPEL 软件源
 # 见：'/etc/yum.repos.d/epel.repo' 与 '/etc/yum.repos.d/epel-testing.repo'
 $ yum install -y epel-release
@@ -30,7 +30,7 @@ $ yum install -y epel-release
 
 ## 修改主机名
 
-```bash
+```sh
 # 可以单独修改 pretty hostname
 hostnamectl set-hostname ip-192-168-1-100.ceph.local
 ```

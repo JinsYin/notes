@@ -19,19 +19,19 @@ nameserver 114.114.114.114 # 三大运营商
 
 用于指定本地域名（实际上也能指定远程域名）。如果查询的名称没有包含 `小数点`，会自动将设置的本地域名作为它的根域名。
 
-```bash
+```sh
 # 不带小数点的域名不能直接 ping 通
 $ ping news
 ping: unknown host news
 ```
 
-```bash
+```sh
 # 设置本地域名
 $ vi /etc/resolv.conf
 domain sogou.com
 ```
 
-```bash
+```sh
 # 实际上 ping 的是 news.sogou.com
 $ ping news
 PING news.sogou.com (220.181.124.50) 56(84) bytes of data.

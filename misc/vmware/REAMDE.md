@@ -10,7 +10,7 @@ Could not open /dev/vmmon: No such file or directory. Please make sure that the 
 
 答：
 
-```bash
+```sh
 cd /tmp && tar xvf /usr/lib/vmware/modules/source/vmmon.tar
 cd vmmon-only/ && make
 cp vmmon.ko /lib/modules/$(uname -r)/misc/vmmon.ko

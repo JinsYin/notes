@@ -31,13 +31,13 @@ Mac OS X 10.7 以上（含）
 
 ### 安装
 
-```bash
+```sh
 % pip install -U pyinstaller
 ```
 
 ## 示例
 
-```bash
+```sh
 # 如果使用 anaconda，需要指定动态链接库
 $ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/anaconda3/lib' >> ~/.bashrc
 $ source ~/.bashrc

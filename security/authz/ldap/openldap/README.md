@@ -13,7 +13,7 @@ OpenLDAP默认以Berkeley DB作为后端数据库
 
 ## PHPldapAdmin
 
-```bash
+```sh
 $ docker run -p 6443:443 --env PHPLDAPADMIN_LDAP_HOSTS=ldap.example.com --detach osixia/phpldapadmin:0.7.1
 ```
 

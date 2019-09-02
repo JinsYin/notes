@@ -6,7 +6,7 @@ Keytool 是一个 Java 数据证书的管理工具，Keytool 将密钥（key）�
 
 1. 先生成证书文件 keystore, 证书文件中包含密钥，导出密钥方式请参考 [主流数字证书都有哪些格式？](http://help.aliyun.com/knowledge_detail.htm?knowledgeId=13086385)
 
-```bash
+```sh
 $ keytool -genkey -alias mycert -keyalg RSA -keysize 2048 -keystore ./mydomain.jks
 ```
 
@@ -21,7 +21,7 @@ $ keytool -genkey -alias mycert -keyalg RSA -keysize 2048 -keystore ./mydomain.j
 
 2. 通过证书文件生成 CSR
 
-```bash
+```sh
 $ keytool -certreq -sigalg SHA256withRSA -alias mycert -keystore ./mydomain.jks -file ./mydomain.csr
 ```
 

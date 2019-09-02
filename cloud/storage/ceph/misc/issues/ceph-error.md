@@ -3,18 +3,18 @@
 ## 错误 1
 
 安装 ceph 过程报错
-```bash
+```sh
 $ ceph-deploy install <ceph-node(s)>
 [ceph_deploy][ERROR ] RuntimeError: NoSectionError: No section: 'ceph'
 ```
 
 解决办法（ceph-admin 节点上操作）
-```bash
+```sh
 # 方法 1
 $ yum remove ceph-release
 ```
 
-```bash
+```sh
 # 方法 2
 $ mv /etc/yum.repos.d/ceph.repo /etc/yum.repos.d/ceph-repo.repo
 ```
@@ -26,7 +26,7 @@ $ mv /etc/yum.repos.d/ceph.repo /etc/yum.repos.d/ceph-repo.repo
 ## 错误 2
 
 安装 ceph 过程中连接超时
-```bash
+```sh
 $ ceph-deploy install <ceph-node(s)>
 Timeout to connect to ......
 ```
@@ -64,7 +64,7 @@ type=rpm-md
 gpgkey=https://download.ceph.com/keys/release.asc
 ```
 
-```bash
+```sh
 # 在所有对应节点安装 ceph
 $ yum install snappy leveldb gdisk python-argparse gperftools-libs -y # 安装依赖
 $ yum list ceph --showduplicates # 查看相应版本
@@ -79,7 +79,7 @@ $ rpm -qa | grep ceph  | wc -l # 共 11 个软件包
 
 独立安装 ceph 的时候，linux 库文件、依赖文件找不到。
 
-```bash
+```sh
 $ # 即使安装最新版本也可能出错
 $ yum install ceph-10.2.7
 Error: Package: 1:librbd1-10.2.7-0.el7.x86_64 (ceph)
@@ -100,7 +100,7 @@ Error: Package: 1:ceph-common-10.2.7-0.el7.x86_64 (ceph)
 
 执行以下命令：
 
-```bash
+```sh
 $ yum install -y yum-utils \
 && yum-config-manager --add-repo https://dl.fedoraproject.org/pub/epel/7/x86_64/ \
 && yum install --nogpgcheck -y epel-release \
@@ -108,7 +108,7 @@ $ yum install -y yum-utils \
 && rm -f /etc/yum.repos.d/dl.fedoraproject.org*
 ```
 
-```bash
+```sh
 $ release="jewel"
 $ version="10.2.6"
 
@@ -122,7 +122,7 @@ $ yum install libradosstriper1-${version} librgw2-${version} ceph-common-${versi
 ## 错误 4
 
 ceph activate 激活 osd 是提示没有权限
-```bash
+```sh
 $ ceph-deploy activate ceph-node-1:/ceph/osd
 error creating empty object store in /ceph/osd: (13) Permission denied
 ```
@@ -133,7 +133,7 @@ ceph-deploy prepare 准备 osd 时，会默认为 ceph-node-1:/ceph/osd 等目�
 ```
 
 解决办法
-```bash
+```sh
 $ chown ceph:ceph -R /ceph/osd # 方法 1（推荐）
 $ chown root:root -R /ceph/osd # 方法 2
 ```
@@ -144,7 +144,7 @@ $ chown root:root -R /ceph/osd # 方法 2
 ## 错误 5
 
 健康检查是提示：too many PGs per OSD
-```bash
+```sh
 $ ceph -s
 HEALTH_WARN too many PGs per OSD
 ```
@@ -164,7 +164,7 @@ HEALTH_WARN too many PGs per OSD
 ## 错误 6
 
 初始创建集群时错误
-```bash
+```sh
 $ ceph-deploy new centos202 centos203 centos204 centos205 centos206
 Some monitors have still not reached quorum
 Some monitors have still not reached quorum
@@ -179,14 +179,14 @@ Some monitors have still not reached quorum
 ```
 
 解决办法
-```bash
+```sh
 # 方法 1： 修改配置文件 ceph.conf 试试（实测无用）
 auth_cluster_required = none
 auth_service_required = none
 auth_client_required = none
 ```
 
-```bash
+```sh
 # 方法 2
 # 实测发现 5 个 mon 会出现这个问题，改为 3 个 mon 后问题居然解决了（总感觉是个 bug），如果 mon 不够的话再添加。
 $ ceph-deploy new centos202 centos203 centos204 # 先 3 个 mon
@@ -194,7 +194,7 @@ $ ceph-deploy mon add --addr 192.168.111.205 centos205 # 再添加 2 个 mon
 $ ceph-deploy mon add --addr 192.168.111.206 centos206
 ```
 
-```bash
+```sh
 $ #
 $ cat ceph.conf
 ...
@@ -219,7 +219,7 @@ Error response from daemon: --storage-opt is not supported for overlay
 ```
 
 解决办法
-```bash
+```sh
 # 方法 1
 $ docker volume create --driver rexray --opt=size=20 --name nginx_data # 创建卷并指定容量为 20GB
 $ docker run -it --name web -p 8000:80 --volume-driver=rexray -v nginx_data:/usr/share/nginx -d nginx:1.11.9-alpine # 使用创建好的卷部署应用
@@ -233,13 +233,13 @@ $ docker run -it --name web -p 8000:80 --volume-driver=rexray -v nginx_data:/usr
 ## 错误 8
 
 时间不同步
-```bash
+```sh
 $ ceph -s
 HEALTH_WARN clock skew detected on mon.centos206
 ```
 
 解决办法
-```bash
+```sh
 $ ntpdate cn.pool.ntp.org # 同步时间
 $ systemctl restart ntpd.service && systemctl enable ntpd.service # 重启 ntpd
 ```

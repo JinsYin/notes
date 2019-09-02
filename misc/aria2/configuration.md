@@ -2,7 +2,7 @@
 
 尽管可以在 `aria2c` 命令后面直接传递参数，但由于参数过多，所以最好还是把参数放到配置文件。
 
-```bash
+```sh
 # 默认配置路径
 $ vi ~/.aria2/aria2.conf
 dir=/home/yin/Downloads
@@ -32,7 +32,7 @@ max-upload-limit=0 # 单文件速度限制
 check-certificate=false # 不进行证书校验
 ```
 
-```bash
+```sh
 $ vi ~/.aria2/aria2.conf
 ## 下载设置 ##
 
@@ -154,12 +154,12 @@ file-allocation=trunc
 disk-cache=64M
 ```
 
-```bash
+```sh
 # 后台启动 aria2c 守护进程
 $ aria2c --conf-path=/home/yin/.aria2/aria2.conf --enable-rpc --daemon
 ```
 
-```bash
+```sh
 # http://hostname:port/jsonrpc
 $ aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all
 

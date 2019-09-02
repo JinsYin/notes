@@ -17,7 +17,7 @@
 
 首先，在所有节点的 APT 源中（主节点与从节点）加入 Mesosphere 的库地址。执行以下命令：
 
-```bash
+```sh
 # Debian/Ubuntu
 $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
 $ DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
@@ -27,21 +27,21 @@ $ echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" | sudo tee /e
 
 执行上述命令后，执行 APT 更新命令：
 
-```bash
+```sh
 # Debian/Ubuntu
 $ sudo apt-get -y update
 ```
 
 现在需要按照节点的角色安装不同的包。对于主节点而言，需要安装 Mesosphere 包，这个包中集成了 zookeeper，mesos，marathon 和 chronos 应用：
 
-```bash
+```sh
 # 最新版本
 $ sudo apt-get install -y mesosphere
 ```
 
 对于从节点而言，只需要安装 mesos 包：
 
-```bash
+```sh
 # 最新版本
 $ sudo apt-get install -y mesos
 ```
@@ -53,13 +53,13 @@ $ sudo apt-get install -y mesos
 出现此问题的原因是 Marathon 的安装需要依赖一个名为 java8-runtime-headless 的插件，此插件只能在版本号大于 14.10 的 ubuntu 系统中运行。解决方法是：首先检查系统的 Java 环境是否配置正确，其次安装一个名为 equivs 的插件，利用此插件可以创建一个空的 deb 包，并在配置文件中申明该 deb 包含有 java8-runtime-headless 环境。
 首先，安装 equivs ，执行以下命令：
 
-```bash
+```sh
 sudo apt-get install -y equivs
 ```
 
 安装完成后，创建一个带有模板的配置文件，若系统的 jdk 版本为 1.8.111，则文件名可以命名为 dummy-jdk-8u111。执行命令为：
 
-```bash
+```sh
 $ sudo equivs-control dummy-jdk-8u111
 ```
 
@@ -77,7 +77,7 @@ Description: dummy package to satisfy java8-runtime-headless dep for manual inst
 
 更改完成后，执行以下命令进行编译并安装：
 
-```bash
+```sh
 equivs-build dummy-jdk-8u111
 dpkg -i dummy-oracle-jdk_1.8.111_all.deb
 ```
@@ -88,13 +88,13 @@ dpkg -i dummy-oracle-jdk_1.8.111_all.deb
 
 在所有节点（主节点与从节点）中，使用 vi 命令打开 /etc/mesos 中名为 zk 的文件：
 
-```bash
+```sh
 sudo vi /etc/mesos/zk
 ```
 
 在该文件中可以看到 zk://localhost:2181/mesos 一行内容，现将其中的 localhost 替换为所有 master 节点的 IP 地址，开头的 zk:// 不变，末尾的 /mesos 不变，端口号 2181 为 zookeeper 的默认端口号，同样不变。以本文为例，更改内容为：
 
-```bash
+```sh
 zk://192.168.42.132:2181,192.168.42.133:2181,192.168.42.134:2181/mesos
 ```
 
@@ -105,13 +105,13 @@ zk://192.168.42.132:2181,192.168.42.133:2181,192.168.42.134:2181/mesos
 本节仅针对主节点。
 zookeeper 的目的是在众多 master 节点中选举一个 leader。首先为每个主节点分配一个独一无二的 ID 号码，范围从 1 到 255 均可。现在打开此文件：
 
-```bash
+```sh
 $ sudo vi /etc/zookeeper/conf/myid
 ```
 删除该文件中所有内容并指定改节点的 ID，以文本为例，master1 指定为 1，master2 指定为 2，master3 指定为 3。
 接下来我们需要修改 zookeeper 配置文件，将 ID 与主机匹配。打开以下文件：
 
-```bash
+```sh
 $ sudo vi /etc/zookeeper/conf/zoo.cfg
 ```
 
@@ -133,7 +133,7 @@ server.3=192.168.42.134:2888:3888
 本节仅针对主节点。
 首先，我们需要配置集群的 Quorum，Quorum 为一个数字，它决定了集群正常工作所需的最小主机数量，该数字的值需要大于主节点数量的一半。现在打开以下文件：
 
-```bash
+```sh
 sudo vi /etc/mesos-master/quorum
 ```
 
@@ -146,12 +146,12 @@ sudo vi /etc/mesos-master/quorum
 /etc/mesos-master/ip
 /etc/mesos-master/hostname
 为了防止出现地址解析错误，我们直接用IP地址作为hostname。现在对每个主节点分别执行以下命令：
-```bash
+```sh
 echo IP | sudo tee /etc/mesos-master/ip
 sudo cp /etc/mesos-master/ip /etc/mesos-master/hostname
 ```
 命令中的 IP 为节点的 IP 地址，以本文的 master1 为例，该命令为：
-```bash
+```sh
 echo 192.168.42.132 | sudo tee /etc/mesos-master/ip
 sudo cp /etc/mesos-master/ip /etc/mesos-master/hostname
 ```
@@ -162,21 +162,21 @@ sudo cp /etc/mesos-master/ip /etc/mesos-master/hostname
 本节仅针对主节点。
 Mesos 配置完成后，现在开始对 Marathon 进行配置。Marathon 会运行在各个主节点，但是只有主节点中的 leader才可以担当安排工作的任务，其它 Marathon 实体只担当将请求代理至 leader 的角色。首先我们需要为每个 Marathon 实体配置它们的 hostname，由于在上文中我们已经进行过相似的配置，所以在本节中我们只需要执行一些复制操作。
 首先我们需要创建配置文件所在的文件夹，将之前配置过的 hostname 复制到此文件夹中：
-```bash
+```sh
 sudo mkdir –p /etc/marathon/conf
 sudo cp /etc/mesos-master/hostname /etc/marathon/conf
 ```
 接下来为了方便 Marathon 连接，我们需要定义 zookeeper masters 列表，这个列表就是我们之前配置 Mesos 过程中名为的 zk 的文件，现在我们只需将它复制过来：
-```bash
+```sh
 sudo cp /etc/mesos/zk /etc/marathon/conf/master
 ```
 以上命令将会允许 Marathon 服务连接到 Mesos 集群。然而我们任然希望 Marathon 可以在 zookeeper 中存储自己的主节点信息，为了达成这个目标，我们只需将之前的 zk 文件复制到对应目录，并进行一些小改动。
 首先将之前复制过来的文件复制到 Marathon zookeeper 的位置：
-```bash
+```sh
 sudo cp /etc/marathon/conf/master /etc/marathon/conf/zk
 ```
 接下来对其进行修改：
-```bash
+```sh
 sudo vi /etc/marathon/conf/zk
 ```
 所谓的改动就是将 /mesos 替换为 /marathon。至此完成主节点配置。
@@ -184,12 +184,12 @@ sudo vi /etc/marathon/conf/zk
 ### 配置从节点
 
 从节点的配置相对较为简单，只需配置 IP 地址与 hostname 即可。执行以下命令：
-```bash
+```sh
 echo IP | sudo tee /etc/mesos-slave/ip
 sudo cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
 ```
 以本文为例，slave1 的配置命令如下：
-```bash
+```sh
 echo 192.168.42.135 | sudo tee /etc/mesos-slave/ip
 sudo cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
 ```
@@ -201,7 +201,7 @@ sudo cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
 本节仅针对主节点。
 首先需要确保主节点只运行 mesos-master 进程，因此需要停止 mesos-slave 进程，并将自动启动改为手动启动。执行命令如下：
 
-```bash
+```sh
 sudo stop mesos-slave
 echo manual | sudo tee /etc/init/mesos-slave.override
 ```
@@ -211,14 +211,14 @@ echo manual | sudo tee /etc/init/mesos-slave.override
 执行停止命令后，系统有可能出现以上提示信息，我们可以忽略此信息，只要确保 slave 进程没有运行即可。
 或者也可以尝试 status 命令查看进程是否正在运行：
 
-```bash
+```sh
 sudo status mesos-slave
 ```
 
 ![png7](.images/png7.png)
 接下来执行以下命令，重启 zookeeper，启动 mesos-master，marathon。
 
-```bash
+```sh
 sudo restart zookeeper
 sudo start mesos-master
 sudo start marathon
@@ -239,7 +239,7 @@ sudo start marathon
 
 接下来测试从节点，对于从节点而言，需要停止 zookeeper 与 mesos-master 进程，并且设置为手动启动。
 
-```bash
+```sh
 sudo stop zookeeper
 echo manual | sudo tee /etc/init/zookeeper.override
 sudo stop mesos-master
@@ -248,7 +248,7 @@ echo manual | sudo tee /etc/init/mesos-master.override
 
 之后启动 mesos-slave 进程：
 
-```bash
+```sh
 sudo start mesos-slave
 ```
 

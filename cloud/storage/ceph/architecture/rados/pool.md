@@ -2,7 +2,7 @@
 
 ## 查询 Pool
 
-```bash
+```sh
 $ ceph osd pool ls
 rbd
 cephfs_data
@@ -13,7 +13,7 @@ default.rgw.meta
 default.rgw.log
 ```
 
-```bash
+```sh
 $ rados lspools
 rbd
 cephfs_data
@@ -24,7 +24,7 @@ default.rgw.meta
 default.rgw.log
 ```
 
-```bash
+```sh
 # 包含 Pool ID
 $ ceph osd lspools
 0 rbd,1 cephfs_data,2 cephfs_metadata,3 .rgw.root,4 default.rgw.control,5 default.rgw.meta,6 default.rgw.log,
@@ -39,13 +39,13 @@ ceph osd pool create {pool-name} {pg-num}  {pgp-num}   erasure \
      [erasure-code-profile] [crush-ruleset-name] [expected_num_objects]
 ```
 
-```bash
+```sh
 # osd pool create <poolname> <int[0-]> {<int[0-]>} {replicated|erasure} {<erasure_code_profile>} {<ruleset>} {<int>}
 ```
 
 ## 删除 Pool
 
-```bash
+```sh
 $ ceph -n mon.0 --show-config | grep mon_allow_pool_delete
 mon_allow_pool_delete = false
 
@@ -56,7 +56,7 @@ injectargs:mon_allow_pool_delete = 'true' (not observed, change may require rest
 
 ## Pool 统计
 
-```bash
+```sh
 $ rados df
 POOL_NAME           USED OBJECTS CLONES COPIES MISSING_ON_PRIMARY UNFOUND DEGRAED RD_OPS RD    WR_OPS WR
 .rgw.root           2062       6      0      6                  0       0       0     36 24576      6 6144
@@ -73,7 +73,7 @@ total_avail      30323M
 total_space      109G
 ```
 
-```bash
+```sh
 # 指定 Pool
 $ rados df -p cephfs_metadata
 ```

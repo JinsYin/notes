@@ -4,7 +4,7 @@
 
 访问 <https://www.netacad.com/group/offerings/packet-tracer/>，需要先登录再下载，下载完成后正常安装即可。
 
-```bash
+```sh
 # 安装完成后需要 Desktop launcher desktop（安装目录为 ~/packet-tracer）
 $ cp ~/packet-tracer/bin/Cisco-PacketTracer.desktop ~/.local/share/applications/
 

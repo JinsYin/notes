@@ -11,7 +11,7 @@
 
 * 安装
 
-```bash
+```sh
 # centos
 $ yum install -y rpcbind nfs-utils
 
@@ -21,7 +21,7 @@ $ apt-get install rpcbind nfs-kernel-server
 
 * 配置
 
-```bash
+```sh
 # 创建存储目录
 $ mkdir -p /data/nfs
 
@@ -52,7 +52,7 @@ $ exportfs -r
 
 启动 NFS 之前需要先启动 RPC，否则 NFS 会无法向 RPC 注册。另外，RPC 若重新启动时，原本注册的数据会丢失，因此 RPC 重新启动后，它管理的所有服务都需要重新启动来重新向 RPC 注册。
 
-```bash
+```sh
 # 启动服务
 $ systemctl start rpcbind nfs
 
@@ -92,7 +92,7 @@ nfs-client.target                           enabled
 
 * 安装客户端
 
-```bash
+```sh
 # centos
 $ yum install -y nfs-utils
 
@@ -102,7 +102,7 @@ $ apt-get install -y nfs-common
 
 * 挂载
 
-```bash
+```sh
 # 查看可挂载列表
 $ showmount -e 192.168.1.224
 Export list for 192.168.1.224:
@@ -117,14 +117,14 @@ $ df -h | grep mnt
 
 客户端在挂载的时候遇到的一个问题如下，可能是网络不太稳定，NFS 默认是用 UDP 协议，换成 TCP 协议即可：
 
-```bash
+```sh
 # TCP 协议
 $ mount -t nfs 192.168.1.224:/data/nfs /mnt/host224 -o proto=tcp -o nolock
 ```
 
 * 卸载
 
-```bash
+```sh
 # umount -t nfs /mnt/host224
 $ umount -t nfs 192.168.1.224:/data/nfs
 ```

@@ -4,7 +4,7 @@
 
 建议安装最新版本，且不要使用 `root` 用户来安装。
 
-```bash
+```sh
 # 下载
 $ wget -P ~/Downloads/ https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
@@ -20,7 +20,7 @@ $ bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 
 Miniconda 默认的虚拟环境为 `root`。如果希望把 Miniconda 转变为 Anaconda，只需要在相应的环境安装 `anaconda` 包即可。
 
-```bash
+```sh
 # 虚拟环境
 $ conda info --env
 root        *  /usr/local

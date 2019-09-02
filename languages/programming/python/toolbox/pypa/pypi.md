@@ -10,7 +10,7 @@ PyPI（Python Package Index）是 Python 的软件存储库。
 
 * 测试方案
 
-```bash
+```sh
 pynamespace          # 项目名称
 ├── subpkg_a         # 软件包名
 │   └── __init__.py
@@ -24,7 +24,7 @@ pynamespace          # 项目名称
 
 * 推荐方案
 
-```bash
+```sh
 pythonx             # 项目名称
 ├── pythonx         # 软件包名
 │   └── __init__.py
@@ -96,16 +96,16 @@ universal = 1
 * sdist（Source Distributions）- 即源码包
 * wheel                       - 采用预编译格式，安装速度更快
 
-```bash
+```sh
 # 安装最新版本的 setuptools 和 wheel
 $ python3 -m pip install --user --upgrade setuptools
 ```
 
-```bash
+```sh
 $ python3 setup.py sdist bdist_wheel
 ```
 
-```bash
+```sh
 ├── build
 │   ├── bdist.linux-x86_64
 │   └── lib
@@ -153,7 +153,7 @@ password:<password># 可选
 
 ## 上传项目
 
-```bash
+```sh
 $ python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
 python3 -m twine upload dist/*
@@ -163,7 +163,7 @@ python3 -m twine upload dist/*
 
 * 安装
 
-```bash
+```sh
 $ pip install pythonx
 ```
 

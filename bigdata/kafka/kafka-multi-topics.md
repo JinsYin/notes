@@ -22,6 +22,6 @@
 
 停止进程：
 
-```bash
+```sh
 $ kill $(ps -ef | grep spark-submit)
 ```
