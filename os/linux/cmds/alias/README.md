@@ -4,5 +4,5 @@
 
 ```sh
 alias cp="cp -i"    # 防止拷贝时覆盖已存在的文件
-alias ll="ls -alih" # -a：显示隐藏文件，-i：inode 编号，-h：可读
+alias ll="ls -hail" # -a：显示隐藏文件，-i：inode 编号，-h：可读
 ```

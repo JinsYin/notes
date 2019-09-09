@@ -16,4 +16,3 @@ $ vi ~/.zshrc
 $ vi ~/.zshrc
 DISABLE_UPDATE_PROMPT=true
 ```
-

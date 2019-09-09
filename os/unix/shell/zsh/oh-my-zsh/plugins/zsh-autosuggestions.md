@@ -14,7 +14,9 @@ $ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/z
 
 ```sh
 $ vi ~/.zshrc
-bindkey ',' autosuggest-accept
+bindkey '^' autosuggest-accept
+
+$ source ~/.zshrc
 ```
 
 ## 参考

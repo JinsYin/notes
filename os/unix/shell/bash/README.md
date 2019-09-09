@@ -24,6 +24,12 @@
 
 更多快捷键：`man readline`（Linux）
 
+## 特殊
+
+`!!`: 上一条命令或者最近一条命令
+`!ls`：最近一条以 ls 开头的命令
+`!520`：执行 history 编号为 520 的命令
+
 ## 参考
 
 * [Bash Reference Manual](https://www.gnu.org/software/bash/manual/html_node/index.html)

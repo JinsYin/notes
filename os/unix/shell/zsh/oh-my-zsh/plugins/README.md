@@ -13,6 +13,7 @@
 | sublime           |                                           |                                             |
 | brew              |                                           |                                             |
 | osx               |                                           |                                             |
+| z                 |                                           |                                             |
 
 ## 添加插件
 
@@ -21,13 +22,6 @@ $ vi ~/.zshrc
 ...
 plugins=(
     git
-    autojump
-    colored-man
-    colorize
-    copydir
-    history
-    sublime
-    command-not-found
 )
 ...
 ```
