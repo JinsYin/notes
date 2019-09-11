@@ -24,3 +24,5 @@ $ docker run -p 6443:443 --env PHPLDAPADMIN_LDAP_HOSTS=ldap.example.com --detach
 * [Openshift openldap dockerfile](https://github.com/openshift/origin/tree/master/images/openldap)
 * [osixia/openldap Dockerfile](https://github.com/osixia/docker-openldap)
 * [Kubernetes Authenticating](https://kubernetes.io/docs/admin/authentication/)
+
+* [OpenLDAP 初识](https://blog.mallux.me/2017/03/03/openldap/)

@@ -7,4 +7,10 @@
 ![Linux 架构](.images/linux-architecture.png)
 ![Linux 架构](.images/linux-architecture-2.png)
 
+## 课程
+
+* [Linux 内核分析](https://www.shiyanlou.com/courses/195)
+
+## 参考
+
 * [操作系统](https://zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)

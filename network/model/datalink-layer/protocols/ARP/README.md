@@ -1,8 +1,8 @@
-# ARP
+# ARP 协议
 
 地址解析协议（Address Resolution Protocol，缩写：**ARP**）是通过 `IP 地址`来定位 `MAC 地址` 的网络传输协议（即已知 `IP 地址` 求 `MAC 地址`）。
 
-在 OSI 模型中，ARP 协议属于数据链路层（主流）；而在 TCP/IP 模型中，ARP 协议属于网络层。
+在 OSI 模型中，ARP 协议属于 **数据链路层**（主流）；而在 TCP/IP 模型中，ARP 协议属于 **网络层**。
 
 ## 概述
 

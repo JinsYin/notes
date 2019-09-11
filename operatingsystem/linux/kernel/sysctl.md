@@ -1,6 +1,6 @@
 # sysctl
 
-`sysctl` 工具可以在运行时检查和修改 kernel 参数（源自 `procps-ng` 包）。
+`sysctl` 工具可以在运行时检查和修改 kernel 参数（源自 `procps-ng` 包），参数信息存储在 `/proc/sys/` 目录下。
 
 ## 配置
 
@@ -34,6 +34,9 @@ dev.cdrom.autoclose = 1
 ```
 
 ```bash
+# 查看健值
+$ sysctl fs.file-max
+
 # 查看某个 kernel 参数值
 $ sysctl -n fs.file-max # or: sysctl fs.file-max
 3245441

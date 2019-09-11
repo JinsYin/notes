@@ -1,34 +1,16 @@
 # Git 入门
 
-![Git flow](.images/git-guide.png)
-> [图片来源](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
+## 创建 Git 仓库
 
-- Workspace：工作区
-- Index / Stage：暂存区
-- Repository：仓库区（或本地仓库）
-- Remote：远程仓库
-
-## Ubuntu 安装 Git
 ```bash
-$ sudo apt-get install git
+# 将已有项目纳入 Git 管理
+$ cd myproject/ && git init
+
+# 新项目使用 Git 管理
+$ git init newproject && cd newproject
 ```
 
----
-
-## 初始化一个空的本地仓库
-```bash
-# 也可以简写成: git init learn-git
-$ mkdir learn-git && cd learn-git
-$ git init
-$ ls -alh
-```
-
-## 设置个人账户信息
-```bash
-# --global 表示所有本地仓库都使用这个用户名和邮箱，也可以针对某个仓库使用不同的用户名和邮箱
-$ git config --global user.name "JinsYin"
-$ git config --global user.email "jinsyin@gmail.com"
-```
+创建完成后会在当前项目下自动生成 `.git` 目录及相关子文件。
 
 ## 把工作区文件提交到本地仓库（当前分支）
 

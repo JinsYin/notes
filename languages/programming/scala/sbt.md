@@ -59,4 +59,4 @@ $ sbt package
 
 ## 参考
 
-> http://www.scala-sbt.org/0.13/docs/zh-cn/index.html
+> <http://www.scala-sbt.org/0.13/docs/zh-cn/index.html>

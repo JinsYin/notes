@@ -66,114 +66,114 @@ $ val rdd = sc.parallelize(Array(1, 2, 3, 4), 4)
 
 实际上，map 型算子也可以操作 `(K, V)` 类型的数据，不过内部依然会把 `(K, V)` 类型的元素作为一个 Value。map 型 Transformation 前后分区数不变。
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| map(f)                    | (V)         | T => U                                   | 对 RDD 中的每个元素都执行 f 函数，并返回新的 RDD
-| flatMap(f)                | (V)         | T => TraversableOnce[U]                  | 对 RDD 中的每个元素都执行 f 函数，再扁平化结果，最后返回新的 RDD
-| mapPartitions(f)          | (V), (K, V) | Iterator<T> => Iterator<U>               | 对 RDD 中的每个分区都执行 f 函数，并返回新的 RDD
-| mapPartitionsInternal(f)  | (K, V)      | Iterator[T] => Iterator[U]               | value 一对多
-| mapPartitionsWithIndex(f) | (V), (K, V) | (Int, Iterator<T>) => (Int, Iterator<U>) | 类似 mapPartitions，只是每个分区都带有 index
-| mapValues(f)              | (K, V)      | (T, U) => (T, U)                         | value 一对一
-| flatMapValues(f)          | (K, V)      | (T, U) => (T, Seq<U>)                    | value 一对多
+| 算子                | RDD 类型  | f 函数类型                               | 用途                                                        |
+| -------------------- | ---------- | ----------------------------------------- | ----------------------------------------------------------- |
+| map(f)                    | (V)         | T => U                                   | 对 RDD 中的每个元素都执行 f 函数，并返回新的 RDD                 |
+| flatMap(f)                | (V)         | T => TraversableOnce[U]                  | 对 RDD 中的每个元素都执行 f 函数，再扁平化结果，最后返回新的 RDD |
+| mapPartitions(f)          | (V), (K, V) | Iterator<T> => Iterator<U>               | 对 RDD 中的每个分区都执行 f 函数，并返回新的 RDD                 |
+| mapPartitionsInternal(f)  | (K, V)      | Iterator[T] => Iterator[U]               | value 一对多                                                     |
+| mapPartitionsWithIndex(f) | (V), (K, V) | (Int, Iterator<T>) => (Int, Iterator<U>) | 类似 mapPartitions，只是每个分区都带有 index                     |
+| mapValues(f)              | (K, V)      | (T, U) => (T, U)                         | value 一对一                                                     |
+| flatMapValues(f)          | (K, V)      | (T, U) => (T, Seq<U>)                    | value 一对多                                                     |
 
 ---
 
 * group 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| groupBy(f)    | (K, V) | T => U | 按 f 的返回值进行分组
-| groupByKey([n]) | (K, V) | T => T | 按 key 进行分组
-| cogroup(rdd2) | (K, V) |
-| groupWith(rdd2) | 同上 | 同上 | 同上
+| 算子            | RDD 类型 | f 函数类型 | 用途                  |
+| --------------- | -------- | ---------- | --------------------- |
+| groupBy(f)      | (K, V)   | T => U     | 按 f 的返回值进行分组 |
+| groupByKey([n]) | (K, V)   | T => T     | 按 key 进行分组       |
+| cogroup(rdd2)   | (K, V)   |
+| groupWith(rdd2) | 同上     | 同上       | 同上                  |
 
 ---
 
 * reduce 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| reduceByKey(f)    | (K, V) | T => T | 按 f 的返回值进行分组
+| 算子           | RDD 类型 | f 函数类型 | 用途                  |
+| -------------- | -------- | ---------- | --------------------- |
+| reduceByKey(f) | (K, V)   | T => T     | 按 f 的返回值进行分组 |
 
 ---
 
 * persist 型
 
-| 算子       | RDD 类型   | 持久化方式 | 用途      |
-| --------- | --------- | --------- | --------- |
-| persist([Level]) | (V), (K, V) | MEMORY_ONLY | 默认持久化到内存，支持多种持久化方式
-| cache()          | (V), (K, V) | MEMORY_ONLY | 持久化数据到内存
+| 算子             | RDD 类型    | 持久化方式  | 用途                                 |
+| ---------------- | ----------- | ----------- | ------------------------------------ |
+| persist([Level]) | (V), (K, V) | MEMORY_ONLY | 默认持久化到内存，支持多种持久化方式 |
+| cache()          | (V), (K, V) | MEMORY_ONLY | 持久化数据到内存                     |
 
 ---
 
 * 集合型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| union | --------- | --------- | --------- |
-| intersection | --------- | --------- | --------- |
-| cartesian | --------- | --------- | --------- |
+| 算子         | RDD 类型  | f 函数类型 | 用途      |
+| ------------ | --------- | ---------- | --------- |
+| union        | --------- | ---------  | --------- |
+| intersection | --------- | ---------  | --------- |
+| cartesian    | --------- | ---------  | --------- |
 
 ---
 
 * join 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| join | --------- | --------- | --------- |
-| leftOutJoin | --------- | --------- | --------- |
-| rightOutJoin | --------- | --------- | --------- |
-| fullOuterJoin | --------- | --------- | --------- |
+| 算子          | RDD 类型  | f 函数类型 | 用途      |
+| ------------- | --------- | ---------- | --------- |
+| join          | --------- | ---------  | --------- |
+| leftOutJoin   | --------- | ---------  | --------- |
+| rightOutJoin  | --------- | ---------  | --------- |
+| fullOuterJoin | --------- | ---------  | --------- |
 
 ---
 
 * repartition 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| coalesce | --------- | --------- | --------- |
-| replication | --------- | --------- | --------- |
-| repartitionAndSortWithinPartitions | --------- | --------- | --------- |
-| partitionBy | --------- | --------- | --------- |
+| 算子                               | RDD 类型  | f 函数类型 | 用途      |
+| ---------------------------------- | --------- | ---------- | --------- |
+| coalesce                           | --------- | ---------  | --------- |
+| replication                        | --------- | ---------  | --------- |
+| repartitionAndSortWithinPartitions | --------- | ---------  | --------- |
+| partitionBy                        | --------- | ---------  | --------- |
 
 ---
 
 * sort 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| sortBy | --------- | --------- | --------- |
-| sortByKey | --------- | --------- | --------- |
+| 算子      | RDD 类型  | f 函数类型 | 用途      |
+| --------- | --------- | ---------- | --------- |
+| sortBy    | --------- | ---------  | --------- |
+| sortByKey | --------- | ---------  | --------- |
 
 ---
 
 * 聚合型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| aggregateByKey | --------- | --------- | --------- |
-| foldByKey | --------- | --------- | --------- |
-| sampleByKey | --------- | --------- | --------- |
-| sampleByKeyExact | --------- | --------- | --------- |
+| 算子             | RDD 类型  | f 函数类型 | 用途      |
+| ---------------- | --------- | ---------- | --------- |
+| aggregateByKey   | --------- | ---------  | --------- |
+| foldByKey        | --------- | ---------  | --------- |
+| sampleByKey      | --------- | ---------  | --------- |
+| sampleByKeyExact | --------- | ---------  | --------- |
 
 ---
 
 * filter 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| filter     | - | - | - |
-| filterByRange     | - | - | - |
-| distinct   | - | - | - | 去重
+| 算子          | RDD 类型 | f 函数类型 | 用途 |
+| ------------- | -------- | ---------- | ---- |
+| filter        | -        | -          | -    |
+| filterByRange | -        | -          | -    |
+| distinct      | -        | -          | -    | 去重 |
 
 ---
 
 * other 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| subtract   | - | - | - |
-| glom()     | - | - | - |
+| 算子     | RDD 类型 | f 函数类型 | 用途 |
+| -------- | -------- | ---------- | ---- |
+| subtract | -        | -          | -    |
+| glom()   | -        | -          | -    |
 
 
 #### Action
@@ -184,10 +184,10 @@ actions: 在 dataset 上做完运算后返回一个 value 给 driver program
 
 * reduce 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| reduce(f)     | - | - | - |
-| treeReduce(f)     | - | - | - |
+| 算子          | RDD 类型 | f 函数类型 | 用途 |
+| ------------- | -------- | ---------- | ---- |
+| reduce(f)     | -        | -          | -    |
+| treeReduce(f) | -        | -          | -    |
 
 | 算子       | RDD 类型   | f 函数类型 | 用途      |
 | --------- | --------- | --------- | --------- |
@@ -196,42 +196,42 @@ actions: 在 dataset 上做完运算后返回一个 value 给 driver program
 
 * save 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| saveAsTextFile(path)    | - | - | - |
-| saveAsSequenceFile(path) | - | - | - |
-| saveAsObjectFile(path) | - | - | - |
+| 算子                     | RDD 类型 | f 函数类型 | 用途 |
+| ------------------------ | -------- | ---------- | ---- |
+| saveAsTextFile(path)     | -        | -          | -    |
+| saveAsSequenceFile(path) | -        | -          | -    |
+| saveAsObjectFile(path)   | -        | -          | -    |
 
 ---
 
 * take 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| take(n)     | - | - | - |
-| takeSample(withReplacement, num, [seed])     | - | - | - |
-| takeOrdered(n, [ordering])     | - | - | - |
+| 算子                                     | RDD 类型 | f 函数类型 | 用途 |
+| ---------------------------------------- | -------- | ---------- | ---- |
+| take(n)                                  | -        | -          | -    |
+| takeSample(withReplacement, num, [seed]) | -        | -          | -    |
+| takeOrdered(n, [ordering])               | -        | -          | -    |
 
 ---
 
 * count 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| count()        | (V), (K, V) | - | - |
-| countByValue() | (V)         | - | - |
-| countByKey()   | (K, V)      | --------- | --------- |
+| 算子           | RDD 类型    | f 函数类型 | 用途      |
+| -------------- | ----------- | ---------- | --------- |
+| count()        | (V), (K, V) | -          | -         |
+| countByValue() | (V)         | -          | -         |
+| countByKey()   | (K, V)      | ---------  | --------- |
 
 ---
 
 * other 型
 
-| 算子       | RDD 类型   | f 函数类型 | 用途      |
-| --------- | --------- | --------- | --------- |
-| collect()     | - | - | - |
-| first()     | - | - | - |
-| lookup()   | - | - | - |
-| foreach(func)   | - | - | - |
+| 算子          | RDD 类型 | f 函数类型 | 用途 |
+| ------------- | -------- | ---------- | ---- |
+| collect()     | -        | -          | -    |
+| first()       | -        | -          | -    |
+| lookup()      | -        | -          | -    |
+| foreach(func) | -        | -          | -    |
 
 
 ## 算子
@@ -240,30 +240,30 @@ actions: 在 dataset 上做完运算后返回一个 value 给 driver program
 
 * Value 数据类型的 Transformation 算子
 
-类型 | 算子
---- | ---
-输入分区与输出分区一对一型 | map、flatMap、mapPartitions、glom
-输入分区与输出分区多对一型 | union、cartesian
-输入分区与输出分区多对多型 | groupBy
-输出分区为输入分区子集型   | filter、distinct、subtract、sample、takeSample
-Cache 型               | cache、persist
+| 类型                       | 算子                                           |
+| -------------------------- | ---------------------------------------------- |
+| 输入分区与输出分区一对一型 | map、flatMap、mapPartitions、glom              |
+| 输入分区与输出分区多对一型 | union、cartesian                               |
+| 输入分区与输出分区多对多型 | groupBy                                        |
+| 输出分区为输入分区子集型   | filter、distinct、subtract、sample、takeSample |
+| Cache 型                   | cache、persist                                 |
 
 * Key-Value 数据类型的 Transfromation 算子
 
-类型 | 算子
---- | ---
-输入分区与输出分区一对一 | mapValues
-对单个 RDD            | combineByKey、reduceByKey、partitionBy
-两个 RDD 聚集         | cogroup
-连接                 | join、leftOutJoin、rightOutJoin
+| 类型                     | 算子                                   |
+| ------------------------ | -------------------------------------- |
+| 输入分区与输出分区一对一 | mapValues                              |
+| 对单个 RDD               | combineByKey、reduceByKey、partitionBy |
+| 两个 RDD 聚集            | cogroup                                |
+| 连接                     | join、leftOutJoin、rightOutJoin        |
 
 * Action 算子
 
-类型 | 算子
---- | ---
-无输出 | foreach
-HDFS  | saveAsTextFile、saveAsObjectFile
-Scala集合和数据类型 | collect、collectAsMap、reduceByKeyLocally、lookup、count、top、reduce、fold、aggregate
+| 类型                | 算子                                                                                   |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| 无输出              | foreach                                                                                |
+| HDFS                | saveAsTextFile、saveAsObjectFile                                                       |
+| Scala集合和数据类型 | collect、collectAsMap、reduceByKeyLocally、lookup、count、top、reduce、fold、aggregate |
 
 
 ## Transformation
@@ -765,20 +765,20 @@ sc.textFile("R.md").first()
 
 默认缓存在内存中，`def persist() = persist(StorageLevel.MEMORY_ONLY)`。
 
-| 缓存方式 | 描述 |
-| ------ | ------ |
-| NONE |  |
-| DISK_ONLY | 缓存数据到本地磁盘 |
-| DISK_ONLY_2 |  |
-| MEMORY_ONLY | 将 RDD 数据缓存在 Spark JVM 内存中 |
-| MEMORY_ONLY_2  |  |
-| MEMORY_ONLY_SER  | 将 RDD 数据序列化后缓存在 Spark JVM 内存中 |
-| MEMORY_ONLY_SER_2  |  |
-| MEMORY_AND_DISK  |  |
-| MEMORY_AND_DISK_2  |  |
-| MEMORY_AND_DISK_SER  |  |
-| MEMORY_AND_DISK_SER_2  |  |
-| OFF_HEAP  |  |
+| 缓存方式              | 描述                                       |
+| --------------------- | ------------------------------------------ |
+| NONE                  |                                            |
+| DISK_ONLY             | 缓存数据到本地磁盘                         |
+| DISK_ONLY_2           |                                            |
+| MEMORY_ONLY           | 将 RDD 数据缓存在 Spark JVM 内存中         |
+| MEMORY_ONLY_2         |                                            |
+| MEMORY_ONLY_SER       | 将 RDD 数据序列化后缓存在 Spark JVM 内存中 |
+| MEMORY_ONLY_SER_2     |                                            |
+| MEMORY_AND_DISK       |                                            |
+| MEMORY_AND_DISK_2     |                                            |
+| MEMORY_AND_DISK_SER   |                                            |
+| MEMORY_AND_DISK_SER_2 |                                            |
+| OFF_HEAP              |                                            |
 
 `MEMORY_ONLY`、`MEMORY_ONLY_SER` - 如果一个分区在内存中放不下，那整个分区都不会放入内存。
 `MEMORY_AND_DISK`、`MEMORY_AND_DISK_SER` - 如果分区在内存中放不下，Spark 会将溢出的分布写入磁盘。
@@ -837,8 +837,6 @@ println(rdd.partitions.length)
 // 各个分区的 index
 rdd.partitions.foreach(println(_.index))
 ```
-
-
 
 ## 参考
 
