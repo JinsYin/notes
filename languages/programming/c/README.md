@@ -16,7 +16,7 @@
 
 ## 编译器
 
-* GCC
+* GCC（`gcc`、`g++`）
 * Xcode
 * Clang
 * MSVC - Microsoft Visual C++

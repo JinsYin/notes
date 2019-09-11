@@ -4,7 +4,7 @@
 
 ## 工作过程
 
-![UDP 包头](../.images/udp-header.png)
+![UDP 包头](.images/udp-header.png)
 
 1. 当发送的 UDP 包到达目标机器后，发现 MAC 地址匹配，就摘下 MAC 头，将剩下的包交由内核 IP 层代码处理
 2. 内核 IP 层代码摘下 IP 头，发现目标 IP 匹配；由于 IP 头中有一个 8 位协议，记录着传输协议是 UDP 还是 TCP，因而内核可以根据 UDP 头或 TCP 头的格式将数据解析出来。

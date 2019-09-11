@@ -27,3 +27,10 @@ $ du -h ~ --max-depth=3 | sort -nr
 # 查看最大的前十个子目录（完全逆排序，统一单位为 MB）
 $ du -hm ~ --max-depth=2 | sort -nr | head -n 10
 ```
+
+## 排除目录
+
+```bash
+# 使用 “-path .git -prune -o” 来排除 .git 目录
+$ find . -path .git -prune -o -name "*.md"
+```

@@ -92,7 +92,7 @@
 ![Avatar](https://avatars2.githubusercontent.com/u/12714609?v=3&s=40)
 <img src="https://avatars2.githubusercontent.com/u/12714609?v=3&s=40">
 
-SVG 支持（文件 URL 追加 `?sanitize=true`）：
+SVG 支持（绝对路径需要在 URL 末尾追加 `?sanitize=true`）：
 
 ```markdown
 ![Alt text](https://raw.github.com/potherca-blog/StackOverflow/master/question.13808020.include-an-svg-hosted-on-github-in-markdown/controllers_brief.svg?sanitize=true)
