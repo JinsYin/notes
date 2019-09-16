@@ -192,8 +192,10 @@ $ s3cmd mb s3://nextcloud
 1. 先使用 datadirectory 的方式启动
 
 ```bash
-% docker run -d --name nextcloud --restart=always -p 8888:80 -e TZ="Asia/Shanghai" \
- -v /opt/nextcloud/config:/var/www/html/config:rw nextcloud:latest
+# 如果使用了非 SQLite 数据库记得挂载：/var/lib/mysql 或 /var/lib/postgresql/data
+$ docker run -d --name nextcloud \
+  --restart=always -p 8888:80 -e TZ="Asia/Shanghai" \
+  -v /data/nextcloud/data:/var/www/html:rw nextcloud:production
 ```
 
 2. 访问页面并设置管理员账号密码
@@ -237,6 +239,7 @@ $CONFIG = array (
 ```php
 <?php
 $CONFIG = array (
+  ......
   'objectstore_multibucket' => array(
     'class' => 'Object\\Storage\\Backend\\Class',
     'arguments' => array(
@@ -255,11 +258,14 @@ $CONFIG = array (
       'use_path_style' => true
     ),
   ),
+  .......
 );
 ```
 
-
+```php
+<?php
 $CONFIG = [
+  ......
   'objectstore_multibucket' => [
     'class' => 'OC\\Files\\ObjectStore\\S3',
     'arguments' => [
@@ -274,6 +280,8 @@ $CONFIG = [
     ],
   ],
 ];
+);
+```
 
 1. 重启容器
 
@@ -299,7 +307,7 @@ $CONFIG = [
 
 ## MultiBucket
 
-> https://github.com/nextcloud/server/issues/5865#issuecomment-332827521
+> <https://github.com/nextcloud/server/issues/5865#issuecomment-332827521>
 
 ```php
 <?php

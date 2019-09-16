@@ -62,6 +62,9 @@ $ docker run -d --name grafana -p 3000:3000 grafana/grafana:3.1.1
 # 配置 IP 和 端口
 $ ceph config-key put mgr/dashboard/server_addr 192.168.8.220
 $ ceph config-key put mgr/dashboard/server_port 7000 # 默认端口
+
+# 所有配置
+$ ceph config-key list
 ```
 
 ```bash
