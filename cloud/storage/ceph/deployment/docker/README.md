@@ -8,7 +8,9 @@
 $ ceph -rf /etc/ceph && docker rm -f ceph
 
 # 最新版本
-$ docker run -d --name ceph --net=host --restart=always \
+$ docker run -d --name ceph \
+  --net=host \
+  --restart=always \
   -e MON_IP=192.168.8.220 \
   -e CEPH_PUBLIC_NETWORK=192.168.8.0/24 \
   -e CEPH_DEMO_UID=jjyy \
@@ -24,7 +26,9 @@ $ docker run -d --name ceph --net=host --restart=always \
 $ ceph -rf /etc/ceph && docker rm -f ceph-mimic
 
 # 目前最新版本为 Mimic (13.2.x)
-$ docker run -d --name ceph-mimic --net=host --restart=always \
+$ docker run -d --name ceph-mimic \
+  --net=host \
+  --restart=always \
   -e MON_IP=192.168.8.220 \
   -e CEPH_PUBLIC_NETWORK=192.168.8.0/24 \
   -e CEPH_DEMO_UID=jjyy \

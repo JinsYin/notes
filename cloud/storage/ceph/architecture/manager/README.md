@@ -6,7 +6,7 @@ The Ceph manager handles execution of many of the read-only Ceph CLI queries
 
 Ceph manager 处理许多只读 Ceph CLI 查询的执行。
 
-## 模块
+## 模块管理
 
 ### 查看
 
@@ -82,4 +82,8 @@ $ ceph mgr module enable dashboard
 
 # 关闭 dashboard 模块
 $ ceph mgr module disable dashboard
-````
+```
+
+## 参考
+
+* [ceph api 使用](http://www.li-rui.top/2018/11/04/ceph/ceph%20api%E4%BD%BF%E7%94%A8/)

@@ -24,7 +24,7 @@ s3cmd version 2.0.2
 
 ## 客户端配置
 
-通过命令行进行基本配置：
+* 方式一：通过命令行进行基本配置：
 
 ```bash
 # 确保可以成功访问 S3
@@ -36,12 +36,12 @@ $ s3cmd --configure
   DNS-style bucket+hostname:port template for accessing a bucket: 192.168.8.220:8080
   Encryption password:
   Path to GPG program: /usr/bin/gpg
-  Use HTTPS protocol: False
+  Use HTTPS protocol: No
   HTTP Proxy server name:
   HTTP Proxy server port: 0
 ```
 
-通过配置文件进行详细配置：
+* 方式二：通过配置文件进行详细配置：
 
 ```bash
 $ vi $HOME/.s3cfg
