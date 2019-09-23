@@ -6,7 +6,7 @@ Windows 默认使用 `RDP` 协议（端口：`3389`）开启远程连接，所�
 
 * 安装
 
-```bash
+```sh
 $ sudo apt-get update
 
 # 安装 xRDP
@@ -18,7 +18,7 @@ $ sudo apt-get install xfce4
 
 * 配置 xRDP
 
-```bash
+```sh
 # 不要在 root 用户下配置，而是在登录用户下
 $ echo xfce4-session > ~/.xsession
 
@@ -35,7 +35,7 @@ startxfce4
 
 * 重启 xRDP
 
-```bash
+```sh
 $ sudo service xrdp restart
 ```
 

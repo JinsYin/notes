@@ -53,8 +53,8 @@ $ du -hmd 2 . | sort -nr | head -n 10
 * 排除子目录
 
 ```sh
-# 排除 .git 目录（`-path ./.git -prune -o`）
-$ find . -path ./.git -prune -o -type d -exec chmod 755 {} \;
+# 排除 .git 目录
+$ find . -type d -not -path .git -exec chmod 755 {} \;
 ```
 
 * 查找空文件或空目录
@@ -81,4 +81,10 @@ $ find . -name "*.md" | wc -l /dev/fd/0
 $ find . -name "*.md" | xargs wc -l # 对管道前输出的每一项都统计行数（按空格、Tab 和行分隔一项）
 $ find . -name "*.md" | xargs wc -l -
 $ find . -name "*.md" | xargs wc -l /dev/fd/0
+```
+
+* 查询 HOME 目录下的所有隐藏文件
+
+```sh
+$ find ~ -d 1 -type f -name '\.*'
 ```

@@ -2,7 +2,7 @@
 
 ## 启用 Prometheus 插件（Luminous && Mimic）
 
-```bash
+```sh
 ceph mgr module enable prometheus
 ```
 

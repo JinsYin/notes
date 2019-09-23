@@ -2,11 +2,11 @@
 
 ## 卸载不常用的软件
 
-```bash
+```sh
 $ sudo apt-get remove -y gnome-sudoku aisleriot gnome-mahjongg gnome-font-viewer gnome-calculator gnome-contacts gucharmap deja-dup gnome-disk-utility xdiagnose empathy thunderbird xul-ext-ubufox landscape-client-ui-install brasero gnome-orca gnome-power-manager update-manager-kde update-manager-kde update-manager-kde webbrowser-app libreoffice* unity-scope-gdrive
 ```
 
-```bash
+```sh
 $ sudo apt-get -y autoremove
 ```
 
@@ -14,7 +14,7 @@ $ sudo apt-get -y autoremove
 
 安装好后需要注销或者重启
 
-```bash
+```sh
 $ sudo apt-get install -y nautilus-open-terminal
 ```
 
@@ -25,13 +25,13 @@ $ sudo apt-get install -y nautilus-open-terminal
 
 ## 安装 chromium
 
-```bash
+```sh
 $ sudo apt-get install -y chromium-browser
 ```
 
 ## 安装 vim
 
-```bash
+```sh
 $ sudo apt-get -y vim
 ```
 
@@ -41,13 +41,13 @@ $ sudo apt-get -y vim
 
 ## 卸载 firefox
 
-```bash
+```sh
 $ sudo apt-get remove -y firefox
 ```
 
 ## 移除 repos
 
-```bash
+```sh
 $ rm -rf /etc/apt/sources.list.d/*
 ```
 

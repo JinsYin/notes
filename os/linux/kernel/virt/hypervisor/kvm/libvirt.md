@@ -6,7 +6,7 @@ Libvirt 是一个管理虚拟化主机的工具包，为不同的虚拟化技术
 
 * CentOS
 
-```bash
+```sh
 # 安装
 $ yum install -y libvirt
 
@@ -16,7 +16,7 @@ $ systemctl start libvirtd
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install -y libvirt-bin
 

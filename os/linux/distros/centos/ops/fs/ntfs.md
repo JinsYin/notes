@@ -4,7 +4,7 @@ CentOS 挂载 ntfs 格式的磁盘。
 
 ## 启用 EPEL 源
 
-```bash
+```sh
 $ yum install epel-release
 ```
 
@@ -12,17 +12,17 @@ $ yum install epel-release
 
 安装 ntfs-3g 来开启 ntfs 文件系统支持
 
-```bash
+```sh
 $ yum install ntfs-3g -y
 ```
 
-```bash
+```sh
 $ yum install ntfsprogs -y
 ```
 
 ## 挂载、卸载
 
-```bash
+```sh
 # 挂载
 $ mount -t ntfs-3g /dev/sdg1 /mnt/win
 
@@ -32,7 +32,7 @@ $ umount /dev/sdg1
 
 挂载的时候，如果指定的是整个磁盘而不是具体的分区，会出现如下错误：
 
-```bash
+```sh
 $ mount -t ntfs-3g /dev/sdg /mnt/win
 NTFS signature is missing.
 Failed to mount '/dev/sdg': Invalid argument

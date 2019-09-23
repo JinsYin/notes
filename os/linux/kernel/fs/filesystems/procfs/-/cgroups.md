@@ -2,7 +2,7 @@
 
 ## 示例
 
-```bash
+```sh
 $ cat /proc/cgroups
 -------------------
 #subsys_name    hierarchy   num_cgroups enabled

@@ -36,7 +36,7 @@ int main()
 }
 ```
 
-```bash
+```sh
 # 编译
 $ gcc copy.c -o copy
 
@@ -88,7 +88,7 @@ int main()
 }
 ```
 
-```bash
+```sh
 # 编译
 $ gcc countofchar.c -o countofchar
 
@@ -121,7 +121,7 @@ int main()
 }
 ```
 
-```bash
+```sh
 # 编译
 $ gcc linecount.c -o linecount
 

@@ -13,7 +13,7 @@ Ceph 对象网关允许你为用户和用户所拥有的 Bucket 设置配额。�
 
 可以在配置中设置默认配额，它将作用于新用户。
 
-```bash
+```sh
 $ vi ceph.conf
 [client.radosgw.{instance-name}]
 rgw bucket default quota max objects
@@ -24,19 +24,19 @@ rgw user default quota max size
 
 ## 设置 user 配额
 
-```bash
+```sh
 # Template
 $ radosgw-admin quota set --quota-scope=user --uid=<uid> [--max-objects=<num objects>] [--max-size=<max size>]
 ```
 
-```bash
+```sh
 # 为 "s3demo" 用户设置总共 5GB 和 1024 个对象的配额
 $ radosgw-admin quota set --quota-scope=user --uid="s3demo" --max-objects=1024 --max-size=5G
 ```
 
 ## 启用/关闭 user 配额
 
-```bash
+```sh
 # 启用
 $ radosgw-admin quota enable --quota-scope=user --uid="s3demo"
 
@@ -46,19 +46,19 @@ $ radosgw-admin quota disable --quota-scope=user --uid="s3demo"
 
 ## 设置 Bucket 配额
 
-```bash
+```sh
 # Template
 $ radosgw-admin quota set --quota-scope=bucket --uid=<uid> [--max-objects=<num objects>] [--max-size=<max size]
 ```
 
-```bash
+```sh
 # 为 "s3demo" 用户所拥有的 Bucket 设置 5GB 和 1024 个对象
 $ radosgw-admin quota set --quota-scope=bucket --uid="s3demo" --max-objects=1024 --max-size=5G
 ```
 
 ## 启用/关闭 Bucket 配额
 
-```bash
+```sh
 # 启用
 $ radosgw-admin quota enable --quota-scope=bucket --uid="s3demo"
 
@@ -68,13 +68,13 @@ $ radosgw-admin quota disable --quota-scope=bucket --uid="s3demo"
 
 ## 查看用户的配额信息
 
-```bash
+```sh
 % radosgw-admin user info --uid=<uid>
 ```
 
 ## 配额统计
 
-```bash
+```sh
 # 查看用户的使用统计（默认是异步更新的）
 $ radosgw-admin user stats --uid="s3demo"
 

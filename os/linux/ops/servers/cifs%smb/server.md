@@ -4,7 +4,7 @@
 
 Ubuntu 针对 SMB Server 提供了 `samba` 软件包，不过 Ubuntu 客户端连接 SMB Server 时不需要安装此软件包，只需要 smbfs 插件。
 
-```bash
+```sh
 # 安装 samba
 $ sudo apt install samba
 

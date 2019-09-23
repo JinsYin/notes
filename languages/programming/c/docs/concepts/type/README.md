@@ -134,7 +134,7 @@ int main()
 `strlen()` 的返回值类型
 `malloc()` 将 size_t 作为函数参数，确定了可以分配的最大大小。
 
-```bash
+```sh
 # 结果因环境的不同而不同
 $ echo | gcc -E -xc -include 'stddef.h' - | grep size_t
 typedef long unsigned int size_t;

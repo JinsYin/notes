@@ -4,7 +4,7 @@ Pandas 是一种列存数据结构分析 API。
 
 ## 安装
 
-```bash
+```sh
 # Conda
 $ conda install pandas
 

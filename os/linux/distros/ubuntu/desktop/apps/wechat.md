@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 # Clone this repository
 $ git clone https://github.com/geeeeeeeeek/electronic-wechat.git
 
@@ -13,7 +13,7 @@ $ cd electronic-wechat
 $ npm install && npm start
 ```
 
-```bash
+```sh
 # 打包成 APP
 $ npm run build:linux
 

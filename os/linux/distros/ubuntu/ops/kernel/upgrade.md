@@ -2,20 +2,20 @@
 
 ## 添加源
 
-```bash
+```sh
 sudo add-apt-repository ppa:kernel-ppa/ppa
 sudo apt-get update
 ```
 
 ## 查看可升级的内核
 
-```bash
+```sh
 sudo apt-cache showpkg linux-headers
 ```
 
 ## 安装内核
 
-```bash
+```sh
 sudo apt-get install linux-headers-3.8.0-26 \
     linux-headers-3.8.0-26-generic \
     linux-image-3.8.0-26-generic --fix-missing
@@ -23,7 +23,7 @@ sudo apt-get install linux-headers-3.8.0-26 \
 
 ## 重启
 
-```bash
+```sh
 sudo reboot
 ```
 

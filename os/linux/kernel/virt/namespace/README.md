@@ -16,7 +16,7 @@ Linux 内核中包含 6 种 Namespace：
 | [User Namespace](user.md)     | 提供基于系统用户的隔离能力，即同一系统用户在不同命名空间中用于不同的 UID 和 GID                                                                                             |
 | [UTS Namespace](uts.md)       | 提供基于主机名的隔离能力，即在不同的命名空间，程序可以有不同的主机名（允许重复）；包含了运行内核的名称、版本、底层体系结构类型等信息；UTS 是 Unix Timesharing System 的缩写 |
 
-```bash
+```sh
 # init 进程的 Namespace
 $ ls -l /proc/1/ns
 lrwxrwxrwx 1 root root 0  6月 10 14:22 cgroup -> cgroup:[4026531835]
@@ -28,7 +28,7 @@ lrwxrwxrwx 1 root root 0  6月 10 14:22 user -> user:[4026531837]
 lrwxrwxrwx 1 root root 0  6月 10 14:22 uts -> uts:[4026531838]
 ```
 
-```bash
+```sh
 # 当前进程的 Namespace
 $ ls -l /proc/$$/ns
 -------------------

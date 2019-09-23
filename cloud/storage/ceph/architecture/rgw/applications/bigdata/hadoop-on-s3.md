@@ -22,7 +22,7 @@
 * httpclient jar.
 * Jackson jackson-core, jackson-annotations, jackson-databind jars.
 
-```bash
+```sh
 # Hadoop 2.7.5
 $ cp aws-java-sdk-1.7.5.jar share/hadoop/common/lib/
 $ cp hadoop-aws-2.7.5.jar share/hadoop/common/lib/
@@ -32,7 +32,7 @@ $ cp jackson-databind-2.6.7.1.jar share/hadoop/common/lib/
 $ cp joda-time-2.8.2-javadoc.jar share/hadoop/common/lib/
 ```
 
-```bash
+```sh
 # 验证
 $ ls share/hadoop/common/lib/ | grep -iE 'aws|joda-time|jackson|httpclient'
 aws-java-sdk-1.7.5.jar
@@ -80,7 +80,7 @@ $ vi etc/hadoop/core-site.xml
 
 ## 访问 S3
 
-```bash
+```sh
 # 如果没有配置 core-site.xml（末尾的 '/' 不能少）
 $ bin/hdfs dfs \
   -Dfs.s3a.access.key=jjyy \
@@ -90,7 +90,7 @@ $ bin/hdfs dfs \
   -ls s3a://backup/
 ```
 
-```bash
+```sh
 # 如果已配置 core-site.xml（末尾的 '/' 不能少）
 $ bin/hdfs dfs -ls s3a://backup/
 

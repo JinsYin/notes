@@ -10,7 +10,7 @@
 * ssd
 * nvme
 
-```bash
+```sh
 # 列出设备类
 $ ceph osd crush class ls
 [
@@ -18,13 +18,13 @@ $ ceph osd crush class ls
 ]
 ```
 
-```bash
+```sh
 # 重命名设备类
 $ ceph osd crush class rename hdd HDD
 rename class 'hdd' to 'HDD'
 ```
 
-```bash
+```sh
 # 查看设备类对应的所 OSD：ceph osd crush class ls-osd <class>
 $ ceph osd crush class ls-osd hdd
 ```
@@ -35,7 +35,7 @@ CRUSH Rule 可以限制 Placement 分发到指定的 Device Class 。
 
 * 副本（replicated）
 
-```bash
+```sh
 # 1. 创建 'replicated' rule
 # ceph osd crush rule create-replicated <rule-name> <root> <failure-domain-type> <device-class>
 $ ceph osd crush rule create-replicated ssd_rule default host ssd
@@ -46,7 +46,7 @@ $ ceph osd pool create ssdpool 64 replicated ssd_rule
 
 * 纠删码（erasure code）
 
-```bash
+```sh
 # 1. 创建 'erasure code' profile，它设置了期望的设备类和故障域
 $ ceph osd erasure-code-profile set myprofile k=4 m=2 crush-device-class=ssd crush-failure-domain=host
 

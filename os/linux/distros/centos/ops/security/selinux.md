@@ -2,7 +2,7 @@
 
 ## 临时关闭
 
-```bash
+```sh
 # Permissive
 $ setenforce 0
 
@@ -15,7 +15,7 @@ $ getenforce
 
 ## 永久关闭
 
-```bash
+```sh
 $ sed -i -e 's|SELINUX=enforcing|SELINUX=disabled|g' /etc/selinux/config
 $
 $ reboot

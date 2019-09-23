@@ -108,7 +108,7 @@ $CONFIG = array (
 
 ## 删除 Bucket
 
-```bash
+```sh
 s3cmd rm s3://nextcloud --recursive --force
 s3cmd rb s3://nextcloud
 ```

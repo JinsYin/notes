@@ -17,7 +17,7 @@
 
 宿主机层面： 需要分别从两块网卡建立两个网桥：eth0->br0, eth1->br1
 
-```bash
+```sh
 # 从libvirt层面：需要配置两个网桥
 $ vi /etc/libvirt/qemu/MYVM.xml
 <domain type='kvm'>
@@ -40,7 +40,7 @@ $ vi /etc/libvirt/qemu/MYVM.xml
 </domain>
 ```
 
-```bash
+```sh
 # 虚拟机层面：需要添加两块网卡
 
 DEVICE="eth0"
@@ -63,7 +63,7 @@ ONBOOT="yes"
 
 * 绑定网卡
 
-```bash
+```sh
 # 从网卡没有 IP
 $ cat /etc/sysconfig/network-scripts/ifcfg-em1
 TYPE=Ethernet
@@ -111,7 +111,7 @@ Bonding mode:
 * mode=5: Balance TLB
 * mode=6: Balance ALB
 
-```BASH
+```sh
 $ systemctl restart network
 
 $ ifconfig
@@ -126,13 +126,13 @@ $ cat /proc/net/bonding/bond0
 
 * 桥接
 
-```bash
+```sh
 # 加载 bonding 模块
 $ modprobe --first-time bonding
 $ lsmod | grep bonding
 ```
 
-```bash
+```sh
 # 创建 kvm0 网桥
 $ cat /etc/sysconfig/network-scripts/ifcfg-kvm0
 TYPE=Bridge

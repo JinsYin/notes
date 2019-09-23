@@ -4,7 +4,7 @@
 
 ## replicated rule
 
-```bash
+```sh
 # 创建一个 'replicated' rule
 # ceph osd crush rule create-replicated {name} {root} {failure-domain-type} [{class}]
 $ ceph osd crush rule create-replicated ssd_rule default host ssd

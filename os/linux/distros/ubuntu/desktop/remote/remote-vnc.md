@@ -4,7 +4,7 @@
 
 ## 安装 GNOME
 
-```bash
+```sh
 $ sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 ```
 

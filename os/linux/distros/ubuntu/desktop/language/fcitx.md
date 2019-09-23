@@ -6,7 +6,7 @@
 
 如果无意间卸载了 fcitx，可以重新安装。
 
-```bash
+```sh
 $ sudo add-apt-repository -y ppa:fcitx-team/stable
 $ sudo apt-get -y update
 $ sudo apt-get install -y fcitx

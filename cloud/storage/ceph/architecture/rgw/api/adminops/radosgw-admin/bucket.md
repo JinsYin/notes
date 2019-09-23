@@ -11,7 +11,7 @@
 | ------ | ---- |
 |        |
 
-```bash
+```sh
 # 列出所有 bucket
 $ radosgw-admin bucket list
 
@@ -36,7 +36,7 @@ $ radosgw-admin bucket list --bucket=<bucket>
 
 ```
 
-```bash
+```sh
 $ radosgw-admin bucket stats --bucket="ais"
 -------------------------------------------
 {

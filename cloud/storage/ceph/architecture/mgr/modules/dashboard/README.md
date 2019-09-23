@@ -10,7 +10,7 @@
 
 ## 启用
 
-```bash
+```sh
 $ ceph mgr module enable dashboard
 ```
 
@@ -26,7 +26,7 @@ WARNING: it looks like you might be trying to set a ceph-mgr module configuratio
 * 开启
 * 关
 
-```bash
+```sh
 $ ceph config set mgr mgr/dashboard/ssl false
 ```
 
@@ -38,12 +38,12 @@ Dashboard 绑定到 TCP/IP 地址和 TCP 端口。如果未配置地址，将绑
 
 * 方式一
 
-```bash
+```sh
 $ ceph config set mgr mgr/dashboard/server_addr $IP
 $ ceph config set mgr mgr/dashboard/server_port $PORT
 ```
 
-```bash
+```sh
 # 如果按以下设置，会存在以下问题：
 # 1. 仅在特定节点开启 Dashboard 服务
 # 2. 如果该节点不是 Active ceph-mgr 节点，Dashboard 服务将一直在该地址重复重定向（所以 server_addr 必须是 Active ceph-mgr 节点的 IP）
@@ -51,7 +51,7 @@ $ ceph config set mgr mgr/dashboard/server_addr 192.168.1.176
 $ ceph config set mgr mgr/dashboard/server_port 7789
 ```
 
-```bash
+```sh
 # 如果按以下设置，会存在以下问题：
 # 1. 会在所有节点开启 Dashboard 服务
 # 2. Dashboard 服务的地址将使用 Active ceph-mgr 的 $name，访问 standy ceph-mgr 上的 Dashboard 服务将重定向到 http://0.0.0.0:7789
@@ -59,7 +59,7 @@ $ ceph config set mgr mgr/dashboard/server_addr 0.0.0.0
 $ ceph config set mgr mgr/dashboard/server_port 7789
 ```
 
-```bash
+```sh
 # 如果按以下设置，会存在以下问题：
 # 1. 会在所有 ceph-mgr 节点上开启 Dashboard 服务
 # 2. Dashboard 服务的地址将使用 Active ceph-mgr 的 $name，访问 standy ceph-mgr 上的 Dashboard 服务将重定向失败
@@ -78,7 +78,7 @@ $ ceph config set mgr mgr/dashboard/server_port 7789
 
 为每个 manager 实例配置各自的 IP 和端口：
 
-```bash
+```sh
 # '$name' 替换为需要托管 Dashboard Web APP 的 ceph-mgr 实例的 ID（ceph status 命令即可获取到）
 $ ceph config set mgr mgr/dashboard/$name/server_addr $IP
 $ ceph config set mgr mgr/dashboard/$name/server_port $PORT
@@ -86,7 +86,7 @@ $ ceph config set mgr mgr/dashboard/$name/server_port $PORT
 
 如果有 3 个 ceph-mgr 节点，三者的端口一致（建议）：
 
-```bash
+```sh
 # 每个 ceph-mgr 设置各自的 IP
 ceph config set mgr mgr/dashboard/ip-192-168-1-176/server_addr 192.168.1.176
 ceph config set mgr mgr/dashboard/ip-192-168-1-177/server_addr 192.168.1.177
@@ -98,7 +98,7 @@ ceph config set mgr mgr/dashboard/server_port 7789
 
 默认会在所有 ceph-mgr 节点启动 Dashboard 服务，访问 standy ceph-mgr 会被重定向（状态码: 303）到 active ceph-mgr
 
-```bash
+```sh
 # 查询存储在 MON 配置数据库中的信息
 $ ceph config-key ls
 --------------------
@@ -119,11 +119,11 @@ $ ceph config-key ls
 
 登录之前，需要先设置用户名和密码（只支持一个账号），账号信息存储在 MON 的配置数据库。
 
-```bash
+```sh
 $ ceph dashboard set-login-credentials admin admin
 ```
 
-```bash
+```sh
 # 获取存储的账号信息
 $ ceph config-key get config/mgr/mgr/dashboard/username
 $ ceph config-key get config/mgr/mgr/dashboard/password
@@ -137,11 +137,10 @@ $ ceph config-key get config/mgr/mgr/dashboard/password
 
 显示当前配置的使用 endpoints ：
 
-```bash
+```sh
 $ ceph mgr services
 ```
 
 ## 设置防火墙
 
 ansible 192.168.1.[176-178] -m shell
-

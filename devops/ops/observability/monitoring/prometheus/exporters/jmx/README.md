@@ -2,7 +2,7 @@
 
 ## Cassandra
 
-```bash
+```sh
 mkdir -p /etc/prometheus/jmx_exporter
 
 cd /etc/prometheus/jmx_exporter
@@ -14,7 +14,7 @@ curl -OL https://raw.githubusercontent.com/prometheus/jmx_exporter/master/exampl
 echo "JVM_OPTS=\"\$JVM_OPTS -javaagent:$PWD/jmx_prometheus_javaagent-0.3.0.jar=7070:$PWD/cassandra.yml\"" >> /etc/cassandra/conf/cassandra-env.sh
 ```
 
-```bash
+```sh
 $ cat cassandra.yaml
 lowercaseOutputName: true
 lowercaseOutputLabelNames: true
@@ -98,14 +98,14 @@ rules:
       "$2": "$3"
 ```
 
-```bash
+```sh
 systemctl daemon-reload
 systemctl enable cassandra
 systemctl start cassandra
 systemctl status cassandra
 ```
 
-```bash
+```sh
 netstat -tpln | grep 7070
 ```
 

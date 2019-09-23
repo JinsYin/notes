@@ -2,14 +2,14 @@
 
 ## 安装
 
-```bash
+```sh
 # Pip
 $ pip install -U awscli
 ```
 
 ## 配置
 
-```bash
+```sh
 $ vi ~/.aws/config
 [default]
 region = CN
@@ -24,14 +24,14 @@ s3 =
 
 ## 测试
 
-```bash
+```sh
 aws --endpoint-url http://192.168.8.220:8080 s3 ls
 
 # export AWS_ENDPOINT_URL="http://192.168.8.220:8080"
 $ aws s3 ls
 ```
 
-```bash
+```sh
 aws --profile ceph s3 ls
 ```
 

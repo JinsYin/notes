@@ -2,7 +2,7 @@
 
 ## hdparm 测试吞吐量
 
-```bash
+```sh
 # 28001G(4T * 9) HDD RAID5
 $ hdparm -Tt /dev/sda
 /dev/sdc:
@@ -10,7 +10,7 @@ $ hdparm -Tt /dev/sda
  Timing buffered disk reads: 2814 MB in  3.00 seconds = 937.88 MB/sec
 ```
 
-```bash
+```sh
 # 120G SSD (120G * 2) RAID5
 $ hdparm -Tt /dev/sdb
 /dev/sdb:
@@ -18,7 +18,7 @@ $ hdparm -Tt /dev/sdb
  Timing buffered disk reads: 726 MB in  3.00 seconds = 241.64 MB/sec
 ```
 
-```bash
+```sh
 # 1T SSD Non-RAID
 $ hdparm -Tt /dev/sdc
 /dev/sdb:
@@ -26,7 +26,7 @@ $ hdparm -Tt /dev/sdc
  Timing buffered disk reads: 1514 MB in  3.00 seconds = 504.28 MB/sec
 ```
 
-```bash
+```sh
 # 4T 无RAID
 $ hdparm -Tt /dev/sdd
 /dev/sde:
@@ -34,7 +34,7 @@ $ hdparm -Tt /dev/sdd
  Timing buffered disk reads: 278 MB in  3.02 seconds =  92.20 MB/sec
 ```
 
-```bash
+```sh
 # 300G 无RAID
 $ hdparm -Tt /dev/sde
 /dev/sda:

@@ -91,7 +91,7 @@ DESC [table identifier|[LIKE pattern]]
 
 示例：
 
-```bash
+```sh
 sql> DESCRIBE ".kibana";
                         column                        |     type      |    mapping
 ------------------------------------------------------+---------------+---------------

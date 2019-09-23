@@ -42,7 +42,7 @@ SDN：软件定义网络，是一种下一代网络的“范式”，而 OpenFlo
 
 * ubuntu
 
-```bash
+```sh
 $ apt-get install -y openvswitch-switch=2.0.2*
 ```
 
@@ -50,13 +50,13 @@ $ apt-get install -y openvswitch-switch=2.0.2*
 
 * 添加网桥
 
-```bash
+```sh
 $ ovs-vsctl add-br bridge0
 ```
 
 * 查看网桥
 
-```bash
+```sh
 $ ovs-vsctl show
 $
 $ # 不能查看 ovs 创建的网桥
@@ -76,7 +76,7 @@ ovs-ofctl 是 OpenFlow 的管理工具。
 
 ## ovs-docker
 
-```bash
+```sh
 $ wget -O /usr/local/bin/ovs-docker https://github.com/openvswitch/ovs/raw/master/utilities/ovs-docker
 $ chmod a+x /usr/local/bin/ovs-docker
 ```

@@ -12,7 +12,7 @@
 
 * 安装特定版本
 
-```bash
+```sh
 # CentOS
 $ yum install ceph-radosgw
 
@@ -24,7 +24,7 @@ $ apt-get install radosgw
 
 ## 重命名
 
-```bash
+```sh
 # 永久别名
 $ echo "alias rgwadm='radosgw-admin'" >> ~/.bashrc
 
@@ -36,7 +36,7 @@ $ source ~/.bashrc
 
 ## 权限管理
 
-```bash
+```sh
 # 允许读取、修改用户信息
 $ radosgw-admin caps add --uid=s3demo --caps="users=*"
 {
@@ -83,7 +83,7 @@ $ radosgw-admin caps add --uid=s3demo --caps="users=*"
 }
 ```
 
-```bash
+```sh
 # 添加 s3demo 用户对所有 usage 信息的读写权限
 $ radosgw-admin caps add --uid=s3demo --caps="usage=read,write"
 {

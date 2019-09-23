@@ -2,7 +2,7 @@
 
 `sysctl` 作用于该目录。
 
-```bash
+```sh
 $ sysctl -a
 ```
 

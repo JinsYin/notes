@@ -7,7 +7,7 @@ cluster map有一个视图版本号（`epoch`），版本号越大越新，mon�
 
 * 文本方式
 
-```bash
+```sh
 $ ceph osd getcrushmap -o crushmap_compiled_file
 
 # 可读
@@ -16,7 +16,7 @@ $ crushtool -d crushmap_compiled_file -o crushmap_decompiled_file
 
 * 命令行方式
 
-```bash
+```sh
 % ceph osd crush dump
 ```
 
@@ -33,7 +33,7 @@ tunable straw_calc_version 1
 tunable allowed_bucket_algs 54
 ```
 
-```bash
+```sh
 $ ceph osd crush show-tunables
 {
     "choose_local_tries": 0,

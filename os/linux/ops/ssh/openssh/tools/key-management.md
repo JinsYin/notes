@@ -7,7 +7,7 @@
 
 ## 基本用法
 
-```bash
+```sh
 # 生成认证密码（公私钥）
 $ ssh-keygen -t rsa -P ''
 

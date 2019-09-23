@@ -172,7 +172,7 @@ $CONFIG = array (
 
 ## S3
 
-```bash
+```sh
 # 创建存放对象的 S3 Bucket
 $ s3cmd mb s3://nextcloud
 ```
@@ -191,14 +191,14 @@ $ s3cmd mb s3://nextcloud
 
 1. 先使用 datadirectory 的方式启动
 
-```bash
+```sh
 % docker run -d --name nextcloud --restart=always -p 8888:80 -e TZ="Asia/Shanghai" \
  -v /opt/nextcloud/config:/var/www/html/config:rw nextcloud:latest
 ```
 
 2. 访问页面并设置管理员账号密码
 
-```bash
+```sh
 % google-chrome 192.168.8.220:8888
 ```
 
@@ -277,7 +277,7 @@ $CONFIG = [
 
 1. 重启容器
 
-```bash
+```sh
 % docker restart nextcloud
 ```
 

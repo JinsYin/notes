@@ -1,6 +1,6 @@
 # /proc/uptime
 
-```bash
+```sh
 $ cat /proc/uptime
 ------------------
 1390581.56 4948939.54
@@ -11,7 +11,7 @@ $ cat /proc/uptime
 
 ## 相关
 
-```bash
+```sh
 $ uptime
 --------
 16:06:12 up 16 days,  2:16,  8 users,  load average: 0.42, 0.46, 0.54

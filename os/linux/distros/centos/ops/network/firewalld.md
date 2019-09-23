@@ -10,7 +10,7 @@
 
 ## 启用
 
-```bash
+```sh
 systemctl start firewalld
 
 systemctl enable firewalld
@@ -28,7 +28,7 @@ systemctl enable firewalld
 * internal: 对于处在你内部网络的计算机，只接受被选择的传入网络连接。
 * trusted: 所有网络连接都接受。
 
-```bash
+```sh
 # 列出所有可用 zone
 $ firewall-cmd --get-zones
 work drop internal external trusted home dmz public block
@@ -43,7 +43,7 @@ $ firewall-cmd --set-default-zone=dmz
 
 ## 服务（service）
 
-```bash
+```sh
 # 列出所有可用的服务
 # XML 配置文件存储在 /usr/lib/firewalld/services/ 和 /etc/firewalld/services/
 $ firewall-cmd --get-services

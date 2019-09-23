@@ -1,6 +1,6 @@
 # SSH 客户端配置
 
-```bash
+```sh
 $ man 5 ssh_config
 ```
 
@@ -18,7 +18,7 @@ $ man 5 ssh_config
 
 登录前必须手动将远程机器的密钥添加到 `~/.ssh/known_hosts`（OpenSSH 绝不会自动添加），否则将拒绝连接。远程机器的密钥改变也会拒绝连接。
 
-```bash
+```sh
 $ ssh 192.168.1.172
 No ECDSA host key is known for 192.168.1.172 and you have requested strict checking.
 Host key verification failed.
@@ -28,7 +28,7 @@ Host key verification failed.
 
 登录时必须手动键入 `yes` 才能将远程机器的密钥添加到本机的 `~/.ssh/known_hosts` 文件中，否则将无法登录远程机器。
 
-```bash
+```sh
 $ ssh 192.168.1.172
 The authenticity of host '192.168.1.172 (192.168.1.172)' can't be established.
 ECDSA key fingerprint is SHA256:qUjc7UrycpKj/c67ZDIc+236DLpKl+mCi8bKSHLdT48.
@@ -40,7 +40,7 @@ Are you sure you want to continue connecting (yes/no)?
 
 首次登录时，OpenSSH 会自动将远程机器的密钥添加到本机的 `~/.ssh/known_hosts` 文件中。
 
-```bash
+```sh
 $ ssh 192.168.1.172
 Warning: Permanently added '192.168.1.172' (ECDSA) to the list of known hosts. # 第二次登录时将自动消失
 root@192.168.1.172's password:
@@ -48,6 +48,6 @@ root@192.168.1.172's password:
 
 * 建议
 
-```bash
+```sh
 sed -i '/StrictHostKeyChecking/ s|^#| |; /StrictHostKeyChecking/ s|ask|no|' /etc/ssh/ssh_config
 ```

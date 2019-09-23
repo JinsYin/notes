@@ -9,7 +9,7 @@ sudo apt-get install openssh-server
 
 ## RHEL
 
-```bash
+```sh
 sudo yum install openssh
 ```
 

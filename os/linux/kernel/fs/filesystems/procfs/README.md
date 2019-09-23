@@ -42,12 +42,12 @@ $ cat /pro/sys/kernel/pid_max
 
 ## 相关
 
-```bash
+```sh
 # 手册页
 $ man 5 proc
 ```
 
-```bash
+```sh
 # Debian
 $ apt-get install procinfo
 

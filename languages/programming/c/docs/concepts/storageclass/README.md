@@ -118,7 +118,7 @@ void write_extern(void)
 }
 ```
 
-```bash
+```sh
 # 编译两个文件（extern 用于在第二个文件声明 count，而在第一个文件定义 count）
 $ gcc main.c support.c -o main
 ```

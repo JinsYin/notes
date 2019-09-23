@@ -20,11 +20,11 @@ Flannel 通过 Etcd 服务维护了一张节点间的路由表，在稍后的配
 
 ## 角色分配
 
-| Role                | Hostname       | IP Address     |
-| --------------      | -------------- | -------------- |
-| flannel docker etcd | Host100        | 172.28.128.100 |
-| flannel docker      | Host101        | 172.28.128.101 |
-| flannel docker      | Host102        | 172.28.128.102 |
+| Role                | Hostname | IP Address     |
+| ------------------- | -------- | -------------- |
+| flannel docker etcd | Host100  | 172.28.128.100 |
+| flannel docker      | Host101  | 172.28.128.101 |
+| flannel docker      | Host102  | 172.28.128.102 |
 
 
 ## 系统环境
@@ -42,7 +42,7 @@ Flannel 用 Etcd 来存储每台机器的子网地址，因此在启动 Flannel 
 
 * 安装、运行
 
-```bash
+```sh
 $ # 安装
 $ yum install -y etcd-2.3.7
 $
@@ -55,7 +55,7 @@ $ systemctl enable etcd.service
 
 * 配置 CIDR
 
-```bash
+```sh
 $ # 默认使用 UDP 进行数据转发
 $ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16"}'
 $
@@ -70,7 +70,7 @@ $ etcdctl set /flannel/network/config '{"Network": "10.20.0.0/16", "SubnetLen": 
 
 * 安装
 
-```bash
+```sh
 $ yum list flannel --showduplicates
 $
 $ # 安装
@@ -81,7 +81,7 @@ $ yum install -y flannel-0.7.1-1*
 
 如果有宿主机多个物理网卡，使用 `-iface` 参数来指定正确的网卡。
 
-```bash
+```sh
 $ cat /etc/sysconfig/flanneld
 FLANNEL_ETCD_ENDPOINTS="http://172.28.128.100:2379"
 FLANNEL_ETCD_PREFIX="/flannel/network"
@@ -90,7 +90,7 @@ FLANNEL_OPTIONS="-iface=eth1"
 
 * 运行
 
-```bash
+```sh
 $ # 启动 flannel 之前先检查 etcd 是否健康
 $ etcdctl --endpoints http://172.28.128.100:2379 cluster-health
 $
@@ -106,7 +106,7 @@ $ systemctl status flanneld.service
 
 * 验证
 
-```bash
+```sh
 $ ifconfig flannel0
 flannel.1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1450
   inet 10.20.26.0  netmask 255.255.255.255  broadcast 0.0.0.0
@@ -117,7 +117,7 @@ flannel.1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1450
   TX errors 0  dropped 0 overruns 0  carrier 0  collisions
 ```
 
-```bash
+```sh
 $ route -n
 0.0.0.0         10.0.2.2        0.0.0.0         UG    100    0        0 eth0
 10.0.2.0        0.0.0.0         255.255.255.0   U     100    0        0 eth0
@@ -130,7 +130,7 @@ $ route -n
 
 * 用 Kubernetes 安装（略）
 
-```bash
+```sh
 $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.7.1/Documentation/kube-flannel.yml
 ```
 
@@ -139,7 +139,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.7.1/Docum
 
 * 安装 Docker
 
-```bash
+```sh
 $ yum install -y docker-1.12.6
 ```
 
@@ -147,7 +147,7 @@ $ yum install -y docker-1.12.6
 
 启动 flannel 后，会在 `/run/flannel/docker` 文件中自动添加一些由 Docker daemon 的参数所组成的环境变量。Docker daemon 的 `--bip` 参数表示 bridge ip，也就是网桥 docker0 的 IP 地址。
 
-```bash
+```sh
 $ cat /run/flannel/docker
 DOCKER_OPT_BIP="--bip=10.20.2.1/24"
 DOCKER_OPT_IPMASQ="--ip-masq=true"
@@ -157,7 +157,7 @@ DOCKER_NETWORK_OPTIONS=" --bip=10.20.2.1/24 --ip-masq=true --mtu=1450"
 
 查看 docker.service 发现它自动引入了上面的配置文件，所以不用再手动修改 docker.service 或者 Docker 环境变量（`/etc/sysconfig/docker`、`/etc/sysconfig/docker-network`等）。
 
-```bash
+```sh
 $ systemctl cat docker.service
 ...
 # /usr/lib/systemd/system/docker.service.d/flannel.conf
@@ -167,14 +167,14 @@ EnvironmentFile=-/run/flannel/docker
 
 应该是下面这行代码，使 docker.service 自动引入了 `/run/flannel/docker` 这个配置文件。
 
-```bash
+```sh
 $ systemctl cat flanneldservice | grep ExecStartPost
 ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
 ```
 
 * 重启 Docker
 
-```bash
+```sh
 $ systemctl restart docker.service
 ```
 
@@ -185,13 +185,13 @@ $ systemctl restart docker.service
 
 需要看一下各个主机的 docker0 是否都不相同，也可以通过 etcd 查看各自分配的 ip 地址，另外还应该检查一下 `/flannel/network/subnets` 子目录下的 PublicIP（宿主机 IP）是否正确。
 
-```bash
+```sh
 $ etcdctl --endpoints http://172.28.128.100:2379 ls /flannel/network/subnets
 ```
 
 * Host100
 
-```bash
+```sh
 $ docker run -it --rm alpine:3.5 sh
 > hostname -i
 > 10.20.87.2
@@ -202,7 +202,7 @@ $ docker run -it --rm alpine:3.5 sh
 
 * Host101
 
-```bash
+```sh
 $ docker run -it --rm alpine:3.5 sh
 > hostname -i
 > 10.20.26.2
@@ -213,7 +213,7 @@ $ docker run -it --rm alpine:3.5 sh
 
 * Host102
 
-```bash
+```sh
 $ docker run -it --rm alpine:3.5 sh
 > hostname -i
 > 10.20.2.2
@@ -231,7 +231,7 @@ $ docker run -it --rm alpine:3.5 sh
 
 如果想重新修改 CIDR，需要先删除原来的配置：
 
-```bash
+```sh
 $ # 删除原来的配置
 $ etcdctl --endpoints http://172.28.128.100:2379 rm -recursive /flannel/network
 $

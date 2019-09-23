@@ -8,7 +8,7 @@
 
 命令：
 
-```bash
+```sh
 $ ceph osd crush tuanbles {profile}
 ```
 
@@ -31,13 +31,13 @@ CRUSH Map = Cluster Map + CRUSH Rule
 
 1. 获取 CRUSH Map
 
-```bash
+```sh
 $ ceph osd getcrushmap -o {compiled-crush-filename}
 ```
 
 出于测试等目的可以手动创建 CRUSH Map：
 
-```bash
+```sh
 # crushtool -o {compiled-crush-filename} --build --num_osds N {layer} ...
 ```
 

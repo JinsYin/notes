@@ -4,7 +4,7 @@ Filebeat 是一个轻量级的开源日志文件数据收集器。在需要采�
 
 ## 安装
 
-```bash
+```sh
 ELASTIC_VERSION="6.5.0"
 
 curl -L https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${ELASTIC_VERSION}-x86_64.rpm -o /tmp/filebeat.rpm
@@ -24,7 +24,7 @@ rm -f /tmp/filebeat.rpm
 
 ## 运行
 
-```bash
+```sh
 systemctl enable filebeat
 systemctl start filebeat
 systemctl status filebeat # 状态
@@ -46,7 +46,7 @@ journalctl -f -u filebeat # 日志
 Filbeat 会将消息封装成一个 JSON 串，除了原始日志外，还包含一些其他信息：
 
 ```json
-{  
+{
     "@timestamp":"2018-11-19T01:29:35.495Z",
     "@metadata":{
         "beat":"filebeat",
@@ -79,7 +79,7 @@ Filbeat 会将消息封装成一个 JSON 串，除了原始日志外，还包含
 
 ## 配置
 
-```bash
+```sh
 $ vi /etc/filebeat/filebeat.yml
 filebeat.inputs:
   - type: log

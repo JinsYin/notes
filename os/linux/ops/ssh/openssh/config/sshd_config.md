@@ -1,6 +1,6 @@
 # SSH 守护进程配置
 
-```bash
+```sh
 $ man 5 sshd_config
 ```
 
@@ -18,6 +18,6 @@ $ man 5 sshd_config
 
 * 建议
 
-```bash
+```sh
 sed -i "/#UseDNS/ s|^#||; /UseDNS/ s|yes|no|" /etc/ssh/sshd_config
 ```

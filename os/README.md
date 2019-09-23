@@ -64,7 +64,6 @@
 
 此外，Linux 引入了 “模块” 特性（支持热插拔和动态装载），可以在系统运行过程中将模块插入到内核代码中，或者将其移除，从而使得内核可以动态添加功能，弥补了宏内核的一些缺陷。
 
-
 ## 参考
 
 * [Operating Systems Notes](https://applied-programming.github.io/Operating-Systems-Notes/)

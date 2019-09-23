@@ -13,7 +13,7 @@ Ceph 对象网关的用户管理不是 Ceph 存储集群的用户管理。
 
 ## 基本管理
 
-```bash
+```sh
 # 查询用户列表
 $ radosgw-admin user list
 [
@@ -22,31 +22,31 @@ $ radosgw-admin user list
 ]
 ```
 
-```bash
+```sh
 # 获取用户信息
 $ radosgw-admin user info --uid="s3demo"
 ```
 
-```bash
+```sh
 # 修改用户信息
 $ radosgw-admin user modify --uid="s3demo" --display-name="S3 Demo User" # user
 $ radosgw-admin subuser modify --subuser="s3demo:swiftdemo" --access=full
 ```
 
-```bash
+```sh
 # 启/停用户
 $ radosgw-admin user suspend --uid="s3demo" # 停用（子用户当然也会被停用）
 $ radosgw-admin user enable --uid="s3demo" # 启用
 ```
 
-```bash
+```sh
 # 移除用户
 # --purge-data 选项清除与 UID 相关的所有数据
 # --purge-keys 选项清除与 UID 相关的所有 key
 $ radosgw-admin user rm --uid="s3demo" # 子用户全部都会被移除
 ```
 
-```bash
+```sh
 # 移除某个子用户
 # --purge-keys 选项清除与 UID 相关的所有 key
 $ radosgw-admin user rm --subuser="s3demo:swifitdemo"
@@ -56,7 +56,7 @@ $ radosgw-admin user rm --subuser="s3demo:swifitdemo"
 
 ### 创建 S3 用户（即 `user`）
 
-```bash
+```sh
 $ radosgw-admin user create --uid="s3demo" --display-name="S3 Demo User" --email="s3demo@gmail.com"
 {
     "user_id": "s3demo",
@@ -108,7 +108,7 @@ $ radosgw-admin user create --uid="s3demo" --display-name="S3 Demo User" --email
 $ radosgw-admin subuser create --uid=<user_name> --subuser=<user_name>:<subuser_name> --access=[read | write | readwrite | full]
 ```
 
-```bash
+```sh
 # 方式一
 $ radosgw-admin subuser create --uid="s3demo" --subuser="s3demo:swiftdemo" --access=full
 
@@ -178,7 +178,7 @@ $ radosgw-admin subuser create --subuser="s3demo:swiftdemo" --access=full
 
 ## 修改用户信息
 
-```bash
+```sh
 # 修改 S3 user 信息
 $ radosgw-admin user modify --uid="s3demo" --display-name="Jins Yin"
 
@@ -190,7 +190,7 @@ $ radosgw-admin user modify --uid="s3demo" --subuser="s3demo:swiftdemo" --access
 
 * 默认是启用的
 
-```bash
+```sh
 # 暂停
 $ radosgw-admin user suspend --uid='s3demo'
 
@@ -218,7 +218,7 @@ $ radosgw-admin user enable --uid='s3demo'
 S3 API - access key、secret key
 Swift API - secret key（password）
 
-```bash
+```sh
 # 为 S3 user 创建一对 access-key、secret-key（每个 S3 user 可以创建多个密钥对）
 # 密钥对必须 5 位数及以上
 $ radosgw-admin key create --uid="s3demo" --key-type=s3 --access-key="s3jjyy" --secret-key="s3jjyy" # 要求 s3demo 已创建
@@ -227,7 +227,7 @@ $ radosgw-admin key create --uid="s3demo" --key-type=s3 --access-key="s3jjyy" --
 $ radosgw-admin key create --subuser="s3demo:swiftdemo" --key-type=swift --secret-key="jjyy"
 ```
 
-```bash
+```sh
 # 移除 S3 密钥对（指定 Access Key 即可）
 $ radosgw-admin key rm --uid='s3demo' --key-type=s3 --access-key="s3jjyy"
 
@@ -244,12 +244,12 @@ Ceph 集群提供了一个管理 API，使用户能够通过 REST API 执行管�
 --caps="[users|buckets|metadata|usage|zone]=[*|read|write|read,write]"
 ```
 
-```bash
+```sh
 # 为 S3 user 添加管理功能
 $ radosgw-admin caps add --uid="s3demo" --caps="buckets=*"
 ```
 
-```bash
+```sh
 # 移除管理功能
 $ radosgw-admin caps rm --uid="s3demo" --caps="buckets=write"
 ```

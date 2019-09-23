@@ -2,7 +2,7 @@
 
 ## 配置静态网络
 
-```bash
+```sh
 # 查看网络接口（假设需要修改的网口是 em1）
 $ ip addr show # ip addr
 
@@ -19,14 +19,14 @@ GATEWAY="192.168.1.1"
 NETMASK="255.255.255.0"
 ```
 
-```bash
+```sh
 # 重启网卡
 $ sudo ifdown em1 && ifup em1
 ```
 
 ## 修改网卡名称
 
-```bash
+```sh
 $ mv /etc/sysconfig/network-scripts/ifcfg-enp129s0f0 /etc/sysconfig/network-scripts/ifcfg-em1
 
 $ sed -i 's|enp129s0f0|em1|g' /etc/sysconfig/network-scripts/ifcfg-em1

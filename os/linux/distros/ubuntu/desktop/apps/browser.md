@@ -6,14 +6,14 @@
 
 * chromium
 
-```bash
+```sh
 # 内置
 $ apt-get install chromium-browser
 ```
 
 * Firefox
 
-```bash
+```sh
 $ apt-get install -y software-properties-common
 $ add-apt-repository ppa:ubuntu-mozilla-security/ppa
 $ apt-get update
@@ -23,10 +23,10 @@ $ apt-get install firefox # 安装最新版本
 
 ## Flash Player 支持
 
-```bash
+```sh
 apt-get install flashplugin-installer
 ```
 
-```bash
+```sh
 apt-get install adobe-flashplugin
 ```

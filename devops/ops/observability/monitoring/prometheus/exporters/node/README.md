@@ -2,14 +2,14 @@
 
 ## 防火墙
 
-```bash
+```sh
 systemctl stop firewalld
 systemctl disable firewalld
 ```
 
 ## 安装
 
-```bash
+```sh
 NODE_EXPORTER_VERSION="0.17.0"
 
 rm -rf /tmp/node-exporter* && mkdir -p /tmp/node-exporter
@@ -41,20 +41,20 @@ WantedBy=multi-user.target
 EOF
 ```
 
-```bash
+```sh
 $ cat <<EOF > /etc/sysconfig/node-exporter
 OPTIONS="--collector.textfile.directory /var/lib/node-exporter/textfile-collector"
 EOF
 ```
 
-```bash
+```sh
 chmod 664 /etc/systemd/system/node-exporter.service
 mkdir -p /var/lib/node-exporter/textfile-collector
 ```
 
 * 启动
 
-```bash
+```sh
 systemctl daemon-reload
 systemctl enable node-exporter
 systemctl start node-exporter
@@ -63,12 +63,12 @@ systemctl status node-exporter
 
 * 验证
 
-```bash
+```sh
 $ netstat -tpln | grep 9100
 tcp6    0   0   :::9100     :::*    LISTEN      11882/node_exporter
 ```
 
-```bash
+```sh
 $ curl http://localhost:9100/metrics
 go_gc_duration_seconds{quantile="0"} 0.000198341
 ...

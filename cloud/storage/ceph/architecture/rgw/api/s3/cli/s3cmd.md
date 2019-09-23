@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 # 直接下载二进制
 $ google-chrome https://github.com/s3tools/s3cmd/releases
 
@@ -16,7 +16,7 @@ $ apt-get install s3cmd
 $ yum install s3cmd
 ```
 
-```bash
+```sh
 # 检查
 $ s3cmd --version
 s3cmd version 2.0.2
@@ -28,7 +28,7 @@ s3cmd version 2.0.2
 
 对于 S3 接口，应当创建 RADOSGW **user**，而非 **subuser**。
 
-```bash
+```sh
 $ radosgw-admin user create --uid=""
 ```
 
@@ -36,7 +36,7 @@ $ radosgw-admin user create --uid=""
 
 通过命令行进行基本配置：
 
-```bash
+```sh
 # 确保可以成功访问 S3
 $ s3cmd --configure
   Access Key: jjyy # -_-
@@ -53,7 +53,7 @@ $ s3cmd --configure
 
 通过配置文件进行详细配置：
 
-```bash
+```sh
 $ vi $HOME/.s3cfg
 [default]
 access_key = jjyy
@@ -129,7 +129,7 @@ website_index = index.html
 
 ## 管理 S3 资源
 
-```bash
+```sh
 # 创建一个名为 "buckup" 的 Bucket
 $ s3cmd mb s3://backup
 Bucket 's3://backup/' created

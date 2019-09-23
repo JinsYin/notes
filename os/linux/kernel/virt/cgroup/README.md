@@ -52,7 +52,7 @@ Cgroups 可以通过多种方式使用：
 | perf_event |                          |                                                          |
 | rdma       |                          |                                                          |
 
-```bash
+```sh
 $ mount | grep cgroup
 ---------------------
 none on /sys/fs/cgroup type tmpfs (rw)
@@ -75,7 +75,7 @@ systemd on /sys/fs/cgroup/systemd type cgroup (rw,noexec,nosuid,nodev,none,name=
 
 * 安装
 
-```bash
+```sh
 # Debian
 $ apt install cgroup-tools
 
@@ -83,7 +83,7 @@ $ apt install cgroup-tools
 $ yum install libcgroup-tools
 ```
 
-```bash
+```sh
 
 ```
 
@@ -91,7 +91,7 @@ $ yum install libcgroup-tools
 
 * 查看容器相关的进程
 
-```bash
+```sh
 # 83f...a5a 是 CONTAINER ID（可通过 docker inspect 查询获取）
 $ cat /sys/fs/cgroup/pids/docker/83ffc45b751f3889a68673b9ef54405d63fc3c76bad9be676116aa8034c6fa5a/tasks
 -------------------------------------------------------------------------------------------------------

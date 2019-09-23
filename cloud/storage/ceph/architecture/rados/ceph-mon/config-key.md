@@ -2,6 +2,6 @@
 
 ## 查询
 
-```bash
+```sh
 $ ceph config-key ls
 ```

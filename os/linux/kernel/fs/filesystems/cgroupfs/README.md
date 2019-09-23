@@ -2,7 +2,7 @@
 
 Linux 内核并未提供系统调用 API 来操作 Cgroup，而是通过 Cgroup vfs 来管理。
 
-```bash
+```sh
 $ uname -r
 ----------
 4.4.0-121-generic

@@ -43,6 +43,6 @@ int max(int x, int y)
 
 * 编译
 
-```bash
+```sh
 $ gcc first.c second.c -o exe
 ```

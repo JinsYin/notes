@@ -21,7 +21,7 @@ OpenAttic 是一个开源的 Ceph 和存储管理解决方案，提供了 Web �
 3. 安装配置 ntpd 以同步时钟
 4. 配置防火墙以允许外部访问
 
-```bash
+```sh
 # <your zone ie internal|public>
 $ firewall-cmd --permanent --zone=<your zone ie internal|public> --add-service=http
 $ firewall-cmd --permanent --zone=<your zone ie internal|public> --add-service=samba
@@ -38,7 +38,7 @@ $ firewall-cmd --reload
 
 ### 配置
 
-```bash
+```sh
 # EPEL 外部源
 $ yum install -y epel-release
 
@@ -46,7 +46,7 @@ $ yum install -y epel-release
 $ yum install http://repo.openattic.org/rpm/openattic-2.x-el7-x86_64/openattic-release.rpm
 ```
 
-```bash
+```sh
 # 不会自动安装 Openattic Web GUI，因为它对 OpenAttic 集群节点不是必需的
 $ yum install -y openattic
 
@@ -54,7 +54,7 @@ $ yum install -y openattic
 $ yum install -y openattic-gui
 ```
 
-```bash
+```sh
 sed -i 's|#service_perfdata_file=.*|service_perfdata_file=/var/log/pnp4nagios/service-perfdata|g' /etc/nagios/nagios.cfg
 sed -i 's|#service_perfdata_file_template=.*|service_perfdata_file_template=DATATYPE::SERVICEPERFDATA\tTIMET::$TIMET$\tHOSTNAME::$HOSTNAME$\tSERVICEDESC::$SERVICEDESC$\tSERVICEPERFDATA::$SERVICEPERFDATA$\tSERVICECHECKCOMMAND::$SERVICECHECKCOMMAND$\tHOSTSTATE::$HOSTSTATE$\tHOSTSTATETYPE::$HOSTSTATETYPE$\tSERVICESTATE::$SERVICESTATE$\tSERVICESTATETYPE::$SERVICESTATETYPE$service_perfdata_file_mode=a|g' /etc/nagios/nagios.cfg
 sed -i 's|#service_perfdata_file_mode=.*|service_perfdata_file_mode=a|g' /etc/nagios/nagios.cfg
@@ -68,7 +68,7 @@ sed -i 's|#host_perfdata_file_processing_interval=.*|host_perfdata_file_processi
 sed -i 's|#host_perfdata_file_processing_command=.*|host_perfdata_file_processing_command=process-host-perfdata-file|g' /etc/nagios/nagios.cfg
 ```
 
-```bash
+```sh
 $ vi /etc/nagios/objects/commands.cfg
 #
 # definitions for PNP processing commands
@@ -85,21 +85,21 @@ define command {
 }
 ```
 
-```bash
+```sh
 # 验证配置是否正确
 $ nagios --verify-config /etc/nagios/nagios.cfg
 ```
 
 #### 服务
 
-```bash
+```sh
 # 将 start 和 enable 多个服务，初始化 openAttic 数据并扫描系统以查找要包含的池和卷
 $ oaconfig install # --allow-broken-hostname
 ```
 
 访问：<http://openattic.yourdomain.com/openattic>，默认用户密码：`openattic`/`openattic`
 
-```bash
+```sh
 # 修改默认用户密码
 $ oaconfig changepassword openattic
 ```
@@ -111,12 +111,12 @@ $ oaconfig changepassword openattic
 /etc/ceph/ceph.conf
 ```
 
-```bash
+```sh
 # chgrp openattic /etc/ceph/ceph.conf /etc/ceph/ceph.client.admin.keyring
 # chmod g+r /etc/ceph/ceph.conf /etc/ceph/ceph.client.admin.keyring
 ```
 
-```bash
+```sh
 # 安装 openattic-module-ceph
 $ yum install -y openattic-module-ceph
 
@@ -128,7 +128,7 @@ $ oaconfig install # --allow-broken-hostname
 
 ### openSUSE Leap 42.3
 
-```bash
+```sh
 # Ceph Luminous 源
 $ zypper addrepo http://download.opensuse.org/repositories/filesystems:/ceph:/luminous/openSUSE_Leap_42.3/filesystems:ceph:luminous.repo
 
@@ -136,7 +136,7 @@ $ zypper addrepo http://download.opensuse.org/repositories/filesystems:/ceph:/lu
 $ zypper addrepo http://download.opensuse.org/repositories/filesystems:openATTIC:3.x/openSUSE_Leap_42.3/filesystems:openATTIC:3.x.repo
 ```
 
-```bash
+```sh
 # 刷新源
 $ zypper refresh
 
@@ -152,7 +152,7 @@ FROM opensuse/leap:42.3
 
 ## OpentAttic 中启用 Ceph 支持
 
-```bash
+```sh
 $ ceph-deploy admin openattic.yourdomain.com
 ```
 

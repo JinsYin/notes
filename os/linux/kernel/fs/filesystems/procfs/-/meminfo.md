@@ -1,6 +1,6 @@
 # /proc/meminfo
 
-```bash
+```sh
 $ cat /proc/meminfo
 -------------------
 MemTotal:       32901432 kB

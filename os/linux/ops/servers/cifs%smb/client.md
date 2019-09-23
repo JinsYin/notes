@@ -15,7 +15,7 @@
 
 `smbclient` 是一个类似于 FTP 连接的命令行工具，依赖 smbfs 驱动便可以安装 SMB 文件共享，其行为类似于本地硬盘。
 
-```bash
+```sh
 # 列出公共的 SMB 共享
 $ smbclient -L //<server> -U <user> --option="ntlmssp_client:force_old_spnego = yes"
 
@@ -29,7 +29,7 @@ $ smbclient //<server>/<share> -U <user>%<password> --option="ntlmssp_client:for
 
 * 【使用 CIFS】
 
-```bash
+```sh
 # 安装 cifs
 $ sudo apt-get install cifs-utils
 
@@ -41,7 +41,7 @@ $ mkdir ~/mac
 $ sudo mount -t cifs //<mac_ip_address>/<mac_smb_share_dir> ~/mac -o gid=1000,uid=1000,username=<mac_smb_user>,password=<mac_smb_pwd>,nounix,sec=ntlmssp
 ```
 
-```bash
+```sh
 # 卸载同样需要 root 权限
 $ sudo umount -t cifs ~/mac
 ```

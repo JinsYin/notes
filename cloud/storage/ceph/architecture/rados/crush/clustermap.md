@@ -12,7 +12,7 @@ Cluster Map 包括：
 
 ## Monitor Map 示例
 
-```bash
+```sh
 $ ceph mon dump
 
 dumped monmap epoch 1
@@ -25,7 +25,7 @@ created 2019-04-17 09:32:20.235616
 
 ## OSD Map 示例
 
-```bash
+```sh
 $ ceph osd dump
 
 epoch 17
@@ -53,7 +53,7 @@ osd.0 up   in  weight 1 up_from 4 up_thru 15 down_at 0 last_clean_interval [0,0)
 
 ## PG Map 示例
 
-```bash
+```sh
 $ ceph pg dump
 
 dumped all
@@ -135,7 +135,7 @@ sum      1.0 GiB 9.0 GiB 10 GiB
 
 ## CRUSH Map
 
-```bash
+```sh
 $ ceph osd crush dump
 
 {
@@ -278,7 +278,7 @@ $ ceph osd crush dump
 
 ## MDS Map
 
-```bash
+```sh
 $ ceph fs map
 
 dumped fsmap epoch 5

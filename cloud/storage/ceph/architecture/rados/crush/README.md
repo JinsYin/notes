@@ -28,7 +28,7 @@ Ceph 客户端和 OSD Daemon 使用 CRUSH 算法计算数据位置信息，而�
 * region
 * root
 
-```bash
+```sh
 $ ceph osd crush tree
 ...
 
@@ -81,7 +81,7 @@ $ ceph osd crush dump
 
 ### CRUSH Ruleset
 
-```bash
+```sh
 $ ceph osd crush rule ls
 [
     "replicated_ruleset",

@@ -30,13 +30,13 @@ $ systemctl status systemd-udevd.service
 
 * 第一步：关闭 “一致性网络设备命名法”
 
-```bash
+```sh
 # 修改过 GRUB2 启动参数
 $ vi /etc/default/grub
 GRUB_CMDLINE_LINUX="... net.ifnames=0 biosdevname=0"
 ```
 
-```bash
+```sh
 # 重构 GRUB2 配置文件
 $ grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -46,14 +46,14 @@ $ grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 
 * 第二步：修改 udev rules
 
-```bash
+```sh
 # link/ether 后接 MAC 地址："c8:1f:66:b9:83:c2"
 $ ip link show em1
 em1: <NO-CARRIER,BROADCAST,MULTICAST,SLAVE,UP> mtu 1500 qdisc mq master bond0 state DOWN mode DEFAULT group default qlen 1000
     link/ether c8:1f:66:b9:83:c2 brd ff:ff:ff:ff:ff:ff
 ```
 
-```bash
+```sh
 # 移除第一行，为每个网卡设备重命名
 $ vi /usr/lib/udev/rules.d/60-net.rules
 # ACTION=="add", SUBSYSTEM=="net", DRIVERS=="?*", ATTR{type}=="1", PROGRAM="/lib/udev/rename_device", RESULT=="?*", NAME="$result"
@@ -62,7 +62,7 @@ $ ACTION=="add", SUBSYSTEM=="net", DRIVERS=="?*", ATTR{address}=="c8:1f:66:b9:83
 
 * 第三步：重命名网卡配置
 
-```bash
+```sh
 # 重命名网卡配置
 $ mv /etc/sysconfig/network-scripts/ifcfg-p4p1 /etc/sysconfig/network-scripts/ifcfg-eth0
 $ sed 's|p4p1|eth0|g' /etc/sysconfig/network-scripts/ifcfg-eth0

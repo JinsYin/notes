@@ -2,7 +2,7 @@
 
 ## 同步系统时间
 
-```bash
+```sh
 apt-get install -y ntp
 ntpdate cn.pool.ntp.org
 hwclock -w

@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 CASSANDRA_EXPORTER_VERSION="2.0.3"
 
 mkdir -p /etc/prometheus_exporter/cassandra_exporter
@@ -31,14 +31,14 @@ WantedBy=multi-user.target
 EOF
 ```
 
-```bash
+```sh
 systemctl daemon-reload
 systemctl enable cassandra_exporter
 systemctl start cassandra_exporter
 systemctl status cassandra_exporter
 ```
 
-```bash
+```sh
 curl -L http://localhost:8080
 ```
 

@@ -2,24 +2,24 @@
 
 ## Iptables Service
 
-```bash
+```sh
 $ yum install iptables-services
 ```
 
 ## Iptables
 
-```bash
+```sh
 $ yum install iptables
 ```
 
 ## 接受
 
-```bash
+```sh
 $ iptables -I INPUT -s 1.2.3.4 -j ACCEPT
 ```
 
 ## 限制 IP
 
-```bash
+```sh
 $ iptables -I INPUT -s 1.2.3.4 -j DROP
 ```

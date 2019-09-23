@@ -2,7 +2,7 @@
 
 ## Shutter
 
-```bash
+```sh
 # 安装
 $ apt-get install shutter
 ```

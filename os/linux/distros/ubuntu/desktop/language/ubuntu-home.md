@@ -14,7 +14,7 @@ Videos
 
 2. 对应修改
 
-```bash
+```sh
 $ vim ~/.config/user-dirs.dirs
 ```
 

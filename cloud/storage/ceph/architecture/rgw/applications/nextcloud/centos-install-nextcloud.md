@@ -6,7 +6,7 @@
 
 * CentOS 7.3
 
-```bash
+```sh
 # EPEL
 $ yum install epel-release
 
@@ -22,12 +22,12 @@ $ systemctl stop firewalld
 * MySQL/MariaDB
 * PostgreSQL
 
-```bash
+```sh
 # 安装 Server 和 Client
 $ yum install -y mariadb mariadb-server
 ```
 
-```bash
+```sh
 # 启动服务
 $ systemctl start mariadb
 $ systemctl enable mariadb
@@ -36,7 +36,7 @@ $ systemctl enable mariadb
 $ systemctl status mariadb
 ```
 
-```bash
+```sh
 # 运行脚本来强化 MariaDB 的安全性
 $ mysql_secure_installation
 Enter current password for root (enter for none): # 直接回车
@@ -54,7 +54,7 @@ Remove test database and access to it? [Y/n] Y
 Reload privilege tables now? [Y/n] Y
 ```
 
-```bash
+```sh
 $ mysql -u root -p
 > create database nextcloud;
 > create user nextclouduser@localhost identified by 'nextclouduser@';
@@ -65,7 +65,7 @@ $ mysql -u root -p
 
 ## Apache
 
-```bash
+```sh
 $ yum install -y httpd
 
 systemctl start httpd
@@ -74,7 +74,7 @@ systemctl enable httpd
 
 ## PHP
 
-```bash
+```sh
 # 通过 SCL repository 安装 PHP
 $ yum install -y centos-release-scl
 
@@ -82,7 +82,7 @@ $ yum install -y centos-release-scl
 $ yum install -y rh-php70 rh-php70-php rh-php70-php-gd rh-php70-php-mbstring
 ```
 
-```bash
+```sh
 # 为数据库安装相应模块
 
 # MariaDB/MySQL
@@ -98,14 +98,14 @@ ln -s /opt/rh/httpd24/root/etc/httpd/conf.modules.d/15-rh-php70-php.conf /etc/ht
 ln -s /opt/rh/httpd24/root/etc/httpd/modules/librh-php70-php7.so /etc/httpd/modules/
 ```
 
-```bash
+```sh
 # 重启 Apache
 $ systemctl restart httpd
 ```
 
 ## NextCloud
 
-```bash
+```sh
 $ yum install -y zip
 
 # 下载
@@ -115,7 +115,7 @@ $ wget https://download.nextcloud.com/server/releases/nextcloud-13.0.5.tar.bz2
 $ tar -jvxf nextcloud-13.0.5.tar.bz2
 ```
 
-```bash
+```sh
 # 转移
 $ mv nextcloud /var/www/html/
 $ chown apache:apache -R /var/www/html
@@ -123,7 +123,7 @@ $ chown apache:apache -R /var/www/html
 
 ## Redis
 
-```bash
+```sh
 # 安装
 $ yum install -y redis
 
@@ -132,7 +132,7 @@ $ systemctl start redis
 $ systemctl enable redis
 ```
 
-```bash
+```sh
 $ vi /var/www/nextcloud/config/config.php
 'memcache.local' => '\OC\Memcache\APCU',
 'memcache.locking' => '\OC\Memcache\Redis',

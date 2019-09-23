@@ -17,25 +17,25 @@
 
 * Kernel PID Max
 
-```bash
+```sh
 $ echo "4194303" > /proc/sys/kernel/pid_max
 ```
 
 * Read ahead: Set in all block devices
 
-```bash
+```sh
 $ echo "8192" > /sys/block/sda/queue/read_ahead_kb
 ```
 
 * Swappiness:
 
-```bash
+```sh
 $ echo "vm.swappiness=0" | tee -a /etc/sysctl.conf
 ```
 
 * Disable NUMA:
 
-```bash
+```sh
 $ echo 0 > /proc/sys/kernel/numa_balancing
 
 # or
@@ -45,13 +45,13 @@ $ sysctl kernel.numa_balancing=0
 
 * CPU Tuning: Set "performance" mode use 100% CPU frequency always
 
-```bash
+```sh
 $ echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
 * I/O Scheduler:
 
-```bash
+```sh
 SATA/SAS Drives:  # echo "deadline" > /sys/block/sd[x]/queue/scheduler
 SSD Drivers:      # echo "noop" > /sys/block/sd[x]/queue/scheduler
 ```

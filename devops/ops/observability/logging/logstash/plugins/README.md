@@ -2,7 +2,7 @@
 
 ## 内置插件
 
-```bash
+```sh
 $ bin/logstash-plugin list
 logstash-codec-cef
 logstash-codec-collectd

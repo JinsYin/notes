@@ -17,7 +17,7 @@
 * aws-java-sdk jar
 * hadoop-aws jar
 
-```bash
+```sh
 # hadoop-aws 版本为 Spark 内置的 Hadoop 版本保持一致
 $ wget http://central.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.5/hadoop-aws-2.7.5.jar
 $ wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.5/aws-java-sdk-1.7.5.jar
@@ -36,7 +36,7 @@ $ wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.5/aws-java
 
 ## spark-shell 示例
 
-```bash
+```sh
 $ bin/spark-shell --master local[*] \
   --jars /opt/spark/jars/aws-java-sdk-1.7.5.jar,/opt/spark/jars/hadoop-aws-2.7.5.jar
 scala> sc.hadoopConfiguration.set("fs.s3a.access.key", "jjyy")
@@ -97,7 +97,7 @@ spark: 2.3.0
 hadoop: 2.7 （Spark 内置）
 ```
 
-```bash
+```sh
 $ bin/spark-submit \
   --class org.apache.spark.examples.SparkPi \
   --master local[*] \

@@ -16,7 +16,7 @@ Jupyter Notebook 原名 IPython Notebook，它是一个交互式计算环境，�
 
 ## 快速入门
 
-```bash
+```sh
 % jupyter notebook
 ```
 
@@ -26,7 +26,7 @@ Jupyter Notebook 中使用的 Python 版本和它启动时所处环境的 Python
 
 * 验证 Python 版本
 
-```bash
+```sh
 # 查看当前环境所使用的 Python 版本
 $ python --version
 Python 3.6.4 :: Anaconda custom (64-bit)
@@ -41,7 +41,7 @@ print(sys.version)
 
 如果希望改变 Jupyter Notebook 中 Python 的版本，可以使用 conda 切换虚拟环境并重启 Jupyter Notebook。
 
-```bash
+```sh
 # 切换虚拟环境（假设之前已经创建好）
 $ source activate python3.5
 

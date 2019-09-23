@@ -8,7 +8,7 @@
 
 ## /proc/bus/input
 
-```bash
+```sh
 $ cat /proc/bus/input/devices
 -----------------------------
 I: Bus=0019 Vendor=0000 Product=0001 Version=0000
@@ -152,7 +152,7 @@ B: EV=21
 B: SW=140
 ```
 
-```bash
+```sh
 $ cat /proc/bus/input/handlers
 ------------------------------
 N: Number=0 Name=rfkill
@@ -166,7 +166,7 @@ N: Number=6 Name=leds
 
 ## /proc/bus/pci/devices
 
-```bash
+```sh
 $ cat /proc/bus/pci/devices
 ---------------------------
 0000	80860100	0	               0	               0	               0	               0	               0	               0	               0	               0	               0	               0	               0	               0	               0	               0	snb_uncore

@@ -2,7 +2,7 @@
 
 ## 配置
 
-```bash
+```sh
 output {
   kafka {
     bootstrap_servers => ["localhost:9092"]

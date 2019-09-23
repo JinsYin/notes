@@ -2,7 +2,7 @@
 
 ## 部署
 
-```bash
+```sh
 docker run -d --name owncloud -p 7777:80 -v /opt/owncloud/config:/var/www/html/config owncloud:10.0.9
 ```
 

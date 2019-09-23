@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 # 安装最新版本
 $ pip install -U boto
 ```

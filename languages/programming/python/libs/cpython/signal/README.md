@@ -9,7 +9,7 @@
 | 14   | SIGALRM |      |
 | 15   | SIGTERM |      |
 
-```bash
+```sh
 # 参考 Linux 手册页
 $ man 7 signal
 

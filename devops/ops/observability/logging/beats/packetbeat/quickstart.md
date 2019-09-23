@@ -2,7 +2,7 @@
 
 ## 安装
 
-```bash
+```sh
 ELASTIC_VERSION="6.5.0"
 
 yum install -y libpcap
@@ -49,7 +49,7 @@ output.elasticsearch:
 
 * 启动
 
-```bash
+```sh
 systemctl enable packetbeat
 systemctl start packetbeat
 systemctl status packetbeat # 状态
@@ -58,7 +58,7 @@ journalctl -f -u packetbeat # 日志
 
 * 验证
 
-```bash
+```sh
 # Packetbeat 会把数据发送到 Elasticsearch
 $ curl http://192.168.10.160:9200/packetbeat*/_search?pretty
 ```

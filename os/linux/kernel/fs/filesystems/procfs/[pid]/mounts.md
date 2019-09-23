@@ -1,6 +1,6 @@
 # /proc/[pid]]/mounts
 
-```bash
+```sh
 $ cat /proc/self/mounts
 ---------------------
 sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0

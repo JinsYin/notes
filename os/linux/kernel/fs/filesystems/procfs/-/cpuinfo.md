@@ -1,6 +1,6 @@
 # /proc/cpuinfo
 
-```bash
+```sh
 $ cat /proc/cpuinfo
 -------------------
 processor       : 0

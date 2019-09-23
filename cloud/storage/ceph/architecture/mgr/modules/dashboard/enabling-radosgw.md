@@ -4,7 +4,7 @@
 
 * 语法
 
-```bash
+```sh
 # 创建带有管理权限的 RADOSGW 新用户，从输出结果中获取 access_key 和 secret_key
 $ radosgw-admin user create --uid=<user_id> --display-name=<display_name> --system
 
@@ -22,7 +22,7 @@ $ ceph dashboard set-rgw-api-port <port>
 
 * 实验
 
-```bash
+```sh
 $ radosgw-admin user create --uid="dashboard" --display-name="Ceph Manager Dashboard" --system
 
 $ radosgw-admin user info --uid="dashboard" | grep -E "access_key|secret_key"
@@ -41,7 +41,7 @@ $ ceph dashboard set-rgw-api-port 8080
 $ ceph mgr module disable dashboard && ceph mgr module enable dashboard
 ```
 
-```bash
+```sh
 # 查询存储在 MON 配置数据库中的信息
 $ ceph config-key ls
 --------------------

@@ -95,7 +95,7 @@ $ kill -l
 
 向 PID=1234 的进程发送 kill 信号：
 
-```bash
+```sh
 $ kill -9 1234
 # or
 $ kill -KILL 1234

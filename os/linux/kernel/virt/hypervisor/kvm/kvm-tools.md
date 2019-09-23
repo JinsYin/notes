@@ -15,14 +15,14 @@
 
 * CentOS
 
-```bash
+```sh
 # 安装
 $ yum install -y qemu-kvm
 ```
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install qemu-kvm
 ```
@@ -33,7 +33,7 @@ $ apt-get install qemu-kvm
 
 * CentOS
 
-```bash
+```sh
 # 安装
 $ yum install -y libvirt
 
@@ -43,7 +43,7 @@ $ systemctl start libvirtd
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install -y libvirt-bin
 
@@ -57,14 +57,14 @@ $ service start libvirt-bin
 
 * CentOS
 
-```BASH
+```sh
 # 安装
 $ yum install -y virt-install
 ```
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install -y virtinst
 
@@ -80,7 +80,7 @@ virt-clone 是一个命令行工具，用于克隆已存在的虚拟机。它克
 
 ### 克隆虚拟机
 
-```bash
+```sh
 # 关闭虚拟机
 $ virsh shutdown kube-node-121
 
@@ -104,7 +104,7 @@ virt-convert是一个命令行工具，用于将OVF和VMX VM配置转换为使�
 
 * CentOS
 
-```bash
+```sh
 # 安装
 $ yum install -y virt-top
 
@@ -118,7 +118,7 @@ $ virt-top --connect qemu+ssh://root@192.168.10.120/system
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install -y virt-top
 ```
@@ -131,7 +131,7 @@ $ apt-get install -y virt-top
 
 * CentOS
 
-```bash
+```sh
 # 安装
 $ yum install -y virt-viewer
 
@@ -144,7 +144,7 @@ $ virt-viewer -c qemu+ssh://192.168.10.120/system kube-node-121
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install -y virt-viewer
 ```
@@ -155,14 +155,14 @@ virt-manager 是一个用于通过 libvirt 管理虚拟机的用户界面。主�
 
 * CentOS
 
-```bash
+```sh
 # 安装
 $ yum install -y virt-manager
 ```
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install -y virt-manager
 ```
@@ -173,7 +173,7 @@ $ apt-get install -y virt-manager
 
 ## qemu-img
 
-```bash
+```sh
 # 格式转换
 $ qemu-img convert -f raw -o qcow2 image.img image.qcow2
 ```
@@ -184,14 +184,14 @@ $ qemu-img convert -f raw -o qcow2 image.img image.qcow2
 
 * CentOS
 
-```bash
+```sh
 # 安装
-$ 
+$
 ```
 
 * Ubuntu
 
-```bash
+```sh
 # 安装
 $ apt-get install -y libguestfs-tools
 ```
@@ -204,8 +204,8 @@ http://libguestfs.org/
 
 ## qemu-img
 
-```bash
-$ 
+```sh
+$
 ```
 
 ## 参考

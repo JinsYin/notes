@@ -18,7 +18,7 @@
 
 ## 清除集群
 
-```bash
+```sh
 $ ansible-playbook -i hosts infrastructure-playbooks/purge-cluster.yml
 
 # 卸载所有 ceph 相关软件包

@@ -18,7 +18,7 @@
 
 * 永久
 
-```bash
+```sh
 # 释放 pagecache
 $ sync && echo 1 > /proc/sys/vm/drop_caches
 
@@ -38,7 +38,7 @@ $ sync && echo 3 > /proc/sys/vm/drop_caches
 
 * 临时
 
-```bash
+```sh
 % sysctl vm.drop_caches=1
 ```
 

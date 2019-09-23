@@ -2,14 +2,14 @@
 
 ## 安装
 
-```bash
+```sh
 # 最新版本
 $ pip install python-swiftclient
 ```
 
 ## 示例
 
-```bash
+```sh
 import swiftclient
 
 user = 's3demo:swiftdemo'

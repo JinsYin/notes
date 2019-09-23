@@ -4,7 +4,7 @@
 
 * 虚拟机
 
-```bash
+```sh
 # 查看运行的虚拟机（连接 /var/run/libvirt/libvirt-sock）
 $ virsh list
 
@@ -39,7 +39,7 @@ $ virsh console centos-vm-1
 
 * 网络
 
-```bash
+```sh
 # 查看虚拟机网络
 $ virsh net-list --all
 
@@ -69,13 +69,13 @@ $ virsh net-undefine <net-name>
 
 * ssh
 
-```bash
+```sh
 $ ssh username@ip
 ```
 
 * virsh console
 
-```bash
+```sh
 # 本地
 $ virsh console kube-node-122  # ctrl+] 退出
 $ virsh -c qemu:///system kube-node-122
@@ -88,7 +88,7 @@ $ virsh -c qemu+ssh://192.168.10.120/system console kube-node-122
 
 * virt-viewer
 
-```bash
+```sh
 # 本地
 $ virt-viewer kube-node-122
 $ virt-viewer -c qemu:///system kube-node-122
@@ -101,7 +101,7 @@ $ virsh -c qemu+ssh://192.168.10.120/system console kube-node-122
 
 需要虚拟机事先配置好 vnc 服务。
 
-```bash
+```sh
 # 本地
 $ vncviewer $(virsh vncdisplay kube-node-122)
 ```

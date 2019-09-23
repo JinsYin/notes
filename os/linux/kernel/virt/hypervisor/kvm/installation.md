@@ -16,7 +16,7 @@ Intel(R) Virtualization Tech [Enabled]
 
 KVM 的内核组件已经从 Linux `2.6.20` 版本集成到主线中。
 
-```bash
+```sh
 $ uname -r
 3.10.0-514.26.2.el7.x86_64
 
@@ -33,7 +33,7 @@ $ modprobe kvm-amd   # AMD
 
 KVM 虚拟化要求宿主机的 CPU 支持虚拟化，其中 Intel 处理器是 `VT-x`，而 AMD 处理器是 `AMD-V`。
 
-```bash
+```sh
 $ lscpu | grep -i "Virtualization"
 Virtualization: VT-x
 
@@ -47,7 +47,7 @@ $ grep -E "(vmx|svm)" /proc/cpuinfo
 
 * CentOS
 
-```bash
+```sh
 $ yum install -y qemu-kvm libvirt virt-install bridge-utils # qemu-kvm-tools
 
 # 安装成功后
@@ -62,7 +62,7 @@ $ systemctl status libvirtd
 
 * Ubuntu
 
-```bash
+```sh
 $ apt-get install -y qemu-kvm libvirt-bin virtinst bridge-utils
 
 # 安装成功后
@@ -76,7 +76,7 @@ $ service libvirt-bin status
 
 ### 验证
 
-```bash
+```sh
 # 连接 libvirt（/var/run/libvirt/libvirt-sock） 查看虚拟机列表
 $ virsh list --all
 
@@ -87,7 +87,7 @@ virbr0    8000.5254003c0a6a yes   virbr0-nic
 
 ### 安装虚拟机
 
-```bash
+```sh
 # 镜像尽量放在 /home 目录下，否则可能导致没有权限
 $ mkdir -p /home/kvm/{img,vms}
 
@@ -185,7 +185,7 @@ $ virt-install \
 
 安装完全后会自动重启宿主机，重启后手动连接虚拟机：
 
-```bash
+```sh
 $ virsh list --all
 $ virsh console centos73 # ctrl+] 退出
 ```
@@ -213,7 +213,7 @@ $ virsh console centos73 # ctrl+] 退出
 
 * 宿主机网卡设备
 
-```bash
+```sh
 # 添加网桥设备
 $ echo 'BRIDGE="kvm0"' >> /etc/sysconfig/network-scripts/ifcfg-em1
 
@@ -244,7 +244,7 @@ BRIDGE="kvm0"
 
 * 宿主机网桥设备
 
-```bash
+```sh
 $ cat <<EOF > /etc/sysconfig/network-scripts/ifcfg-kvm0
 TYPE="Bridge" # 桥接类型
 BOOTPROTO="static"
@@ -271,7 +271,7 @@ DNS1="114.114.114.114" # 必须添加一个 DNS，否则远程到这个地址没
 
 * 虚拟机网络设备
 
-```bash
+```sh
 $ cat /etc/sysconfig/network-scripts/ifcfg-eth0
 TYPE="Ethernet"
 BOOTPROTO="static"
@@ -295,7 +295,7 @@ IPV6_PEERROUTES="yes"
 
 * 重启网卡
 
-```bash
+```sh
 $ ifup kvm0 && ifup em1
 $ systemctl restart network
 
@@ -330,7 +330,7 @@ kvm0         8000.1866da4d881f  yes          em
 
 * 服务端
 
-```bash
+```sh
 # 关闭 SELinux
 $ setenforce 0
 $ sed -e 's|SELINUX=enforcing|SELINUX=disabled|g' /etc/sysconfig/selinux
@@ -343,7 +343,7 @@ $ yum install -y qemu-kvm libvirt
 
 * 桌面端
 
-```bash
+```sh
 # CentOS
 $ yum install -y virt-manager
 
