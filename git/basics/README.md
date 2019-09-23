@@ -10,6 +10,13 @@
 * Repository：本地仓库/本地数据库
 * Remote：远程仓库
 
+<!--
+工作目录 - working directory / working tree / worktree
+暂存区 - staging area / staging directory / index / staging index
+版本库 - commit history / repository / commit tree
+储藏区 - stash
+-->
+
 ## 三种状态 & 三个工作区域
 
 * 已提交（**committed**） - 表示数据已安全保存到本地数据库中

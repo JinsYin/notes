@@ -9,3 +9,7 @@ HEAD - 指向的也是 commit；默认情况指向的是 分支指向的 commit�
 
 * **git-checkout** - 切换分支或恢复工作区文件
 * **git-branch**
+
+## 分支合并
+
+* 快进（fast-forward）合并：只更新分支指针。
