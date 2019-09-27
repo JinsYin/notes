@@ -10,7 +10,7 @@ $ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/z
 
 * 自定义补全快捷键
 
-默认使用 `→` 来完成补全，自定义：
+默认使用 <kbd>→</kbd> 来完成补全，自定义：
 
 ```sh
 $ vi ~/.zshrc

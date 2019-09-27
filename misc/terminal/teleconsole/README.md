@@ -37,7 +37,7 @@ $ google-chrome https://as.teleconsole.com/s/ff06df7c4fd7f1ef83a62bd7b5c85eb06ba
 * 关闭会话
 
 ```sh
-# Ctrl+d
+# Ctrl+D
 $ exit
 ```
 

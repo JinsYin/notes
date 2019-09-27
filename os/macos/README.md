@@ -6,9 +6,9 @@ macOS 是基于 BSD Unix 设计的，而 Linux 很大程度受到了 System-V Un
 
 ## 常规
 
-* 锁屏：`ctrl + command + q`
+* 锁屏/退出登录：<kbd>Ctrl + Command + Q</kbd>
 * 熄屏：
-  * `shift + ctrl + 电源键`
+  * <kbd>Shift + Ctrl + Power</kbd>
   * 合上笔记本
 
 ## 安全

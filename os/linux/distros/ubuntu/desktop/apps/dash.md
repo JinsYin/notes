@@ -2,7 +2,7 @@
 
 ## 快捷键
 
-`Win`
+<kbd>Win<kbd>
 
 ## desktop 文件路径
 

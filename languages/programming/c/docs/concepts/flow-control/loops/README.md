@@ -51,7 +51,7 @@ label 后的语句块会照常执行，遇到 goto 之后会再次执行一次
 
 ## 死循环（Infinite Loop）
 
-如果循环条件一直不变成 false，循环将成为死循环或无限循环。可以使用 `Ctrl + C`（Unix-like 中代表 “Interrupt”）来结束死循环。
+如果循环条件一直不变成 false，循环将成为死循环或无限循环。可以使用 <kbd>Ctrl + C</kbd>（Unix-like 中代表 “Interrupt”）来结束死循环。
 
 ```c
 for (;;) { // 缺省条件表达式时，C 语言将假定为 true
