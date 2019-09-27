@@ -1,1 +1,0 @@
-# Shadowsocks with openwrt

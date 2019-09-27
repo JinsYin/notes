@@ -16,3 +16,7 @@ raw.githubusercontent.com
 *.dida365.com
 *.ceph.com
 ```
+
+## 参考
+
+* [GFWList](https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt)
