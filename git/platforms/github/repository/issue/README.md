@@ -1,4 +1,4 @@
-# Github Issues
+# Github Issue
 
 ## 目录
 
