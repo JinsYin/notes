@@ -1,4 +1,4 @@
-# VS Code 中使用 Python
+# VS Code 集成 Python
 
 ## 前提
 
@@ -9,7 +9,7 @@
 ## 配置 Python 解释器
 
 0. VS Code 默认使用系统当前的 Python 环境，即 `"python.pythonPath": "python"`
-1. 按下 `Ctrl + Shift + P` 快捷键，键入 `Python: Select Interpreter`
+1. 按下 <kbd>Ctrl + Shift + P</kbd> ，键入 `Python: Select Interpreter`
 2. 从自动查找到的解释器中选择一个（如果打开的是 Workspace 且含多个 Folder，需要先确定 Folder），这会覆盖默认用户设置中 `python.pythonPath` 参数的值，最终配置保存在该 Folder 下的`.vscode/settings.json` 文件中
 
 ![选择 Python 解释器](.images/selection-interpreter.png)
@@ -36,7 +36,7 @@
 
 ![Debugging](.images/debugging.png)
 
-1. 设置断点（Breakpoint） - `F9`
+1. 设置断点（Breakpoint） - <kbd>F9</kbd>
 
 ![设置断点](.images/breakpoint-set.png)
 
@@ -74,11 +74,11 @@
 
 ![调试工具栏](.images/debug-toolbar.png)
 
-从左到右依次是：continue（`F5`），step over（`F10`），step into（`F10`），step out（`Shift + F11`），restart（`Ctrl + Shift + F5`） 和 stop（`Shift + F5`）
+从左到右依次是：continue（<kbd>F5</kbd>），step over（<kbd>F10</kbd>），step into（<kbd>F10</kbd>），step out（<kbd>Shift + F11</kbd>），restart（<kbd>Ctrl + Shift + F5</kbd>） 和 stop（<kbd>Shift + F5</kbd>）
 
 调试时状态栏会改变颜色（多呈 `黄色`）；另外，`Python Debug Console` 也会自动出现在右下方的面板中，以显示正在运行的命令以及程序输出。
 
-按 `F5` 后调试器将继续运行程序到下一个断点，此时定义的 `msg` 变量出现在了 `Local` 面板中：
+按 <kbd>F5</kbd> 后调试器将继续运行程序到下一个断点，此时定义的 `msg` 变量出现在了 `Local` 面板中：
 
 ![调试步骤](.images/debug-step-02.png)
 

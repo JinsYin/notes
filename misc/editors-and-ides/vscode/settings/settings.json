@@ -1,8 +1,3 @@
-# Visual Studio Code
-
-## settings.json
-
-```json
 {
     "workbench.colorTheme": "Solarized Dark",
     "terminal.integrated.fontSize": 15,
@@ -34,5 +29,11 @@
     "[markdown]": {
         "editor.quickSuggestions": true
     },
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "markdownlint.config": {
+        "default": true,
+        "MD033": false
+    }
 }
-```

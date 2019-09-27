@@ -4,13 +4,13 @@
 
 ## 调试快捷键
 
-| 快捷键    | 描述      |
-| --------- | --------- |
-| F5        | 运行调试  |
-| F9        | 切换断点  |
-| F10       | Step over |
-| F11       | Step in   |
-| Shift+F11 | Step out  |
+| 快捷键                 | 描述      |
+| ---------------------- | --------- |
+| <kbd>F5</kbd>          | 运行调试  |
+| <kbd>F9</kbd>          | 切换断点  |
+| <kbd>F10</kbd>         | Step over |
+| <kbd>F11</kbd>         | Step in   |
+| <kbd>Shift + F11</kbd> | Step out  |
 
 ## Go 语言
 

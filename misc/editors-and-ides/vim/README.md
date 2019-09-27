@@ -18,3 +18,4 @@
 * [文本三巨头：zsh、tmux 和 vim](http://blog.jobbole.com/86571/)
 * [Learning the vi Editor/Vim/Modes](https://en.wikibooks.org/wiki/Learning_the_vi_Editor/Vim/Modes)
 * [Vim cheatsheet](https://devhints.io/vim)
+* [像 IDE 一样使用 vim](https://github.com/yangyangwithgnu/use_vim_as_ide)

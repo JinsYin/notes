@@ -1,6 +1,6 @@
 # Sublime 插件
 
-按住 `ctrl` + `shift` + `p` 键，输入 `install package` 然后回车，再搜索想要安装的插件名后回车即可安装， 最后重启 sublime。
+按住 <kbd>Ctrl + Shift + P</kbd> 键，输入 `install package` 然后回车，再搜索想要安装的插件名后回车即可安装， 最后重启 sublime。
 
 通过 `Preferences` > `Browse Packages` 来查看安装的插件。
 
