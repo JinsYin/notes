@@ -7,6 +7,9 @@
 ```sh
 $ wget https://dl.google.com/go/go1.11.11.linux-amd64.tar.gz     # 下载
 $ sudo tar -xzvf /tmp/go1.11.11.linux-amd64.tar.gz -C /usr/local # 解压
+
+# 验证
+$ go version
 ```
 
 * macOS
@@ -14,14 +17,18 @@ $ sudo tar -xzvf /tmp/go1.11.11.linux-amd64.tar.gz -C /usr/local # 解压
 ```sh
 $ wget https://dl.google.com/go/go1.11.11.darwin-amd64.tar.gz # 下载
 $ sudo tar -zxvf go1.11.11.darwin-amd64.tar.gz -C /usr/local  # 解压
+
+# 验证
+$ go version
+go version go1.11.11 darwin/amd64
 ```
 
 ## 配置环境变量
 
 | 变量名   | 变量值                                   | 示例                   |
 | -------- | ---------------------------------------- | ---------------------- |
-| `GOROOT` | Go 的安装路径                            | `GOROOT=/usr/local/go` |
-| `GOPATH` | 用户工作区路径                           | `GOPATH=~/go`          |
+| `GOROOT` | Go 安装路径                              | `GOROOT=/usr/local/go` |
+| `GOPATH` | 工作区路径                               | `GOPATH=~/go`          |
 | `GOBIN`  | 程序安装（`go install`）的二进制文件路径 | `GOBIN=$GOPATH/bin`    |
 
 实施配置：
