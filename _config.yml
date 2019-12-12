@@ -1,0 +1,67 @@
+url: https://kibi.io
+baseurl: "" # It's the default
+assets: "/_assets"
+
+name: 知识库
+name_en: Knowledge Base
+title: 知识库 - Knowledge Base
+keywords: ""
+description: "致力于打造全网最大的计算机相关知识库" # 围绕知识体系建立计算机知识库
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  gfm_quirks: [paragraph_end, no_auto_typographic]
+  html_to_native: true
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    disable: true    # syntax highlighter 和 highlight.js 不应该同时引用
+  toc_levels: 2..3
+
+# Building settings
+permalink: pretty
+
+include: ["_assets"]
+
+exclude:
+  - README.md
+  - Gemfile
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-relative-links
+  - jekyll-sitemap
+
+# Front matter defaults
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: docs
+      toc_min: 2
+      toc_max: 3
+      tree: true
+      permalink: /:path/:basename:output_ext
+  - scope:
+      path: "install"
+    values:
+      win_latest_build: "docker-19.03.3"
+
+sass:
+  sass_dir: _scss
+  style: :compressed
+
+
+#============================= more settings =============================#
+
+repourl: https://github.com/jinsyin/knowledge-base
+copyright: Powered by Jinsyin
+
+# Site Language
+lang: "zh-cmn-Hans" # "zh-cmn-Hans" => 简体中文; "zh-cmn-Hant" => 繁体中文; "en" => English
+
+author:
+  name: Jinsyin
+  github: https://github.com/jinsyin

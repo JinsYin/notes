@@ -1,2 +1,18 @@
+# MacOS
 .DS_Store
+*/.DS_Store
+*/*/.DS_Store
+
+# Editor
 .vscode
+.misc
+
+# Jekyll
+.jekyll-metadata
+.jekyll-cache
+.bundle
+.sass-cache
+_site
+Gemfile.lock
+
+node_modules

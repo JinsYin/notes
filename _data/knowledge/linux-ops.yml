@@ -1,0 +1,18 @@
+enable: true
+name: Linux 运维
+
+# 文件路径
+source: os/linux/ops
+destination: linux-ops
+
+# 目录表
+catalog:
+  - name: 入门
+    docs:
+      - x.md
+      - y.md
+      - z.md
+
+# 重定向（oldpath: newpath）
+redirect:
+  - "d1/d2/x.md": "d2/x.md"

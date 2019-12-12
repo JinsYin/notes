@@ -1,0 +1,64 @@
+enable: true
+
+source: git      # 页面源路径
+destination: git # 页面构建路径（相对于 site.destination）
+
+
+# 目录表
+catalog:
+  - name: 脑图
+    path: mindmap.md
+
+  - name: 序言
+    path: README.md
+
+  - section: 入门基础
+    collapse: false
+    docs:
+      - section: Git 服务器
+        collapse: true
+        docs:
+          - name: GitWeb
+            path: server/gitweb.md
+          - name: Git 协议
+            path: server/protocol.md
+
+  - section: 底层原理
+    collapse: false
+    docs:
+      - name: 生命周期
+        path: principle/lifecycle.md
+
+  - section: Dotfiles
+    collapse: false
+    docs:
+      - name: .git
+        path: dotfiles/.git.md
+      - name: .gitattributes
+        path: dotfiles/.gitattributes.md
+      - name: .gitconfig
+        path: dotfiles/.gitconfig.md
+      - name: .gitignore
+        path: dotfiles/.gitignore.md
+
+  - section: 命令
+    collapse: true
+    docs:
+      - name: git-add
+        path: cmds/git-add.md
+      - name: git-apply
+        path: cmds/git-apply.md
+      - name: git-apply
+        path: cmds/git-apply.md
+      - name: git-branch
+        path: cmds/git-branch.md
+
+
+# 重定向（oldpath: newpath）
+redirect:
+  - "cmds/git-branch/README.md": "cmd/git-branch.md"
+
+
+# 相关知识库
+relatives:
+  - kubernetes

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang }}">
+{% include h5head.html %}
+
+<body ng-app="Docker" ng-controller="DockerController" class="colums">
+	<!-- Header -->
+    {% include gheader.html %}
+
+	<div class="wrapper right-open">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-body">
+					<!-- main content -->
+					<main class="col-content content" style="max-width: none">{{ content }}</main>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div>
+
+	<!-- bottom_footer -->
+	<footer>
+	<div class="container">
+    <div class="bottom_footer">
+        <div class="footer-friends">
+            <nav>
+                <ul class="menu">
+                    {% for friend in site.data.friends %}
+                        {% if friend.enable %}<li><a href="{{friend.href}}">{{friend.name}}</a></li>{% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-copyright col-xs-12 col-md-6">
+            <p class="copyright">Copyright &copy; {{ site.name }} {{ site.time | date: '%Y' }} |
+                    Powered by <a href="{{ site.author.github }}" target="_blank">{{ site.author.name }}</a></p>
+        </div>
+        <div class="footer-social">
+            <ul class="nav-social">
+                {% assign socials = site.data.socials | where: "enable", true %}
+                {% for social in socials %}
+                <li><a class="fa fa-{{social.name}}" href="{{social.href}}" target="_blank" title="{{social.title}}">{{social.content}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- end bottom_footer -->
+  </div>
+</footer>
+
+	{% if page.hljs == true %}
+	<link rel="stylesheet" href="{{ '_assets/css/hljs.github.css' | relative_url }}">
+	<script src="{{ '_assets/js/highlight.pack.js' | relative_url }}"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	{% endif %}
+
+	<!-- <script src="_assets/js/anchorlinks.js"></script> -->
+	<script defer src="{{ '_assets/js/menu.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/jquery.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/bootstrap.min.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/stickyfill.min.js' | relative_url }}"></script>
+	<script defer src="{{ '_assets/js/metadata.js' | relative_url }}"></script>
+	<!-- <script defer src="{{ '_assets/js/docs.js' | relative_url }}"></script> -->
+	<script src="{{ '_assets/js/smooth-scroll.min.js' | relative_url }}"></script>
+	<script language="javascript">jQuery(document).ready(function(){hookupTOCEvents();});</script>
+</body>
+
+</html>

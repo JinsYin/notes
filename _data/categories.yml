@@ -1,0 +1,98 @@
+# 首页展示时使用
+# 页脚展示 「相关」内容
+
+- title: CS 基础
+  cssid: computer-science
+  enable: true
+  children:
+    - name: 数据结构
+      logo: /.assets/images/avatar/data-structure.png
+      description: 数据结构
+    - name: 常见算法
+      logo: /.assets/images/avatar/algo.png
+      description: 数据结构
+- title: 编程语言
+  cssid: computer-science
+  enable: true
+  children:
+    - name: java
+    - name: golang
+    - name: scala
+    - name: python
+- title: Linux
+  cssid: linux
+  enable: true
+- title: 云原生 # 还有子类
+  cssid: clout-native
+  enable: true
+  subset:
+    - title: 云原生编排
+      subtitle: Kubernetes、Mesos
+      children:
+        - name: Kubernetes
+          logo: /.assets/images/avatar/kubernetes.svg
+    - title: 云原生管理
+      subtitle: Istio
+      children:
+        - name: Istio
+          logo: /.assets/images/avatar/istio.svg
+- title: 云存储
+  cssid: clout-storage
+  enable: true
+  children:
+    - name: Ceph
+- title: 大数据
+  cssid: bigdata
+  enable: true
+  children:
+    - name: Hadoop
+      logo: /.assets/images/avatar/hadoop.png
+      description: 大数据鼻祖
+    - name: Spark
+      logo: /.assets/images/avatar/spark.png
+      description: 基于内存的计算引擎
+    - name: Flink
+      logo: /.assets/images/avatar/flink.png
+      description: 实时计算引擎
+- title: VCS
+  cssid: version-control-system
+  enable: true
+  children:
+    - name: Git
+      logo: /.assets/images/avatar/git.png
+      description: 分布式版本控制系统
+    - name: GitHub
+      logo: github
+      description: 全球最大的开源代码托管平台
+    - name: GitLab
+      logo: gitlab
+      description: 企业级代码托管平台
+    - name: Gogs
+      logo: gogs
+      description: 轻量级代码托管平台
+- title: 数据库
+  cssid: clout-storage
+  enable: true
+  children:
+    - name: SQL
+      logo: /.assets/images/avatar/sql.png
+      description: 结构化查询语言
+    - name: MySQL
+      logo: /.assets/images/avatar/mysql.png
+      description: 最大的开源数据库
+- title: AI
+  cssid: ai
+  enable: true
+  children:
+    - name: 机器学习
+      logo: /.assets/images/avatar/ml.png
+      description: 机器学习
+- title: 区块链
+  cssid: block-chain
+  enable: true
+- title: Web # 子类
+  cssid: tools
+  enable: false
+- title: 工具
+  cssid: tools
+  enable: false

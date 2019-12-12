@@ -1,0 +1,9 @@
+- name: 微架构师
+  href: https://weplay.me
+  enable: true
+- name: 快速入门
+  href: https://quickstarts.io
+  enable: true
+- name: 知识点
+  href: https://zhishidian.me
+  enable: false
