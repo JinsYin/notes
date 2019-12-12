@@ -1,4 +1,16 @@
+# MacOS
 .DS_Store
+
+# Editor
 .vscode
 
+# Content
 .misc
+
+# Jekyll
+.jekyll-metadata
+.jekyll-cache
+.bundle
+.sass-cache
+_site
+Gemfile.lock
