@@ -18,6 +18,14 @@
 | <br> 或 <br/>       | 换行                                     |                              |
 | X<sub>n</sub>       |                                          |                              |
 | <kbd>Ctrl + S</kbd> | 快捷键                                   |
+| <details></details> | 折叠                                     |                              |
+
+## details
+
+<details>
+<summary>The list of supported languages and corresponding classes.</summary>
+Hi!
+</details>
 
 ## Encoding
 
