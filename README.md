@@ -1,5 +1,18 @@
 # 知识库 Knowledge Base
 
+[![website][website-image]][website-href] [![Contributors][contributors-image]][contributors-href] [![Issues][issues-image]][issues-href] [![PR][pr-image]][pr-href] [![Stars][stars-image]][stars-href]
+
+[website-image]: https://img.shields.io/website-up-down-green-red/https/weplay.me.svg
+[website-href]: https://weplay.me/
+[contributors-image]: https://img.shields.io/github/contributors/jinsyin/knowledge-base.svg
+[contributors-href]: https://github.com/jinsyin/knowledge-base/graphs/contributors/
+[issues-image]: https://img.shields.io/github/issues/jinsyin/knowledge-base.svg
+[issues-href]: https://github.com/jinsyin/knowledge-base/issues/
+[pr-image]: https://img.shields.io/github/issues-pr/jinsyin/knowledge-base.svg
+[pr-href]: https://gitHub.com/jinsyin/knowledge-base/pulls/
+[stars-image]: https://img.shields.io/github/stars/jinsyin/knowledge-base.svg?style=social&label=Star&maxAge=2592000
+[stars-href]: https://github.com/jinsyin/knowledge-base/stargazers/
+
 ## 学习阶段
 
 * 第一阶段：掌握基本概念和基本工作原理，整理一套基本的知识体系框架。达到 “知其然，不知其所以然”
@@ -30,6 +43,9 @@
 * “扎实的功底和过硬的技术，是你职业发展的助力器。”
 * “看似最枯燥、最基础的东西往往具有最长久的生命力。”
 
-## LICENSE
+## License
 
-[CC BY-NC-SA 4.0](LICENSE)
+[![licensebuttons by-nc-sa][cc-by-nc-sa-image]][cc-by-nc-sa-href]
+
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png
+[cc-by-nc-sa-href]: https://creativecommons.org/licenses/by-nc-sa/4.0
