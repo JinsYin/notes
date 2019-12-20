@@ -1,3 +1,5 @@
+---
+---
 # type
 
 `type COMMAND` 用于判断命令的类型。

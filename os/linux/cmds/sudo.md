@@ -1,6 +1,6 @@
-# Linux sudo
+# sudo
 
-## sudo 含义
+## 含义
 
 在命令的前面添加 `sudo`，实际上是以 `root` 用户的身份来执行该命令。
 
@@ -9,7 +9,7 @@
 [jinsyin@node ~]$ sudo whoami # root
 ```
 
-## sudo 权限检查
+## 权限检查
 
 判断当前用户是不是 root 用户，或者是否使用了 `sudo` 命令，除了使用 `whoami` 命令以外，还可以通过 `id` 命令来判断。
 

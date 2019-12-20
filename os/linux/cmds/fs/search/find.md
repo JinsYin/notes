@@ -54,7 +54,7 @@ $ du -hmd 2 . | sort -nr | head -n 10
 
 ```sh
 # 排除 .git 目录
-$ find . -type d -not -path .git -exec chmod 755 {} \;
+$ find . -type d -not -path "./.git/*" -exec chmod 755 {} \;
 ```
 
 * 查找空文件或空目录
