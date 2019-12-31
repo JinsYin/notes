@@ -288,21 +288,4 @@ window.onload = function () {
     var group = $(this).attr('data-group');
     $('.nav-tabs > li > a[data-group="' + group + '"]').tab('show');
   })
-
-  // isArchive is set by logic in archive.js
-  if (isArchive == false) {
-    //console.log("Showing content that should only be in the current version.");
-    // Hide elements that are not appropriate for archives
-    // PollDaddy
-    $('#ratings-div').css("visibility", "visible");
-    //console.log("Archive widget shown.");
-    // Swarch
-    $('.search-form').css("visibility", "visible");
-    //console.log("Search widget shown.");
-    // Page edit link
-    $('.feedback-links li').first().css("visibility", "visible");
-    //console.log("Page edit link shown.");
-  } else {
-    //console.log("Keeping non-applicable elements hidden.");
-  }
 };
