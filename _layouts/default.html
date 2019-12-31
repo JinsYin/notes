@@ -56,12 +56,6 @@
 <body ng-app="Docker" ng-controller="DockerController" class="colums">
     {{ content }}
 
-    {% if page.hljs == true %}
-	<link rel="stylesheet" href="{{ '_assets/css/hljs.github.css' | relative_url }}">
-	<script src="{{ '_assets/js/highlight.pack.js' | relative_url }}"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	{% endif %}
-
 	<!-- <script src="_assets/js/anchorlinks.js"></script> -->
 	<script defer src="{{ '_assets/js/menu.js' | relative_url }}"></script>
 	<script src="{{ '_assets/js/jquery.js' | relative_url }}"></script>
