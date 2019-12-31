@@ -5,10 +5,9 @@ name: 知识库
 name_en: Knowledge Base
 title: 知识库 - Knowledge Base
 keywords: "计算机科学，CS，知识库，知识体系"
-
+description: "专注于计算机科学相关领域的知识库"
 # 致力于打造全网最大的计算机相关知识库
 # 围绕知识体系建立计算机知识库
-description: "专注于计算机科学相关领域的知识库"
 
 markdown: kramdown
 kramdown:
@@ -28,6 +27,9 @@ include: ["_assets", ".images"]
 
 exclude:
   - README.md
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - LICENSE
   - Gemfile
   - vendor
 
@@ -94,7 +96,7 @@ sass:
   style: :compressed
 
 readme_index:
-  enabled: true
+  enabled: false
   remove_originals: true
   with_frontmatter: false
 
