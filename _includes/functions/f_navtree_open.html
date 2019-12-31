@@ -1,0 +1,15 @@
+{% comment %}
+  * http://hamishwillee.github.io/2014/11/13/jekyll-includes-are-functions/
+  * http://hamishwillee.github.io/jekyll-bootstrap-docsite/
+{% endcomment %}
+
+{% for navitem in include.theTOC %}
+  {% if navitem.section %}
+    {% capture itersections %}{% if include.sections %}{{include.sections}},{% endif %}{{navitem.section}}{% endcapture %}
+    {% if navitem.docs %}
+      {% include /functions/f_navtree_open.html theTOC=navitem.docs sections=itersections %}
+    {% endif %}
+  {% elsif navitem.path %}
+    {% if page.path == navitem.path %}{{include.sections}}{% endif %}
+  {% endif %}
+{% endfor %}

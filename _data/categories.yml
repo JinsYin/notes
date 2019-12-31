@@ -1,0 +1,217 @@
+# 首页展示时使用
+# 页脚展示 「相关」内容
+
+- id: computer-science
+  enable: true
+  name: CS 基础
+  icon: ""
+  children:
+    - id: data-structure
+      enable: true
+      title: 数据结构
+      avatar: data-structure.png
+      description: 数组、链表、哈希表、树、图
+    - id: algorithms
+      enable: true
+      title: 经典算法
+      avatar: algorithm.png
+      description: 排序、查找、一致性、共识
+    - id: design-pattern
+      enable: true
+      title: 设计模式
+      avatar: design-pattern.jpeg
+      description: 单例、工厂、适配器
+- id: linux
+  enable: true
+  name: Unix/Linux
+  icon: ""
+  children:
+    - id: linux
+      enable: true
+      title: Linux 操作系统
+      avatar: linux.png
+      description: 进程、驱动、文件系统、内存管理
+    - id: linux-commands
+      enable: true
+      title: Linux 命令行
+      avatar: linux-commands.png
+      description: ls、find、sed ...
+    - id: linux-distros
+      enable: true
+      title: Linux 发行版
+      avatar: linux-distros.png
+      description: Ubuntu、CentOS、Alpine
+    - id: linux-performance
+      enable: true
+      title: Linux 性能调优
+      avatar: linux-performance.png
+      description: 内存、IO、CPU、网络
+    - id: linux-ops
+      enable: true
+      title: Linux 运维
+      avatar: linux-ops.png
+      description: DevOps
+    - id: linux-syscalls
+      enable: true
+      title: Linux 系统调用
+      avatar: linux-syscalls.png
+      description: 进程、文件系统、设备驱动
+- id: programing-language
+  enable: true
+  name: 程序设计
+  icon: ""
+  children:
+    - id: clang
+      enable: true
+      title: C 语言
+      avatar: clang.png
+    - id: golang
+      enable: true
+      title: GoLang
+      avatar: golang.png
+    - id: java
+      enable: true
+      title: Java
+      avatar: java.png
+    - id: javascript
+      enable: true
+      title: JavaScript
+      avatar: javascript.png
+    - id: python
+      enable: true
+      title: Python
+      avatar: python.png
+    - id: rust
+      enable: true
+      title: Rust
+      avatar: rust.svg
+    - id: scala
+      enable: true
+      title: Scala
+      avatar: scala.png
+    - id: typescript
+      enable: true
+      title: TypeScript
+      avatar: typescript.png
+- id: clout-native
+  enable: true
+  name: 云原生
+  icon: ""
+  children:
+    - id: kubernetes
+      enable: true
+      title: Kubernetes
+      avatar: kubernetes.svg
+      description: 容器编排引擎
+    - id: istio
+      enable: true
+      title: Istio
+      avatar: istio.svg
+      description: 服务网格
+  # subset:
+  #   - title: 云原生编排
+  #     subtitle: Kubernetes、Mesos
+  #     children:
+  #       - title: Kubernetes
+  #         avatar: kubernetes.svg
+  #   - title: 云原生管理
+  #     subtitle: Istio
+  #     children:
+  #       - title: Istio
+  #         avatar: istio.svg
+- id: clout-storage
+  enable: true
+  name: 云存储
+  icon: ""
+  children:
+    - id: ceph
+      enable: true
+      title: Ceph
+      avatar: ceph.svg
+- id: bigdata
+  enable: true
+  name: 大数据
+  icon: ""
+  children:
+    - id: hadoop
+      enable: true
+      title: Hadoop
+      avatar: hadoop.svg
+      description: 大数据鼻祖
+    - id: spark
+      enable: true
+      title: Spark
+      avatar: spark.svg
+      description: 基于内存的计算引擎
+    - id: flink
+      enable: true
+      title: Flink
+      avatar: flink.svg
+      description: 实时计算引擎
+- id: git
+  enable: true
+  name: Git
+  icon: ""
+  children:
+    - id: git
+      enable: true
+      title: Git
+      avatar: git.png
+      description: 分布式版本控制系统
+    - id: github
+      enable: true
+      title: GitHub
+      avatar: github.png
+      description: 全球最大的开源代码托管平台
+    - id: gitlab
+      enable: true
+      title: GitLab
+      avatar: gitlab.svg
+      description: 企业级代码托管平台
+    - id: gogs
+      enable: true
+      title: Gogs
+      avatar: gogs.png
+      description: 轻量级代码托管平台
+- id: database
+  enable: true
+  name: 数据库
+  icon: ""
+  children:
+    - id: sql
+      enable: true
+      title: SQL
+      avatar: sql.png
+      description: 结构化查询语言
+    - id: mysql
+      enable: true
+      title: MySQL
+      avatar: mysql.svg
+      description: 最大的开源数据库
+- id: ai
+  enable: true
+  name: AI
+  icon: ""
+  children:
+    - id: machine-learning
+      enable: true
+      title: 机器学习
+      avatar: machine-learning.png
+      description: 聚类、分类、回归
+    - id: deep-learning
+      enable: true
+      title: 深度学习
+      avatar: deep-learning.jpeg
+      description: 神经网络
+- id: block-chain
+  enable: false
+  name: 区块链
+  icon: ""
+- id: web
+  enable: false
+  name: Web # 子类
+  icon: ""
+- id: tools
+  enable: false
+  name: 工具
+  icon: ""

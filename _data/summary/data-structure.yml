@@ -1,0 +1,29 @@
+# 目录表
+catalog:
+  - name: 简介
+    path: /
+
+  - section: 树
+    collapse: false
+    secpath: array/
+    docs:
+      - name: B 树
+        path: tree/b-tree/
+      - name: B+ 树
+        path: tree/b-plus-tree/
+      - name: B* 树
+        path: tree/b-star-tree/
+      - name: 二叉树
+        path: tree/binary-tree/
+      - name: 平衡二叉树
+        path: tree/balanced-binary-tree/
+      - name: 二叉查找树
+        path: tree/binary-search-tree/
+      - name: 完全二叉树
+        path: tree/complete-binary-tree/
+      - name: LSM 树
+        path: tree/lsm-tree/
+      - name: 红黑树
+        path: tree/red-black-tree/
+      - name: 线段树
+        path: tree/segment-tree/

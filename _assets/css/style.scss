@@ -1,0 +1,88 @@
+---
+---
+
+@import "variables";
+@import "night-mode";
+@import "base";
+@import "typography";
+@import "layout";
+@import "gheader";
+@import "navigation";
+@import "buttons";
+@import "content";
+@import "utilities";
+@import "github";
+@import "overrides";
+@import "media";
+@import "notes";
+
+// #navbar>ul>li>div.subtree-name {
+//     padding: 5px 0 5px 15px;
+//     margin-top: 20px;
+//     color: $light;
+// }
+
+// .nav-sidebar .nav>li>ul {
+//     padding-left: 0;
+// }
+
+.pos {
+    &.rel {
+        position: relative;
+    }
+    &.abs {
+        position: absolute;
+    }
+    &.right {
+        right: 0;
+    }
+    &.left {
+        left: 0;
+    }
+    &.top {
+        top: 0;
+    }
+    &.bottom {
+        bottom: 0;
+    }
+}
+
+.component {
+    background-color: #f8f8f8;
+}
+
+.component p {
+    font-size: 13px;
+    color: #666;
+}
+
+.component-icon {
+    margin-top: 30px;
+}
+
+.component-container h2 {
+    margin: 30px 0;
+}
+
+/* 仿照 docsify.js.org 的另一种样式 */
+code {
+    border-radius: 2px;
+    color: #e96900 !important;
+    font-size: .8em;
+    margin: 0 2px;
+    padding: 3px 5px;
+    white-space: pre-wrap;
+    background-color: #f8f8f8 !important;
+    font-family: Roboto Mono,Monaco,courier,monospace;
+}
+
+pre code {
+    color: #22a2c9 !important;
+}
+
+
+.pos-top-right {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

@@ -1,0 +1,47 @@
+<div class="search-form" id="search-div" style="display: none">
+    <form action="/search/" class="search-form form-inline ng-pristine ng-valid" id="searchForm">
+        <input autocomplete="off" class="search-field form-control ds-input" dir="auto" id="st-search-input" name="q" placeholder="Search the docs" spellcheck="false" style="position: relative; vertical-align: top;" type="search" value="">
+        <div id="autocompleteContainer">
+            <div id="autocompleteResults"></div>
+        </div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container">
+    <div id="tabs">
+        <ul class="tabs">
+            {% assign navigation = site.data.navigation | where: "enable", true %}
+            {% for nav in navigation %}
+            <li><a href="{{ nav.path | relative_url }}">{{ nav.name }}</a></li>
+            {% endfor %}
+            <li class="dropdown">
+                <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类 <span class="caret"></span></a> -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i aria-hidden="true" class="fa fa-th"></i>
+                </a>
+                {% include categories.html %}
+            </li>
+        </ul>
+    </div>
+    <div class="book-title">
+        <h4>{{ page.bookname }}</h4>
+    </div>
+    <div class="ctrl-right">
+        <a class="fa fa-github" href="{{site.repourl}}" target="_blank">
+            <!-- <span>GitHub</span> -->
+        </a>
+    </div>
+    <!-- <div class="ctrl-right hidden-xs hidden-sm">
+        <a href="javascript:void(0)" id="">
+            <i aria-hidden="true" class="fa fa-indent"></i>
+        </a>
+    </div> -->
+</div>

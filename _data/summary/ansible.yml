@@ -1,0 +1,24 @@
+enable: true
+name: Ansible
+
+# 文件源路径
+source: ansible
+
+# :subpath   -> 除 source 以外的路径，包含文件名，不含文件扩展名
+# :basename   -> 文件名，不含文件扩展名
+# :output_ext -> 文件扩展名
+permalink: ansible/:subpath
+
+# 目录表
+catalog:
+  - title: 简介
+    path: README.md
+  - name: 模块
+    docs:
+      - module/ping.md
+      - module/shell.md
+      - module/authorized_key.md
+
+# 重定向（oldpath: newpath）
+redirect:
+  - "d1/d2/x.md": "d2/x.md"

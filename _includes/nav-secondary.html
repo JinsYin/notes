@@ -1,0 +1,18 @@
+<!-- nav-secondary -->
+<!-- data-offset-top should calculated as follows: (height of <header> - header of <nav>) -->
+<nav class="nav-secondary-tabs" data-spy="affix" data-offset-top="385">
+    <div class="container-fluid">
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="nav-container">
+                <div id="tabs">
+                    <ul class="tabs">
+                        {% assign categories = site.data.categories | where: "enable", true %}
+                        {% for nav in categories %}
+                        <li><a href="{{ nav.id | prepend: '#' }}" style="color: white">{{ nav.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

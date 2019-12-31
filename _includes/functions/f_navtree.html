@@ -1,0 +1,66 @@
+{% comment %}
+  * http://hamishwillee.github.io/2014/11/13/jekyll-includes-are-functions/
+  * http://hamishwillee.github.io/jekyll-bootstrap-docsite/
+{% endcomment %}
+
+{% assign newtree = %}
+{% for item in include.opentree %}
+{% if forloop.first %}{% else %}{% capture newtree %}{{newtree}}{{item}},{% endcapture %}{% endif %}
+{% endfor %}
+{% assign newtree = newtree | strip_newlines | split: "," %}
+{% assign section = include.opentree | first %}
+
+{% comment %}
+<!--
+DEBUG: ENTER NODE
+opentree: {{include.opentree }}
+section (current section): {{section}}
+opentree.first (current section): {{include.opentree | first}}
+thetoc: {{include.theTOC}}
+-->
+{% endcomment %}
+
+{% if include.outer %}<ul id="nav-menu" class="nav nav-list">{% endif %}
+{% if include.inner %}
+  {% if include.collapse %}<ul class="nav collapse">{% else %}<ul class="nav collapse in">{% endif %}
+{% endif %}
+
+{% for navitem in include.theTOC %}
+	{% if navitem.section %}
+
+	{% assign section = include.opentree | first %}
+
+{% comment %}
+	<!--
+DEBUG: IS SECTION
+section: X{{section}}X
+navitem.section: Y{{navitem.section}}Y
+include.opentree.first: Z{{include.opentree | first}}Z
+{% if section == navitem.section %}IS the Section{% else %}IS NOT the Section{% endif %}
+{% if section == navitem.section %}collapsibleListOpen{% else %}collapsibleListClosed{% endif %}
+-->
+{% endcomment %}
+
+	<li>
+		<!-- <div class="subtree-name">{{ navitem.section }}</div> -->
+		{% if navitem.collapse or include.collapse %}{% assign arrowClass="arrow" %}{% else %}{% assign arrowClass="arrow down" %}{% endif %}
+		<a data-toggle="collapse" data-collapse="{{ navitem.collapse }}">{{ navitem.section }}<span class="caret {{arrowClass}}"></span></a>
+		{% if navitem.docs %}
+			{% include /functions/f_navtree.html theTOC=navitem.docs opentree=newtree inner=true collapse=navitem.collapse destination=include.destination %}
+		{% endif %}
+    </li>
+
+	{% elsif navitem.path %}
+	<li>
+		{% assign pageurl = navitem.path | prepend: '/' | prepend: page.bookid | relative_url %}
+		{% if pageurl %}{% assign pageurl_with_index = pageurl | append: 'index.html' %}{% endif %}
+		<a {% if page.url == pageurl or page.url == pageurl_with_index %}class="active currentPage"{% endif %} href="{{ pageurl }}">
+			{% if navitem.name %}{{navitem.name}}{% else %}{% include /functions/f_titlefromurl.html url=navitem.url %}{% endif %}
+		</a>
+    </li>
+	{% else %}
+	<li>Unknown navitem: {{ navitem }}</li>
+	{% endif %}
+
+{% endfor %}
+</ul>

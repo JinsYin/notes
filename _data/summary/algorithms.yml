@@ -1,0 +1,51 @@
+# 目录表
+catalog:
+  - name: 简介
+    path: ""
+
+  - section: 排序算法
+    collapse: false
+    secpath: sort/
+    docs:
+      - name: 算法复杂度
+        path: sort-sort/
+      - name: 冒泡排序
+        path: sort/bubble-sort/
+      - name: 选择排序
+        path: sort/selection-sort/
+      - name: 插入排序
+        path: sort/insertion-sort/
+      - name: 快速排序
+        path: sort/quick-sort/
+      - name: 随机化快速排序
+        path: sort/random-quick-sort/
+      - name: 归并排序
+        path: sort/merge-sort/
+      - name: 希尔排序
+        path: sort/shell-sort/
+      - name: 堆排序
+        path: sort/heap-sort/
+      - name: 计数排序
+        path: sort/counting-sort/
+      - name: 桶排序
+        path: sort/bucket-sort/
+      - name: 基数排序
+        path: sort/radix-sort/
+
+  - section: 查找算法
+    collapse: false
+    docs:
+      - name: 二分查找
+        path: search/binary-search/
+
+  - section: 布隆过滤器
+    collapse: false
+    docs: []
+
+  - section: 一致性算法
+    collapse: false
+    docs: []
+
+  - section: 共识算法
+    collapse: false
+    docs: []

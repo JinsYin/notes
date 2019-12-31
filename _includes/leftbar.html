@@ -1,0 +1,15 @@
+{% unless page.nomenu == true %}
+<nav class="col-nav">
+    <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+        <div id="navbar" class="nav-sidebar">
+            <!-- <ul class="nav" id="jsTOCLeftNav"></ul> -->
+            {% assign catalog = site.data.summary[page.bookid].catalog %}
+            {% assign source = site.data.summary[page.bookid].source %}
+            {% assign destination = site.data.summary[page.bookid].destination %}
+            {% capture openfolder_array %}{% include /functions/f_navtree_open.html theTOC=catalog %}{% endcapture %}
+            {% assign openfolder_array = openfolder_array | strip_newlines | split: "," %}
+            {% include /functions/f_navtree.html theTOC=catalog outer='true' opentree =openfolder_array destination=destination %}
+        </div>
+    </div>
+</nav>
+{% endunless %}

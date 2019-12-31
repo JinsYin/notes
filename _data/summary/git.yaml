@@ -1,0 +1,58 @@
+enable: true
+
+source: git # 页面源路径
+destination: git # 页面构建路径（相对于 site.destination）
+
+# 目录表
+catalog:
+  - name: 序言
+    path: index.html
+
+  - section: 入门基础
+    collapse: false
+    docs:
+      - section: Git 服务器
+        collapse: true
+        docs:
+          - name: GitWeb
+            path: server/gitweb.html
+          - name: Git 协议
+            path: server/protocol.html
+
+  - section: 底层原理
+    collapse: false
+    docs:
+      - name: 生命周期
+        path: principle/lifecycle.html
+
+  - section: Dotfiles
+    collapse: false
+    docs:
+      - name: .git
+        path: dotfiles/dotgit.html
+      - name: .gitattributes
+        path: dotfiles/dotgitattributes.html
+      - name: .gitconfig
+        path: dotfiles/dotgitconfig.html
+      - name: .gitignore
+        path: dotfiles/dotgitignore.html
+
+  - section: 命令
+    collapse: true
+    docs:
+      - name: git-add
+        path: cmds/git-add.html
+      - name: git-apply
+        path: cmds/git-apply.html
+      - name: git-apply
+        path: cmds/git-apply.html
+      - name: git-branch
+        path: cmds/git-branch.html
+
+# 重定向（oldpath: newpath）
+redirect:
+  - "cmds/git-branch/README.html": "cmd/git-branch.html"
+
+# 相关知识库
+relatives:
+  - kubernetes

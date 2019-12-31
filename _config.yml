@@ -1,0 +1,110 @@
+url: https://kibi.io
+baseurl: "" # It's the default
+
+name: 知识库
+name_en: Knowledge Base
+title: 知识库 - Knowledge Base
+keywords: "计算机科学，CS，知识库，知识体系"
+
+# 致力于打造全网最大的计算机相关知识库
+# 围绕知识体系建立计算机知识库
+description: "专注于计算机科学相关领域的知识库"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  gfm_quirks: [paragraph_end, no_auto_typographic]
+  html_to_native: true
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    disable: true # syntax highlighter 和 highlight.js 不应该同时引用
+  toc_levels: 2..3
+
+# Building settings
+permalink: pretty
+
+include: ["_assets", ".images"]
+
+exclude:
+  - README.md
+  - Gemfile
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-relative-links
+  - jekyll-sitemap
+  - jekyll-readme-index
+
+# Front matter defaults
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: docs
+      toc_min: 2
+      toc_max: 3
+      tree: true
+      permalink: /:path/:basename:output_ext
+  - scope:
+      path: "algostructure/algorithms"
+      types: pages
+    values:
+      source: "algostructure/algorithms/"
+      bookid: algorithms
+      bookname: "《经典算法》"
+      permalink: /algorithms/:subpath/:basename:output_ext
+  - scope:
+      path: "algostructure/structures"
+      types: pages
+    values:
+      source: "algostructure/structures/"
+      bookid: data-structure
+      bookname: "《数据结构》"
+      permalink: /data-structure/:subpath/:basename:output_ext
+  - scope:
+      path: "os/linux/cmds"
+      types: pages
+    values:
+      source: "os/linux/cmd/"
+      bookid: linux-commands
+      bookname: "《Linux 命令行》"
+      permalink: /linux-commands/:basename:output_ext
+  - scope:
+      path: "git"
+      type: pages
+    values:
+      source: "git/"
+      bookid: git
+      bookname: "《Git》"
+      permalink: /:path/:basename:output_ext
+  - scope:
+      path: "git/platforms/github"
+      type: pages
+    values:
+      source: "git/platforms/github/"
+      bookid: github
+      bookname: "《GitHub》"
+      permalink: /github/:subpath/:basename:output_ext
+
+sass:
+  sass_dir: _scss
+  style: :compressed
+
+readme_index:
+  enabled: true
+  remove_originals: true
+  with_frontmatter: false
+
+#============================= more settings =============================#
+
+repourl: https://github.com/jinsyin/knowledge-base
+copyright: Powered by Jinsyin
+
+# Site Language
+lang: "zh-cmn-Hans" # "zh-cmn-Hans" => 简体中文; "zh-cmn-Hant" => 繁体中文; "en" => English
+
+author:
+  name: Jinsyin
+  github: https://github.com/jinsyin

@@ -1,0 +1,27 @@
+enable: true
+
+name: Linux 命令集 # Linux 命令小全
+
+# 文件路径
+source: os/linux/cmds
+
+# input: os/linux/cmds/ps/kill.md
+# output: linux-cmds/kill
+permalink: linux-cmds/:basename
+
+# 目录表
+catalog:
+  - name: 序言
+    path: index.html
+  - section: 进程管理 # section 可能有连接，可能没有
+    docs:
+      - name: init
+        path: init.html
+      - name: kill
+        path: kill.html
+  - section: 其他
+    docs:
+      - name: alias
+        path: alias.html
+      - name: awk
+        path: awk.html

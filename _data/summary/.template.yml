@@ -1,0 +1,31 @@
+# 文件源路径
+source: /src
+
+# :subpath    => 自定义变量；是指 `:path`（Jekyll 为 Pages 定义的变量）中除自定义的 source 以外的路径，不包含文件名和文件扩展名
+# :basename   => Jekyll 为 Pages 定义的变量；文件名，不含文件扩展名
+# :output_ext => Jekyll 为 Pages 定义的变量；文件扩展（.md -> .html，.html -> .html）
+permalink: /dst/:subpath:output_ext # dst 可以考虑是 :category
+
+# 目录表
+catalog:
+  - name: 简介
+    path: ""
+
+  - section: 排序算法
+    collapse: false
+    secpath: sort/
+    docs:
+      - name: 算法复杂度
+        path: sort-sort/
+      - name: 冒泡排序
+        path: sort/bubble-sort/
+
+  - section: 查找算法
+    collapse: false
+    docs:
+      - name: 二分查找
+        path: search/binary-search/
+
+# 重定向（oldpath: newpath）
+redirect:
+  - "d1/d2/x.md": "d2/x.md"

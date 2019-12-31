@@ -1,0 +1,75 @@
+<footer class="footer">
+  <div class="container">
+    <!-- top_footer -->
+    <div class="top_footer">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <ul class="footer_links">
+            <li><a href="https://www.docker.com/what-docker">What is Docker</a></li>
+            <li><a href="https://www.docker.com/what-container">What is a Container</a></li>
+            <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <ul class="footer_links">
+            <li><a href="https://www.docker.com/products/overview">Product</a></li>
+            <li><a href="https://www.docker.com/pricing">Pricing</a></li>
+            <li><a href="https://www.docker.com/docker-community">Community Edition</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <ul class="footer_links">
+            <li><a href="https://docs.docker.com/">Documentation</a></li>
+            <li><a href="https://www.docker.com/docker">Learn</a></li>
+            <li><a href="https://blog.docker.com" target="_blank">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <ul class="footer_links">
+            <li><a href="https://www.docker.com/docker-community">Community</a></li>
+            <li><a href="https://www.docker.com/technologies/overview">Open Source</a></li>
+            <li><a href="https://www.docker.com/community/events">Events</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <nav class="footer_sub_nav">
+          <ul class="menu">
+              <li><a href="http://status.docker.com/">关于</a></li>
+              <li><a href="https://www.docker.com/docker-security">帮助</a></li>
+              <li><a href="https://www.docker.com/legal">贡献</a></li>
+              <li><a href="https://www.docker.com/legal">LICENSE</a></li>
+              <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- end top_footer -->
+
+    <!-- bottom_footer -->
+    <div class="bottom_footer">
+        <div class="footer-friends">
+            <nav>
+                <ul class="menu">
+                    {% for friend in site.data.friends %}
+                        {% if friend.enable %}<li><a href="{{friend.href}}" target="_blank">{{friend.name}}</a></li>{% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-copyright col-xs-12 col-md-6">
+            <p class="copyright">Copyright &copy; {{ site.name }} {{ site.time | date: '%Y' }} |
+                    Powered by <a href="{{ site.author.github }}" target="_blank">{{ site.author.name }}</a></p>
+        </div>
+        <div class="footer-social">
+            <ul class="nav-social">
+                {% assign socials = site.data.socials | where: "enable", true %}
+                {% for social in socials %}
+                <li><a class="fa fa-{{social.name}}" href="{{social.href}}" target="_blank" title="{{social.title}}">{{social.content}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- end bottom_footer -->
+  </div>
+</footer>
