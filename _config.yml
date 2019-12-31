@@ -29,6 +29,7 @@ include: ["_assets", ".images"]
 exclude:
   - README.md
   - Gemfile
+  - vendor
 
 plugins:
   - jekyll-redirect-from

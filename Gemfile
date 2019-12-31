@@ -42,6 +42,7 @@ source "https://rubygems.org"
 gem "github-pages", "202"
 gem 'wdm' if Gem.win_platform?
 
+gem 'html-proofer'
 
 group :jekyll_plugins do
   gem 'jekyll-commonmark-ghpages'
