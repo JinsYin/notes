@@ -1,9 +1,7 @@
 <div class="search-form" id="search-div" style="display: none">
     <form action="/search/" class="search-form form-inline ng-pristine ng-valid" id="searchForm">
         <input autocomplete="off" class="search-field form-control ds-input" dir="auto" id="st-search-input" name="q" placeholder="Search the docs" spellcheck="false" style="position: relative; vertical-align: top;" type="search" value="">
-        <div id="autocompleteContainer">
-            <div id="autocompleteResults"></div>
-        </div>
+        <div id="autocompleteContainer"><div id="autocompleteResults"></div></div>
         <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
     </form>
 </div>
@@ -22,7 +20,7 @@
             {% for nav in navigation %}
             <li><a href="{{ nav.path | relative_url }}">{{ nav.name }}</a></li>
             {% endfor %}
-            <li class="dropdown">
+            <li class="dropdown" style="display: none;">
                 <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类 <span class="caret"></span></a> -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <i aria-hidden="true" class="fa fa-th"></i>
@@ -36,7 +34,7 @@
     </div>
     <div class="ctrl-right">
         <a class="fa fa-github" href="{{site.repourl}}" target="_blank">
-            <!-- <span>GitHub</span> -->
+            <span style="display:none;">GitHub</span>
         </a>
     </div>
     <!-- <div class="ctrl-right hidden-xs hidden-sm">

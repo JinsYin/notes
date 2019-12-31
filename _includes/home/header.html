@@ -1,0 +1,24 @@
+<header>
+    <div class="header">
+        {% include home/nav-primary.html %}
+        <!-- hero banner text -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="hero-text">
+                    <div class="hero-text-centered">
+                        <h1>
+                            <img class="logo" src="{{ '/_assets/images/logo.svg' | relative_url }}" alt="Docker Docs" title="Docker Docs">
+                            <span>{{ site.name }}</span>
+                        </h1>
+                        <p>{{ site.description }}</p>
+                        <ul class="buttons" style="display: none">
+                            <li><a class="button transparent-btn" href="#knowledge-point" target="_blank">知识点</a></li>
+                            <li><a class="button secondary-btn" href="#knowledge-architecture" target="_blank">知识体系</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include home/nav-secondary.html %}
+    </div>
+</header>

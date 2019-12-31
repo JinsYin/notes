@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang }}">
+<head>
+	<base href="{{ page.url }}" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{{ page.title }} | {{ site.name }}</title>
+	<meta name="description" content="{{ page.description }}" />
+	<meta name="keywords" content="{{ page.keywords | default: site.keywords }}">
+	<link rel="canonical" href="{{ page.url }}" />
+
+	<!-- favicon -->
+	<link rel="icon" type="image/x-icon" href="{{ '/_assets/images/logo.svg' | relative_url }}" sizes="128x128">
+	<link rel="apple-touch-icon" type="image/x-icon" href="{{ '/_assets/images/logo.svg' | relative_url }}" sizes="128x128">
+
+	<link rel="stylesheet" href="{{ '_assets/css/font-awesome.min.css' | relative_url }}">
+	<link rel="stylesheet" href="{{ '_assets/css/bootstrap.min.css' | relative_url }}">
+	<link id="pygments" rel="stylesheet" href="{{ '_assets/css/highlight.css' | relative_url }}">
+	<link id="pagestyle" rel="stylesheet" href="{{ '_assets/css/style.css' | relative_url }}">
+
+	<!-- "Open Sans" font from Google -->
+	<link href="{{ '_assets/css/open-sans.css' | relative_url }}" rel="stylesheet">
+
+	<!-- SEO stuff -->
+	<meta property="og:title" content="{{ page.title }}" />
+	<meta property="og:description" content="{{ page.description }}" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="/favicons/docs@2x.ico"/>
+	<meta property="og:updated_time" itemprop="dateUpdated" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}"/>
+	<meta property="og:url" content="{{ page.url | absolute_url }}" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="{{ site.name }}" />
+	<script type="application/ld+json">
+	{"@context":"http://schema.org","@type":"WebPage","headline":"{{ page.title }}","description":"{{ page.description }}","url":"{{ page.url | absolute_url }}"}
+	</script>
+	<!-- END SEO STUFF -->
+
+	<style type="text/css">
+		[ng\:cloak],
+		[ng-cloak],
+		[data-ng-cloak],
+		[x-ng-cloak],
+		.ng-cloak,
+		.x-ng-cloak,
+		.ng-hide:not(.ng-hide-animate) {
+			display: none !important;
+		}
+
+		ng\:form {
+			display: block;
+		}
+	</style>
+</head>
+
+<body ng-app="Docker" ng-controller="DockerController" class="colums">
+    {{ content }}
+
+    {% if page.hljs == true %}
+	<link rel="stylesheet" href="{{ '_assets/css/hljs.github.css' | relative_url }}">
+	<script src="{{ '_assets/js/highlight.pack.js' | relative_url }}"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	{% endif %}
+
+	<!-- <script src="_assets/js/anchorlinks.js"></script> -->
+	<script defer src="{{ '_assets/js/menu.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/jquery.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/bootstrap.min.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/stickyfill.min.js' | relative_url }}"></script>
+	<script defer src="{{ '_assets/js/metadata.js' | relative_url }}"></script>
+	{% if page.layout == "docs" %}<script defer src="{{ '_assets/js/docs.js' | relative_url }}"></script>{% endif %}
+	<script src="{{ '_assets/js/smooth-scroll.min.js' | relative_url }}"></script>
+	<script language="javascript">jQuery(document).ready(function(){hookupTOCEvents();});</script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+{% unless page.notoc == true %}
+<div class="col-toc">
+    <div class="sidebar hidden-xs hidden-sm">
+        <div class="toc-nav">
+            <div class="feedback-links">
+                <ul>
+                    <li>
+                        <a href="{{ page.url | append: '#'}}">
+                            <i class="fa fa-search" aria-hidden="true"></i>搜索
+                        </a>
+                        <a href="{{ site.repourl }}/edit/master/{{ page.path }}" target="_blank">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>编辑
+                        </a>
+                        <a href="{{ site.repourl }}/issues/new?title=Question&body=File: [{{ page.path }}]({{ site.url }}{{ page.url }})"
+                                class="nomunge" target="_blank">
+                            <i class="fa fa-question" aria-hidden="true"></i>提问
+                        </a>
+                        <a style="display: none;" href="{{ site.repourl }}/{{ page.path }}" target="_blank">
+                            <i class="fa fa-github" aria-hidden="true"></i>GitHub
+                        </a>
+                    </li>
+                    <!-- toggle mode -->
+                    <li style="display:none">
+                        <div class="toggle-mode">
+                            <div class="icon">
+                                <i class="fa fa-sun-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="toggle-switch">
+                                <label class="switch">
+                                    <input type="checkbox" id="switch-style">
+                                    <div class="slider round"></div>
+                                </label>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-moon-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            {% assign my_min = page.toc_min | default: site.toc_min | default: 2 %}
+            {% assign my_max = page.toc_max | default: site.toc_max | default: 3 %}
+            {% assign my_name = page.url | default: "unnamed" %}
+            <div id="side-toc-title"><i class="fa fa-toc" id="menu-toggle" aria-hidden="true"></i>CONTENTS</div>
+            {% include docs/toc.html html=content sanitize=true class="inline_toc" id="my_toc" toc_min=my_min toc_max=my_max page_name=my_name %}
+        </div>
+    </div>
+</div>
+{% endunless %}

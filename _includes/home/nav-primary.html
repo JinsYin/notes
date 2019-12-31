@@ -1,0 +1,25 @@
+<div class="container-fluid" style="box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06);">
+    <div class="row">
+        <nav class="nav-primary">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse">
+                    <ul class="primary nav navbar-nav pos rel right">
+                        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                        <li><a href="{{ '/about.html' | relative_url }}">About</a></li>
+                        <li class="dropdown" style="display: none">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span>Categories</span>
+                                <span class="caret"></span>
+                            </a>
+                            {% include categories.html %}
+                        </li>
+                        <li class="pos abs right">
+                            <a class="fa fa-github" href="{{site.repourl}}" target="_blank">
+                            <span>GitHub</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

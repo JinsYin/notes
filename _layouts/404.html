@@ -1,1 +1,15 @@
+---
+layout: default
+---
+
+{{ content }}
+
 <!-- 两种情况： 1.具体文档下没有找到网页； 2.非文档下没有找到网页 -->
+<script type="text/javascript">
+    var path = window.location.pathname.replace("#","");
+    var ghIssueQueryString = "https://github.com/docker/docker.github.io/issues/new?" + "title=404%20at%20" + path + "&body=URL%3A%20" + path;
+    // document.getElementsByClassName("nomunge")[1].onclick = function() {
+    // 	document.getElementsByClassName("nomunge")[1].href = ghIssueQueryString;
+    // 	return true;
+    // };
+</script>

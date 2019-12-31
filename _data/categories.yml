@@ -26,7 +26,7 @@
   name: Unix/Linux
   icon: ""
   children:
-    - id: linux
+    - id: linux-os
       enable: true
       title: Linux 操作系统
       avatar: linux.png
@@ -148,7 +148,7 @@
       title: Flink
       avatar: flink.svg
       description: 实时计算引擎
-- id: git
+- id: git-like
   enable: true
   name: Git
   icon: ""
