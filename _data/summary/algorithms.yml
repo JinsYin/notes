@@ -7,8 +7,6 @@ catalog:
     collapse: false
     secpath: sort/
     docs:
-      - name: 算法复杂度
-        path: sort-sort/
       - name: 冒泡排序
         path: sort/bubble-sort/
       - name: 选择排序
