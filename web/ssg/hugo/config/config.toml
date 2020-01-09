@@ -1,0 +1,4 @@
+baseURL = "http://weplay.me/"
+languageCode = "en-us"
+title = "微架构师"
+theme = "weplay"
