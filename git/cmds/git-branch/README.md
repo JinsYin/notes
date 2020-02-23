@@ -5,7 +5,6 @@
 分支 - 指向的是 commit
 HEAD - 指向的也是 commit；默认情况指向的是 分支指向的 commit，如果指向的是非分支指向的 commit，这是就处于 分离头指针（Detached HEAD） 状态
 
-
 ## 分支管理策略
 
 * master分支是主分支，应该是非常稳定的，仅用来发布新版本（平时不能在上面干活），因此要时刻与远程同步；
@@ -107,3 +106,7 @@ git checkout -b omaster origin/master
 ...
 git push -f origin omaster:master # 只能强制（如果省略 omaster，则是将本地的 master 推送到远程的 master）
 ```
+
+## See
+
+* [learngitbranching.js.org](https://learngitbranching.js.org/)

@@ -23,7 +23,8 @@ git checkout (-p|--patch) [<tree-ish>] [--] [<paths>...] # 还原工作区文件
 
 ## 用例
 
-`git checkout -b omaster origin/master` // 基于远程追踪分支 origin/master 建立新分支 omaster，并切换到新分支
+* `git checkout -b omaster origin/master` // 基于远程追踪分支 origin/master 建立新分支 omaster，并切换到新分支
+* `git checkout -b feature 0cece20`      // 基于 0cece20 提交建立新分支 feature，并切换到新分支
 
 ## 分离头指针（Detached HEAD）
 

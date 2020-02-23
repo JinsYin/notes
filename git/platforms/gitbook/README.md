@@ -1,60 +1,15 @@
 # GitBook
 
-## 本地安装
+## 旧版与新版
 
-* 安装要求
+| 版本 | 官网                 | 个人/组织主页                                | 项目名称 | 项目主页                               |
+| ---- | -------------------- | -------------------------------------------- | -------- | -------------------------------------- |
+| 旧版 | `legacy.gitbook.com` | `legacy.gitbook.com/@<user_or_org>`          | Book     | `<user_or_org>.gitbooks.io/<book>`     |
+| 新版 | `gitbook.com`        | `app.gitbook.com/@<user_or_org>`（需要权限） | Space    | `<user_or_org>.gitbook.io/<spacename>` |
 
-    1. Node.js 版本在 v4.0.0 及以上
-    2. Windows, Linux, Unix, or Mac OS X
+注意事项：
 
-* 安装 nodejs 和 npm
-
-```sh
-# Ubuntu
-$ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-$ sudo apt-get install -y nodejs
-
-$ node --version
-v8.11.1
-
-$ npm --version
-5.6.0
-```
-
-* 安装 GitBook
-
-```sh
-$ npm install gitbook-cli -g
-```
-
-`gitbook-cli` 工具用于在同一系统上安装和使用多个版本的 GitBook。它会自动安装所需版本的 GitBook 来构建一本书。
-
-* 创建一本书
-
-```sh
-# 在当前目录下初始化 GitBook 项目
-$ gitbook init # other: gitbook init ./directory
-
-# 本地预览
-$ gitbook serve # other: gitbook serve ./directory
-
-# 构建静态站点，生成的静态站点可直接托管搭载 Github Pages 服务上
-$ gitbook build # other: gitbook build ./directory --output=./outputFolder
-```
-
-## 项目结构
-
-```sh
-$ gitbook init
-$ tree .
-.
-├── README.md
-└── SUMMARY.md
-```
-
-其中，`README.md` 和 `SUMMARY.md` 是 GitBook 项目必须包含的两个文件。
-
-## 参考
-
-* [Setup and Installation of GitBook](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md)
-* [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager)
+* GitBook 旧版项目主页的顶级域名是 `gitbooks.io`，而新版是 `gitbook.io`。
+* GitBook 新版登录时需要 FAN 墙，浏览项目时不需要，并且 `gitbook.io`（新版）比 `gitbooks.io`（旧版） 更加流畅
+* 对于新版，直接访问 `<user_or_org>.gitbook.io` 将跳转到默认 Space，即 `<user_or_org>.gitbooks.io/<space>`
+* 对于旧版，直接访问 `<user_or_org>.gitbooks.io`，将跳转到 `legacy.gitbook.com/@<user_or_org>`，最终将进入用户或组织的主页

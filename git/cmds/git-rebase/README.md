@@ -61,15 +61,15 @@ D---E---F---G master                [git rebase master topic]          D---E---F
 
 交互行为：
 
-| 行为（action） | 描述                                                 |
-| -------------- | ---------------------------------------------------- |
-| `p`、`pick`    | （默认行为）使用该 commit，但不做任何修改            |
-| `r`、`reword`  | use commit, but edit the commit message              |
-| `e`、`edit`    | use commit, but stop for amending                    |
-| `s`、`squash`  | 使用该 commit，但合并到之前的提交                    |
-| `f`、`fixup`   | like "squash", but discard this commit's log message |
-| `x`、`exec`    | run command (the rest of the line) using shell       |
-| `d`、`drop`    | remove commit                                        |
+| 行为（action） | 描述                                                               |
+| -------------- | ------------------------------------------------------------------ |
+| `p`、`pick`    | 使用该 commit，但不做任何修改（默认行为）                          |
+| `r`、`reword`  | 使用该 commit 以修改其 commit message，但是 commit hash 会发生改变 |
+| `e`、`edit`    | use commit, but stop for amending                                  |
+| `s`、`squash`  | 使用该 commit，但合并到之前的提交                                  |
+| `f`、`fixup`   | like "squash", but discard this commit's log message               |
+| `x`、`exec`    | run command (the rest of the line) using shell                     |
+| `d`、`drop`    | remove commit                                                      |
 
 交互流程：
 
@@ -102,8 +102,9 @@ D---E---F---G master                [git rebase master topic]          D---E---F
 * 完成交换操作后，当前 commit ID 及其之后的 commit ID 通常会改变，而日期不会发生改变
 * commit 的范围是 `(x, y]`，如果需求是合并（squash、fixup 等），至少需要选择被合并的 commit 前两个的 commit；如果需求是编辑（edit、reword 等），至少要选择需要被编辑的 commit 的前一个 commit
 
-## 合并流程
+## 合并/变基流程
 
+0. 变基前暂存区不能存放内容
 1. 合并前对源分支进行备份（`git branch <srcbak> <srcbranch>`），以免合并结果不理想
 2. 合并（`git rebase <dstbranch>`）
    * 它将从目标分支（即基分支）和源分支的分叉点开始，自动在基分支上依次应用分叉点到源分支上的每一个 commit（亦称 patch），并且 CommitID 会发生改变

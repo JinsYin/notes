@@ -1,3 +1,5 @@
+---
+---
 # Github Pages
 
 Github Pages 是一个面向个人、组织或项目开放的基于 Github 仓库的静态网站托管服务。
@@ -7,11 +9,16 @@ Github Pages 是一个面向个人、组织或项目开放的基于 Github 仓�
 ## 目录
 
 * 创建站点
-  * 面向个人或组织（限一个）
+  * 面向个人（限一个）
+  * 面向组织（限一个）
   * 面向项目（无数个）
 * 设置主题
 * 定制域名
 * 配置文件
+
+## Jekyll
+
+版本：<https://pages.github.com/versions.json>
 
 ## 参考
 

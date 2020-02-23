@@ -1,6 +1,6 @@
 # GIT-MERGE 「三方合并」
 
-将两个或多个开发历史连接在一起。
+将两个或多个开发历史（通常是分支）连接在一起。
 
 ## 用法
 
@@ -24,11 +24,11 @@ git merge --continue
 
 ## 选项
 
-| 选项      | 描述                               |
-| --------- | ---------------------------------- |
-| --ff      | 快进（fast-forward）合并；默认行为 |
-| --no-ff   | 创建一个新的提交对象               |
-| --ff-only |                                    |
+| 选项      | 描述                                                                                             |
+| --------- | ------------------------------------------------------------------------------------------------ |
+| --ff      | 快进（fast-forward）合并（默认行为）：如果没有分叉，直接向前移动分支的指针，不会创建新的提交对象 |
+| --no-ff   | 无论提交历史是否存在分叉，都将创建一个新的提交对象                                               |
+| --ff-only | 只允许快进合并                                                                                   |
 
 ## 描述
 
@@ -36,8 +36,8 @@ git merge --continue
 
 ```graph
       A---B---C topic                                       A---B---C topic
-     /                           git merge topic           /         \
-D---E---F---G master (HEAD)    ------------------>    D---E---F---G---H master (HEAD)
+     /                          git merge topic            /         \
+D---E---F---G master(HEAD)    ------------------->    D---E---F---G---H master(HEAD)
 ```
 
 * 合并结果会记录在新的 commit （即图中的 H），换而言之，合并后会产生一个新的提交
@@ -50,11 +50,17 @@ D---E---F---G master (HEAD)    ------------------>    D---E---F---G---H master (
 
 ## 快进合并流程
 
-1. 确保 `<newbranch>` 在 `<oldbranch>` 之后，且不存在分叉
-2. 切换到靠前的分支：`git checkout <oldbranch>`
+```graph
+              A---B---C topic                                         A---B---C topic master(HEAD)
+             /                    git merge topic                    /
+D---E---F---G master(HEAD)      ------------------->    D---E---F---G
+```
+
+1. 前提： `<newbranch>` 位于 `<oldbranch>` 之后且不存在分叉
+2. 切换到更早的分支：`git checkout <oldbranch>`
 3. 合并：`git merge <newbranch>`（等同于 `git merge --ff <newbranch>`）
 4. 合并完成后 `<oldbranch>` 和 `<newbranch>` 指向同一个 commit 对象
-5. 如无其他需求，删除 <oldbranch>：`git branch -d <oldbranch>`
+5. 如无其他需求，删除 `<oldbranch>`：`git branch -d <oldbranch>`
 
 ## 冲突
 

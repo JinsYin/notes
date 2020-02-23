@@ -87,6 +87,10 @@ $ GITHUB_REPO="kubernetes"
 $ curl -ks "https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/refs/tags" | grep '"ref":.*' | cut -d '"' -f4 | cut -d '/' -f3
 ```
 
+## 常用
+
+* 获取用户头像：`github.com/<username>.png`
+
 ## 参考
 
 * [Create a new repository for the authenticated user](https://developer.github.com/v3/repos/#create)

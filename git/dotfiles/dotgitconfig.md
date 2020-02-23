@@ -1,3 +1,5 @@
+---
+---
 # .gitconfig
 
 ```sh
@@ -23,9 +25,13 @@ $ cat ~/.gitconfig
         cg = config --global
         # 显示 commit 相对于 parent 的更新（`git show COMMIT` 相似但不支持 merge commit）
         # git ch | git ch 9b965a1 | git ch 9b965a1 README.md | git ch HEAD README.md
-        ch = ！"fn() { git diff --patch --stat $(git parent \"${1:-HEAD}\") \"${1:-HEAD}\" -- $2; }; fn"
+        ch = !"fn() { git diff --patch --stat $(git parent \"${1:-HEAD}\") \"${1:-HEAD}\" -- $2; }; fn"
+        child = "!bash -c 'git log --format=%H --reverse --ancestry-path ${1:-HEAD}..${2:\"$(git rev-parse --abbrev-ref HEAD)\"} | head -1' -"
+        parent = !"fn() { git rev-parse \"${1:-HEAD}~1\" | head -1; }; fn"
         ci = commit
         cl = clone
+        clb = clone --single-branch --branch # git clb <branch> <repo>
+        clhead = clone --depth=1 # git clhead <repo>
         co = checkout
         cob = checkout -b
         count = shortlog -sn
@@ -41,9 +47,10 @@ $ cat ~/.gitconfig
         f = fetch
         find = !git ls-files | grep -i # 查找工作区和暂存区的文件
         gr = grep -Ii --line-number
-        head = git rev-parse --abbrev-ref HEAD
+        head = rev-parse --abbrev-ref HEAD
         hh = log --pretty=format:'%Cred%h%Creset' -n 1 # head hash
-        hash = rev-parse // 获取 Git 对象、分支的完整哈希；git hash HEAD~1 | git hash master | git hash a858be （返回完整的 commit/tree/blob hash）
+        hash = !"fn() { git rev-parse \"${1:-HEAD}\"; }; fn" // 获取 Git 对象、分支的完整哈希；git hash HEAD~1 | git hash master | git hash a858be （返回完整的 commit/tree/blob hash）
+        id = !"fn() { git log --pretty=format:'%Cred%h%Creset' -n 1 \"${1:-HEAD}\" | xargs echo; }; fn" # short hash
         k = !gitk --all --branches
         ke = !gitk --all $(git log -g --pretty=%h)
         ignore = !vim $(git cwd)/.gitignore
@@ -91,8 +98,8 @@ $ cat ~/.gitconfig
         shapply = stash apply
         shdrop = stash drop
         shpop = stash pop
-        shpatch = stash show -p # git shpatch [stash@{0}] / git shpatch stash@{1}；储藏前和储藏后的差异（储藏后发生了修改不会影响补丁的内容）
-        shsave = stash save
+        shpatch = stash show -p # git shpatch "stash@{0}" / git shpatch "stash@{1}"；储藏前和储藏后的差异（储藏后发生了修改不会影响补丁的内容）
+        shsave = stash save -u
         shunapply = !git stash show -p | git apply -R
         snap = !git stash save "snapshot: $(date +'%Y:%m:%d-%H:%M:%S')" && git stash apply 'stash@{0}'
         tar = !"fn() { top=$(git topname); date=$(date +'%Y%m%d'); name=$top-$date.tar; cd $top; tar cvf $name $top; echo '\n'; ls -l $name; }; fn"
@@ -131,4 +138,5 @@ $ cat ~/.gitconfig
 [pager]
         diff = gsed \"s|diff --git|\\n~~~\\n\\ndiff --git|\" | less # brew install gnu-sed
         show = gsed \"s|diff --git|\\n~~~\\n\\ndiff --git|\" | less # brew install gnu-sed
+        branch = cat # zsh
 ```

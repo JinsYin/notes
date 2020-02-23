@@ -19,7 +19,3 @@
 * `git rm --cached` // 只删除暂存区的 tracked 文件。删除之后工作区的该文件变为 untracked 状态
 
 > `git rm` 没有选项能够只移除工作区的文件
-
-
-
-
