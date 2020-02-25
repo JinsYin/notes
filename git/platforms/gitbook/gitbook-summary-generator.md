@@ -1,2 +1,0 @@
-# Gitbook Summary Generator
-
