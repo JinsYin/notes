@@ -6,11 +6,12 @@
 
 布尔类型：`bool`
 整数类型：`int8` `uint8` `int16` `uint16` `int32` `uint32` `int64`  `uint64` `int` `uint` `rune` `byte` `complex128` `complex64`，其中，`byte` 是 `int8` 的别名
-浮点类型：`float32` `float64`
+    * `int`：整数默认是 `int` 类型；在 32 位系统下是 `int32`，在 64 位系统下是 `int64`
+浮点类型：`float32` `float64`（浮点数默认是 `float64` 类型）
 字符串类型：`string`
 字符类型： `rune`，是 `int32` 的别名
-空： `nil`
 万能类型： `interface{}`
+空： `nil`
 
 其中，`int`、`uint` 和 `` 在 64 位系统上占用 64 位，在 32 位系统上占用 32 位。
 
@@ -45,16 +46,11 @@ T(v) // 将值 v 转换为类型 T
 * 范例
 
 ```go
-func main() {
-    var sum, count int
-    var mean float32
+a := 3
+b := 3.5
 
-    sum, count = 10, 3
-    mean = float32(sum) / float32(count) // 分子分母都必须是 float32 类型
-
-    fmt.Println(sum / count) // 3
-    fmt.Println(mean)        // 3.3333333
-}
+sum1 := a + b      // 不允许（C 语言允许）
+sum2 := a + int(b) // 强制类型转换，保持类型一致
 ```
 
 ## 类型推断
@@ -70,8 +66,18 @@ j := i // j is an int
 
 当右侧包含一个无类型的数字常量时，新变量的类型取决于常量的精度：
 
-```golang
+```go
 i := 42           // int
 f := 3.142        // float64
 g := 0.867 + 0.5i // complex128
+```
+
+## 类型别名
+
+```go
+// 语法
+type newtypename typename
+
+// 示例
+type ElemType int
 ```

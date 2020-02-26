@@ -25,11 +25,11 @@ go version go1.11.11 darwin/amd64
 
 ## 配置环境变量
 
-| 变量名   | 变量值                                   | 示例                   |
-| -------- | ---------------------------------------- | ---------------------- |
-| `GOROOT` | Go 安装路径                              | `GOROOT=/usr/local/go` |
-| `GOPATH` | 工作区路径                               | `GOPATH=~/go`          |
-| `GOBIN`  | 程序安装（`go install`）的二进制文件路径 | `GOBIN=$GOPATH/bin`    |
+| 变量名   | 变量值                                                              | 示例                          |
+| -------- | ------------------------------------------------------------------- | ----------------------------- |
+| `GOROOT` | Go 安装路径                                                         | `export GOROOT=/usr/local/go` |
+| `GOPATH` | 工作区路径；相应的源码路径是 `$GOPATH/src`                          | `export GOPATH=~/go`          |
+| `GOBIN`  | 可执行程序（`go install`）的安装路径（访问的是 `$GOPATH` 下的项目） | `export GOBIN=$GOPATH/bin`    |
 
 实施配置：
 
