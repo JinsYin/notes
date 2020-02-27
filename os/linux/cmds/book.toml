@@ -1,0 +1,27 @@
+[book]
+title = "《Linux 命令行》"
+description = "Linux 常用命令"
+authors = ["jinsyin"]
+language = "en"
+multilingual = false
+src = "."
+
+[output.html]
+mathjax-support = false
+theme = "theme"
+default-theme = "light"
+additional-css = ["theme/custom.css"]
+git-repository-url = "https://github.com/jinsyin/knowledge-base"
+git-repository-icon = "fa-github"
+
+[output.html.playpen]
+editable = false
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
