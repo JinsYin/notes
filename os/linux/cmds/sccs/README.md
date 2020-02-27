@@ -1,1 +1,0 @@
-# SCCS（Source Code Control System）
