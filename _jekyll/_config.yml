@@ -80,7 +80,7 @@ defaults:
     values:
       source: "git/"
       bookid: git
-      bookname: "《Git》"
+      bookname: "《Git 知识库》"
       permalink: /:path/:basename:output_ext
   - scope:
       path: "git/platforms/github"

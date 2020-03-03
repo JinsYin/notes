@@ -1,0 +1,66 @@
+<head>
+	<base href="{{ page.url }}" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		[ng\:cloak],
+		[ng-cloak],
+		[data-ng-cloak],
+		[x-ng-cloak],
+		.ng-cloak,
+		.x-ng-cloak,
+		.ng-hide:not(.ng-hide-animate) {
+			display: none !important;
+		}
+
+		ng\:form {
+			display: block;
+		}
+	</style>
+
+	{% comment %}{% include google-tag-manager.html %}{% endcomment %}
+
+	<!-- favicon -->
+	<link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+	<meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+	<link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+	<meta property="og:image" content="/favicons/docs@2x.ico"/>
+
+	<!-- Open Group metadata -->
+	<meta property="og:type" content="website"/>
+	<meta property="og:updated_time" itemprop="dateUpdated" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}"/>
+	<meta property="og:image" itemprop="image primaryImageOfPage" content="{{ '_assets/images/docs@2x.png' | relative_url }}"/>
+	<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:domain" content="docs.docker.com"/>
+	<meta name="twitter:site" content="@docker_docs"/>
+	<meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+	<meta name="twitter:title" itemprop="title name" content="{{ page.title }}"/>
+	<meta name="twitter:description" property="og:description" itemprop="description" content="{{ content | strip_html | truncatewords: 30}}" />
+	<meta name="twitter:image:src" content="{{ '_assets/images/docs@2x.png' | relative_url }}"/>
+	<meta name="twitter:image:alt" content="{{ site.name }}"/>
+	<meta property="article:published_time" itemprop="datePublished" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}docker, docker open source, docker platform, distributed applications, microservices, containers, docker containers, docker software, docker virtualization{% endif %}">
+	<link rel="stylesheet" href="{{ '_assets/css/font-awesome.min.css' | relative_url }}">
+	<link rel="stylesheet" href="{{ '_assets/css/bootstrap.min.css' | relative_url }}">
+	<link id="pygments" rel="stylesheet" href="{{ '_assets/css/highlight.css' | relative_url }}">
+	<link id="pagestyle" rel="stylesheet" href="{{ '_assets/css/style.css' | relative_url }}">
+
+	<!-- "Open Sans" font from Google -->
+	<link href="{{ '_assets/css/open-sans.css' | relative_url }}" rel="stylesheet">
+
+	<!-- SEO stuff -->
+	<title>{{ page.title }} | {{ site.name }}</title>
+	<meta property="og:title" content="{{ page.title }}" />
+	<meta property="og:locale" content="en_US" />
+	<meta name="description" content="{{ page.description }}" />
+	<meta property="og:description" content="{{ page.description }}" />
+	<link rel="canonical" href="{{ page.url }}" />
+	<meta property="og:url" content="{{ page.url | absolute_url }}" />
+	<meta property="og:site_name" content="{{ site.name }}" />
+	<script type="application/ld+json">
+	{"@context":"http://schema.org","@type":"WebPage","headline":"{{ page.title }}","description":"{{ page.description }}","url":"{{ page.url | absolute_url }}"}</script>
+	<!-- END SEO STUFF -->
+
+	{% if page.hide_from_sitemap %}<meta name="robots" content="noindex" />{% endif %}
+</head>

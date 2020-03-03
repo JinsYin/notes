@@ -1,0 +1,254 @@
+- name: Get Docker
+  docs:
+  - path: /install/overview/
+    title: Overview of Docker editions
+  - name: Docker Engine - Community
+    docs:
+    - title: About Docker Engine - Community
+      path: /install/
+    - name: Cloud
+      docs:
+      - name: Docker for AWS
+        docs:
+        - path: /docker-for-aws/why/
+          title: Why Docker for AWS?
+        - path: /docker-for-aws/
+          title: Setup & prerequisites
+      - name: Docker for Azure
+        docs:
+        - path: /docker-for-azure/why/
+          title: Why Docker for Azure?
+        - path: /docker-for-azure/
+          title: Setup & prerequisites
+    - name: Linux
+      docs:
+      - path: /install/linux/docker-ce/centos/
+        title: CentOS
+      - path: /install/linux/docker-ce/debian/
+        title: Debian
+      - path: /install/linux/docker-ce/fedora/
+        title: Fedora
+  - name: Docker Enterprise
+    docs:
+    - title: About Docker Enterprise
+      path: /ee/supported-platforms/
+    - name: Linux
+      docs:
+      - path: /install/linux/docker-ee/centos/
+        title: CentOS
+      - path: /install/linux/docker-ee/oracle/
+        title: Oracle Linux
+      - path: /install/linux/docker-ee/rhel/
+        title: RHEL
+    - path: /install/windows/docker-ee/
+      title: Microsoft Windows Server
+  - name: Compatibility between Docker versions
+    docs:
+      - path: /engine/ce-ee-node-activate/
+        title: Docker Engine Community to Enterprise Node Activate
+      - path: /engine/migration/
+        title: Migrate to Docker 1.10
+      - path: /engine/breaking_changes/
+        title: Breaking changes
+      - path: /engine/deprecated/
+        title: Deprecated Docker features
+      - path: /engine/faq/
+        title: FAQ
+
+- name: Get started
+  docs:
+  - path: /engine/docker-overview/
+    title: Docker overview
+  - name: 快速入门
+    docs:
+    - title: "Part 1: Orientation and setup"
+      path: /get-started/
+    - title: "Part 2: Containerizing an application"
+      path: /get-started/part2/
+    - title: "Part 3: 部署到 Kubernetes"
+      path: /get-started/part3/
+    - title: "Part 4: Deploying to Swarm"
+      path: /get-started/part4/
+    - title: "Part 5: Sharing images on Docker Hub"
+      path: /get-started/part5/
+    - path: /get-started/resources/
+      title: "Educational resources"
+
+- name: Develop with Docker
+  docs:
+    - name: Develop your apps on Docker
+      docs:
+        - path: /develop/
+          title: App development overview
+        - path: /develop/dev-best-practices/
+          title: App development best practices
+        - name: Develop images
+          docs:
+          - path: /develop/develop-images/dockerfile_best-practices/
+            title: Best practices for writing Dockerfiles
+          - path: /develop/develop-images/baseimages/
+            title: Create a base image
+
+- name: Configure networking
+  docs:
+    - path: /network/
+      title: Networking overview
+    - path: /network/bridge/
+      title: Use bridge networks
+    - name: Networking tutorials
+      docs:
+      - path: /network/network-tutorial-standalone/
+        title: Bridge network tutorial
+      - path: /network/network-tutorial-host/
+        title: Host networking tutorial
+    - name: Configure the daemon and containers
+      docs:
+      - path: /config/daemon/ipv6/
+        title: Configure the daemon for IPv6
+      - path: /network/iptables/
+        title: Docker and iptables
+    - name: Legacy networking content
+      docs:
+      - path: /network/links/
+        title: (Legacy) Container links
+      - path: /network/overlay-standalone.swarm/
+        title: Overlay networks for Swarm Classic
+
+- name: Manage application data
+  docs:
+    - path: /storage/
+      title: Storage overview
+    - path: /storage/volumes/
+      title: Volumes
+    - name: Store data within containers
+      docs:
+      - path: /storage/storagedriver/
+        title: About storage drivers
+      - path: /storage/storagedriver/select-storage-driver/
+        title: Select a storage driver
+
+- name: Run your app in production
+  docs:
+  - name: Configure all objects
+    docs:
+    - path: /config/labels-custom-metadata/
+      title: Apply custom metadata to objects
+    - path: /config/pruning/
+      title: Prune unused objects
+  - name: Configure the daemon
+    docs:
+    - path: /config/daemon/
+      title: Configure and run Docker
+    - path: /config/daemon/systemd/
+      title: Control Docker with systemd
+  - name: Work with external tools
+    docs:
+    - path: /config/thirdparty/
+      title: Third-party monitoring tools
+    - path: /config/thirdparty/prometheus/
+      title: Collect Docker metrics with Prometheus
+  - name: Configure containers
+    docs:
+    - path: /config/containers/start-containers-automatically/
+      title: Start containers automatically
+    - path: /config/containers/live-restore/
+      title: Keep containers alive during daemon downtime
+    - name: Logging
+      docs:
+      - path: /config/containers/logging/
+        title: View a container's logs
+      - path: /config/containers/logging/configure/
+        title: Configure logging drivers
+      - name: Logging driver details
+        docs:
+        - path: /config/containers/logging/local/
+          title: Local file logging driver
+        - path: /config/containers/logging/logentries/
+          title: Logentries logging driver
+    - name: Work with external tools
+      docs:
+      - path: /config/thirdparty/dsc/
+        title: PowerShell DSC usage
+      - path: /config/thirdparty/ansible/
+        title: Ansible
+    - name: Security
+      docs:
+      - path: /engine/security/security/
+        title: Docker security
+      - path: /engine/security/non-events/
+        title: Docker security non-events
+      - name: Use trusted images
+        docs:
+        - path: /engine/security/trust/content_trust/
+          title: Content trust in Docker
+        - path: /engine/security/trust/trust_automation/
+          title: Automation with content trust
+      - path: /engine/security/antivirus/
+        title: Antivirus software and Docker
+      - path: /engine/security/apparmor/
+        title: AppArmor security profiles for Docker
+    - name: Scale your app
+      docs:
+      - path: /engine/swarm/
+        title: Swarm mode overview
+      - path: /engine/swarm/key-concepts/
+        title: Swarm mode key concepts
+      - name: Get started with swarm mode
+        docs:
+        - path: /engine/swarm/swarm-tutorial/
+          title: Set up for the tutorial
+        - path: /engine/swarm/swarm-tutorial/create-swarm/
+          title: Create a swarm
+      - name: How swarm mode works
+        docs:
+        - path: /engine/swarm/how-swarm-mode-works/nodes/
+          title: How nodes work
+        - path: /engine/swarm/how-swarm-mode-works/services/
+          title: How services work
+      - path: /engine/swarm/swarm-mode/
+        title: Run Docker in swarm mode
+      - path: /engine/swarm/join-nodes/
+        title: Join nodes to a swarm
+    - name: Extend Docker
+      docs:
+      - path: /engine/extend/
+        title: Managed plugin system
+      - path: /engine/extend/plugins_authorization/
+        title: Access authorization plugin
+
+- name: Standards and compliance
+  docs:
+  - path: /compliance/
+    title: Docker standards and compliance
+  - name: NIST
+    docs:
+    - path: /compliance/nist/800_37/
+      title: NIST SP 800-37 (RMF)
+    - path: /compliance/nist/800_53/
+      title: NIST SP 800-53
+  - name: OSCAL
+    docs:
+    - path: /compliance/oscal/
+      title: OSCAL compliance guidance
+  - name: CIS Benchmarks
+    docs:
+    - path: /compliance/cis/docker_ee/
+      title: Docker Enterprise Benchmark
+    - path: /compliance/cis/docker_ce/
+      title: Docker Engine - Community Benchmark
+  - path: /compliance/fedramp/
+    title: FedRAMP
+  - path: /compliance/fisma/
+    title: FISMA
+
+- name: Open source at Docker
+  docs:
+  - path: /opensource/
+    title: Contribute to documentation
+  - path: /opensource/ways/
+    title: Other ways to contribute
+
+- name: Documentation archive
+  docs:
+  - path: /docsarchive/
+    title: View the docs archives

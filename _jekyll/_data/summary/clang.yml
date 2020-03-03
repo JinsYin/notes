@@ -1,0 +1,9 @@
+# 页面属性
+page:
+    bookid: clang
+    bookname: "《C 语言知识库》"
+    source: languages/programming/c/
+    permalink: clang/:subpath/:basename:output_ext
+
+# 目录
+catalog:

@@ -1,0 +1,97 @@
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+  - scope:
+      path: os/linux/cmds
+      type: pages
+    values:
+      categories: [linux-command-line]
+      bookname: "Linux 命令行"
+      permalink: /linux-cmds/:basename:output_ext
+  - scope:
+      path: os/linux/distros
+      type: pages
+    values:
+      categories: [linux-distros]
+      bookname: "Linux 发行版"
+      permalink: /linux-distros/:subpath/:basename:output_ext
+  - scope:
+      path: os/linux/performance
+      type: pages
+    values:
+      categories: [linux-performance-tuning]
+      bookname: "Linux 性能调优"
+      permalink: /linux/performance-tunning/:subpath/:basename:output_ext
+  - scope:
+      path: os/linux/ops
+      type: pages
+    values:
+      categories: [linux-ops]
+      bookname: "Linux 运维"
+      permalink: /linux/ops/:subpath/:basename:output_ext
+  - scope:
+      path: os/linux/kernel
+      type: pages
+    values:
+      categories: [linux-kernel]
+      bookname: "Linux 内核"
+      permalink: /linux/kernel/:subpath/:basename:output_ext
+  - scope:
+      path: os/linux/syscalls
+      type: pages
+    values:
+      categories: [linux-syscalls]
+      bookname: "Linux 系统调用"
+      permalink: /linux/syscalls/:subpath/:basename:output_ext
+  - scope:
+      path: bigdata/spark
+      type: pages
+    values:
+      categories: [spark]
+      bookname: "Spark" # Spark 知识库
+      permalink: /spark/:subpath/:basename:output_ext
+  - scope:
+      path: bigdata/kafka
+      type: pages
+    values:
+      categories: [kafka]
+      bookname: "Kafka"
+      permalink: /kafka/:subpath/:basename:output_exit
+  - scope:
+      path: languages/programming/golang
+      type: pages
+    values:
+      categories: [golang]
+      bookname: "Go 语言"
+      permalink: /golang/:subpath/:basename:output_ext
+  - scope:
+      path: git
+      type: pages
+    values:
+      categories: [git]
+      bookname: "Git"
+      permalink: /git/:subpath/:basename:output_ext
+  - scope:
+      path: git/platform/github
+      type: pages
+    values:
+      categories: [github]
+      bookname: "GitHub"
+      permalink: /github/:subpath/:basename:output_ext
+  - scope:
+      path: git/platform/gitbook
+      type: pages
+    values:
+      categories: [gitbook]
+      bookname: "GitBook"
+      permalink: /gitbook/:subpath/:basename:output_ext
+  - scope:
+      path: os/unix/shell
+      type: pages
+    values:
+      categories: [shell]
+      book: "Shell"
+      permalink: /shell/:subpath/:basename:output_ext

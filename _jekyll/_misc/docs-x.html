@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang }}">
+{% include h5head.html %}
+
+<body ng-app="Docker" ng-controller="DockerController" class="colums">
+	<!-- Header -->
+	{% if page.landing == true %}{% include gheader.html %}{% else %}{% include header.html %}{% endif %}
+
+	<div class="wrapper right-open">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-body">
+					<!-- main content -->
+					<main id="content" class="col-content content">
+						<section class="section">
+							<h1>{{ page.title }}</h1>
+
+							{{ content }}
+
+							{% comment %}
+							<!-- link corrections -->
+							{% include link-corrections.html %}
+							{% endcomment %}
+
+							<!-- pagination -->
+							{% if page.previous_page or page.next_page %}
+							<ul id="page" class="pagination">
+								{% if page.previous_page %}<li class="previsou-page"><a href="part1">&lt;&lt; Previous</a></li>{%endif%}
+								{% if page.next_page %}<li class="next-page"><a href="part2">Next &gt;&gt;</a></li>{%endif%}
+							</ul>
+							{% endif %}
+						</section>
+					</main>
+					<!-- Leftbar Menu -->
+					{% include leftbar.html %}
+					<!-- Rightbar TOC -->
+					{% include rightbar.html %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include footer.html %}
+
+	{% if page.path == "404.md" %}
+		<script type="text/javascript">
+			var path = window.location.pathname.replace("#","");
+			var ghIssueQueryString = "https://github.com/docker/docker.github.io/issues/new?" + "title=404%20at%20" + path + "&body=URL%3A%20" + path;
+			// document.getElementsByClassName("nomunge")[1].onclick = function() {
+			// 	document.getElementsByClassName("nomunge")[1].href = ghIssueQueryString;
+			// 	return true;
+			// };
+		</script>
+	{% endif %}
+
+	{% if page.hljs == true %}
+	<link rel="stylesheet" href="{{ '_assets/css/hljs.github.css' | relative_url }}">
+	<script src="{{ '_assets/js/highlight.pack.js' | relative_url }}"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	{% endif %}
+
+	<!-- <script src="_assets/js/anchorlinks.js"></script> -->
+	<script defer src="{{ '_assets/js/menu.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/jquery.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/bootstrap.min.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/stickyfill.min.js' | relative_url }}"></script>
+	<script defer src="{{ '_assets/js/metadata.js' | relative_url }}"></script>
+	<script defer src="{{ '_assets/js/docs.js' | relative_url }}"></script>
+	<script src="{{ '_assets/js/smooth-scroll.min.js' | relative_url }}"></script>
+	<script language="javascript">jQuery(document).ready(function(){hookupTOCEvents();});</script>
+</body>
+
+</html>

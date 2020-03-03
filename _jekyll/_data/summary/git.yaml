@@ -5,8 +5,11 @@ destination: git # 页面构建路径（相对于 site.destination）
 
 # 目录表
 catalog:
-  - name: 序言
+  - name: 介绍
     path: index.html
+
+  - name: 版本控制
+    path: basics/version-control.html
 
   - section: 入门基础
     collapse: false
