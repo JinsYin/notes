@@ -1,6 +1,6 @@
 # 目录表
 catalog:
-  - name: 简介
+  - name: 序言
     path: /
 
   - section: 树

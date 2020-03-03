@@ -1,9 +1,9 @@
 # 目录表
 catalog:
-  - name: 简介
+  - name: 介绍
     path: ""
 
-  - section: 排序算法
+  - section: 排序
     collapse: false
     secpath: sort/
     docs:
@@ -30,20 +30,22 @@ catalog:
       - name: 基数排序
         path: sort/radix-sort/
 
-  - section: 查找算法
+  - section: 查找
     collapse: false
     docs:
       - name: 二分查找
         path: search/binary-search/
 
+  - section: 分布式
+    collapse: false
+    docs:
+    - section: 一致性算法
+      collapse: false
+      docs: []
+    - section: 共识算法
+      collapse: false
+      docs: []
+
   - section: 布隆过滤器
-    collapse: false
-    docs: []
-
-  - section: 一致性算法
-    collapse: false
-    docs: []
-
-  - section: 共识算法
     collapse: false
     docs: []

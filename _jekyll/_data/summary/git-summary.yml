@@ -1,0 +1,11 @@
+# 如果导航名与文件标题不一致，需要指定 name 和 path
+- name: 介绍
+  path: README.md
+- quickstart.md
+- name: 命令
+  path: cmds/README.md # 没有可以不指定
+  hide: true # 没有 docs 不起作用
+  docs:
+    - cmds/git-add.md
+    - cmds/git-commit.md
+    - cmds/git-branch.md
