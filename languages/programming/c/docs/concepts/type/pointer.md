@@ -4,6 +4,12 @@
 
 指针可以执行函数吗？
 
+## 指针类型
+
+* `T * variable`
+* `T* variable`
+* `T *variable`
+
 ## 运算符
 
 $$

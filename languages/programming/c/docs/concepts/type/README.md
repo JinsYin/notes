@@ -73,8 +73,9 @@ int main()
 
     return 0;
 }
-
 ```
+
+> 指针类型在 64 位机器上占用 8 个字节，在 32 位机器上占用 4 个字节（注：64位/32位指的是 CPU 通用寄存器的数据宽度）；CPU 与内存之间地址总线的宽度决定了指针类型的大小
 
 ## 枚举类型（Enumerated types）
 
@@ -112,17 +113,17 @@ int main()
 ```c
 ```
 
-## 初始默认值
+## 初始默认值（零值）
 
 当定义未初始化的变量，系统会使用默认值自动初始化它。
 
-| Data Type | Initial Default Value |
-| --------- | --------------------- |
-| int       | 0                     |
-| char      | \0                    |
-| float     | 0                     |
-| double    | 0                     |
-| pointer   | NULL                  |
+| 数据类型 | 零值 |
+| -------- | ---- |
+| int      | 0    |
+| char     | \0   |
+| float    | 0    |
+| double   | 0    |
+| pointer  | NULL |
 
 最好养成正常初始化变量的习惯，因为为初始化的变量会在其内存位置产生一些垃圾值。
 
@@ -143,6 +144,29 @@ typedef long unsigned int size_t;
 由于 size_t 的具体类型因环境而异，为了跨平台需要使用 `%zd`（十进制 size_t） 或 `%zx`（十六进制 size_t） 的格式说明符（format specifier），参考 [Platform independent size_t Format specifiers in c?](https://stackoverflow.com/questions/2125845/platform-independent-size-t-format-specifiers-in-c)
 
 详见：<https://linux.die.net/man/3/printf> - length modifiers
+
+## 格式占位符（Format Specifiers）
+
+| 格式占位符 | 数据类型       |
+| ---------- | -------------- |
+| `%d`       | int            |
+| `%f`       | float / double |
+| `%c`       | char           |
+| `%s`       | char[]         |
+| `%p`       | 指针（地址）   |
+
+```c
+/*
+ * MacOS(GCC) => 0x7ffeeb39190c 0x7ffeeb391910 0x7ffeeb391910 5
+ */
+int main()
+{
+    int arr[3] = {3, 4, 5};
+    // 0x1 即一个存储单元，对于 int 数据而言是 4 个字节
+    printf("%p %p %p %d\n", &arr[0], &arr[1], &arr[0] + 0x1, *(&arr[1] + 0x1));
+    return 0;
+}
+```
 
 ## 参考
 

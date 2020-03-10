@@ -22,7 +22,7 @@ $ gcc --version
 #include <stdio.h> /** 导入标准输入输出库 **/
 
 /** 主函数，不接受参数或接受 void 参数 **/
-main()
+void main()
 {
     /** 调用库函数 printf **/
     printf("Hello, world\n");
