@@ -1,1 +1,0 @@
-# /proc/version_signature

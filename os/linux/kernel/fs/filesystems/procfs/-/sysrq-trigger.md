@@ -1,1 +1,0 @@
-# /proc/sysrq-trigger
