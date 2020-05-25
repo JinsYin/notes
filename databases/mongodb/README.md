@@ -1,4 +1,4 @@
-# MongoDB 从入门到放弃
+# MongoDB
 
 ## 使用 docker 部署 mongodb server
 
