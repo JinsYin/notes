@@ -12,16 +12,16 @@ $ ansible-playbook deploy.yml
 
 ## 关键字
 
-| 关键字 | 含义   |
-| ----- | ----- |
-| hosts | 主机 IP，主机组名，或者关键字 `all`|
-| remote_user | 远程主机用户名 |
-| vars  | 变量 |
-| tasks | 定义顺序执行的 action，每个 action 调用一个 module。action 语法：`module: module_parameter=module_value` |
-| handers | playbook 的 event。默认不会执行，在 action 中触发后才会执行，多次触发只执行一次。|
-| become | 切换成其他用户身份执行，可选值：`yes` 或 `no` |
-| become_method | 与 become 一起用，可选值：`sudo`/`su`/`pfexec`/`doas`|
-| become_user | |
+| 关键字        | 含义                                                                                                     |
+| ------------- | -------------------------------------------------------------------------------------------------------- |
+| hosts         | 主机 IP，主机组名，或者关键字 `all`                                                                      |
+| remote_user   | 远程主机用户名                                                                                           |
+| vars          | 变量                                                                                                     |
+| tasks         | 定义顺序执行的 action，每个 action 调用一个 module。action 语法：`module: module_parameter=module_value` |
+| handers       | playbook 的 event。默认不会执行，在 action 中触发后才会执行，多次触发只执行一次。                        |
+| become        | 切换成其他用户身份执行，可选值：`yes` 或 `no`                                                            |
+| become_method | 与 become 一起用，可选值：`sudo`/`su`/`pfexec`/`doas`                                                    |
+| become_user   |                                                                                                          |
 
 ```sh
 # 脚本中使用 become 时，执行 playbook 可以加参数 --ask-become-pass，则执行时后提示输入 sudo 密码
@@ -216,7 +216,7 @@ role 就是将 task 写成文件。
 
 ## vars/vars_files
 
-当变量较少时，可以使用 vars 关键字定义变量，并使用 `{{}}` 调用。当变量较多时可以将变量单独放到一个文件中。
+当变量较少时，可以使用 vars 关键字定义变量，并使用 `\{\{\}\}` 调用。当变量较多时可以将变量单独放到一个文件中。
 
 定义和使用变量：
 

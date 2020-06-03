@@ -39,5 +39,3 @@ $ apt-get install -y ansible
 * Agentless
 
 ## 工作机制
-
-1.
