@@ -1,5 +1,15 @@
 # MacOS 快捷键
 
+## Fn 功能键
+
+| 组合             | 描述                     |
+| ---------------- | ------------------------ |
+| `Fn` `←`         | 同 Home 键               |
+| `Fn` `→`         | 同 End 键                |
+| `Fn` `↑`         | 同 PageUP 键             |
+| `Fn` `→`         | 同 PageDown 键           |
+| `Fn` `Backspace` | 同 Delete 键（向后删除） |
+
 ## 增加应用快捷键
 
 ![应用快捷键](.images/app-shortcuts.png)
