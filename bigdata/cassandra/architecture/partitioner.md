@@ -33,4 +33,5 @@ CREATE TABLE mytable {
 
 ## 参考
 
+* [Partitioners](https://docs.datastax.com/en/ddac/doc/datastax_enterprise/dbArch/archPartitioners.html)
 * [Cassandra 中分区键,复合键和集群键之间的区别？](https://codeday.me/bug/20170309/5182.html)

@@ -5,10 +5,12 @@ Cassandra 默认允许所有用户无密码直接登录，如果想要设置访�
 ## 修改配置
 
 ```yaml
-#authenticator: AllowAllAuthenticator
-authenticator: PasswordAuthenticator
+# 旧
+authenticator: AllowAllAuthenticator
+authorizer: AllowAllAuthorizer
 
-#authorizer: AllowAllAuthorizer
+# 新
+authenticator: PasswordAuthenticator
 authorizer: CassandraAuthorizer
 ```
 
@@ -49,6 +51,20 @@ cqlsh> LIST USERS;
  administrator |  True
     lixiaoming | False
 ```
+
+## 认证一致性
+
+为了避免某台机器挂了而导致其他机器也不能访问（因为 `system_auth` keyspace 的默认副本只有 1 个）：
+
+```sql
+ALTER KEYSPACE system_auth
+    WITH replication = {
+        'class': 'NetworkTopologyStrategy',
+        '<datacentre_name>': <number_of_nodes>
+    };
+```
+
+[Cassandra error on login: Cannot achieve consistency level LOCAL_ONE](https://federico-razzoli.com/cassandra-error-on-login-cannot-achieve-consistency-level-local_one)
 
 ## 客户端配置
 

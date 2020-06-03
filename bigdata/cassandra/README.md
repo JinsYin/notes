@@ -1,4 +1,4 @@
-# Cassandra 从入门到放弃
+# Cassandra
 
 Cassandra 是一个高可扩展性的分区行存储。
 
@@ -18,3 +18,9 @@ Cassandra 是一个高可扩展性的分区行存储。
 * UN：Up
 * UL：
 * DN：Down
+
+## 参考
+
+* [Datastax Doc](https://docs.datastax.com/en/)
+* [DDAC Doc](https://docs.datastax.com/en/ddac/doc/)
+* [Cassandra Tutorial](https://www.tutorialspoint.com/cassandra/)

@@ -40,6 +40,9 @@ REVOKE [permission] PERMISSION ON [resource|role|function] FROM <user>
 CREATE ROLE guest;
 GRANT SELECT ON mykeyspace.mytable TO guest;
 
+// 删除角色
+DROP ROLE IF EXISTS guest;
+
 // 授权
 CREATE ROLE pam WITH PASSWORD = 'password' AND LOGIN = true;
 GRANT supervisor TO pam;
