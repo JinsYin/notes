@@ -13,12 +13,14 @@ $ clock
 ## 修改时区
 
 ```sh
+$ rm /etc/localtime
+
 # 修改
 $ ln -svf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # 校验
-$ date -R
-Thu, 18 Oct 2018 15:18:41 +0800
+$ date -u
+2019年 11月 18日 星期一 07:55:00 UTC
 ```
 
 ## 同步系统时间
@@ -39,8 +41,22 @@ $ systemctl enable ntpd
 $ systemctl start ntpd
 
 # 校验
-$ date -R # 查看系统时间
+$ date -u # 查看系统时间
 $ clock # 查看 BIOS 时间（或 hwclock -r）
+```
+
+## 最后
+
+```sh
+$ timedatectl status
+      Local time: 五 2019-11-22 15:58:44 CST
+  Universal time: 五 2019-11-22 07:58:44 UTC
+        RTC time: 五 2019-11-22 15:58:44
+       Time zone: Asia/Shanghai (CST, +0800)
+     NTP enabled: yes
+NTP synchronized: yes
+ RTC in local TZ: no # timedatectl set-local-rtc 0
+      DST active: n/a
 ```
 
 ## 参考

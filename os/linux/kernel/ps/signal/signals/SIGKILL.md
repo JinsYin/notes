@@ -54,4 +54,4 @@ root     124825  0.0  0.0 123404  1212 ?        D    09:11   0:00 tar zcf 201206
 ## 参考
 
 * [What if 'kill -9' does not work?](https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work)
-* [孤儿进程与僵尸进程(https://www.cnblogs.com/Anker/p/3271773.html)
+* [孤儿进程与僵尸进程](https://www.cnblogs.com/Anker/p/3271773.html)

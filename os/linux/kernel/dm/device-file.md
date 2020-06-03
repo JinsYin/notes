@@ -33,7 +33,6 @@ _设备文件_（Device file）也称之为 _设备节点_（Device node），�
 $ find . -name "*.md" | wc -l /dev/fd/0
 ```
 
-
 ## 命名约定
 
 以下前缀用于 `/dev` 结构下某些设备的命名，以识别设备的类型。

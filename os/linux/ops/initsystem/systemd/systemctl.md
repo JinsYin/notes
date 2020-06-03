@@ -11,7 +11,7 @@ $ systemctl start docker.service
 * 开机自启动
 
 ```sh
-$ systemctl enable docker.service
+$ systemctl enable docker.service # systemctl is-enabled docker.service 检查是否开启
 ```
 
 * 重启
