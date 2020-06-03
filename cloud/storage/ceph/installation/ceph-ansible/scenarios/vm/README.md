@@ -19,8 +19,12 @@
 ## 清除集群
 
 ```sh
-$ ansible-playbook -i hosts infrastructure-playbooks/purge-cluster.yml
+$ ansible-playbook infrastructure-playbooks/purge-cluster.yml
 
 # 卸载所有 ceph 相关软件包
-$ ansible all -i hosts -m yum -a 'name=*ceph* state=removed'
+$ ansible all -m yum -a 'name=*ceph* state=removed'
+
+# 清空目录
+$ ansible all -m file -a 'path=/var/lib/ceph state=absent'
+$ ansible all -m file -a 'path=/etc/ceph state=absent'
 ```

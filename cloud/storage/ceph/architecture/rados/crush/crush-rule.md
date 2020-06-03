@@ -10,7 +10,7 @@
 $ ceph osd crush rule create-replicated ssd_rule default host ssd
 ```
 
-## erasure code
+## 纠删码（erasure code）
 
 ## 参考
 

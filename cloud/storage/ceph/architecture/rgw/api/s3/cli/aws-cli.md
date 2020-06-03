@@ -25,17 +25,18 @@ s3 =
 ## 测试
 
 ```sh
-aws --endpoint-url http://192.168.8.220:8080 s3 ls
+$ aws --endpoint-url http://192.168.8.220:8080 s3 ls
 
 # export AWS_ENDPOINT_URL="http://192.168.8.220:8080"
 $ aws s3 ls
 ```
 
 ```sh
-aws --profile ceph s3 ls
+$ aws --profile ceph s3 ls
 ```
 
 ## 参考
 
 * [github.com/aws/aws-cli](https://github.com/aws/aws-cli)
 * [Ability to specify endpoint-url in profile](https://github.com/aws/aws-cli/issues/1270)
+* [On Ceph RGW/S3 Object Versioning](https://ceph.io/planet/on-ceph-rgw-s3-object-versioning/)

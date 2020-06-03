@@ -29,7 +29,7 @@ $ ceph --keyring=/etc/ceph/ceph.client.admin.keyring -n client.admin health
 
 **用户** 由 `用户类型` 和 `用户 ID` 组成，即 `USER = TYPE.ID`。其中，**{TYPE}** 可以是 `client`、`osd`、`mon`、`mds`、`mgr` 或 `auth`；**{ID}** 可以是 `用户名` 或 `守护进程 ID`。对于命令行而言，如果指定的是 `--user`/`--id` 则必须省略用户类型；如果指定的是 `--name`/`-n` 则必须指定用户类型和用户 ID 。
 
-`用户类型` 几乎总是 `client`，之所以要指定用户类型，是因为 ceph-mon、ceph-osd、ceph-mds 也使用 cephx 协议，但它们并不是客户端。区分用户类型有助于区分客户端用户和其他用户，可以简化访问控制及用户管理。
+`用户类型` 几乎总是 `client`，之所以要指定用户类型，是因为 ceph-mon、ceph-osd、ceph-mds 也使用 cephx 协议，但它们并不完全是客户端。区分用户类型有助于区分客户端用户和其他用户，可以简化访问控制及用户管理。
 
 > Note：**Ceph 存储集群用户** 不同于 **Ceph 对象存储用户** 或 **Ceph 文件系统用户**。Ceph 对象网关与存储集群之间使用 **Ceph 存储集群用户** 进行通信，但对象网关为终端用户提供了自己的用户管理功能。Ceph 文件系统使用 POSIX 语义，其关联的用户空间与 Ceph 存储用户也不相同。
 
@@ -69,7 +69,7 @@ Caps：
 | profile rbd (Monitor and OSD)       | 授予用户操作 RBD 镜像的权限。当用作 Monitor cap 时，提供 RBD 客户端所需的最小权限。当用作 OSD cap 时，提供 RBD 客户端读写权限 |
 | profile rbd-read-only (限 OSD)      | 授予用户对 RBD 镜像的只读权限                                                                                                 |
 
-> Note：Ceph 对象存储网关守护进程（radosgw）是 Ceph 存储集群的一种客户端，所有没被表示成一种独立的 Ceph 存储集群守护进程类型
+> Note：Ceph 对象存储网关守护进程（radosgw）是 Ceph 存储集群的一种客户端，所有没有被表示成一种独立的 Ceph 存储集群守护进程类型
 
 ## 管理用户
 
@@ -113,7 +113,7 @@ mgr.Yin
 # ceph auth get {TYPE.ID}
 # ceph auth export {TYPE.ID}
 # 返回 keyring （包括用户名、密钥和 caps）
-$ ceph auth get cllient.admin # -o client.admin.keyring
+$ ceph auth get client.admin # -o client.admin.keyring
 [client.admin]
     key = AQCrt2pbdgMZIhAAQ1MZrvFqDdpdt2Rl1m+hvw==
     auid = 0

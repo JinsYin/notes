@@ -1,0 +1,40 @@
+[root@centos-compute-100 ceph-cluster]# ceph-deploy disk zap centos-data-201:/dev/sdc
+[ceph_deploy.conf][DEBUG ] found configuration file at: /root/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy disk zap centos-data-201:/dev/sdc
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  subcommand                    : zap
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0xdd0c68>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  func                          : <function disk at 0xdc7f50>
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.cli][INFO  ]  disk                          : [('centos-data-201', '/dev/sdc', None)]
+[ceph_deploy.osd][DEBUG ] zapping /dev/sdc on centos-data-201
+[centos-data-201][DEBUG ] connected to host: centos-data-201 
+[centos-data-201][DEBUG ] detect platform information from remote host
+[centos-data-201][DEBUG ] detect machine type
+[centos-data-201][DEBUG ] find the location of an executable
+[ceph_deploy.osd][INFO  ] Distro info: CentOS Linux 7.3.1611 Core
+[centos-data-201][DEBUG ] zeroing last few blocks of device
+[centos-data-201][DEBUG ] find the location of an executable
+[centos-data-201][INFO  ] Running command: /usr/sbin/ceph-disk zap /dev/sdc
+[centos-data-201][WARNIN] Caution: invalid backup GPT header, but valid main header; regenerating
+[centos-data-201][WARNIN] backup header from main header.
+[centos-data-201][WARNIN] 
+[centos-data-201][WARNIN] Warning! Main and backup partition tables differ! Use the 'c' and 'e' options
+[centos-data-201][WARNIN] on the recovery & transformation menu to examine the two tables.
+[centos-data-201][WARNIN] 
+[centos-data-201][WARNIN] Warning! One or more CRCs don't match. You should repair the disk!
+[centos-data-201][WARNIN] 
+[centos-data-201][DEBUG ] ****************************************************************************
+[centos-data-201][DEBUG ] Caution: Found protective or hybrid MBR and corrupt GPT. Using GPT, but disk
+[centos-data-201][DEBUG ] verification and recovery are STRONGLY recommended.
+[centos-data-201][DEBUG ] ****************************************************************************
+[centos-data-201][DEBUG ] GPT data structures destroyed! You may now partition the disk using fdisk or
+[centos-data-201][DEBUG ] other utilities.
+[centos-data-201][DEBUG ] Creating new GPT entries.
+[centos-data-201][DEBUG ] The operation has completed successfully.

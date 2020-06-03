@@ -14,7 +14,7 @@
 | stable-3.0 | `jewel`、`luminous` | `2.4`               |
 | stable-3.1 | `luminous`、`mimic` | `2.4`               |
 | stable-3.2 | `luminous`、`mimic` | `2.6`               |
-| stable-4.0 | `nautilus`          | `2.7`               |
+| stable-4.0 | `nautilus`          | `2.8`               |
 
 ## Todo
 
@@ -22,4 +22,5 @@
 
 ## 参考
 
+* [Ceph-ansible Document](https://docs.ceph.com/ceph-ansible/master/)
 * [Ceph Installer](http://docs.ceph.com/ceph-installer/docs)

@@ -9,7 +9,7 @@ Ceph Minitor 负责维护集群的各类 Map 。Cluster Map 包含 `Minitor Map`
 ## Monitor Map
 
 ```sh
-$ ceph mon map
+$ ceph mon dump
 dumped monmap epoch 2
 epoch 2 # Monitor 版本
 fsid fc8092bc-82f5-4f58-8f4f-aac5b66eac66 # 集群 ID

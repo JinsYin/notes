@@ -1,0 +1,84 @@
+[root@centos-compute-100 ceph-cluster]# ceph-deploy osd create centos-data-201:/dev/sdc:/dev/sdb
+[ceph_deploy.conf][DEBUG ] found configuration file at: /root/.cephdeploy.conf
+[ceph_deploy.cli][INFO  ] Invoked (1.5.38): /usr/bin/ceph-deploy osd create centos-data-201:/dev/sdc:/dev/sdb
+[ceph_deploy.cli][INFO  ] ceph-deploy options:
+[ceph_deploy.cli][INFO  ]  username                      : None
+[ceph_deploy.cli][INFO  ]  block_db                      : None
+[ceph_deploy.cli][INFO  ]  disk                          : [('centos-data-201', '/dev/sdc', '/dev/sdb')]
+[ceph_deploy.cli][INFO  ]  dmcrypt                       : False
+[ceph_deploy.cli][INFO  ]  verbose                       : False
+[ceph_deploy.cli][INFO  ]  bluestore                     : None
+[ceph_deploy.cli][INFO  ]  block_wal                     : None
+[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[ceph_deploy.cli][INFO  ]  subcommand                    : create
+[ceph_deploy.cli][INFO  ]  dmcrypt_key_dir               : /etc/ceph/dmcrypt-keys
+[ceph_deploy.cli][INFO  ]  quiet                         : False
+[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x1e89320>
+[ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[ceph_deploy.cli][INFO  ]  fs_type                       : xfs
+[ceph_deploy.cli][INFO  ]  func                          : <function osd at 0x1e7ced8>
+[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[ceph_deploy.cli][INFO  ]  default_release               : False
+[ceph_deploy.cli][INFO  ]  zap_disk                      : False
+[ceph_deploy.osd][DEBUG ] Preparing cluster ceph disks centos-data-201:/dev/sdc:/dev/sdb
+[centos-data-201][DEBUG ] connected to host: centos-data-201 
+[centos-data-201][DEBUG ] detect platform information from remote host
+[centos-data-201][DEBUG ] detect machine type
+[centos-data-201][DEBUG ] find the location of an executable
+[ceph_deploy.osd][INFO  ] Distro info: CentOS Linux 7.3.1611 Core
+[ceph_deploy.osd][DEBUG ] Deploying osd to centos-data-201
+[centos-data-201][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+[ceph_deploy.osd][DEBUG ] Preparing host centos-data-201 disk /dev/sdc journal /dev/sdb activate True
+[centos-data-201][DEBUG ] find the location of an executable
+[centos-data-201][INFO  ] Running command: /usr/sbin/ceph-disk -v prepare --cluster ceph --fs-type xfs -- /dev/sdc /dev/sdb
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-osd --cluster=ceph --show-config-value=fsid
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-osd --check-allows-journal -i 0 --cluster ceph --setuser ceph --setgroup ceph
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-osd --check-wants-journal -i 0 --cluster ceph --setuser ceph --setgroup ceph
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-osd --check-needs-journal -i 0 --cluster ceph --setuser ceph --setgroup ceph
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-osd --cluster=ceph --show-config-value=osd_journal_size
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup osd_mkfs_options_xfs
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup osd_fs_mkfs_options_xfs
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup osd_mount_options_xfs
+[centos-data-201][WARNIN] command: Running command: /usr/bin/ceph-conf --cluster=ceph --name=osd. --lookup osd_fs_mount_options_xfs
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdb uuid path is /sys/dev/block/8:16/dm/uuid
+[centos-data-201][WARNIN] prepare_device: OSD will not be hot-swappable if journal is not the same device as the osd data
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdb uuid path is /sys/dev/block/8:16/dm/uuid
+[centos-data-201][WARNIN] ptype_tobe_for_name: name = journal
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdb uuid path is /sys/dev/block/8:16/dm/uuid
+[centos-data-201][WARNIN] command: Running command: /usr/sbin/parted --machine -- /dev/sdb print
+[centos-data-201][WARNIN] get_free_partition_index: get_free_partition_index: analyzing BYT;
+[centos-data-201][WARNIN] /dev/sdb:960GB:scsi:512:512:gpt:DELL PERC H700:;
+[centos-data-201][WARNIN] 
+[centos-data-201][WARNIN] create_partition: Creating journal partition num 1 size 5120 on /dev/sdb
+[centos-data-201][WARNIN] command_check_call: Running command: /usr/sbin/sgdisk --new=1:0:+5120M --change-name=1:ceph journal --partition-guid=1:101032af-ed2d-4c52-a20b-62e189a85f82 --typecode=1:45b0969e-9b03-4f30-b4c6-b4b80ceff106 --mbrtogpt -- /dev/sdb
+[centos-data-201][DEBUG ] The operation has completed successfully.
+[centos-data-201][WARNIN] update_partition: Calling partprobe on created device /dev/sdb
+[centos-data-201][WARNIN] command_check_call: Running command: /usr/bin/udevadm settle --timeout=600
+[centos-data-201][WARNIN] command: Running command: /usr/bin/flock -s /dev/sdb /usr/sbin/partprobe /dev/sdb
+[centos-data-201][WARNIN] command_check_call: Running command: /usr/bin/udevadm settle --timeout=600
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdb uuid path is /sys/dev/block/8:16/dm/uuid
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdb uuid path is /sys/dev/block/8:16/dm/uuid
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdb1 uuid path is /sys/dev/block/8:17/dm/uuid
+[centos-data-201][WARNIN] prepare_device: Journal is GPT partition /dev/disk/by-partuuid/101032af-ed2d-4c52-a20b-62e189a85f82
+[centos-data-201][WARNIN] prepare_device: Journal is GPT partition /dev/disk/by-partuuid/101032af-ed2d-4c52-a20b-62e189a85f82
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] set_data_partition: Creating osd partition on /dev/sdc
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] ptype_tobe_for_name: name = data
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] create_partition: Creating data partition num 1 size 0 on /dev/sdc
+[centos-data-201][WARNIN] command_check_call: Running command: /usr/sbin/sgdisk --largest-new=1 --change-name=1:ceph data --partition-guid=1:0ab7ec35-18c8-4255-8bc0-49ce621605f0 --typecode=1:89c57f98-2fe5-4dc0-89c1-f3ad0ceff2be --mbrtogpt -- /dev/sdc
+[centos-data-201][DEBUG ] The operation has completed successfully.
+[centos-data-201][WARNIN] update_partition: Calling partprobe on created device /dev/sdc
+[centos-data-201][WARNIN] command_check_call: Running command: /usr/bin/udevadm settle --timeout=600
+[centos-data-201][WARNIN] command: Running command: /usr/bin/flock -s /dev/sdc /usr/sbin/partprobe /dev/sdc
+[centos-data-201][WARNIN] command_check_call: Running command: /usr/bin/udevadm settle --timeout=600
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc uuid path is /sys/dev/block/8:32/dm/uuid
+[centos-data-201][WARNIN] get_dm_uuid: get_dm_uuid /dev/sdc1 uuid path is /sys/dev/block/8:33/dm/uuid
+[centos-data-201][WARNIN] populate_data_path_device: Creating xfs fs on /dev/sdc1
+[centos-data-201][WARNIN] command_check_call: Running command: /usr/sbin/mkfs -t xfs -f -i size=2048 -- /dev/sdc1

@@ -48,10 +48,10 @@ $ ceph osd pool create ssdpool 64 replicated ssd_rule
 
 ```sh
 # 1. 创建 'erasure code' profile，它设置了期望的设备类和故障域
-$ ceph osd erasure-code-profile set myprofile k=4 m=2 crush-device-class=ssd crush-failure-domain=host
+$ ceph osd erasure-code-profile set k4m2 k=4 m=2 crush-device-class=ssd crush-failure-domain=host
 
 # 2. 使用上面的 profile 创建 pool
-$ ceph osd pool create ecpool 64 erasure myprofile
+$ ceph osd pool create ecpool 64 erasure k4m2
 ```
 
 ## 参考

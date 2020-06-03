@@ -1,8 +1,12 @@
 # Ceph 网络配置
 
-推荐运营两个独立网络：一个 `Public Network`（前端） 和一个 `Cluster Network`（后端）。
-
 ![Ceph Network Architecture](.images/network-architecture.png)
+
+* 最好运营两个独立网络：一个 `Public Network`（前端网络） 和一个 `Cluster Network`（后端网络）
+* 所有 Ceph 守护进程（如 ceph-mon、ceph-osd、ceph-mds 等）都必须接入到公共网络，客户端需要接入或者可路由到公共网络
+* Ceph OSD 节点除了要接入集群网络，还必须接入公共网络（需要与其他 ceph-mon、ceph-mds 等进程通信）
+* 公共网络可以是多个网络，比如一个千兆和一个万兆，甚至还可以再多一个 IB 网络，但必须确保所有 Ceph 守护进程都接入多个公共网络
+* 集群网络也可以是多个网络，但不常见
 
 ## 防火墙
 

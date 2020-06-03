@@ -29,7 +29,7 @@ s3cmd version 2.0.2
 对于 S3 接口，应当创建 RADOSGW **user**，而非 **subuser**。
 
 ```sh
-$ radosgw-admin user create --uid=""
+$ radosgw-admin user create --uid="Jinsyin" --display-name="Jins Yin"
 ```
 
 ## 客户端配置
@@ -41,7 +41,7 @@ $ radosgw-admin user create --uid=""
 $ s3cmd --configure
   Access Key: jjyy # -_-
   Secret Key: jjyy # -_-
-  Default Region: US
+  Default Region: US # 不要改成 CN
   S3 Endpoint: 192.168.8.220:8080 # -_-
   DNS-style bucket+hostname:port template for accessing a bucket: 192.168.8.220:8080 # -_-
   Encryption password:
@@ -50,6 +50,8 @@ $ s3cmd --configure
   HTTP Proxy server name:
   HTTP Proxy server port: 0
 ```
+
+> 注：必须事先对客户端和服务端同步时间，否则将导致 `Connection refused`
 
 通过配置文件进行详细配置：
 
