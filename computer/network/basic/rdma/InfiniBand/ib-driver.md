@@ -26,8 +26,8 @@ $ systemctl start rdma
 $ systemctl start opensm
 
 # 查看状态
-$ systemctl start rdma
-$ systemctl start opensm # 所有 IB 节点选举一个 MASTER，其余都是 STANDBY
+$ systemctl status rdma
+$ systemctl status opensm # 所有 IB 节点选举一个 MASTER，其余都是 STANDBY
 
 # 开机自动启动
 $ systemctl enable rdma
