@@ -1,4 +1,6 @@
-# Javascript - 专注前端知识，而非语言
+# Javascript
+
+> 专注于前端知识，而非语言
 
 ## JS 库
 
