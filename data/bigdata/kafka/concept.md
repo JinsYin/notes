@@ -1,4 +1,4 @@
-# 基本概念
+# Kafka 基本概念
 
 ## Record
 
@@ -23,6 +23,8 @@ Kafka 集群由一组存储消息的服务器组成，一个服务器对应一�
 ## Partition
 
 一个 Topic 通常对应多个分区（Partition），发布到同一个 Topic 的消息可能分布在不同 Broker 的不同分区，一个分区实际上就是一个 log 目录。分区数决定了并行处理的能力。
+
+Topic 是逻辑概念，而 Partition 是物理概念。
 
 ## Offset
 

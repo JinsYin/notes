@@ -6,9 +6,9 @@ Apache Flink 提供了两种方式在 YARN 中运行 Flink 集群或 Flink Job�
 
 * [Flink 集成 Hadoop](hadoop-integration.md)
 
-## YARN 会话模式
+## 会话模式
 
-Flink 运行在一个 YARN application 中。
+Flink 运行在一个 YARN Application 中。
 
 该模式下会启动一个 YARN 会话，该回话将启动 JobManager 和 TaskManager 服务，以便可以提交任务给集群（每个会话可以运行多个程序）。
 
@@ -45,7 +45,7 @@ JobManager Web Interface: http://<host>:44541   # 日志
 | ------------------ | -------- |
 | `-d`, `--detached` | 后台运行 |
 
-## 原生作业模式
+## 作业模式
 
 直接由 YARN 来调度和运行 Flink 作业。
 

@@ -42,7 +42,7 @@ $ bin/kafka-server-start.sh [-daemon] config/server.properties
 * 验证
 
 ```sh
-$ netstat -tpln | grep "9092"
+$ netstat -tpln | grep "9092" # lsof -nP -iTCP:9092
 tcp6    0   0 :::9092   :::*    LISTEN  4627/java
 ```
 
@@ -116,7 +116,7 @@ $ tree -L 2 /tmp/kafka-logs/
     └── leader-epoch-checkpoint
 ```
 
-## Multi-broker
+## Multi-Broker
 
 * 配置
 
@@ -176,9 +176,9 @@ Topic:mytopic   PartitionCount:4    ReplicationFactor:2 Configs:
 
 说明：
 
-    * `Leader` - 负责当前分区的所有读写的节点；比如第二行的 `Leader: 0` 表示：分区 `0` 中负责读写的节点为 broker.id=2 的节点
-    * `Replicas` - 当前分区日志的主副节点列表；比如第二行的 `Replicas: 2,1` 表示：分区 `0` 的日志数据存放到了 broker.id=2 和 broker.id=1 节点上
-    * `isr` - "in-sync" Replicas 的集合，它是 Replicas 的子集
+* `Leader` - 负责当前分区的所有读写的节点；比如第二行的 `Leader: 0` 表示：分区 `0` 中负责读写的节点为 broker.id=2 的节点
+* `Replicas` - 当前分区日志的主副节点列表；比如第二行的 `Replicas: 2,1` 表示：分区 `0` 的日志数据存放到了 broker.id=2 和 broker.id=1 节点上
+* `isr` - "in-sync" Replicas 的集合，它是 Replicas 的子集
 
 干掉 Broker 1：
 
@@ -204,3 +204,7 @@ Topic:mytopic   PartitionCount:4    ReplicationFactor:2 Configs:
 ## 使用 Kafka Connect 导入导出数据
 
 ## 使用 Kafka Streams 处理数据
+
+## 参考
+
+* [Kafka Quickstart](https://kafka.apache.org/quickstart)
