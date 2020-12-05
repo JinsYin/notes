@@ -21,7 +21,7 @@ $ docker run -d --name ss-server --restart=always \
 
 # 建议（最新版本可能不稳定，建议使用指定版本的镜像）
 $ docker run -d --name ss-server -p 1314:1314 --restart=always \
-  shadowsocks/shadowsocks-libev ss-server -s 0.0.0.0 -p 1314 -k xxx -m aes-256-cfb
+  shadowsocks/shadowsocks-libev ss-server -s 0.0.0.0 -p 1314 -k xxx -m aes-256-cfb -d 8.8.8.8
 ```
 
 * Ubuntu
