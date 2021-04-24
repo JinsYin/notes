@@ -22,7 +22,6 @@ Spark 提供了两种类型的共享变量：`广播变量` （Ｂroadcast Varia
 
 每个 Worker 上存在一个或多个 Executor 进程
 
-
-## ck
+## 参考
 
 * [Apache Spark Jobs 性能调优（一）](https://www.zybuluo.com/xiaop1987/note/76737)

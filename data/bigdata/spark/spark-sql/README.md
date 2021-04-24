@@ -51,8 +51,15 @@ val sqlContext = new org.apache.spark.sql.SQLContenxt(sc)
 import sqlContext.implicits._
 ```
 
-
 ## 创建 DataFrame
+
+`examples/people.json`：
+
+```json
+{"name":"Michael"}
+{"name":"Andy", "age":30}
+{"name":"Justin", "age":19}
+```
 
 * 2.0
 
@@ -96,7 +103,7 @@ df.select("name").show()
 // +-------+
 
 // age 加 1
-df.select(s"name", s"age" + 1).show() 
+df.select(s"name", s"age" + 1).show()
 df.select(df("name"), df("age") + 1).show()
 df.select(df.col("name", df.col("age") + 1)).show()
 // +-------+---------+

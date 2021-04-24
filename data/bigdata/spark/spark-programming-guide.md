@@ -2,8 +2,6 @@
 
 ## 概述（Overview）
 
-
-
 ## 关联 Spark （Linking with spark）
 
 Spark 2.0.2 默认是基于 Scala 2.11 来构建的，如果要用 Scala 来写 Spark 程序，需要使用兼容的 Scala 版本（比如 2.11.X）。
@@ -31,7 +29,6 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
 ```
 
-
 ## 初始化 Spark
 
 Spark 程序需要做的第一件事就是创建一个 `SparkContext` 对象，SparkContext 对象决定了 Spark 如何访问集群。要创建一个 SparkContext 对象，首先需要构造一个 SparkConf 对象，它包含程序的配置等信息。
@@ -45,11 +42,9 @@ new SparkContext(conf)
 
 appName 参数是 Spark 应用显示在集群 UI 上的名称。master 参数是 [Spark， Mesos or YARN cluster URL](#Master URL)， 或者特殊的 “local” （本地模式）。实际上，当 Spark 程序运行在集群上时，不会将 master 参数硬编码到程序中，而是用 spark-submit 脚本来设置该参数。然而，如果是本地测试或者单元测试，可以使用 ”local” 值来运行 Spark 程序。
 
-
 ## 使用 shell
 
 在 Spark shell 中，默认已经为你创建了一个指定的内置 SparkContext 对象，变量名为 `sc`。所以 spark-shell 里不能自建 SparkContext 对象。你可以通过 `--master` 参数来设置要连接到哪个集群，以及传递一个逗号分隔的 jar 包列表给 `--jars` 参数，以便将这些 jar 包加到 classpath 中。你还可以通过 `--packages` 参数来添加以逗号分隔的 maven 依赖项。同样，还可以通过 `--repositories` 参数添加 maven repository 地址。
-
 
 ```sh
 $ # 在本地 4 个 CPU core 上运行实例
@@ -63,7 +58,6 @@ $ bin/spark-shell --master local[4] --packages "org.example:example:0.1"
 ```
 
 可以使用 `spark-shell --help` 命令来查看完整的选项列表。实际上，spark-shell 是在后台调用 spark-submit 来实现其功能的。
-
 
 ## 弹性分布式数据集（RDD）
 
@@ -97,7 +91,6 @@ scala>
 scala> // 创建后可以执行数据集操作，例如对文本行的长度求和
 scala> distFile.map(line => line.length).reduce(_ + _)
 ```
-
 
 ## 参考
 

@@ -12,23 +12,15 @@ K-means 算也是一个迭代式的算法，其主要步骤如下:
 
   * 时间复杂度近于线性，而且适合挖掘大规模数据集。K-Means 聚类算法的时间复杂度是 `O(nkt)`，其中 n 代表数据集中对象的数量，t 代表着算法迭代的次数，k 代表着簇的数目。
 
-
 ## K-means++
 
+## Latent Dirichlet allocation (LDA)
 
-
-
-## Latent Dirichlet allocation (LDA) 
-
-
-## Bisecting k-means（二分k均值算法） 
-
+## Bisecting k-means（二分k均值算法）
 
 ## Gaussian Mixture Model (GMM)
 
 p(x)=∑Ki=1wi⋅p(x|μi,Σi)p(x)=∑i=1Kwi⋅p(x|μi,Σi)
-
-
 
 ## 参考
 

@@ -1,6 +1,5 @@
 # Spark 入门
 
-
 ## Standalone 集群
 
 * Host
@@ -23,7 +22,6 @@ $ # worker
 $ docker run -it --name=spark-worker --net=host -d dockerce/spark:2.0.2 worker spark://[MASTER-IP]:7077
 ```
 
-
 ## 测试
 
 测试前确保已经安装了所需的 JDK、Python 和 R 运行时环境。
@@ -38,7 +36,6 @@ $
 $ # R
 $ bin/spark-submit examples/src/main/r/dataframe.R
 ```
-
 
 ## 交互式
 
@@ -112,7 +109,6 @@ scala> wordCounts.collect()
 scala> wordCounts.foreach(println)
 ```
 
-
 ## 缓存
 
 Spark 支持将数据集缓存到内存中，这对于重复访问这些数据是非常有用的，例如查询小规模热数据或者运行迭代算法（PageRank）。
@@ -124,7 +120,6 @@ scala> lineWithSpark.count()
 scala>
 scala> lineWithSpark.count()
 ```
-
 
 ## 开发、打包、部署
 

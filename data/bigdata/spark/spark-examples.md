@@ -87,7 +87,7 @@ val rdd = sc.textFile("README.md", 5)
 // 按单词长度分组
 val grouped = rdd.flatMap(line => line.split("""[^a-zA-Z]+""")).filter(_.nonEmpty).distinct.groupBy(_.length)
 
-// 方法一    
+// 方法一
 grouped.collect.foreach(x => println(s"word length: ${x._1}, group size: ${x._2.size}"))
 
 // 方法二
@@ -132,13 +132,6 @@ println(similarity)
 
 > https://my.oschina.net/dreamerliujack/blog/809387
 
-```scala
-
-```
-
 ## PageRank
 
 > http://blog.csdn.net/gamer_gyt/article/details/47443877
-
-```scala
-```
