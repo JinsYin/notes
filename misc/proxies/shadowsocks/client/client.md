@@ -21,7 +21,7 @@ $ sudo apt-get install shadowsocks-qt5
 ```sh
 # 端口映射不知道为什么不可行
 $ docker run -d --name ss-local --net=host --restart=always \
-  shadowsocks/shadowsocks-libev ss-local -s 12.34.56.78 -p 1314 -l 1080 -k xxx -m aes-256-cfb
+  shadowsocks/shadowsocks-libev ss-local -s 12.34.56.78 -p 1314 -l 1080 -k xxx -m aes-256-cfb -u # TCP & UDP
 ```
 
 * Ubuntu

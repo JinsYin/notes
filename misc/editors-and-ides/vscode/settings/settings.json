@@ -1,39 +1,74 @@
 {
-    "workbench.colorTheme": "Solarized Dark",
-    "terminal.integrated.fontSize": 15,
-    "window.zoomLevel": 0,
-    "http.proxy": "http://127.0.0.1:1080",
-    "http.proxyStrictSSL": false,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "workbench.statusBar.visible": true,
-    "window.menuBarVisibility": "default",
+    // editor
+    "editor.autoIndent": true,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.multiCursorModifier": "ctrlCmd",
     "editor.snippetSuggestions": "top",
+    "editor.suggestSelection": "first",
+    // http proxy
+    "http.proxy": "http://127.0.0.1:1080",
+    "http.proxyStrictSSL": false,
+    // terminal
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.shell.linux": "/bin/bash",
+    // workbench
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.statusBar.visible": true,
+    "workbench.iconTheme": "material-icon-theme",
+    // window
+    "window.menuBarVisibility": "default",
+    "window.zoomLevel": 1, // macbook pro: 1.8
+    // files
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "gitlens.advanced.messages": {
-        "suppressLineUncommittedWarning": true
-    },
+    // material-icon-theme
+    "material-icon-theme.activeIconPack": "react",
     "material-icon-theme.folders.theme": "specific",
     "material-icon-theme.folders.color": "#90a4ae",
     "material-icon-theme.hidesExplorerArrows": false,
-    "vsicons.presets.foldersAllDefaultIcon": true,
-    "material-icon-theme.activeIconPack": "react",
-    "breadcrumbs.enabled": true,
-    "workbench.iconTheme": "material-icon-theme",
-    "editor.autoIndent": true,
-    "editor.insertSpaces": true,
+    // mdmath
     "mdmath.delimiters": "gitlab",
-    "browser-preview.startUrl": "https://www.baidu.com",
+    // browser-preview
     "browser-preview.format": "png",
+    "browser-preview.startUrl": "https://www.baidu.com",
+    // markdown
     "[markdown]": {
         "editor.quickSuggestions": true
     },
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "files.trimFinalNewlines": true,
-    "files.insertFinalNewline": true,
+    // markdownlint
     "markdownlint.config": {
         "default": true,
-        "MD033": false
-    }
+        "MD033": false,
+        "MD014": false,
+    },
+    // vsintellicode
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    // GoLang
+    "go.buildOnSave": "workspace",
+    "go.lintOnSave": "package",
+    "go.vetOnSave": "package",
+    "go.buildTags": "",
+    "go.buildFlags": [],
+    "go.lintFlags": [],
+    "go.vetFlags": [],
+    "go.coverOnSave": false,
+    "go.useCodeSnippetsOnFunctionSuggest": false,
+    "go.formatOnSave": true,
+    "go.formatTool": "goreturns",
+    "go.goroot": "/usr/local/go",
+    "go.gopath": "~/go",
+    "go.gocodeAutoBuild": false,
+    // Python
+    "python.jediEnabled": false,
+    // others
+    "vsicons.presets.foldersAllDefaultIcon": true,
+    "breadcrumbs.enabled": true,
+    "gitlens.advanced.messages": {
+        "suppressLineUncommittedWarning": true
+    },
+    // HTML
+    "html.format.enable": false,
 }

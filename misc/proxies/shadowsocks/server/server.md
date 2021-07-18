@@ -1,5 +1,10 @@
 # Shadowsocks 服务端
 
+## 准备
+
+* 建议事先关闭防火墙
+* 建议事先关闭 SELinux
+
 ## 使用 [shadowsocks-libev](https://github.com/shadowsocks/shadowsocks-libev) 【推荐】
 
 Shadowsocks-libev 既可以用作 shadowsocks server（`ss-server`，配置和 shadowsocks 几乎是一样的），又可以用作 shadowsocks client （`ss-local`），但常被用作客户端。
@@ -21,7 +26,7 @@ $ docker run -d --name ss-server --restart=always \
 
 # 建议（最新版本可能不稳定，建议使用指定版本的镜像）
 $ docker run -d --name ss-server -p 1314:1314 --restart=always \
-  shadowsocks/shadowsocks-libev ss-server -s 0.0.0.0 -p 1314 -k xxx -m aes-256-cfb -d 8.8.8.8
+  shadowsocks/shadowsocks-libev ss-server -s 0.0.0.0 -p 1314 -k xxx -m aes-256-cfb  -d 8.8.8.8 -u [-v] # TCP & UDP
 ```
 
 * Ubuntu

@@ -15,6 +15,16 @@
 1. 直接导入[GFWList 备份](https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList.bak)
 2. 根据具体情况修改代理协议、主机地址和端口 。
 
+## 自定义 GFWList
+
+```txt
+*.sublimetext.com
+*.coursera.org
+*.gitbook.com
+*.digitalocean.com
+*.vuejs.org
+```
+
 ## 参考
 
 * [github.com/FelisCatus/SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega/releases)
