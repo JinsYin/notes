@@ -1,0 +1,1 @@
+# Greenplum pg_dumpall 工具

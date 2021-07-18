@@ -1,0 +1,1 @@
+# Greenplum gpaddmirrors 工具

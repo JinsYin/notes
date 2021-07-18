@@ -8,5 +8,13 @@ $ nc -l -k 12345
 ```
 
 ```sh
-$ ./bin/flink run examples/streaming/SocketWindowWordCount.jar --port 12345
+# 独立模式
+$ bin/flink run examples/streaming/SocketWindowWordCount.jar --port 12345
+```
+
+## 批处理
+
+```sh
+# 独立模式
+$ bin/flink run examples/batch/WordCount.jar
 ```

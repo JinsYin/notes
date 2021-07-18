@@ -1,0 +1,1 @@
+# Greenplum dropuser 工具

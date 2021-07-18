@@ -52,7 +52,7 @@ JobManager Web Interface: http://<host>:44541   # 日志
 ```sh
 $ cd flink-x.y.z/ # 必须事先集成 Hadoop
 
-$ ./bin/flink run -m yarn-cluster -p 4 -yjm 1024m -ytm 4096m ./examples/batch/WordCount.jar
+$ ./bin/flink run -m yarn-cluster -d -p 4 -yjm 1024m -ytm 4096m ./examples/batch/WordCount.jar
 ```
 
 ## 参考

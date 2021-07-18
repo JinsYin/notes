@@ -1,0 +1,1 @@
+# Greenplum gpinitsystem 工具

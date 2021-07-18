@@ -1,0 +1,1 @@
+# Greenplum gpconfig 工具

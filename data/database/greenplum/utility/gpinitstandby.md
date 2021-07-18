@@ -1,0 +1,1 @@
+# Greenplum gpinitstandby 工具

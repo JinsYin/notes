@@ -1,0 +1,1 @@
+# Greenplum gpactivatestandby 工具
